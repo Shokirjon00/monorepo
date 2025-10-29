@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-mf-workspace/shared-core": ["shared-core/src/index.ts"],
-      "@project/shared-core": ["libs/shared-core/src/index.ts"]
+      "@shared-core/*": ["shared-core/src/*"],
+      "@core/*": ["shared-core/src/core/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
