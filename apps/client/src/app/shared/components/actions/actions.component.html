@@ -1,0 +1,109 @@
+<div *ngxPermissionsOnly="actionData().permissionName" class="action">
+  @switch (actionData().code) {
+    @case (action.ADD) {
+      <div>
+        <button class="action-item tooltip" (click)="navigate(actionData())">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || './assets/icons/toast/plus.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.OPEN_DIALOG) {
+      <div>
+        <button class="action-item tooltip" (click)="openDialog(actionData().dialogName)">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || './assets/icons/plus.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.EDIT) {
+      <div>
+        <button class="action-item tooltip" (click)="navigate(actionData())">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/edit.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.STATUS) {
+      <div>
+        <button class="action-item tooltip" (click)="changeStatus.emit()">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || '/assets/icons/edit.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.WITHDRAWAL) {
+      <div [class.disabled]="submitted" >
+        <button class="action-item tooltip" [disabled]="submitted" (click)="withdrawalMoney.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/outgoing.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.EXPORT) {
+      <div>
+        <button class="action-item tooltip" (click)="getReport(actionData().path)">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/export.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{actionData().tooltipName}}</span>
+          }
+          <span class="name">{{actionData().name}}</span>
+        </button>
+      </div>
+    }
+    @case (action.REFRESH) {
+      <div>
+        <button class="action-item tooltip" (click)="refresh()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/rotate-ccw.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.SELECT) {
+      <div class="action-item tooltip" (click)="toggle()" (emClickOutside)="showAction = null">
+        <div class="em-d-flex-center"
+          [class.open]="showAction">
+          <div>
+            <svg-icon class="em-d-flex-center mr-1" [src]="'./assets/icons/'+ actionData().icon" />
+          </div>
+          <div>{{actionData().name}}</div>
+        </div>
+        <div class="dropdown">
+          @for (actionItem of actionData().select; track actionItem) {
+            <ul class="dropdown-list" (click)="navigate(actionItem)">
+              <li class="dropdown-item mb-1" [class.active]="actionItem.selected">
+                <div class="em-d-flex">
+                  <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                  [src]="'./assets/icons/'+ actionItem.icon" />
+                  <div class="value">{{actionItem.name}}</div>
+                </div>
+                <div>
+                  <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" />
+                </div>
+              </li>
+            </ul>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>
+<em-toast />

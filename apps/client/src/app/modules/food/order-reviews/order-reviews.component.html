@@ -1,0 +1,117 @@
+<em-header2>
+  <div class="d-flex-sb w-100" header-right-actions>
+    <div class="title-h1">Отзывы клиентов</div>
+  </div>
+</em-header2>
+
+<div class="reviews" emInfiniteScroll
+     [pagination]="paginationInfo()"
+     (emInfiniteScroll)="onScroll()">
+
+  <div class="reviews-filters">
+    <em-multi-dropdown class="pos-dropdown md-w-100"
+                       [isMultiSelect]="true"
+                       [canSearch]="true"
+                       [showClear]="true"
+                       [path]="merchantApi"
+                       [selected]="selectedMerchant"
+                       [selectedId]="selectedMerchantIds.length ? selectedMerchantIds : null"
+                       [searchPlaceholder]="'Название точки'"
+                       (changed)="merchantChange($event)"
+                       (clearInput)="clearMerchant()"
+                       (allIds)="onAllMerchantsLoaded($event)" />
+
+    <em-multi-dropdown
+      class="reviews-filters__item"
+      [searchPlaceholder]="'Все оценки'"
+      [dataSource]="ratingOptions"
+      [showClear]="true"
+      [selected]="selectedStars"
+      [selectedId]="selectedRating()"
+      (changed)="ratingChange($event)"
+      (clearInput)="clearRating()"
+    />
+
+    <em-multi-dropdown
+      class="reviews-filters__item"
+      [searchPlaceholder]="'Сортировка'"
+      [dataSource]="sortOptions"
+      [selectedId]="selectedSort()"
+      [selected]="selectedSortItem"
+      (changed)="sortChange($event)"
+    />
+  </div>
+  @if (reviewsData(); as data) {
+
+    <section class="reviews__chart chart-card">
+      <h2 class="chart-card__title">
+        Распределение оценок ({{ data.chartData.totalCount }})
+      </h2>
+      <div class="chart-card__list">
+        @for (item of data.chartData.reviews; track item.rating) {
+          <div class="chart-card__item rating-row">
+            <span class="rating-row__label">{{ item.rating }} <img src="assets/icons/star-small.svg" alt="" /></span>
+            <div class="rating-row__progress-container">
+              <div class="rating-row__progress-bar"
+                   [style.width]="item.percentage"
+                   [ngClass]="getProgressBarClass(item.rating)">
+              </div>
+            </div>
+            <span class="rating-row__value">{{ item.count }} ({{ item.percentage }})</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <div class="reviews__list">
+      @for (review of allReviews(); track review.order.id) {
+        <article class="reviews__item review-card">
+          <header class="review-card__header">
+            <div class="review-card__restaurant">
+              <img src="assets/icons/order-small.svg" alt="" />
+              {{ review.restaurantPointName }}
+            </div>
+          </header>
+
+          <div class="review-card__body">
+            <div class="review-card__user-info">
+              <span class="review-card__user-name">{{ review.createdByUser }}</span>
+              <span class="review-card__order-number">Заказ #{{ review.order.number }}</span>
+            </div>
+
+            <div class="review-card__rating">
+              <span class="review-card__stars">
+                 @for (star of getStars(review.rating); track star) {
+                   <img src="assets/icons/star-small.svg" />
+                 }
+              </span>
+              <span class="review-card__rating-value"
+                    [ngClass]="getRatingColorClass(review.rating)">
+                  {{ review.rating }}
+              </span>
+            </div>
+
+            <time class="review-card__date">
+              {{ review.createdDateTime | date:'dd MMMM yyyy' : '' : 'ru' }}
+            </time>
+
+            <div class="review-card__order-items">
+              <span class="review-card__date">Заказ:</span>
+              <div class="review-card__tags">
+                @for (item of review.order.items; track item) {
+                  <span class="review-card__tag">{{ item }}</span>
+                }
+              </div>
+            </div>
+
+            <p class="review-card__comment" [class.review-card__comment--empty]="!review.comment">
+              {{ review.comment || 'Без комментария' }}
+            </p>
+          </div>
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="empty-state">Отзывов пока нет</div>
+  }
+</div>

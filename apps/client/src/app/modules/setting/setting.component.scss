@@ -1,0 +1,103 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+
+.setting {
+
+  &-head {
+    padding: 1.5rem 2.5rem;
+  }
+
+  &-body {
+    padding: 1.5rem 2.5rem;
+
+    .form {
+      max-width: 100%;
+      border-bottom: 1px solid $color-grey-400;
+      margin-bottom: 0;
+
+      .input {
+        padding: 0.5rem 0;
+        background-color: $white-color;
+
+        &.callback {
+          padding: 0;
+        }
+
+        &.blur {
+          filter: blur(4px);
+        }
+      }
+    }
+
+    .icon-item {
+      flex-shrink: 0;
+    }
+
+    .warning-text {
+      padding-top: 3rem;
+
+      .title {
+        color: #E91B04;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+
+      .description {
+        color: #202C3C;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .setting {
+
+    &-head {
+      padding: 1rem;
+      position: absolute;
+      top: 57px;
+      width: 100%;
+      z-index: 2;
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .v-line-left {
+        border: none;
+      }
+    }
+
+    &-body {
+      padding: 1rem;
+      margin: 5rem 0;
+
+      .form-body {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+
+        .icon-item {
+          background-color: transparent;
+        }
+      }
+
+      .warning-text {
+        padding-top: 1rem;
+
+        .description {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

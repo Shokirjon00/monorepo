@@ -1,0 +1,45 @@
+<div class="bottom-sheet">
+  <div class="bottom-sheet-head">
+    <div class="line"></div>
+  </div>
+  <div class="bottom-sheet-body">
+    @if (canSearch) {
+      <div class="search">
+        <input type="text" class="search-input" [formControl]="searchField$" [placeholder]="searchPlaceholder" #searchElem>
+        <img src="./assets/images/search.svg" class="search-icon" alt="">
+      </div>
+    }
+    <div class="content" [style]="dataSource.length > 3 ? 'padding-bottom: 40px': ''" [pagination]="pagination" [selector]="'dropdown'" (emInfiniteScroll)="onScrolled()">
+      @if (!isMultiSelect) {
+        @for (actionItem of dataSource; track actionItem; let i = $index) {
+          <div class="content-item"
+            tabindex="{{i}}"
+            [class.selected]="isSelected(actionItem)"
+            (click)="onSelect(actionItem)">
+            <span class="content-item-text">{{actionItem[labelKey]}}</span>
+          </div>
+        }
+      }
+      @if (isMultiSelect) {
+        @for (actionItem of dataSource; track actionItem; let i = $index) {
+          <div class="content-item"
+            tabindex="{{i}}"
+            (click)="onSelectMulti(actionItem)">
+            <div class="circle-checkbox">
+              <input type="checkbox"
+                [checked]="isMultiSelected(actionItem)"
+                [disabled]="!isMultiSelected(actionItem)">
+                <div class="check em-d-flex-center">
+                  <svg-icon src="assets/icons/check.svg" />
+                </div>
+                {{actionItem[labelKey]}}
+              </div>
+            </div>
+          }
+        }
+        @if (!dataSource.length) {
+          <div class="content-item"><span class="content-item-text">Нет данных</span></div>
+        }
+      </div>
+    </div>
+  </div>

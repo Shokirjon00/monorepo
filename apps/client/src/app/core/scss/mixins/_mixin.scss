@@ -1,0 +1,168 @@
+
+/*
+X-Small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200px
+Extra extra large	xxl	≥1400px
+*/
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xlg: 1024px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
+@mixin flex_jc_sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_ai_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@mixin em-d-flex-al-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin ellipsis-text($lines: 1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+@mixin flex_column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex_row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex_align_center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex_align_start() {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flex_align_end() {
+  display: flex;
+  align-items: flex-end;
+}
+
+@mixin flex_justify_right() {
+  display: flex;
+  justify-content: right;
+}
+
+@mixin flex_justify_between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex_justify_end() {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin flex_justify_center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex_align_center_justify_between() {
+  @include flex_align_center();
+  justify-content: space-between;
+}
+
+@mixin flex_start() {
+  @include flex_align_center();
+  justify-content: flex-start;
+}
+
+@mixin flex_center_justify_center() {
+  @include flex_align_center();
+  justify-content: center;
+}
+
+@mixin flex_row_justify_between() {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+@mixin flex_row_align_center() {
+  @include flex_row();
+  align-items: center;
+}
+
+@mixin flex_column_align_start() {
+  @include flex_column();
+  align-items: flex-start;
+}
+
+@mixin flex_column_align_center() {
+  @include flex_column();
+  align-items: center;
+}
+
+@mixin flex_column_justify_between() {
+  @include flex_column();
+  justify-content: space-between;
+}
+
+@mixin placeholder($color) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+  }
+}
+
+@mixin flex_ai_jc() {
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+@mixin status($name, $color) {
+  &.#{$name} {
+    background-color: $color;
+
+    ~ .text {
+      color: $color;
+    }
+  }
+}

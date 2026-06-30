@@ -1,0 +1,60 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+
+.rating-dialog {
+  padding: 2rem 1rem;
+
+  &__header {
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $near-black;
+    }
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__rating {
+    padding: 1rem 0;
+  }
+
+  &__comment {
+    margin-top: 1rem;
+
+    .text-area {
+      .textarea {
+        border-radius: 0.75rem;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-color, #e0e0e0);
+        font-size: 1rem;
+        line-height: 1.5rem;
+        resize: none;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color, #007bff);
+          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        &::placeholder {
+          color: var(--text-muted, #6c757d);
+        }
+      }
+    }
+  }
+
+  &__actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}

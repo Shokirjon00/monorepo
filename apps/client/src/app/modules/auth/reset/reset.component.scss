@@ -1,0 +1,113 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/mixins/mixin' as *;
+@use 'core/scss/mixins/_input' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+.reset {
+  width: 100%;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1.5rem);
+  border-radius: 2rem;
+
+  &-form {
+   @include flex_column();
+    gap: 4rem;
+    padding-top: 4rem;
+
+    .text-success {
+      color: $white-color;
+    }
+
+    .btn-transparent {
+      font-weight: 400;
+      font-size: 0.8rem;
+      line-height: 120%;
+      text-decoration: none;
+      color: $vivid-blue;
+
+      &[disabled], &[disabled]:hover {
+        border: none;
+        background: transparent;
+        cursor: not-allowed;
+      }
+    }
+
+    .form-label {
+      font-weight: 500;
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      color: $white-color;
+    }
+
+    .form-control {
+      @include input_placeholder($white-color);
+      background-color: transparent;
+      min-width: 360px;
+      color: $white-color;
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+      }
+    }
+
+    .check-label {
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      color: $white-color;
+
+    }
+  }
+
+  .auth-btn {
+    padding: 1rem 0;
+    @include flex_center_justify_center();
+  }
+
+  .back {
+    @include flex_align_center();
+    gap: 0.6rem;
+
+    &-text {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5rem;
+      color: $vivid-blue;
+      cursor: pointer;
+    }
+  }
+}
+
+.pass-show {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  top: -2rem;
+}
+
+@include media-breakpoint-down(md) {
+  .login {
+    width: 85vw;
+    padding: 2rem;
+
+    &-form {
+      padding: 3rem 0;
+
+      .form-control {
+        min-width: auto;
+      }
+    }
+
+    .footer__btn {
+      padding: .5rem 0;
+    }
+  }
+}

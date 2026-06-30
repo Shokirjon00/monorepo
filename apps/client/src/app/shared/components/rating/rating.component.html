@@ -1,0 +1,13 @@
+<div class="rating" [ngClass]="'rating-' + size">
+  @for (isFilled of stars; track $index; let i = $index) {
+    <div class="star" 
+         [ngClass]="{'star--clickable': !readonly }"
+         (click)="onStarClick(i)">
+      @if (isFilled) {
+        <svg-icon src="assets/icons/star-filled.svg" class="star-icon" />
+      } @else {
+        <svg-icon src="assets/icons/star-stroke.svg" class="star-icon" />
+      }
+    </div>
+  }
+</div> 

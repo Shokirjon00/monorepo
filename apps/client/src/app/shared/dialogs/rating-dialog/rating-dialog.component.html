@@ -1,0 +1,35 @@
+<div class="rating-dialog">
+  <div class="rating-dialog__header em-d-flex-center">
+    <div class="title text-center">{{ data.title || '' }}</div>
+  </div>
+  <form class="rating-dialog__content" [formGroup]="formGroup">
+    <div class="rating-dialog__rating em-d-flex-center em-dr-columm em-g-16 mt-2">
+      <em-rating [rating]="selectedRating"
+                 [maxRating]="data.maxRating || 5"
+                 [readonly]="false"
+                 [size]="'large'"
+                 (ratingChange)="onRatingChange($event)" />
+    </div>
+    @if (data.allowComment) {
+      <div class="rating-dialog__comment">
+        <div class="text-area">
+          <textarea class="textarea" formControlName="ratingComment"
+                    placeholder="Напишите Ваш комментарий"
+                    rows="6">
+          </textarea>
+        </div>
+      </div>
+    }
+  </form>
+  <div class="rating-dialog__actions">
+    <button class="btn btn-secondary btn-lg"
+            (click)="onCancel()">
+      Отмена
+    </button>
+    <button class="btn btn-primary btn-lg"
+            [disabled]="selectedRating === 0"
+            (click)="onSubmit()">
+      Оценить
+    </button>
+  </div>
+</div>

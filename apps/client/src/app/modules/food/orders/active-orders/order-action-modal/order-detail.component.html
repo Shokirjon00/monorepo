@@ -1,0 +1,218 @@
+@if (order(); as order) {
+  <em-header2 [showBreadcrumb]="true">
+    <div back-button class="back-content" (click)="back()">
+      <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" />
+      <div class="title">Назад</div>
+    </div>
+    <div class="d-flex-sb w-100 hide-title" header-center-default>
+      <div class="title-h1 w-100">Заказ №{{ order.sequence }}</div>
+      <div class="em-d-flex em-ai-center"></div>
+    </div>
+  </em-header2>
+  <div class="order em-g-16">
+    <div class="order-body em-d-flex em-dr-columm em-g-24">
+      <div class="order-section status-section">
+        <h3 class="section-title">Статус заказа</h3>
+        @if (isCancelled()) {
+          <div class="status-banner status-banner--canceled">
+            <svg-icon [src]="'/assets/icons/close-circle.svg'" />
+            Отменён
+          </div>
+        }
+        @else {
+          <div class="status-progress">
+            <div
+              class="status-track"
+              [style.--progress.%]="progressPercent()">
+            </div>
+            @for (status of visibleStatuses(); track status.name) {
+              <div class="status-step"
+                   [class.active]="isStatusActive(status)"
+                   [class.completed]="isStatusCompleted(status)">
+
+                <div class="status-circle">
+                  @if (isStatusActive(status) || isStatusCompleted(status)) {
+                    <svg-icon class="check-icon"
+                      src="/assets/icons/check-full.svg" />
+                  }
+                </div>
+
+                <div class="status-label">
+                  {{ status.label }}
+                </div>
+              </div>
+            }
+          </div>
+
+          @if (isCompleted()) {
+            <div class="status-banner status-banner--success">
+              <svg-icon [src]="'/assets/icons/circle-green.svg'" />
+              Заказ успешно завершён!
+            </div>
+          }
+        }
+        @if (!isCancelled()) {
+          <div class="status-actions hide-title">
+            @for (btn of actionButtons; track $index) {
+              @if (btn.condition(order)) {
+                <button *ngxPermissionsOnly="btn.permissionName"
+                        type="button"
+                        class="btn {{ btn.class }} btn-lg order-ready-btn"
+                        (click)="performAction(btn.action)">
+                  <svg-icon class="btn-icon"
+                            [src]="'/assets/icons/check-full.svg'" />
+                  {{ getButtonLabel(btn, order) }}
+                </button>
+              }
+            }
+            @if (canCancelOrder()) {
+              <button *ngxPermissionsOnly="'FoodVendorOrderStatusCancel'"
+                      type="button"
+                      class="btn btn-outline-danger btn-lg cancel-btn"
+                      (click)="cancelOrder()">
+                Отменить
+              </button>
+            }
+          </div>
+        }
+      </div>
+      <div class="em-d-flex em-fw-wrap em-g-24">
+        <div class="em-d-flex em-dr-columm em-g-24 w-100 md-w-100">
+          <div class="order-section delivery-section">
+            <h3 class="section-title">
+              Информация о доставке
+            </h3>
+            <div class="section-content em-dr-columm">
+              <div class="info-row">
+                <span class="info-label em-g-8 em-d-flex">
+                   <svg-icon class="em-d-flex" [src]="'/assets/icons/car-delivery.svg'" />
+                   Тип обслуживания:</span>
+                <span class="info-value pl-4">
+                  {{ order.deliveryAddress ? 'Доставка' : 'Самовывоз' }}
+                </span>
+              </div>
+              @if (order.deliveryAddress) {
+                <div class="info-row">
+                  <span class="info-label em-d-flex em-g-8">
+                  <svg-icon class="" [src]="'/assets/icons/location.svg'" />
+                    Адрес доставки:</span>
+                  <span class="info-value pl-4">
+                    {{ order.deliveryAddress }}
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+          @if(!isCancelled()){
+            <div class="order-section client-section">
+              <h3 class="section-title">
+                Информация о клиенте
+              </h3>
+              <div class="section-content em-jc-sb">
+                @if (canShowClientInfo()) {
+                  <div class="info-row">
+                    <span class="info-label">Клиент:</span>
+                    <span class="info-value">{{ order.createdByUser || '-' }}</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Телефон:</span>
+                    <span class="info-value">{{ order.username || '-' }}</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Способ оплаты:</span>
+                    <span class="info-value">
+                      {{ order.paymentMethodName || '-' }}
+                      <span class="payment-status paid">Оплачен</span>
+                  </span>
+                  </div>
+                } @else {
+                  <div class="info-placeholder">
+                    Данные клиента будут доступны после подтверждения заказа
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+        <div class=" em-d-flex em-dr-columm em-g-24 w-100 md-w-100">
+          <div class="order-section items-section">
+            <h3 class="section-title">Состав заказа</h3>
+            <div class="section-content items-list">
+              @if (order.items && order.items.length > 0) {
+                @for (item of order.items; track item.productVariantId) {
+                  <div class="order-item em-d-flex em-g-12">
+                    <div >
+                      <img
+                        [src]="fileStorageUrl + 'web/' + item.image"
+                        width="70"
+                        height="70"
+                        class="item-image"
+                      />
+                    </div>
+                    <div class="item-details em-d-flex em-dr-columm em-g-4 w-100">
+                      <div class="item-name">{{ item.productName }}</div>
+                      <div class="item-variant">
+                        @if (item.dimensionValue && item.dimensionUnitName) {
+                          {{ item.dimensionValue }} {{ item.dimensionUnitName }} x
+                          <span class="item-quantity">{{ item.quantity }} шт</span>
+                        }
+                      </div>
+                      <div class="item-footer em-d-flex em-jc-fe">
+                        <span class="item-price">{{ item.price.amount }} {{ item.price.currencyCode }}</span>
+                      </div>
+                    </div>
+                  </div>
+                }
+              } @else {
+                <div class="no-data">
+                  <div class="em-ta-c">Нет данных для показа</div>
+                </div>
+              }
+            </div>
+              <div class="total-breakdown order-item items-list  em-g-12">
+                <div class="total-row em-d-flex em-jc-sb">
+                  <span class="total-label">Блюда</span>
+                  <span class="total-value">{{ order.price?.amount || 0 }} {{ order.totalPrice?.currencyCode || '' }}</span>
+                </div>
+                <div class="total-row em-d-flex em-jc-sb">
+                  <span class="total-label">Доставка</span>
+                  <span class="total-value">{{ order.deliveryPrice?.amount || 0 }} {{ order.totalPrice?.currencyCode || '' }}</span>
+                </div>
+                <div class="total-row em-d-flex em-jc-sb">
+                  <span class="total-label">Скидка</span>
+                  <span class="total-value">{{ order.discountPrice?.amount || 0 }} {{ order.totalPrice?.currencyCode || '' }}</span>
+                </div>
+                <div class="total-row final em-d-flex em-jc-sb">
+                  <span class="total-label">Итого</span>
+                  <span
+                    class="total-value">{{ order.totalPrice?.amount || 0 }} {{ order.totalPrice?.currencyCode || '' }}</span>
+                </div>
+              </div>
+
+          </div>
+          @if (order.comment) {
+            <div class="order-section comments-section">
+              <h3 class="section-title">
+                Комментарии
+              </h3>
+              <div class="comment-item">
+                <div class="comment-subsection">
+                  <div class="comment-label ">
+                    <svg-icon class="comment-icon" [src]="'/assets/icons/message.svg'" />
+                    Для ресторана
+                  </div>
+                  <div class="comment-text">{{ order.comment }}</div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (loading()) {
+  <em-eskhata-bank-loader class="loader" [text]="loadingText()" />
+}
+<em-toast />

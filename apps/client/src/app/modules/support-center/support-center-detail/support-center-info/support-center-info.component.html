@@ -1,0 +1,105 @@
+<form class="support-center-info" [formGroup]="formGroup">
+  <div class="container">
+    <div back-button  class="back-content" (click)="back()">
+      <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" />
+      <div class="title">Назад</div>
+    </div>
+  </div>
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <h3 class="title-3">Обращение по теме {{ currentSupportCenter?.name }}</h3>
+      <div class="em-d-flex">
+        @if (currentSupportCenter?.isCompleted) {
+          <div *ngxPermissionsOnly="'SupportApplicationRate'"
+               class="mr-2 icon-item tooltip"
+               [class.disabled]="submitted"
+               (click)="onRate()">
+            <svg-icon class="svg-icon" src="./assets/icons/star-stroke.svg" />
+            <span class="tooltiptext">Оценить</span>
+          </div>
+        }
+        <div *ngxPermissionsOnly="'SupportApplicationChangeStatus'"
+             class="mr-2 icon-item tooltip"
+             [class.disabled]="submitted"
+             (click)="onCancelAppeal()">
+          <svg-icon class="svg-icon" src="./assets/icons/cancel.svg" />
+          <span class="tooltiptext">Отменить</span>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  @if (loading()) {
+    <em-eskhata-bank-loader class="form-loader" />
+  } @else {
+    <div class="support-center-info__body" [class.blur]="submitted">
+      <div class="body-container em-d-flex em-fw-wrap pb-2">
+        <div class="em-d-flex em-fw-wrap">
+          <div class="labels-data em-g-8 v-line pr-6">
+            <div class="em-d-flex">
+              <span class="key">Название</span>
+              <span>:</span>
+              <span class="data">{{ currentSupportCenter?.name || '-' }}</span>
+            </div>
+            <div class="em-d-flex">
+              <span class="key">Категория</span>
+              <span>:</span>
+              <span class="data">{{ currentSupportCenter?.supportApplicationCategoryName || '-' }}</span>
+            </div>
+          </div>
+          <div class="labels-data em-g-8 pl-6">
+            <div class="em-d-flex">
+              <span class="key">Номер телефона</span>
+              <span>:</span>
+              <span class="data">{{ currentSupportCenter?.contactPhoneNumber || '-' }}</span>
+            </div>
+            <div class="em-d-flex">
+              <span class="key">Электронная почта</span>
+              <span>:</span>
+              <span class="data">{{ currentSupportCenter?.contactEmail || '-' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      @if (!currentSupportCenter?.isCompleted) {
+        <div class="body-container em-d-flex support-center-info__textarea">
+          <div class="form">
+            <div class="label mb-2">Опишите проблему*</div>
+            <div class="text-area">
+                    <textarea class="message-area" formControlName="message"
+                              placeholder="Введите сообщение">
+                    </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <em-upload-field formControlName="attachedFile"
+                           placeholder="Прикрепить файл"
+                           [fileTypes]="['jpg', 'png', 'jpeg']"
+                           [fileLimit]="5"
+                           [maxFileSize]="5" />
+        </div>
+        <div *ngxPermissionsOnly="'SupportApplicationCreate'"
+                class="body-container em-d-flex em-fw-wrap">
+          <div class="support-center-info__send-btn">
+            <button type="submit"
+                    class="btn-primary btn btn-md"
+                    [disabled]="formGroup.invalid"
+                    (click)="onSendMessage()">
+              Отправить
+            </button>
+          </div>
+        </div>
+      }
+      @if (currentSupportCenter?.supportApplicationMessages) {
+        @for (message of currentSupportCenter.supportApplicationMessages; track message.sentAt) {
+          <em-message-card [fileStorageToken]="fileStorageToken"
+                  [fileStorageUrl]="fileStorageUrl"
+                  [fileIds]="fileIds"
+                  [messageData]="message" />
+        }
+      }
+    </div>
+  }
+</form>
+
+<em-toast />

@@ -1,0 +1,49 @@
+<em-header2
+  [filterFields]="captions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'paymentRefundFiltersForm'"
+  [paymentStatusGroup]="paymentStatusGroup"
+  [queryParams]="queryParams"
+  (statusSelected)="selectStatus($event)">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Заявки на возврат</span>
+  </div>
+  <ng-container header-actions>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<div class="mobile-card">
+  @for (application of applications; track application; let i = $index) {
+    <em-payments-refund-mobile-card [application]="application"
+      (paymentUpdate)="paymentUpdate($event)"
+      [statusLabel]="statusIndicator(application.statusId)"
+      (toggleClicked)="toggleExpand($event)" />
+  }
+  @if ((!applications || !applications.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (paginate && applications.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="applications"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [rowActions]="tableActions"
+  [loading]="loading()"
+  (confirm)="paymentUpdate($event)"
+ />
+<em-toast />

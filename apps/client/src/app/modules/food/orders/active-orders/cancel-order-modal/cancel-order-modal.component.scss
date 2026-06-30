@@ -1,0 +1,156 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/mixins/mixin' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/card' as *;
+
+::ng-deep .cancel-order-modal-panel .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1.5rem;
+}
+
+.cancel-order-modal {
+  padding: 2rem;
+  max-width: 660px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-head {
+  @include em-d-flex-al-center();
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.head-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffecec;
+  @include flex_ai_center();
+
+  svg-icon {
+    width: 28px;
+    height: 28px;
+    @include flex_ai_center();
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 32px;
+  color: $black;
+}
+
+.subtitle {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: $label-color;
+}
+
+.reason-title {
+  margin: 1rem 0 1rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $black;
+
+  span {
+    color: $red-color;
+  }
+}
+
+.reason-list {
+  @include flex_column();
+  gap: 0.75rem;
+}
+
+.reason-item {
+  width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  background: $white-color;
+  min-height: 46px;
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: $black;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &--active {
+    border-color: $primary-color;
+  }
+}
+
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 0.875rem;
+  min-height: 48px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+
+  &-cancel {
+    background: $main-bg;
+    color: $text-color;
+  }
+
+  &-confirm {
+    background: $amaranth-color;
+    color: $white-color;
+
+    &:disabled {
+      background: rgba($amaranth-color, 0.5);
+      color: $white-color;
+      pointer-events: none;
+      border: none
+    }
+  }
+}
+
+.error {
+  color: $red-color;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@include media-breakpoint-down(sm) {
+  .cancel-order-modal {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  .reason-title {
+    font-size: 0.875rem;
+  }
+
+  .reason-item {
+    min-height: 46px;
+    font-size: 0.875rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    min-height: 46px;
+    font-size: 1rem;
+  }
+}

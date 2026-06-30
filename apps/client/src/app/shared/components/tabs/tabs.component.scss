@@ -1,0 +1,80 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+
+.tab {
+  display: flex;
+  align-items: flex-start;
+
+  &-item:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  &-item:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+
+  &-item {
+    transition: 300ms ease-in-out;
+    padding: 0.5rem 1.5rem;
+    background: $main-bg;
+    border: 1px solid $brand-line;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    color: $palette;
+    position: relative;
+
+    span {
+      @include ellipsis-text;
+      color: $palette;
+      max-width: 350px;
+    }
+
+    &:hover {
+      background: $inactive-icons;
+      color: $label-color;
+    }
+
+    &-active {
+      font-weight: 500;
+      border: 1px solid $primary-color;
+      color: $white-color;
+      background: $primary-color;
+
+      span {
+        color: $white-color;
+        font-weight: 500;
+      }
+
+      &:hover {
+        color: $white-color;
+        background: $primary-color;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .tab {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    width: 100vw;
+    padding: 0 1rem 0.5rem 1rem;
+    margin: 0 -1rem 0.5rem;
+
+    &-item {
+      padding: 8px 24px;
+      border-radius: 8px!important;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0;
+    }
+
+    &.mobile-display {
+      display: none;
+    }
+  }
+}

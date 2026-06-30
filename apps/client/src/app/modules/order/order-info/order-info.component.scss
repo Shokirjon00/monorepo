@@ -1,0 +1,68 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/card' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/mixins/mixin' as *;
+
+.order-block {
+  .header-order,
+  .item-row {
+    display: grid;
+    grid-template-columns: 1fr 120px 100px;
+    column-gap: 0.625rem;
+    align-items: start;
+    padding: 0.5rem 0;
+  }
+
+  .order-row,
+  .order-span {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    word-break: break-word;
+  }
+
+  .order-row {
+    font-weight: 700;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .header-order {
+      display: none;
+    }
+
+    .item-row {
+      @include flex_column();
+      gap: 0.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid $light-color;
+
+      .order-span {
+        @include flex_justify_between();
+        width: 100%;
+
+        &::before {
+          font-weight: 700;
+          margin-right: 0.625rem;
+        }
+
+        &.name {
+          font-size: 1rem;
+          &::before { content: "Товар:"; }
+        }
+
+        &.quantity {
+          &::before { content: "Кол-во:"; }
+        }
+
+        &.price {
+          &::before { content: "Цена:"; }
+        }
+      }
+    }
+  }
+}

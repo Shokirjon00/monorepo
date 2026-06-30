@@ -1,0 +1,97 @@
+<form class="support-center-add" [formGroup]="formGroup">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <h3 class="title-3">Новое обращение</h3>
+      <div class="em-d-flex">
+        <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+          <svg-icon src="./assets/icons/cancel.svg" />
+          <span class="tooltiptext">Отменить</span>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="support-center-add-body" [class.blur]="submitted">
+    <div class="body-container em-d-flex em-fw-wrap pb-2">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Название*</div>
+          <div class="input">
+            <input type="text" class="form-control"
+                   formControlName="name"
+                   placeholder="Введите название">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+      </div>
+      <div class="right-block">
+        <div class="form">
+          <div class="label">Категория*</div>
+          <div class="input">
+            <em-simple-select-list formControlName="supportApplicationCategoryId"
+                                   action="Выберите категорию обращения"
+                                   [isBottomSheet]="true"
+                                   [dataSource]="applicationCategories" />
+            <em-validator [fieldControl]="f['supportApplicationCategoryId']" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body-container em-d-flex support-center-add-textarea">
+      <div class="form">
+        <div class="label mb-2">Опишите проблему</div>
+        <div class="text-area">
+            <textarea formControlName="message"
+                      placeholder="Введите сообщение">
+            </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="body-container em-d-flex em-fw-wrap support-center-add-contacts">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Номер телефона*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="contactPhoneNumber"
+                   placeholder="+992 (XX) XXX XX XX"
+                   mask="+000 (00) 000 00 00"
+                   [dropSpecialCharacters]=true>
+            <em-validator [fieldControl]="f['contactPhoneNumber']" />
+          </div>
+        </div>
+      </div>
+      <div class="right-block">
+        <div class="form">
+          <div class="label">Электронная почта*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="contactEmail" placeholder="example@mail.ru">
+            <em-validator [fieldControl]="f['contactEmail']" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-4">
+      <em-upload-field formControlName="attachedFile"
+                       placeholder="Прикрепить файл"
+                       [fileTypes]="['jpg', 'png', 'jpeg']"
+                       [fileLimit]="5"
+                       [maxFileSize]="5" />
+    </div>
+    <div class="body-container em-d-flex em-fw-wrap">
+      <div class="support-center-add__send-btn">
+        <button class="btn-primary btn btn-md"
+                type="submit"
+                [disabled]="formGroup.invalid"
+                (click)="onCreateAppeal()">
+          Отправить
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<em-toast />
+

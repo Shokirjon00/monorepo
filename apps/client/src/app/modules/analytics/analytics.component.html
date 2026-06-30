@@ -1,0 +1,270 @@
+<div class="position-sticky analytics-header">
+  <em-dropdown class="period-dropdown md-w-100"
+    id="period-dropdown"
+    [uniqueId]="'period-dropdown'"
+    maxHeight="500px"
+    [showClear]="queryParams.startDate && queryParams.endDate"
+    [path]="dataFilterApi"
+    [selected]="dateType"
+    [images]="dateTypeImage"
+    [scrollHeight]="'315px'"
+    [selectedId]="!dateFlag ? queryParams.dateFilterTypeId : ''"
+    [flag]="dateFlag"
+    (changed)="dateChange($event)"
+    (clearInput)="clearPeriod()"
+   />
+  <em-dropdown class="merchant-dropdown md-w-100"
+    id="merchant-dropdown"
+    [uniqueId]="'merchant-dropdown'"
+    [canSearch]="true"
+    [showClear]="true"
+    [path]="merchantApi"
+    [selected]="selectedMerchant"
+    [selectedId]="queryParams.merchantId"
+    [searchPlaceholder]="'Название точки'"
+    (changed)="merchantChange($event)"
+    (clearInput)="clearMerchant()"
+   />
+  <em-dropdown class="pos-dropdown md-w-100"
+    id="pos-dropdown"
+    [uniqueId]="'pos-dropdown'"
+    [path]="posesApi"
+    [showClear]="true"
+    [selected]="selectedPos"
+    [show]="queryParams.merchantId"
+    [customFilter]="merchantFilter"
+    [selectedId]="queryParams.posId"
+    (changed)="posesChange($event)"
+    (clearInput)="clearPos()"
+   />
+  <em-dropdown class="pos-type-dropdown md-w-100"
+    id="pos-type-dropdown"
+    [uniqueId]="'pos-type-dropdown'"
+    [path]="posesTypeApi"
+    [showClear]="true"
+    [selected]="selectedPosType"
+    [show]="true"
+    [customFilter]="posTypeFilter"
+    [selectedId]="queryParams.posTypeId"
+    (changed)="posesTypeChange($event)"
+    (clearInput)="clearPosType()"
+   />
+  <em-dropdown class="service-type-dropdown md-w-100"
+     id="service-type-dropdown"
+    [uniqueId]="'service-type-dropdown'"
+    [path]="serviceApi"
+    [showClear]="true"
+    [selected]="selectedServicesType"
+    [show]="true"
+    [customFilter]="serviceFilter"
+    [selectedId]="queryParams.serviceId"
+    (changed)="servicesTypeChange($event)"
+    (clearInput)="clearServicesType()"
+   />
+  <div class="reset-filter"
+       [class.wrapper]="isResetButtonDisabled()">
+    <button type="button"
+      id="reset-filters"
+      [class.pointer-events-none]="isResetButtonDisabled()"
+      (click)="resetFilter()">
+      Сбросить фильтры
+    </button>
+  </div>
+
+</div>
+
+<div class="mobile-filter">
+  <button type="button"
+          [class.active]="isActiveFilter()"
+          (click)="openFilter()">Фильтры
+  </button>
+</div>
+
+<div class="analytics">
+  <div class="analytics-aggregation em-d-flex">
+    <div *ngxPermissionsOnly="'AnalyticAggregationData'" class="chart-container analytics-info">
+      <div class="d-flex-col-center analytics-card">
+        <div class="card-label label-big mb-1">
+          Торговые точки
+        </div>
+        <div class="d-flex-sb">
+          <div class="card-title title-small">{{ (cardsData?.merchantsCount | mask:  'separator') }}</div>
+        </div>
+      </div>
+      <div class="d-flex-col-center analytics-card">
+        <div class="card-label label-big">
+          Кассы
+        </div>
+        <div class="d-flex-sb">
+          <div class="card-title title-small">{{ (cardsData?.posesCount | mask:  'separator') }}</div>
+        </div>
+      </div>
+      <div class="d-flex-col-center analytics-card">
+        <div class="card-label label-big mb-1">
+          Кэшбэк мерчанта
+        </div>
+        <div class="d-flex-sb">
+          <div class="card-title title-small em-d-flex">
+            {{ ((this.cardsData?.cashbackCompanySum | mask:  'separator') | split) || '0' }}
+            <div class="cent title-small">,{{ (this.cardsData?.cashbackCompanySum | split:'.':1) || '00' }} c</div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex-col-center analytics-card">
+        <div class="card-label label-big mb-1">
+          Комиссия банка
+        </div>
+        <div class="d-flex-sb">
+        <span class="card-title title-small em-d-flex">
+          {{ ((this.cardsData?.commissionIncomeSum | mask:  'separator') | split) || '0' }}
+          <div class="cent title-small">,{{ (this.cardsData?.commissionIncomeSum | split:'.':1) || '00' }} c</div>
+        </span>
+        </div>
+      </div>
+      <div class="d-flex-col-center padding-1 w-100 card-full-width analytics-card">
+        <div class="card-label label-big mb-1">
+          Остаток счёта
+        </div>
+        <div class="d-flex-sb">
+        <span class="card-title title-small em-d-flex">
+          {{ ((this.cardsData?.merchantsBalanceSum | mask:  'separator') | split) || '0' }}
+          <div class="cent title-small">,{{ (this.cardsData?.merchantsBalanceSum | split:'.':1) || '00' }} c</div>
+        </span>
+        </div>
+      </div>
+      <div class="d-flex-col-center padding-1 w-100 card-full-width">
+        <div class="card-label label-big mb-1">
+          Остаток задолженности
+        </div>
+        <div class="d-flex-sb">
+        <span class="card-title title-small em-d-flex">
+          {{ ((this.cardsData?.advancePayoutDebtSum | mask:  'separator') | split) || '0' }}
+          <div class="cent title-small">,{{ (this.cardsData?.advancePayoutDebtSum | split:'.':1) || '00' }}</div>
+        </span>
+        </div>
+      </div>
+      <div class="d-flex-col-center padding-1 w-100 card-full-width">
+        <div class="card-label label-big mb-1">
+          Средний чек за день
+        </div>
+        <div class="d-flex-sb">
+        <span class="card-title title-small em-d-flex">
+          {{ ((averagePayment?.averageSum | mask:  'separator') | split) || '0' }}
+          <div class="cent title-small">,{{ (averagePayment?.averageSum | split:'.':1) || '00' }} c</div>
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngxPermissionsOnly="['AnalyticPaymentsByCount', 'AnalyticPaymentsByAmount', 'AnalyticPaymentsByStatus', 'AnalyticPaymentsByPosType', 'AnalyticAveragePaymentsAmount']"
+    class="analytics-title">Основные показатели
+  </div>
+  <div class="analytics-transaction em-d-flex">
+    <div class="chart-container transactions" *ngxPermissionsOnly="'AnalyticPaymentsByCount'">
+      <div class="mb-3">
+        <div class="card-label">Всего транзакций</div>
+        <div class="card-title">{{ paymentCount?.total }}</div>
+      </div>
+      @if (chartOptions) {
+        <div class="scroll-apex">
+          <div class="apex-w">
+            <apx-chart [series]="chartOptions?.series"
+              [chart]="chartOptions?.chart"
+              [plotOptions]="chartOptions?.plotOptions"
+              [dataLabels]="chartOptions?.dataLabels"
+              [legend]="chartOptions?.legend"
+              [grid]="chartOptions?.grid"
+              [yaxis]="chartOptions?.yaxis"
+              [xaxis]="chartOptions?.xaxis" />
+          </div>
+        </div>
+      }
+    </div>
+    <div class="chart-container transactions-sum" *ngxPermissionsOnly="'AnalyticPaymentsByAmount'">
+      <div class="mb-3">
+        <div class="card-label">Сумма транзакций</div>
+        <span class="card-title em-d-flex">{{ ((paymentAmount?.total | mask:  'separator') | split) ?? '0' }}
+          <div class="cent card-title">,{{ (paymentAmount?.total | split:'.':1) ?? '00' }} c</div>
+        </span>
+      </div>
+      @if (chartOptions2) {
+        <div class="scroll-apex">
+          <div class="apex-w">
+            <apx-chart [series]="chartOptions2?.series"
+              [chart]="chartOptions2?.chart"
+              [plotOptions]="chartOptions2?.plotOptions"
+              [dataLabels]="chartOptions2?.dataLabels"
+              [legend]="chartOptions2?.legend"
+              [grid]="chartOptions2?.grid"
+              [yaxis]="chartOptions2?.yaxis"
+              [xaxis]="chartOptions2?.xaxis" />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="analytics-payments em-d-flex">
+    <div *ngxPermissionsOnly="'AnalyticPaymentsByStatus'" class="chart-container statistics2">
+      <div class="mb-3">
+        <div class="card-label label-small">В обработке, Отказы, Возвраты и Отмены</div>
+        <div class="card-title mb-1">{{ (statusCount | mask:  'separator') }}</div>
+      </div>
+      <div class="em-d-flex em-fw-wrap em-g-8">
+        @for (status of paymentStatus; track status.statusType) {
+          <div class="card padding-1">
+            <div class="mb-2 icon">
+              @switch (status.statusType) {
+                @case (paymentStatusEnum.REFUNDED) {
+                  <svg-icon [ngClass]="status.statusType | lowercase"
+                            class="em-d-contents"
+                            src="assets/icons/return.svg" />
+                }
+                @case (paymentStatusEnum.REJECTED) {
+                  <svg-icon [ngClass]="status.statusType | lowercase"
+                            class="em-d-contents"
+                            src="assets/icons/cancel.svg" />
+                }
+                @case (paymentStatusEnum.IN_PROCESS) {
+                  <svg-icon [ngClass]="status.statusType | lowercase"
+                            class="em-d-contents"
+                            src="assets/icons/clock.svg" />
+                }
+                @case (paymentStatusEnum.CANCELED) {
+                  <svg-icon [ngClass]="status.statusType | lowercase"
+                            class="em-d-contents"
+                            src="assets/icons/canceled.svg" />
+                }
+              }
+            </div>
+            <div class="info w-100">
+              <div [ngClass]="status.statusType | lowercase" class="card-label label-small">{{ status.statusName }}
+              </div>
+              <div [ngClass]="status.statusType | lowercase" class="card-label label-big">{{ status.count }}</div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div *ngxPermissionsOnly="'AnalyticPaymentsByPosType'" class="chart-container transactions-type">
+      <div class="mb-3">
+        <div class="card-label label-small">Транзакции по типу кассы</div>
+        <div class="card-title mb-1">{{ (paymentPosType?.total | mask:  'separator') }}</div>
+      </div>
+      @if (chartOptionsPaymentPosType) {
+        <apx-chart [series]="chartOptionsPaymentPosType?.series"
+          [chart]="chartOptionsPaymentPosType?.chart"
+          [labels]="chartOptionsPaymentPosType?.labels"
+          [responsive]="chartOptionsPaymentPosType?.responsive" />
+      }
+    </div>
+    <div *ngxPermissionsOnly="'AnalyticAveragePaymentsAmount'" class="chart-container analytics-check">
+      <div class="mb-3">
+        <div class="card-label label-small">Средний чек за день</div>
+        <span class="card-title em-d-flex">{{ ((averagePayment?.averageSum | mask:  'separator') | split) || '0' }}
+          <div class="cent card-title">,{{ (averagePayment?.averageSum | split:'.':1) || '00' }} c</div>
+      </span>
+      </div>
+    </div>
+  </div>
+</div>

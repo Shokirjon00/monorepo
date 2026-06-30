@@ -1,0 +1,15 @@
+<div class="merchant-info container h-line">
+  @for (column of merchantDump; track column) {
+    <div class="{{ column.side === 'left' ? 'left-block' : 'right-block pl-6' }}">
+      <div class="labels-data">
+        @for (item of column.fields; track item) {
+          <div class="em-d-flex">
+            <span class="key">{{ item.label }}</span>
+            <span>:</span>
+            <span class="data">{{ getValue(item.key) || '-' }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

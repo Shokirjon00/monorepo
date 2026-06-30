@@ -1,0 +1,16 @@
+<div class="date-range-filter">
+  <button class="filter-btn" (click)="toggleDropdown()">
+    {{ displayLabel(selectedRange) }}
+    <img src="assets/images/arrow.svg" [class.open]="dropdownOpen" class="arrow" alt="">
+  </button>
+
+  @if (dropdownOpen) {
+    <ul class="dropdown">
+      @for (range of availableRanges; track range) {
+        <li class="list" (click)="selectRange(range)">
+          {{ displayLabel(range) }}
+        </li>
+      }
+    </ul>
+  }
+</div>

@@ -1,0 +1,46 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+.cashback-info {
+  margin: 5rem;
+}
+
+ .back {
+  display: none;
+}
+
+@include media-breakpoint-down(md) {
+  .cashback-info {
+    margin: 2rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .cashback-header {
+    @include flex_justify_between();
+    width: 100%;
+
+    .back {
+      display: block;
+      line-height: 0;
+    }
+
+    .title-h1 {
+      @include flex_center_justify_center();
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .cashback-info {
+    padding: 1rem;
+    margin: 0;
+  }
+}

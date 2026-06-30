@@ -1,0 +1,58 @@
+<div class="agreement">
+  <div class="agreement-head h-line">
+    <div class="title-h1 w-100">Оформление аванса</div>
+  </div>
+  <div class="agreement-body">
+    <div class="agreement-container">
+      <p class="agreement-text">ОАО "Банк Эсхата" предлагает Вам средства с условиями</p>
+      <div class="agreement-list">
+        @for (item of conditions; track item; let i = $index) {
+          <div class="agreement-item">
+            {{ i + 1 }}. {{ item.text }}
+            @if (item.bold) {
+              <span class="em-fw-500">
+                {{ item.bold }}
+              </span>
+
+              @if (item.suffix) {
+                {{ ' ' + item.suffix }}
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <div class="agreement-info">
+        <p (click)="showPdfDocument()" class="link">С подробности и условия нового ознакомиться здесь</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="checkbox-group">
+          <label class="agreement-checkbox">
+            <input
+              type="checkbox"
+              formControlName="confirmPolicy"
+              [class.invalid]="form.get('confirmPolicy')?.invalid && form.get('confirmPolicy')?.touched">
+            Я согласен с условиями для соглашения для получения аванса
+          </label>
+        </div>
+
+        <div class="button-group">
+          <button
+            type="submit"
+            [disabled]="form.invalid || submitted"
+            class="btn-primary btn btn-md">
+            Принять условия
+          </button>
+          <button
+            type="button"
+            (click)="onCancel()"
+            class="btn-secondary btn btn-md">
+            Отмена
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<em-toast />

@@ -1,0 +1,47 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-16">
+  @if (!codeSubmitted()) {
+    <div class="em-d-flex-center em-dr-columm em-g-16">
+      <div class="title text-center">Подтверждение номера</div>
+    </div>
+
+    <div class="modal-body">
+      <p class="form-label">Введите код из СМС, отправленный на номер {{ data.maskedPhoneNumber }}</p>
+
+      <form [formGroup]="codeForm" (ngSubmit)="submitCode()" class="em-d-flex em-dr-columm em-g-16">
+        <div class="em-d-flex em-dr-columm">
+          <input
+            class="form-control"
+            type="text"
+            maxlength="6"
+            formControlName="code"
+            placeholder="Введите код"
+            [class.is-invalid]="codeForm.controls['code'].invalid && codeForm.controls['code'].touched"/>
+          <div class="mt-1 text-left position-relative">
+            <button
+              type="button"
+              class="btn btn-transparent p-0"
+              (click)="resendCode()"
+              [disabled]="!canResend()">
+              {{ resendButtonText() }}
+            </button>
+
+          </div>
+        </div>
+        <div class="em-d-flex em-jc-c">
+          <button class="btn btn-secondary btn-lg mr-2" (click)="close()">Отмена</button>
+          <button class="btn btn-primary btn-lg" [disabled]="codeForm.invalid">Подтвердить</button>
+        </div>
+      </form>
+    </div>
+  } @else {
+    <div class="text-center">
+      <p class="success-message">
+        {{ message }}
+      </p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg" (click)="close()">Закрыть</button>
+      </div>
+    </div>
+  }
+</div>
+<em-toast />

@@ -1,0 +1,50 @@
+<div class="report">
+  <div class="report-head h-line">
+    <div class="title-h1 w-100">Отчеты</div>
+  </div>
+  <div class="report-body">
+    <form class="content p-relatives" [class.blur]="submitted" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-body em-d-flex md-fw-wrap md-mb-5">
+        <div class="form mr-3 md-mr-0" >
+          <div class="label">Отчет</div>
+          <div class="input">
+            <em-simple-select-list formControlName="reportId"
+              [action]="'Тип отчета'"
+              [isBottomSheet]="true"
+              [dataSource]="reportDictionary" />
+            <em-validator [fieldControl]="f['reportId']" />
+          </div>
+        </div>
+        @if (f['reportId']?.value !== reportType) {
+          <div class="form mr-3 md-mr-0">
+            <div class="label">Мерчант</div>
+            <div class="input">
+              <em-autocomplete formControlName="merchantId"
+                [searchable]="true"
+                [placeholder]="'Мерчант'"
+                [selectWithOutSearch]="true"
+                [isBottomSheet]="true"
+                [path]="merchantApi" />
+              <em-validator [fieldControl]="f['merchantId']" />
+            </div>
+          </div>
+        }
+        <div class="date-filter md-w-100" (click)="dateChange()">
+          <svg-icon class="mr-1" src="./assets/icons/period.svg" />
+          @if (dateType) {
+            <span> {{dateType.name}}</span>
+          }
+        </div>
+      </div>
+      <div class="em-d-flex md-fw-wrap action-filter">
+        <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-md btn-primary">Сформировать</button>
+        <button [disabled]="!form.value" type="button" class="btn btn-md btn-secondary md-w-100" (click)="resetForm()">Очистить фильтр</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+@if (submitted) {
+  <em-eskhata-bank-loader class="form-loader" />
+}
+<em-toast />

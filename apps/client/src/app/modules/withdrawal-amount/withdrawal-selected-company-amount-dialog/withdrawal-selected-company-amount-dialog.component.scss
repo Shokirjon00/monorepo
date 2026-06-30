@@ -1,0 +1,88 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.phones {
+  padding: 2rem;
+  width: 550px;
+
+  &-top {
+    overflow: hidden;
+
+    .form {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-middle {
+    flex: 1;
+    overflow: hidden;
+
+    .scroll-container {
+      min-height: 100px;
+      max-height: 400px;
+      padding-right: 6px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: $color-grey-400 transparent;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-grey-400;
+        border-radius: 4px;
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      color: $color-grey-800;
+      margin-top: 2rem;
+    }
+  }
+
+  &-bottom {
+    padding-top: 1rem;
+  }
+}
+
+.form {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  .clear {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    line-height: 0;
+    cursor: pointer;
+  }
+}
+
+.body-item-checkbox {
+  width: 70px;
+  @include flex_justify_center();
+  flex-shrink: 0;
+}
+
+.danger-text {
+  color: $danger-color;
+  font-weight: 600;
+}
+
+@include media-breakpoint-down(md) {
+  .phones {
+    width: 100%;
+  }
+}

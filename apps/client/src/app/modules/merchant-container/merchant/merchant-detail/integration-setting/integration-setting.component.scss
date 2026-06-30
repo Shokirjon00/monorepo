@@ -1,0 +1,81 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+
+.setting {
+
+  &-head {
+    padding: 1.5rem 2.5rem;
+
+    .disabled-save {
+      cursor: no-drop;
+    }
+  }
+
+  &-body {
+    padding: 1.5rem 2.5rem;
+
+    .form {
+      max-width: 100%;
+      margin-bottom: 0;
+
+      .input {
+        padding: 0.5rem 0;
+        background-color: #fff;
+
+        &.blur {
+          filter: blur(4px);
+        }
+      }
+    }
+
+    .icon-item {
+      flex-shrink: 0;
+    }
+
+    .warning-text {
+      padding-top: 4rem;
+
+      h3 {
+        color: #E91B04;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+      }
+
+      p {
+        color: #202C3C;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .setting-body {
+    padding: 1rem;
+
+    .form-body {
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+
+      .icon-item {
+        background-color: transparent;
+      }
+    }
+
+    .warning-text {
+      padding-top: 1rem;
+
+      .description {
+        font-size: 14px;
+      }
+    }
+  }
+}

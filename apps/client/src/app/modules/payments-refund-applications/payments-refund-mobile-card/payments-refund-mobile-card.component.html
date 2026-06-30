@@ -1,0 +1,105 @@
+<div class="item-card">
+  <div class="top">
+    <div class="actions" (click)="toggle(application)">
+      <div class="status">
+        <span class="indicator" [class]="statusLabel"></span>
+        <span class="text">{{ application.statusName }}</span>
+      </div>
+      <div class="toggle">
+        <svg-icon [src]="'/assets/icons/toggle.svg'" [class.open]="application.isActive" />
+      </div>
+    </div>
+    <div class="title">{{ application.merchantName }}</div>
+    <div class="info">
+      <div class="info-item">
+        <div class="label">Дата</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application?.createdAt ? (application.createdAt | dateTime) : '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Касса</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.posName || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Сумма</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.amount || '-' }}</div>
+      </div>
+      <div [@detailExpand]="application.isActive ? 'expanded' : 'collapsed'">
+        <div class="info-item">
+          <div class="label">ID</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.id || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Номер заявки</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.applicationNumber || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Тип</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.sendType || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Создал</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.createdByName || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Внешний ID</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.extId || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Номер заявки</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.applicationNumber || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Банк эмитент</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.bankEmitentName || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Точка</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.merchantName || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Описание</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.description || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Причина возврата</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.paymentRefundReason || '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Изменено</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application?.modifiedAt ? (application.modifiedAt | dateTime) : '-' }}</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Изменил</div>
+          <div class="separator">:</div>
+          <div class="value">{{ application.modifiedByName || '-' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (application.canConfirm) {
+    <div class="bottom">
+      <button type="button" class="btn btn-secondary" *ngxPermissionsOnly="'PaymentRefundApplicationConfirm'"
+              (click)="onPaymentUpdate(false)">
+        Отклонить
+      </button>
+      <button type="button" class="btn btn-secondary" *ngxPermissionsOnly="'PaymentRefundApplicationConfirm'"
+              (click)="onPaymentUpdate(true)">
+        Подтвердить
+      </button>
+    </div>
+  }
+</div>

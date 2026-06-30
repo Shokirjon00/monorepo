@@ -1,0 +1,53 @@
+<em-header2
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [actions]="actions"
+  [filterStorageKey]="'shiftFiltersForm'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">История смены</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [columns]="columns"
+          [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<div class="mobile-card">
+  @for (application of shiftHistories; track application) {
+    <em-shift-history-mobile-card [application]="application"
+      (detailClicked)="showDetail($event)"
+      (statusChangeRequested)="confirmChangeShiftStatus($event)"
+      (receiptRequested)="openReceiptDialog($event)" />
+  }
+  @if ((!shiftHistories || !shiftHistories.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && shiftHistories.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+<em-table (changeShift)="confirmChangeShiftStatus($event)"
+  (sortChange)="sortTable($event)"
+  (print)="openReceiptDialog($event)"
+  (detail)="showDetail($event)"
+  [dataSource]="shiftHistories"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [optionActions]="optionActions"
+  [rowActions]="tableActions"
+  [loading]="loading()" />
+<em-toast />

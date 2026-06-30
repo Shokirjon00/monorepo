@@ -1,0 +1,124 @@
+<form [formGroup]="form" class="pos-edit">
+  <em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100 pos-edit-header" header-center-default>
+    <div class="title-h1">{{posDetail?.name ? 'Редактировать кассу' : 'Новая касса' }}</div>
+    <div class="em-d-flex">
+      <div class="v-line">
+        <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/cancel.svg" />
+          <span class="tooltiptext">Отменить</span>
+        </div>
+      </div>
+      @if (!isMobile) {
+        <div [class.v-line]="this.updateUrl !== 'new'">
+          <div class="ml-2 mr-2 icon-item tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltiptext">Сохранить</span>
+          </div>
+        </div>
+      }
+      <div class="checkbox-toggle ml-2">
+        @if (!isMobile) {
+          <div class="toggle-title">Активировать</div>
+        }
+        <input [class.disabled]="submitted" type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+      </div>
+    </div>
+  </div>
+</em-header2>
+  <div class="em-d-flex em-fw-wrap pos-edit-body" [class.blur]="submitted">
+    <div class="left-block">
+      <div class="form">
+        <div class="label">Название кассы*</div>
+        <div class="input">
+          <input type="text"
+            class="form-control"
+            formControlName="name"
+            [class.is-invalid]="f['name']?.invalid && f['name']?.touched"
+            placeholder="Введите название">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form" formGroupName="posContactJson">
+          <div class="form">
+            <div class="label">ФИО кассира</div>
+            <div class="input">
+              <input type="text" class="form-control"
+                formControlName="cashierName"
+                placeholder="ФИО кассира"
+                [class.is-invalid]="posContactJsonControls['cashierName']?.invalid && posContactJsonControls['cashierName']?.touched">
+                <em-validator [fieldControl]="posContactJsonControls['cashierName']" />
+              </div>
+            </div>
+            <div class="form" formArrayName="smsPhoneNumbers">
+              @for (smsPhoneNumber of smsPhoneNumbers.controls; track smsPhoneNumber; let i = $index) {
+                <div class="mb-2">
+                  <div class="label">Номер телефона*</div>
+                  <div class="input add-number-pos">
+                    <input type="text" class="form-control"
+                      mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                      [class.is-invalid]="smsPhoneNumber?.invalid && smsPhoneNumber?.touched"
+                      [formControlName]="i"
+                      placeholder="+992 (XX) XXX XXXX">
+                      @if (i !== 0) {
+                        <div class="add-phone" (click)="removePhoneNumber(i)">
+                          <svg-icon class="em-d-flex-center ml-2" src="assets/icons/delete.svg" />
+                        </div>
+                      }
+                      <em-validator [fieldControl]="smsPhoneNumber" />
+                    </div>
+                  </div>
+                }
+                <em-validator [fieldControl]="smsPhoneNumbers" />
+              </div>
+              @if (smsPhoneNumbers.value.length < 4) {
+                <div class="em-d-flex em-ai-center em-g-8 add-number" (click)="addPhoneNumber()">
+                  <svg-icon src="assets/icons/plus.svg" />Добавить номер телефона
+                </div>
+              }
+            </div>
+          </div>
+          <div class="right-block">
+            <div class="form" formGroupName="posContactJson">
+              <div class="form" formArrayName="emails">
+                @for (email of emails.controls; track email; let i = $index) {
+                  <div>
+                    <div class="label">Электронная почта</div>
+                    <div class="input">
+                      <input type="text" class="form-control"
+                        [formControlName]="i"
+                        placeholder="example@domain.ru">
+                        <em-validator [fieldControl]="email" />
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+              <div class="form">
+                <div class="label">Тип кассы*</div>
+                <div class="input">
+                  <em-simple-select-list formControlName="posTypeId"
+                    [dataSource]="posTypesValue"
+                    [isBottomSheet]="true"
+                    action="Выберите тип кассы" />
+                  <em-validator [fieldControl]="f['posTypeId']" />
+                </div>
+              </div>
+              <div class="form">
+                <div class="label">Тип интеграции*</div>
+                <div class="input">
+                  <em-simple-select-list formControlName="integrationTypeId"
+                    [dataSource]="integrationsTypeValue"
+                    [isBottomSheet]="true"
+                    action="Выберите тип интеграции" />
+                  <em-validator [fieldControl]="f['integrationTypeId']" />
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="onSubmit()">{{updateUrl === 'new' ? 'Добавить' : 'Сохранить'}}</button>
+          </div>
+          @if (submitted) {
+            <em-eskhata-bank-loader class="form-loader" />
+          }
+        </form>
+        <em-toast />

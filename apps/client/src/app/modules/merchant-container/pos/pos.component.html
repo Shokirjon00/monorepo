@@ -1,0 +1,78 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [actions]="actions"
+  [filterStorageKey]="'posesFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+  <div back-button  class="back-content" (click)="back()">
+    <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" />
+    <div class="title">Назад</div>
+  </div>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="posses"
+  [captions]="captions"
+  [rowActions]="tableActions"
+  [page]="paginate"
+  [loading]="loading"
+  [captionKey]="captionKey" />
+<div class="mobile-card">
+  @for (poss of posses; track poss) {
+    <div class="item-card" (click)="showDetail(poss.id)">
+      <div class="top">
+        <div class="title">{{poss.name}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [class]="poss.isActive ? 'completed' : 'rejected'"></span>
+            <span class="text">{{poss.statusName}}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">Точка</div>
+            <div class="separator">:</div>
+            <div class="value">{{poss.merchantName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Адрес</div>
+            <div class="separator">:</div>
+            <div class="value">{{poss.address || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Тип кассы</div>
+            <div class="separator">:</div>
+            <div class="value">{{poss.posTypeName || '-'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'PosUpdate'" (click)="edit(poss.id)">Редактировать</button>
+      </div>
+    </div>
+  }
+  @if ((!posses || !posses.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (isMobile && paginate && posses.length) {
+    <em-pagination [page]="paginate" />
+  }
+  @if (loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+</div>

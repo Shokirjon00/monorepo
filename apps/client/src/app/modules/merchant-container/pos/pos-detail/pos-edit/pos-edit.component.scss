@@ -1,0 +1,146 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/table' as *;
+@use 'core/scss/paddings' as *;
+
+.pos-edit {
+  height: calc(100% + 200px);
+
+  &-header {
+
+    .back {
+      display: none;
+    }
+  }
+
+  &-body {
+    margin: 5rem;
+
+    .left-block {
+      width: 50%;
+      border-right: 1px solid $brand-line;
+      padding-right: 5rem;
+    }
+
+    .right-block{
+      width: 50%;
+      padding-left: 5rem;
+    }
+
+    .btn {
+      display: none;
+    }
+  }
+}
+
+.add-number {
+  width: 100%;
+  background-color: $main-bg;
+  border-radius: 8px;
+  padding: 1rem;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.add-number-pos {
+  position: relative;
+}
+
+.add-phone {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+@include media-breakpoint-down(md) {
+  .pos-edit {
+
+    &-header {
+      padding: 1rem;
+      flex-direction: column;
+    }
+
+    &-body {
+      margin: 2rem;
+      flex-direction: column;
+
+      .left-block {
+        width: 100%;
+        padding-right: 0;
+        border-right: none;
+      }
+
+      .right-block{
+        width: 100%;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .pos-edit {
+    height: auto;
+
+    &-header {
+      background-color: $white-color;
+      border-bottom: 1px solid $border-line;
+      padding: 1.25rem 1rem;
+      flex-direction: row;
+      align-items: center;
+
+      .icon {
+        display: none;
+      }
+
+      .back {
+        display: block;
+        line-height: 0;
+      }
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+
+      .checkbox-toggle .toggle-title {
+        display: none;
+      }
+    }
+
+    &-body {
+      margin: 1rem 1rem 1rem 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+      .body-container {
+        padding-bottom: 0;
+        border: none;
+      }
+
+      .add-number {
+
+        svg-icon {
+          line-height: 0;
+        }
+      }
+
+      .footer-container {
+        margin-top: 0;
+      }
+
+      .btn {
+        padding: 0.75rem 0.625rem;
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}

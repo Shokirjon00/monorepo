@@ -1,0 +1,8 @@
+<em-table [dataSource]="paymentHistory"
+  [captions]="captions"
+ />
+@if (loading) {
+  <em-eskhata-bank-loader class="loader" />
+}
+<em-toast />
+

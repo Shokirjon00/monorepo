@@ -1,0 +1,140 @@
+@use "core/scss/variables" as *;
+@use "core/scss/mixins/mixin" as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/paddings' as *;
+
+.delivery-methods {
+  padding: 2.5rem;
+  border-radius: 20px;
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .switch-row {
+    padding-bottom: 1rem;
+
+    .switch-label {
+      max-width: 677px;
+      height: 40px;
+      flex: 1 1 40%;
+      @include flex_align_center_justify_between();
+      font-size: 1rem;
+      color: $grey-700-color;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $li-grey-hover;
+
+      .switch-control {
+        position: relative;
+        width: 32px;
+        height: 20px;
+
+        input[type='checkbox'] {
+          height: 0;
+          width: 0;
+          visibility: hidden;
+        }
+
+        .slider {
+          cursor: pointer;
+          background-color: $light-slate;
+          border-radius: 100px;
+          position: absolute;
+          width: 32px;
+          height: 20px;
+          top: 0;
+          left: 0;
+          transition: 0.3s;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            background-color: $white-color;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+          }
+        }
+
+        input:checked + .slider {
+          background-color: $primary-color;
+
+          &::before {
+            transform: translateX(12px);
+          }
+        }
+      }
+    }
+
+    .width-max {
+      max-width: 677px;
+    }
+
+    .input-with-currency {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+
+      input.form-control {
+        width: 100%;
+        padding-right: 70px;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .currency {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $grey-700-color;
+        font-size: 0.9rem;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .save-button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: $primary-color;
+    color: $white-300;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+  .title-h1 {
+    font-size: 1rem !important;
+    font-weight: 500;
+  }
+  .delivery-methods {
+    padding: 1rem;
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .switch-label {
+      flex: 1 1 50% !important;
+    }
+  }
+}

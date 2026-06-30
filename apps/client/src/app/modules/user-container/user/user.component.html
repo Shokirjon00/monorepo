@@ -1,0 +1,78 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true"
+  [dropdownLabel]="'POS-терминал'"
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [actions]="actions"
+  [filterStorageKey]="'usersFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="userData"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()" />
+<div class="mobile-card">
+  @for (user of userData; track user.id) {
+    <div class="item-card" (click)="showDetail(user.id)">
+      <div class="top">
+        <div class="title">{{user.fullName}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [class]="user.isActive ? 'completed' : 'rejected'"></span>
+            <span class="text">{{user.statusName}}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">Номер телефона</div>
+            <div class="separator">:</div>
+            <div class="value">{{user.phoneNumber || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Email</div>
+            <div class="separator">:</div>
+            <div class="value">{{user.email || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Роль</div>
+            <div class="separator">:</div>
+            <div class="value">@for (role of user.roles; track role) {
+              <span>{{role}}</span>
+            }</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'UserUpdate'" (click)="edit(user.id)">Редактировать</button>
+      </div>
+    </div>
+  }
+  @if ((!userData || !userData.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && userData.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

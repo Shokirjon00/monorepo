@@ -1,0 +1,31 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/variables' as *;
+@use 'core/scss/mixins/mixin' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+ngx-extended-pdf-viewer {
+  width: 76vw;
+  height: 70vh;
+}
+
+.loader-form {
+  position: absolute;
+  z-index: 99;
+  top: 45%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+}
+
+@include media-breakpoint-down(sm) {
+  .title-h1 {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+}

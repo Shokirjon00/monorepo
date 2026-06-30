@@ -1,0 +1,24 @@
+<div class="main em-d-flex">
+  <mat-drawer-container autosize>
+    <mat-drawer [disableClose]="!isMobile"
+      [mode]="mode"
+      [(opened)]="isMenuOpen">
+      <em-sidebar-menu (closed)="isMenuOpen = !isMenuOpen"
+      [class.menu__box]="isMobile && !isMenuOpen" />
+    </mat-drawer>
+    <div class="main-body" #scrollWrapper>
+      @if (isMobile) {
+        <div class="position-sticky mobile-header">
+          <img src="./assets/logo-mobile.svg" alt="" class="logo">
+          <svg-icon (click)="isMenuOpen = !isMenuOpen" src="./assets/icons/menu.svg" />
+        </div>
+
+        <em-top-button [scrollElement]="scrollWrapper"
+          [scrollThreshold]="350" />
+
+      }
+      <router-outlet />
+    </div>
+  </mat-drawer-container>
+</div>
+

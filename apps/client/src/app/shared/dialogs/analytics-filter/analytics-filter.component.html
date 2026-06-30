@@ -1,0 +1,63 @@
+<div class="analytics-filter">
+  <div class="analytics-filter-top">
+    <div class="title">Фильтр</div>
+    <div class="close">
+      <svg-icon src="assets/icons/cross.svg" [mat-dialog-close]="false" />
+    </div>
+  </div>
+  <div class="analytics-filter-body">
+    <div class="form-group">
+      <em-dropdown class="period-dropdown md-w-100"
+                   maxHeight="500px"
+                   [showClear]="dateType.id === 'faea99d1-30a5-45c8-b00e-ed797b74e420'"
+                   [path]="dataFilterApi"
+                   [selected]="dateType"
+                   [scrollHeight]="'315px'"
+                   [selectedId]="!dateFlag ? queryParams.dateFilterTypeId : ''"
+                   [flag]="dateFlag"
+                   [isBottomSheet]="true"
+                   (changed)="dateChange($event)"
+                   (clearInput)="clearPeriod()" />
+    </div>
+    <div class="form-group">
+      <em-dropdown class="merchant-dropdown md-w-100"
+                   [canSearch]="true"
+                   [showClear]="true"
+                   [path]="merchantApi"
+                   [selected]="selectedMerchant"
+                   [selectedId]="queryParams.merchantId"
+                   [searchPlaceholder]="'Название точки'"
+                   [isBottomSheet]="true"
+                   (changed)="merchantChange($event)"
+                   (clearInput)="clearMerchant()" />
+    </div>
+    <div class="form-group">
+      <em-dropdown class="pos-dropdown md-w-100"
+                   [showClear]="true"
+                   [path]="posesApi"
+                   [selected]="selectedPos"
+                   [show]="queryParams.merchantId"
+                   [customFilter]="posFilter"
+                   [selectedId]="queryParams.posId"
+                   [isBottomSheet]="true"
+                   (changed)="posesChange($event)"
+                   (clearInput)="clearPos()" />
+    </div>
+    <div class="form-group">
+      <em-dropdown class="pos-type-dropdown md-w-100"
+                   [path]="posesTypeApi"
+                   [showClear]="true"
+                   [selected]="selectedPosType"
+                   [show]="true"
+                   [customFilter]="posTypeFilter"
+                   [selectedId]="queryParams.posTypeId"
+                   [isBottomSheet]="true"
+                   (changed)="posesTypeChange($event)"
+                   (clearInput)="clearPosType()" />
+    </div>
+  </div>
+  <div class="analytics-filter-bottom">
+    <button type="button" class="btn btn-secondary" (click)="resetFilter()">Сбросить фильтры</button>
+    <button type="button" class="btn btn-primary" (click)="applyFilter()">Применить</button>
+  </div>
+</div>

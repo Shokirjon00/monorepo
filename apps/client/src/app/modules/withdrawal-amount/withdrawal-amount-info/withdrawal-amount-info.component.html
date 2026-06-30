@@ -1,0 +1,83 @@
+<em-header2
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [actions]="actions()"
+  [showBreadcrumb]="false"
+  [filterStorageKey]="'withdrawalAmountInfoFiltersForm'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Вывод средств</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions(); track action) {
+        <em-actions [actionData]="action"
+          (withdrawalMoney)="withdrawalAmount()" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="withdrawalAmounts"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()" />
+
+<div class="mobile-card">
+  @for (withdrawalAmount of withdrawalAmounts; track $index) {
+    <div class="item-card">
+      <div class="top">
+        <div class="info small">
+          <div class="actions" (click)="withdrawalAmount.isActive = !withdrawalAmount.isActive">
+            <div class="status">
+              <span class="indicator" [class]="statusIndicator(withdrawalAmount['statusId'])"></span>
+              <span class="text">{{ withdrawalAmount.statusName }}</span>
+            </div>
+            <div class="toggle">
+              <svg-icon [src]="'/assets/icons/toggle.svg'" [class.open]="withdrawalAmount.isActive" />
+            </div>
+          </div>
+          <div class="title mt-1 mb-1">{{withdrawalAmount.merchantName}}</div>
+          <div class="info-item">
+            <div class="label">Дата создания</div>
+            <div class="separator">:</div>
+            <div class="value">{{ withdrawalAmount?.createdAt ? (withdrawalAmount.createdAt | dateTime) : '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Период вывода</div>
+            <div class="separator">:</div>
+            <div class="value">{{withdrawalAmount.period || '-'}}</div>
+          </div>
+          <div [@detailExpand]="withdrawalAmount.isActive ? 'expanded' : 'collapsed'">
+            <div class="info-item">
+              <div class="label">Сумма</div>
+              <div class="separator">:</div>
+              <div class="value">{{withdrawalAmount.amount || '-'}}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Создал</div>
+              <div class="separator">:</div>
+              <div class="value">{{withdrawalAmount.createdByName || '-'}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  @if ((!withdrawalAmounts || !withdrawalAmounts.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && withdrawalAmounts.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

@@ -1,0 +1,51 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/variables' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use "core/scss/paddings" as *;
+@use 'core/scss/card' as *;
+@use 'modules/analytics/analytics.component.scss' as *;
+
+.mobile-card, .scroll-top {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  .desktop-filter, em-table, .desktop-pagination, .form-add .v-line{
+    display: none;
+  }
+
+  .shift-history {
+    flex-wrap: wrap !important;
+    padding: 1rem;
+    border-radius: 0.75rem;
+
+    .shift-info {
+      width: 100% !important;
+      padding: 0 0 0.625rem 0!important;
+    }
+
+    .labels-data .key {
+      width: 150px;
+      flex-shrink: 0;
+    }
+
+    .data {
+      width: 100%;
+    }
+  }
+
+  .title-h1{
+    display: none;
+  }
+
+  .mobile-card, .scroll-top {
+    display: block;
+  }
+
+  .button-tooltip {
+    display: none;
+  }
+}

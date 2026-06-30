@@ -1,0 +1,82 @@
+<em-header2
+        [filterFields]="columns"
+        [filterParams]="filterParams"
+        [field]="field"
+        [tabMenuItems]="tabMenuItems"
+        [showMobileFilter]="true"
+        [showBreadcrumb]="false"
+        [filterStorageKey]="'orders'">
+    <ng-container header-actions>
+        @if (paginate && !isMobile) {
+            <em-pagination [page]="paginate" />
+        }
+    </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+        [dataSource]="orders"
+        (detail)="detail($event)"
+        [captions]="columns"
+        [page]="paginate"
+        [loading]="loading()"
+        [captionKey]="captionKey" />
+
+<div class="mobile-card">
+  @for (orders of orders; track orders.id) {
+    <div class="item-card"  (click)="detail(orders.id)">
+      <div class="top">
+        <div class="title">{{orders.restaurantPointName}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="text">{{ orders.orderStatusGroup.value }}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">№</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.sequence || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Номер клиента</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.username || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Тип Обслуживания</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.deliveryTypeName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Сумма</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.totalPrice.amount || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Валюта</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.totalPrice.currencyCode || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Дата</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.createdDateTime | date:'dd.MM.yyyy HH:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  @if ((!orders || !orders.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && orders.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+

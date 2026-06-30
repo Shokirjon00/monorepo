@@ -1,0 +1,144 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/card' as *;
+
+.tab {
+  display: none;
+}
+
+.mobile-card, .scroll-top {
+  display: none;
+}
+
+@include media-breakpoint-down(md) {
+  .payment-amount-container {
+    min-width: 300px;
+    margin-right: 0;
+    margin-top: 1rem;
+
+    > div {
+      width: 100%;
+    }
+  }
+  .payment-amount-container:last-child {
+    margin-bottom: 1rem;
+  }
+  .position-sticky {
+    position: relative;
+  }
+  .analytics-header {
+    .merchant-dropdown {
+      min-width: auto;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .desktop-filter, em-table, .deskktop-pagination, .form-add {
+    display: none;
+  }
+
+  .title-h1{
+    display: none;
+  }
+
+  .position-sticky {
+    display: flex;
+    flex-direction: column;
+    position: inherit;
+
+    .h-line {
+      border-bottom: none;
+    }
+
+    .mobile-filter {
+      padding-top: 0;
+      padding-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .container {
+      padding: 1rem 1rem 0 1rem;
+      border-bottom: none;
+      order: -1;
+
+      .tabs {
+        display: none;
+      }
+
+      em-tabs {
+        display: block;
+      }
+
+      .ml-3 {
+        display: none;
+      }
+
+      .actions {
+        width: 100%;
+
+        .d-flex-sb {
+          width: 100%;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .mobile-card, .scroll-top {
+    display: block;
+  }
+
+  .tab {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    gap: 8px;
+    width: 100vw;
+    padding: 0 1rem 0 1rem;
+    margin: 0 -1rem 0.5rem;
+
+    &-item {
+      padding: 8px 24px;
+      border-radius: 8px!important;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0;
+      border: 1px solid $brand-line;
+      margin-right: 0;
+
+      span {
+        @include ellipsis-text;
+        color: $palette;
+        max-width: 350px;
+      }
+
+      &:hover {
+        background: $inactive-icons;
+        color: $label-color;
+      }
+
+      &.active {
+        font-weight: 500;
+        border: 1px solid $primary-color;
+        color: $white-color;
+        background: $primary-color;
+
+        span {
+          color: $white-color;
+          font-weight: 500;
+        }
+
+        &:hover {
+          color: $white-color;
+          background: $primary-color;
+        }
+      }
+    }
+  }
+}

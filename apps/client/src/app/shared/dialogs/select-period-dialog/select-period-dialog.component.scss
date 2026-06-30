@@ -1,0 +1,120 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/variables' as *;
+@use 'core/scss/mixins/mixin' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.period-dialog {
+  height: 100%;
+  padding: 2rem 1rem;
+
+  .calendar {
+    @include flex_jc_sb();
+    padding-bottom: 2rem;
+    gap: 1rem;
+
+    &-body {
+      display: flex;
+      gap: 0.75rem;
+
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+::ng-deep {
+  .date-picker .mat-dialog-container {
+    border-radius: 20px;
+  }
+
+  .mat-calendar-body-label {
+    opacity: 0;
+  }
+
+  .mat-calendar-body-cell-container {
+    padding: 18px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .period-dialog {
+    height: calc(100vw + 200px);
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+
+    .calendar {
+      flex-direction: column;
+      padding-bottom: 1rem;
+      gap: 0.5rem;
+
+      .icon-left {
+        transform: rotate(90deg);
+      }
+
+      &-body {
+        flex-direction: column;
+        gap: 1rem;
+
+      }
+
+      .icon-right {
+        transform: rotate(90deg);
+      }
+    }
+
+    &__bottom {
+      position: sticky;
+      background: $white-color;
+      bottom: 0;
+      z-index: 2;
+      flex-direction: column;
+
+      .calendar-btn {
+        margin-right: 0;
+        width: 100%;
+        min-height: 42px;
+      }
+
+      .calendar-btn:first-child {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  ::ng-deep.mat-calendar-body-label {
+    padding: 0 !important;
+  }
+}
+
+
+@include media-breakpoint-down(sm) {
+  .period-dialog {
+    width: 90vw;
+    margin-bottom: 0;
+
+    .calendar {
+      overflow-y: auto;
+      gap: 0;
+    }
+
+    &__bottom {
+      @include flex_row_align_center();
+      gap: 0.5rem;
+      padding-bottom: 1rem;
+
+      .btn-lg:first-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

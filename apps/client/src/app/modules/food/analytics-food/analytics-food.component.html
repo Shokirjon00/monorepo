@@ -1,0 +1,112 @@
+<div class="position-sticky analytics-header h-line">
+  <em-multi-dropdown class="pos-dropdown md-w-100"
+                     [isMultiSelect]="true"
+                     [canSearch]="true"
+                     [showClear]="true"
+                     [path]="merchantApi"
+                     [selected]="selectedMerchant"
+                     [selectedId]="queryParams['merchantId']"
+                     [searchPlaceholder]="'Название точки'"
+                     (changed)="merchantChange($event)"
+                     (allIds)="onAllMerchantsLoaded($event)"
+                     (clearInput)="clearMerchant()" />
+</div>
+
+<div class="statistics">
+  <section class="mb-5" *ngxPermissionsOnly="['FoodVendorStatisticsList']">
+    <div class="em-d-flex em-jc-sb mb-2">
+      <div class="analytics-title">Общая статистика</div>
+      <em-date-range-filter [selectedRange]="dateRangeStats"
+        [availableRanges]="[DateRange.TODAY, DateRange.WEEKLY, DateRange.MONTHLY]"
+        (rangeChange)="setDateRange($event, FilterType.STATS)" />
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="mb-3">
+          <div class="card-label">Выручка</div>
+          <div class="card-title">{{ revenueStatsData().revenue.total }} СМН</div>
+        </div>
+        @if (hasRevenueData()) {
+          <em-chart-widget [config]="revenueChart()" />
+        } @else {
+          <div class="no-data">Нет данных по выручке</div>
+        }
+      </div>
+
+      <div class="card">
+        <div class="mb-3">
+          <div class="card-label">Средний чек</div>
+          <div class="card-title">{{ revenueStatsData().averageBill.total }} СМН</div>
+        </div>
+
+        @if (hasAverageBillData()) {
+          <em-chart-widget [config]="avgCheckChart()" />
+        } @else {
+          <div class="no-data">Нет данных по среднему чеку</div>
+        }
+      </div>
+
+      <div class="card">
+        <div class="mb-3">
+          <div class="card-label">Количество заказов</div>
+          <div class="card-title">{{ totalOrders() }}</div>
+        </div>
+        @if (hasOrdersData()) {
+          <em-chart-widget [config]="ordersChart()" />
+        } @else {
+          <div class="no-data">Нет данных по заказам</div>
+        }
+      </div>
+    </div>
+  </section>
+
+
+  <section class="mb-5" *ngxPermissionsOnly="['FoodVendorStatisticsRevenue']">
+    <div class="em-d-flex em-jc-sb mb-2">
+      <div class="analytics-title">Фактическая и упущенная выручка</div>
+        <em-date-range-filter [selectedRange]="dateRangeRevenue"
+          [availableRanges]="[DateRange.WEEKLY, DateRange.MONTHLY]"
+          (rangeChange)="setDateRange($event, FilterType.REVENUE)" />
+    </div>
+    <div class="card">
+      <div class="mb-3">
+        <div class="card-label">Общая выручка</div>
+        <div class="card-title">{{ totalRevenuesValue().toLocaleString() }} СМН</div>
+      </div>
+      @if (hasImprovementData()) {
+        <em-chart-widget [config]="improvementChart()" />
+      } @else {
+        <div class="no-data">Нет данных по выручке</div>
+      }    </div>
+  </section>
+
+  <section class="mb-5" *ngxPermissionsOnly="['FoodVendorStatisticsClientAnalytics']">
+    <div class="em-d-flex em-jc-sb mb-2">
+      <div class="analytics-title">Клиенты</div>
+      <em-date-range-filter [selectedRange]="dateRangeClients"
+        [availableRanges]="[DateRange.TODAY, DateRange.WEEKLY, DateRange.MONTHLY]"
+        (rangeChange)="setDateRange($event, FilterType.CLIENTS)" />
+    </div>
+    <div class="em-d-flex em-dr-columm">
+      <div class="em-d-flex">
+        <div class="mb-1 mr-2">
+          <div class="client-label">Все клиенты</div>
+          <div class="client-title">{{ clientsStats().total }}</div>
+        </div>
+        <div class="mb-1">
+          <div class="client-label">Новые клиенты</div>
+          <div class="client-title">{{ clientsStats().new }}</div>
+        </div>
+      </div>
+      <div class="em-d-flex">
+        <div class="card">
+          <div class="mb-3">
+            <div class="card-label">Частота заказов</div>
+          </div>
+          <em-chart-widget [config]="frequencyChart()" />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

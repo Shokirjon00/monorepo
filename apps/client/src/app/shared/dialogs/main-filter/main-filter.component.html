@@ -1,0 +1,135 @@
+<div class="main-filter">
+  <div class="main-filter-top">
+    <div class="close">
+      <svg-icon src="assets/icons/cross.svg" [mat-dialog-close]="false" />
+    </div>
+    <div class="title">Фильтр</div>
+    @if (filtersFormArray.length <= 4) {
+      <div class="create" (click)="addFilter()">
+        <svg-icon src="assets/icons/wallet-move.svg" />
+      </div>
+    }
+  </div>
+  <div class="main-filter-body">
+    @if (isCustomFilter) {
+      <div class="custom-filter">
+        <em-dropdown class="period-dropdown md-w-100"
+                     maxHeight="500px"
+                     [showClear]="params.startDate && params.endDate"
+                     [path]="dataFilterApi"
+                     [selected]="dateType"
+                     [images]="dateTypeImage"
+                     [scrollHeight]="'315px'"
+                     [selectedId]="!dateFlag ? params.startedAt : ''"
+                     [flag]="dateFlag"
+                     [isBottomSheet]="true"
+                     (changed)="dateChange($event)"
+                     (clearInput)="clearPeriod()"
+         />
+        <em-multi-dropdown class="merchant-dropdown md-w-100"
+                           [isMultiSelect]="true"
+                           [canSearch]="true"
+                           [showClear]="true"
+                           [path]="merchantApi"
+                           [selected]="selectedMerchant"
+                           [selectedId]="params.merchantId"
+                           [searchPlaceholder]="'Название точки'"
+                           [isBottomSheet]="true"
+                           (changed)="merchantChange($event)"
+                           (clearInput)="clearMerchant()" />
+        <em-multi-dropdown class="pos-dropdown md-w-100"
+                           [isMultiSelect]="true"
+                           [showClear]="true"
+                           [path]="posesApi"
+                           [selected]="[selectedPos]"
+                           [customFilter]="posFilter"
+                           [selectedId]="params.posId"
+                           [isBottomSheet]="true"
+                           (changed)="posesChange($event)"
+                           (clearInput)="clearPos()" />
+        <em-dropdown class="pos-type-dropdown md-w-100"
+                     [path]="posesTypeApi"
+                     [showClear]="true"
+                     [selected]="selectedPosType"
+                     [show]="true"
+                     [selectedId]="params.posTypeId"
+                     [isBottomSheet]="true"
+                     (changed)="posesTypeChange($event)"
+                     (clearInput)="clearPosType()" />
+      </div>
+    }
+    <div [formGroup]="form">
+      <div class="form-body" formArrayName="filters">
+        @for (formFilter of filtersFormArray.controls; track formFilter; let i = $index) {
+          <div class="form-item" [formGroupName]="i">
+            @if (formFilter.get('filterType')?.value === 'send_type') {
+              <em-simple-select-list formControlName="value"
+                (changed)="selectSendType($event)"
+                [dataSource]="sendType"
+                [optionValue]="'value'"
+                [optionLabel]="'key'"
+                action="Выберите тип"
+               />
+            }
+            @if (formFilter.get('filterType')?.value === 'payment_refund_application_statuses') {
+              <em-simple-select-list formControlName="value"
+                (changed)="selectRefundApplicationStatus($event)"
+                [dataSource]="refundApplicationStatus"
+                [optionValue]="'value'"
+                [optionLabel]="'key'"
+                action="Выберите статус"
+               />
+            }
+            @if (formFilter.get('filterType')?.value === 'list') {
+              <em-simple-select-list formControlName="value"
+                (changed)="selectStatus($event)"
+                [dataSource]="activeStatus"
+                [optionValue]="'value'"
+                [optionLabel]="'key'"
+                action="Выберите статус"
+               />
+            }
+            @if (formFilter.get('filterType')?.value === 'dropdown') {
+              <em-simple-select-list formControlName="value"
+                (changed)="selectStatusType($event)"
+                [dataSource]="typeOptions"
+                optionValue="id"
+                optionLabel="key"
+                action="Выберите тип"
+               />
+            }
+            @if (formFilter.get('filterType')?.value === 'date' || formFilter.get('filterType')?.value === 'text' || formFilter.get('filterType')?.value === 'number') {
+              <input #input
+                     [placeholder]="formFilter.get('key')?.value"
+                     formControlName="value"
+                     [type]="formFilter.get('filterType')?.value"
+                     class="filter-value">
+              @if (formFilter.get('filterType').value === 'date') {
+                <span class="date-filter">
+                    —
+                    <input class="filter-value" type="date" formControlName="endDate">
+                  </span>
+              }
+              @if (formFilter.get('value').value) {
+                <div class="arrow mr-1"
+                     (click)="clearInput(i)">
+                  <svg-icon class="em-d-flex-center" src="assets/icons/cancel-small.svg" />
+                </div>
+              }
+            }
+          </div>
+        }
+        @if (filtersFormArray.controls.length > 1) {
+          <button type="button" class="form-remove"
+                  (click)="removeFilter(filtersFormArray.controls.length - 1)">
+            <svg-icon src="./assets/icons/remove.svg" />
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="main-filter-bottom">
+    <button type="button" class="btn btn-secondary" (click)="resetFilter()">Сбросить фильтры</button>
+    <button type="button" class="btn btn-primary" (click)="applyFilter()">Применить</button>
+  </div>
+</div>

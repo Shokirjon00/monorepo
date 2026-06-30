@@ -1,0 +1,197 @@
+<form class="merchant-edit w-100" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+        <div class="title-h1"> {{ updateUrl === 'new' ? 'Новая торговая точка' : 'Редактировать торговую точку' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line">
+          <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltiptext">Отменить</span>
+          </div>
+        </div>
+        <div [class.v-line]="this.updateUrl !== 'new'">
+          <div class="ml-2 mr-2 icon-item tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltiptext">Сохранить</span>
+          </div>
+        </div>
+        @if (this.updateUrl !== 'new') {
+        <div class="checkbox-toggle pr-3 ml-2 mr-3">
+          @if (!isMobile) {
+            <div class="toggle-title">Активировать</div>
+          }
+          <input [class.disabled]="submitted" type="checkbox" id="switch" formControlName="isActive">
+          <label for="switch">Toggle</label>
+        </div>
+        }
+      </div>
+    </div>
+  </em-header2>
+  <div class="merchant-edit-body" [class.blur]="submitted">
+    <div class="body-container em-d-flex em-fw-wrap h-line">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Название точки*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="name"
+                   placeholder="Введите название точки"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Регион*</div>
+          <div class="input">
+            <em-autocomplete formControlName="regionId"
+              (changed)="changedRegion($event)"
+              [placeholder]="'Регион'"
+              [searchable]="true"
+              [selectWithOutSearch]="true"
+              [isBottomSheet]="true"
+              [path]="regionApi" />
+            <em-validator [fieldControl]="f['regionId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Район*</div>
+          <div class="input">
+            <em-autocomplete formControlName="areaId"
+              [searchable]="true"
+              [selectWithOutSearch]="true"
+              [placeholder]="'Район'"
+              [customFilter]="regionFilter"
+              [show]="areaDisabled"
+              [isBottomSheet]="true"
+              (changed)="changedArea($event)"
+              [path]="areaApi" />
+            <em-validator [fieldControl]="f['areaId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Город*</div>
+          <div class="input">
+            <em-autocomplete [searchable]="true"
+              [selectWithOutSearch]="true"
+              [placeholder]="'Город'"
+              [customFilter]="areaFilter"
+              formControlName="cityId"
+              [show]="cityDisabled"
+              [isBottomSheet]="true"
+              [path]="cityApi" />
+            <em-validator [fieldControl]="f['cityId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Адрес*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="address"
+                   placeholder="Введите адрес"
+                   [class.is-invalid]="f['address']?.invalid && f['address']?.touched">
+            <em-validator [fieldControl]="f['address']" />
+          </div>
+        </div>
+        <div class="form" >
+          <div class="label">Рабочие дни*</div>
+          <div class="input em-d-flex items-center">
+            <em-simple-select-list formControlName="merchantWorkDayId"
+              [action]="workDayAction()"
+              [isBottomSheet]="true"
+              [dataSource]="workingDays"
+              [(ngModel)]="selectedWorkDayId"
+              [ngModelOptions]="{standalone: true}" />
+
+            @if (isEditMode() && merchantDetail?.merchantWorkDayId) {
+              <div class="em-d-flex items-center c-pointer" (click)="workdayClick()">
+                <svg-icon class="em-d-flex-center" src="assets/icons/edit.svg" />
+              </div>
+            }
+          </div>
+          <em-validator [fieldControl]="f['merchantWorkDayId']" />
+        </div>
+      </div>
+      <div class="right-block">
+        <div formGroupName="merchantContactJson">
+          <div class="form">
+            <div class="label">Телефон точки</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="phoneNumber" placeholder="+992 (XX) XXX XX XX"
+                     mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                     [class.is-invalid]="contactsControls['phoneNumber']?.invalid && contactsControls['phoneNumber']?.touched">
+              <em-validator [fieldControl]="contactsControls['phoneNumber']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">E-mail</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="email" placeholder="Введите почту"
+                     [class.is-invalid]="contactsControls['email']?.invalid && contactsControls['email']?.touched">
+              <em-validator [fieldControl]="contactsControls['email']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Владелец</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="managerName"
+                     placeholder="Введите имя владельца"
+                     [class.is-invalid]="contactsControls['managerName']?.invalid && contactsControls['managerName']?.touched">
+              <em-validator [fieldControl]="contactsControls['managerName']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Телефон владельца</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="managerPhoneNumber"
+                     placeholder="+992(XX) XXX XX XX"
+                     mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                     [class.is-invalid]="contactsControls['managerPhoneNumber']?.invalid && contactsControls['managerPhoneNumber']?.touched">
+              <em-validator [fieldControl]="contactsControls['managerPhoneNumber']" />
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Категория*</div>
+          <div class="input">
+            <em-autocomplete formControlName="categoryId"
+              [isBottomSheet]="true"
+              (changed)="changeCategories($event)"
+              [searchable]="true"
+              [selectWithOutSearch]="true"
+              [placeholder]="'Категория'"
+              [path]="categoryApi" />
+            <em-validator [fieldControl]="f['categoryId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Подкатегория</div>
+          <div class="input">
+            <em-simple-select-list formControlName="subCategoryId"
+              action="Выберите подкатегорию"
+              [isBottomSheet]="true"
+              [dataSource]="subCategories" />
+            <em-validator [fieldControl]="f['subCategoryId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Описание</div>
+          <div class="input">
+            <input formControlName="description" type="text" class="form-control" placeholder="Введите примечание">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-container">
+      <div class="title-h1 mb-6">На карте</div>
+      @if (!invalidCoordinates) {
+        <em-map [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude"
+                (changed)="changeMap($event)" />
+      }
+    </div>
+    <button type="button" class="btn btn-primary"
+            (click)="onSubmit()">{{ updateUrl === 'new' ? 'Добавить' : 'Сохранить' }}
+    </button>
+  </div>
+  @if (submitted) {
+    <em-eskhata-bank-loader class="form-loader" />
+  }
+</form>
+<em-toast />

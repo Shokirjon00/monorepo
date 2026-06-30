@@ -1,0 +1,160 @@
+@use "core/scss/flex" as *;
+@use "core/scss/styles" as *;
+@use "core/scss/variables" as *;
+@use "core/scss/margins" as *;
+@use "core/scss/paddings" as *;
+@use "core/scss/form" as *;
+@use "core/scss/mixins/mixin" as *;
+
+.paginator-ellipsis {
+  margin: 0 0.6rem;
+  font-size: 1.1rem;
+  line-height: 2.5rem;
+
+  &.active {
+    background-color: $deep-azure;
+    color: $white-color;
+  }
+}
+
+.paginator {
+
+  &-button {
+    background: $primary-color;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+
+    &.active {
+      background: $light-gray;
+    }
+  }
+
+  &-dots {
+    border: none;
+    color: $near-black;
+    background-color: $light-gray;
+    font-size: 0.75rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 1.25rem;
+    @include flex_ai_center();
+    padding: 0.25rem;
+
+    &.active {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+
+  &-num {
+    border: none;
+    color: $palette;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  &-input {
+    input {
+      width: 3rem;
+      height: 2.5rem;
+      background: $main-bg;
+      border-radius: 0.5rem;
+      text-align: center;
+      border: none;
+      outline: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+
+  }
+
+  .arrow-right {
+    cursor: pointer;
+    transform: rotate(180deg);
+  }
+}
+
+:host {
+  @include flex_ai_jc();
+  @include media-breakpoint-down(md) {
+    .dropdown {
+      bottom: calc(100% + 1px);
+      top: auto;
+    }
+  }
+}
+
+.page-selection {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  height: 1.8rem;
+}
+
+.pages {
+  display: flex;
+}
+
+.page-entry {
+  height: 1.8rem;
+  @include flex_ai_center();
+  border: none;
+  background-color: $soft-pearl;
+  margin: 0 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 0.8rem;
+  width: auto;
+  padding: 0 0.5rem;
+
+  &.active {
+    color: $white-color;
+    background-color: $medium-gray;
+    cursor: default;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.page-size {
+  color: $palette;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  position: relative;
+  cursor: pointer;
+
+  &-label {
+    height: 3rem;
+    text-wrap: nowrap;
+  }
+
+  .dropdown {
+    min-width: 7.5rem;
+  }
+
+  .open {
+    + .dropdown {
+      display: block;
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+<em-header2 [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [filterStorageKey]="'posesFiltersForm'" />
+<div class="setting">
+  <div class="setting-body">
+    <div class="content p-relatives">
+      <div class="form-body em-d-flex md-fw-wrap md-mb-5 h-line">
+        <div class="form md-mr-0">
+          <div class="label">Ключ хеширования</div>
+          <div class="input" [class.blur]="!isOpen">{{hashKey}}</div>
+        </div>
+        <div class="icon-item tooltip em-d-flex" (click)="isOpen = !isOpen">
+          <svg-icon [src]="'assets/icons/' + (isOpen ? 'eye-black-open.svg' : 'eye-black-close.svg')" />
+          <span class="tooltiptext">{{isOpen ? 'Скрыть' : 'Показать'}}</span>
+        </div>
+        <div class="icon-item tooltip em-d-flex" (click)="copyHashKey()">
+          <svg-icon src="assets/icons/copy.svg" />
+          <span class="tooltiptext">Копировать</span>
+        </div>
+      </div>
+    </div>
+    <div class="warning-text">
+      <h3 class="title">Предупреждение!</h3>
+      <p class="description">
+        Информация, размещенная на данной странице, является строго конфиденциальной. Запрещается делиться ею с какими-либо лицами, не относящимися к разработке или доработке кассового
+        программного обеспечения. В случае намеренной передачи данных банк не гарантирует безопасность платежей и обеспечение бесперебойной работы системы. Будьте бдительны!
+      </p>
+      <p class="description">
+        Для справки: Хеширование – это инструмент для обеспечения безопасности, который преобразовывает данные в зашифрованную строку. Размещать пароли в первоначальном
+        виде небезопасно, ведь если захешированный файл будет взломан, защитный код станет известен злоумышленникам и может быть использован в преступных целях.
+      </p>
+      <p class="description">Для осуществления полноценной интеграции необходимо передать данный ключ разработчику программного обеспечения по защищенным каналам передачи данных.</p>
+    </div>
+  </div>
+</div>
+@if (submitted) {
+  <em-eskhata-bank-loader class="form-loader" />
+}
+<em-toast />

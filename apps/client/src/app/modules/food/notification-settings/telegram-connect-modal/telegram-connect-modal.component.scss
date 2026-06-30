@@ -1,0 +1,94 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+@use "core/scss/mixins/mixin" as *;
+@use "core/scss/mixins/breakpoints" as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.telegram-connect-modal {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  min-width: 400px;
+
+  .close-icon {
+    @include flex_ai_center();
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+
+    svg-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .modal-content {
+    @include flex_column_align_center();
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $black-700-color;
+    margin: 0;
+  }
+
+  .qr-code-container {
+    @include flex_ai_center();
+    padding: 1rem;
+    background: $white-color;
+    border-radius: 0.5rem;
+  }
+
+  .instruction-text {
+    font-size: 0.875rem;
+    color: $grey-700-color;
+    margin: 0 auto;
+    max-width: 300px;
+  }
+
+  .loading-container,
+  .error-container {
+    padding: 2rem;
+    text-align: center;
+    color: $grey-700-color;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .telegram-connect-modal {
+    padding: 1.5rem;
+    min-width: auto;
+
+    .modal-title {
+      font-size: 1.2rem;
+    }
+
+    .qr-code-container {
+      padding: 0.5rem;
+    }
+  }
+}
+

@@ -1,0 +1,44 @@
+<em-header2 [tabMenuItems]="tabMenuItems"
+            [filterFields]="columns"
+            [showMobileFilter]="true"
+            [enableDropdown]="false"
+            [filterStorageKey]="'support-center-filters'"
+            [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="desktop-pagination pl-3" [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table [dataSource]="support"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+  (detail)="showDetail($event)"
+  (sortChange)="sortTable($event)" />
+<em-toast />
+<div class="mobile-card">
+  @for (application of support; track application) {
+    <em-support-center-mobile-card [application]="application"
+      (detailClicked)="showDetail($event)" />
+  }
+  @if ((!support || !support.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && support.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+

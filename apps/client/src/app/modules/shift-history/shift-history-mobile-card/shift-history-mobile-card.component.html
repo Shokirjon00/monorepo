@@ -1,0 +1,50 @@
+<div class="item-card" (click)="showDetail(application.id)">
+  <div class="top">
+    <div class="actions">
+      <div class="status">
+        <span class="indicator" [class]="application.isActive ? 'completed' : 'rejected'"></span>
+        <span class="text">{{ application.statusName }}</span>
+      </div>
+    </div>
+    <div class="title">{{ application.merchantName }}</div>
+    <div class="info">
+      <div class="info-item">
+        <div class="label">ФИО кассира</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.posTerminalUserFullName || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Касса</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.posName || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Дата открытия</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application?.startDate ? (application.startDate | dateTime) : '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Дата закрытия</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application?.endDate ? (application.endDate | dateTime) : '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">POS-терминал</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.posTerminalNumber || '-' }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    @if (application.isActive) {
+      <button type="button" class="btn btn-secondary" *ngxPermissionsOnly="'ShiftClose'"
+              (click)="confirmChangeStatus(application); $event.stopPropagation()">
+        Закрыть смену
+      </button>
+    }
+    <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'ShiftReceipt'"
+            (click)="openReceiptDialog(application.id); $event.stopPropagation()">
+      Скачать чек
+    </button>
+  </div>
+</div>

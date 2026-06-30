@@ -1,0 +1,37 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.phones {
+  padding: 2rem;
+
+  &-top {
+    overflow: hidden;
+
+    .form {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-middle {
+    height: 500px;
+    overflow-y: auto;
+
+    .no-data {
+      text-align: center;
+    }
+  }
+
+  &-bottom {
+    padding-top: 1rem;
+  }
+}

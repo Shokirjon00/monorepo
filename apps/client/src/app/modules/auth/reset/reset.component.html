@@ -1,0 +1,94 @@
+<div class="reset">
+  <div class="logo">
+    <svg-icon src="assets/icons/em-logo.svg" />
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="reset-form">
+      <div class="em-d-flex em-dr-columm em-g-16">
+
+        @if (!isCodeStep() && !codeSentSuccess()) {
+          <div>
+            <div class="form-label">Введите логин или номер телефона, который привязан к вашему аккаунту</div>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="userName"
+              emPreventSpace
+              (keydown)="trackCaps($event)"
+              placeholder="Введите логин или номер телефона"
+              [class.is-invalid]="f['userName']?.invalid && f['userName']?.touched"
+              [mask]="isPhoneInput() ? '+000 (00) 000 00 00' : ''"
+              [dropSpecialCharacters]="false"
+            />
+            @if (f['userName'].invalid && (f['userName'].dirty || f['userName'].touched)) {
+              <em-validator [fieldControl]="f['userName']" />
+            }
+          </div>
+          <div class="form-group captcha">
+            <re-captcha #recaptcha (resolved)="onCaptchaResolved($event)" />
+          </div>
+        }
+
+        @if (isCodeStep() && !codeSentSuccess()) {
+          <div>
+            <div class="form-label">Введите код из СМС, отправленный на номер {{ userName }}</div>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="code"
+              placeholder="Введите код"
+              [class.is-invalid]="f['code']?.invalid && f['code']?.touched">
+            <em-validator [fieldControl]="f['code']" />
+            <div class="mt-2 text-left position-relative">
+              <button
+                type="button"
+                class="btn btn-transparent p-0"
+                (click)="resendCode()"
+                [disabled]="!canResend()"
+              >
+                {{ resendButtonText() }}
+              </button>
+
+            </div>
+          </div>
+        }
+
+        @if (codeSentSuccess()) {
+          <div class="text-center text-success fw-medium pb5">
+            {{ text }} {{ userName }}
+          </div>
+        }
+
+        @if (capsOn() && !isCodeStep()) {
+          <div class="check-label">CapsLock включен</div>
+        }
+
+      </div>
+
+      <div class="em-d-flex em-dr-columm em-ai-center em-g-30">
+        <button
+          type="submit"
+          class="btn btn-primary w-100 auth-btn"
+          [disabled]="(isCodeStep() && form.get('code')?.invalid) ||
+            (!isCodeStep() && (!form.valid || !captchaResolved())) ||
+            loading()">
+
+          @if (!loading()) {
+            {{ codeSentSuccess() ? 'Войти' : (isCodeStep() ? 'Продолжить' : 'Сбросить пароль') }}
+          } @else {
+            <span class="loader-spinner xs white"></span>
+          }
+        </button>
+
+        @if (!codeSentSuccess()) {
+          <label class="back" (click)="goToLogin()">
+            <img src="assets/icons/back-arrow.svg" alt="">
+            <span class="back-text">Назад ко входу</span>
+          </label>
+        }
+      </div>
+    </div>
+  </form>
+</div>
+
+<em-toast />

@@ -1,0 +1,58 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+
+  .offer-text {
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  .offer-price {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.25rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  .text-danger {
+    margin: 0;
+  }
+}
+
+.dialog-button:hover {
+  background: $medium-gray;
+}
+
+.close-icon {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  cursor: pointer;
+}
+
+@include media-breakpoint-down(sm) {
+  .offer-price {
+    font-size: 1.5rem !important;
+  }
+
+  .offer-text {
+    font-size: 1.2rem !important;
+    line-height: 1.6rem !important;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="phones w-100">
+  <div class="phones-top">
+    <div class="position-sticky">
+      <div class="em-title">Номер телефонов кассы</div>
+      <div class="form">
+        <div class="input em-d-flex em-ai-center">
+          <label class="circle-checkbox mr-2">
+            <input type="checkbox"
+              [checked]="phoneNumbersData?.length === phoneNumbers.length"
+              (change)="checkAllPhone($event)">
+              <div class="check em-d-flex-center">
+                <svg-icon src="assets/icons/check.svg" />
+              </div>Все
+            </label>
+            <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" (keyup)="searchBranch()"
+              type="text" class="form-control" placeholder="Поиск">
+              <svg-icon class="icon" src="assets/icons/search.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phones-middle">
+        <div class="phone-content-bottom">
+          @for (phone of filteredPhones; track phone; let i = $index) {
+            <div class="em-d-flex pt-1 pb-1">
+              <label class="circle-checkbox">
+                <input type="checkbox"
+                  [checked]="phoneNumbers.value.includes(phone)"
+                  (change)="phoneSelect(phone, $event.target)">
+                  <div class="check em-d-flex-center">
+                    <svg-icon src="assets/icons/check.svg" />
+                  </div>{{phone}}
+                </label>
+              </div>
+            }
+          </div>
+          @if (!filteredPhones?.length) {
+            <div class="no-data">Телефон не найден</div>
+          }
+        </div>
+        <div class="phones-bottom">
+          <div class="em-d-flex-center">
+            <button class="btn btn-secondary btn-lg mr-2 w-50" (click)="closeDialog()">Отмена</button>
+            <button class="btn btn-primary btn-lg w-50" [disabled]="!phoneNumbers.length" (click)="submit()">Отправить</button>
+          </div>
+        </div>
+      </div>

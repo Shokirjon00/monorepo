@@ -1,0 +1,19 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  @if (!errorMessage()) {
+    <div class="em-d-flex em-dr-columm em-jc-c">
+      <p class="offer-text">
+        Рады сообщить, что вам одобрили авансовый платеж на развитие вашего бизнеса в размере
+      </p>
+      <p class="offer-price">{{ formattedAmount }} сомони</p>
+    </div>
+    <div class="em-d-flex em-jc-c">
+      <button class="btn btn-primary btn-lg mr-2" (click)="onAccept()" [disabled]="loading()">Получить</button>
+      <button class="btn btn-secondary btn-lg" (click)="onDecline()" [disabled]="loading()">Не сейчас</button>
+    </div>
+  } @else {
+    <div class="em-d-flex em-dr-columm em-jc-c em-ai-center">
+      <p class="text-danger em-fw-500 text-center">{{ errorMessage() }}</p>
+      <button class="btn btn-primary btn-lg mt-4" (click)="onClose()">Закрыть</button>
+    </div>
+  }
+</div>

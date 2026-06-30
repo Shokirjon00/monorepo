@@ -1,0 +1,101 @@
+<div class="form-group select-field" [class.open]="open" (emClickOutside)="open = false" [id]="dropdownId">
+  <div class="select-field__container">
+    <div class="form-control" [class.disabled]="!show" (click)="toggle()" [class.mobile]="isBottomSheet">
+      @if (!isMultiSelect) {
+        <div class="em-d-flex em-ai-center">
+          @if (selected.length && selected[0].icon && !isBottomSheet) {
+            <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                      [src]="'./assets/icons/'+ selected[0].icon" />
+          }
+          @if (selected.length && !selected[0].icon && !isBottomSheet) {
+            <div class="text-center mr-1 company-logo">
+              {{selected[0].name[0]}}
+            </div>
+          }
+          @if (selected.length) {
+            <div class="value">{{selected ? selected[0].name : action}}</div>
+          }
+        </div>
+      }
+      @if (isMultiSelect) {
+        <div class="em-d-flex em-ai-center">
+          @if (selected.length && selected[0].icon && !isBottomSheet) {
+            <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                      [src]="'./assets/icons/'+ selected[0].icon" />
+          }
+          @for (item of selected; track item.id; let i = $index) {
+            <div>
+              @if (selected.length === 1) {
+                <div class="em-d-flex em-ai-center mr-1">
+                  @if (selected.length && !selected[0].icon) {
+                    <div class="text-center mr-1 company-logo">
+                      {{item.name[0]}}
+                    </div>
+                  }
+                  <div class="value">{{selected ? item.name : action}}</div>
+                  @if (item.id) {
+                    <svg-icon [id]="clearButtonId + '-' + i"
+                            src="assets/icons/cancel-small.svg"
+                            class="c-pointer"
+                            (click)="clear(item)" />
+                  }
+                </div>
+              }
+            </div>
+          }
+          @if (selected.length > 1) {
+            <div class="value em-ta-c">
+              <span class="em-fs-18"> Элементов выбрано: {{selected.length}}</span>
+            </div>
+          }
+        </div>
+      }
+      @if (selected.length && selected[0].id && showClear && !isMultiSelect) {
+        <svg-icon [id]="clearButtonId"
+                  (click)="clear($event)"
+                  src="assets/icons/cancel-small.svg"
+                  class="c-pointer" />
+      }
+    </div>
+    <div class="dropdown" [pagination]="pagination" [selector]="'dropdown'" (emInfiniteScroll)="onScrolled()">
+      @if (canSearch) {
+        <div class="position-sticky padding-05">
+          <div class="dropdown__search">
+            <input type="text"
+                   [formControl]="searchField$"
+                   [placeholder]="searchPlaceholder"
+                   #searchElem>
+            <svg-icon class="dropdown-icon" src="./assets/icons/search.svg" />
+          </div>
+        </div>
+      }
+      @if (dataSource) {
+        <ul class="dropdown-list custom" [style.max-height]="maxHeight">
+          @for (actionItem of dataSource; track actionItem; let i = $index) {
+            <li class="dropdown-item custom-item mb-1 em-d-flex-center em-g-8"
+                [id]="getDropdownItemId(i)"
+                [class.selected]="isSelected(actionItem)"
+                (click)="onSelect(actionItem)">
+              @if (actionItem.icon) {
+                <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                          [src]="'./assets/icons/'+ actionItem.icon" />
+              }
+              @if (!actionItem.icon) {
+                <div class="text-center mr-1 company-logo">
+                  {{actionItem[labelKey][0]}}
+                </div>
+              }
+              <div class="drop-value">{{actionItem[labelKey]}}</div>
+              <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" [svgClass]="'svg'" />
+            </li>
+          }
+        </ul>
+      }
+      @if (!dataSource?.length) {
+        <div class="dropdown-list custom">
+          <div class="dropdown-item em-jc-c">{{emptyMessage}}</div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

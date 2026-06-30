@@ -1,0 +1,37 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+
+.hr-height{
+  height: 140px;
+  width: 1px;
+}
+
+.labels{
+  display: flex;
+  flex-direction: column;
+  div{
+    @include flex_jc_sb;
+    gap: 16px;
+
+    span{
+      font-size: 14px;
+      color: $secondary-text-color;
+    }
+  }
+}
+
+.data{
+  display: flex;
+  flex-direction: column;
+
+  span{
+    font-size: 14px;
+    font-weight: bold;
+    color: $palette;
+  }
+}

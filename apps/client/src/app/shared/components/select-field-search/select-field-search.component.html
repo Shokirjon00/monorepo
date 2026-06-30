@@ -1,0 +1,54 @@
+<div class="form-group select-field" [class.open]="isOpenDropdown">
+  <div class="select-field-container" (emClickOutside)="isOpenDropdown = false">
+    <div (click)="isOpenDropdown = !isOpenDropdown" class="form-control" [class.disabled]="!inDisabled()">
+      @if (!selected()) {
+        <span class="placeholder">{{ placeholder() }}</span>
+      }
+      @if (selected()) {
+        <div class="value">{{ selected()[optionLabel()]}}</div>
+      }
+      @if (showClear() && selected()) {
+        <svg-icon (click)="clearValue($event)"
+          class="cancel-icons em-d-flex" src="assets/icons/cancel-drops.svg" />
+      }
+      <svg-icon class="arrow" src="assets/icons/arrow.svg" />
+    </div>
+    <div class="dropdown" [pagination]="pagination" [selector]="'dropdown'" (emInfiniteScroll)="onScrolled()">
+      <div class="position-sticky padding-05">
+        <div class="dropdown__search">
+          <input type="text"
+            placeholder="Поиск..."
+            [formControl]="searchControl"
+            (keydown)="onKeydown($event)">
+            <svg-icon class="dropdown-icon" src="./assets/icons/search.svg" />
+          </div>
+        </div>
+        @if (filteredItems?.length) {
+          <ul emSelectTrigger
+            class="dropdown-list"
+            role="listbox"
+            [itemLength]="filteredItems.length"
+            [(isOpen)]="isOpenDropdown">
+            @for (actionItem of filteredItems; track actionItem) {
+              <li class="dropdown-item mb-1"
+                [class.selected]="selected() && (selected()[optionValue()] === actionItem[optionValue()])"
+                [class.active]="actionItem.selected && !(selected()[optionValue()] === actionItem[optionValue()])"
+                (click)="onSelect(actionItem)"
+                role="option">
+                <div class="em-d-flex">
+                  @if (actionItem.icon) {
+                    <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                    [src]="'./assets/icons/' + actionItem.icon" />
+                  }
+                  <div class="dropdown-item-value">{{ actionItem[optionLabel()] }}</div>
+                </div>
+              </li>
+            }
+          </ul>
+        }
+        @if (!filteredItems?.length) {
+          <div class="dropdown-item">Нет данных</div>
+        }
+      </div>
+    </div>
+  </div>

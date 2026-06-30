@@ -1,0 +1,61 @@
+<em-header2>
+  <div class="d-flex-sb w-100" header-right-actions>
+    <div class="title-h1">Настройки уведомлений</div>
+  </div>
+</em-header2>
+
+<div class="notification-settings-container">
+    <div class="telegram-card">
+      <div class="card-content">
+        <div class="card-info">
+          <h3 class="card-title">Через Telegram</h3>
+          <p class="card-description">Получайте уведомления в Telegram и управляйте заказами</p>
+          @if (showToggle && isNotificationsEnabled()) {
+            <div class="status-connected">
+              <svg-icon src="assets/icons/check.svg" />
+              <span>Подключено</span>
+            </div>
+          }
+
+          @if (showVerifyButton()) {
+            <p class="text-warning">
+              Завершите верификацию в Telegram, чтобы получать уведомления !
+            </p>
+          }
+
+        </div>
+        <div class="card-actions">
+          <ng-container *ngxPermissionsOnly="'FoodVendorNotificationSettingsViaTelegramConnect'">
+            @if (showConnectButton()) {
+              <button class="btn btn-primary" (click)="openConnectModal()">
+                Подключить
+              </button>
+            }
+
+            @if (showVerifyButton()) {
+              <button class="btn btn-danger" (click)="goToTelegramVerification()">
+                Пройти верификацию
+              </button>
+            }
+          </ng-container>
+
+          <ng-container *ngxPermissionsOnly="'FoodVendorNotificationSettingsViaTelegramUpdate'">
+            @if (showToggle()) {
+              <div class="switch-control">
+                <input
+                  type="checkbox"
+                  id="telegram-toggle"
+                  [checked]="isNotificationsEnabled()"
+                  [disabled]="isToggling()"
+                  (change)="onToggleChange($any($event.target).checked)"
+                />
+                <label for="telegram-toggle" class="slider"></label>
+              </div>
+            }
+          </ng-container>
+        </div>
+      </div>
+    </div>
+</div>
+
+<em-toast />

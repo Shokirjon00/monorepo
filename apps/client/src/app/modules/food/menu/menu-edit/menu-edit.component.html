@@ -1,0 +1,164 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1"> {{ title }}</div>
+    <div class="em-d-flex">
+      <div class="v-line">
+        <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/cancel.svg" />
+          <span class="tooltiptext">Отменить</span>
+        </div>
+      </div>
+      <div>
+        <div class="ml-2 mr-2 icon-item tooltip" [class.disabled]="submitted" (click)="onSubmit()">
+          <svg-icon src="assets/icons/save.svg" />
+          <span class="tooltiptext">Сохранить</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</em-header2>
+
+
+<form class="menu-edit menu-edit-body" [formGroup]="form">
+  @if (form.get('comment')?.value) {
+    <div class="form">
+      <div class="label em-danger-color">Комментарии модератора</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="comment"
+               placeholder="Введите комментарий">
+      </div>
+    </div>
+  }
+  <div class="form">
+    <div class="label">Название*</div>
+    <div class="input">
+      <input type="text" class="form-control" formControlName="productName"
+             placeholder="Введите название">
+      <em-validator [fieldControl]="f['productName']" />
+    </div>
+  </div>
+
+  <div class="form">
+    <div class="label">Категория*</div>
+    <em-simple-select-list formControlName="categoryId"
+      action="Категория"
+      [isBottomSheet]="true"
+      [dataSource]="categories" />
+    <em-validator [fieldControl]="f['categoryId']" />
+  </div>
+
+  <div class="form">
+    <div class="label">Единица измерения*</div>
+    <em-simple-select-list formControlName="dimensionUnit"
+      action="Единица измерения"
+      [isBottomSheet]="true"
+      [dataSource]="unities" />
+    <em-validator [fieldControl]="f['dimensionUnit']" />
+  </div>
+
+  <div class="form">
+    <div class="label">Описание</div>
+    <div class="input">
+      <input type="text" class="form-control" formControlName="productDescription"
+             placeholder="Введите название"
+             [class.is-invalid]="f['productDescription']?.invalid">
+      <em-validator [fieldControl]="f['productDescription']" />
+    </div>
+  </div>
+
+  <div formArrayName="productVariants"
+       cdkDropList
+       (cdkDropListDropped)="drop($event)"
+       class="variants-list ">
+
+    @for (variant of variants?.controls; let i = $index; track variant) {
+      <div [formGroupName]="i"
+           cdkDrag
+           [cdkDragData]="variant"
+           class="variant-block">
+
+        <ng-template cdkDragPreview>
+          <div class="drag-preview">
+            {{ variant.get('name')?.value || 'Перетаскивается...' }}
+          </div>
+        </ng-template>
+
+        <ng-template cdkDragPlaceholder>
+          <div class="drag-placeholder-empty"></div>
+        </ng-template>
+
+        <div class="em-d-flex em-g-16 mb-1 em-jc-fe">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox toggle-checkbox--blue">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+
+        <div class="em-d-flex em-g-16 ">
+          <div class="form">
+            <div class="label">Единицы*</div>
+            <div class="input">
+              <input type="number" class="form-control" formControlName="dimensionValue" min="0"
+                     [class.is-invalid]="getVariantControls(i)['dimensionValue']?.invalid">
+              <em-validator [fieldControl]="getVariantControls(i)['dimensionValue']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Цена*</div>
+            <div class="input" formGroupName="price">
+              <input type="number" class="form-control" formControlName="amount"
+                     [emAppDecimalPrecision]="2" min="0"
+                     [class.is-invalid]="getPriceControls(i)['amount']?.invalid">
+              <em-validator [fieldControl]="getPriceControls(i)['amount']" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="label">Название</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+        </div>
+
+        <div class="form mb-0 em-d-flex em-ai-center em-g-16 em-fw-wrap">
+          @if (variants.at(i).get('image')?.value) {
+            <img class="image"
+                 [src]="fileStorageUrl + 'web/' + variants.at(i).get('image')?.value"
+                 width="96" height="96" alt="" />
+          }
+
+          <input type="file" accept="image/*" (change)="onFileSelected($event, i, compressCheckbox.checked)" hidden #fileInput />
+          <button type="button" class="btn btn-secondary padding-1" (click)="fileInput.click()">Загрузить изображение
+          </button>
+          <label class="circle-checkbox" >
+            <input
+              type="checkbox"
+              #compressCheckbox
+              checked
+              [disabled]="isCompressDisabled(i)"
+              (change)="onCompressChange(i, compressCheckbox.checked)"
+            >
+            <div class="check em-d-flex-center">
+              <svg-icon src="assets/icons/check.svg" />
+            </div>Сжать изображение
+          </label>
+        </div>
+        <em-validator [fieldControl]="getVariantControls(i)['image']" />
+        <svg-icon class="drag-icon" src="assets/icons/drag.svg" />
+      </div>
+
+    }
+
+  </div>
+
+  <div class="form">
+    <button type="button" class="btn btn-secondary padding-1 w-100" (click)="addVariant()">Добавить</button>
+  </div>
+
+  @if (submitted) {
+    <em-eskhata-bank-loader class="form-loader" />
+  }
+</form>
+<em-toast />

@@ -1,0 +1,27 @@
+<div class="message-card" [class.admin-message]="!messageData.isAdminUser">
+  <div class="message-card__icon">
+    <svg-icon [src]="messageData.isAdminUser
+    ? './assets/icons/headphones.svg'
+    : './assets/icons/single-user.svg'" />
+  </div>
+  <div class="message-card__content">
+    <h3 class="message-card__sender-name">{{ messageData?.userFullName }}</h3>
+    <span class="message-card__sender-role">{{ messageData?.subTitle }}</span>
+    @if (messageData?.fileIds && messageData.fileIds.length > 0) {
+      <div class="message-card__attachments">
+        @for (fileId of messageData.fileIds; track fileId; let i = $index) {
+          <div class="file-item" [class.file-item--admin]="messageData.isAdminUser"
+               (click)="onFileClick(fileId, i)">
+            <div class="file-info">
+              <span class="file-name">{{ fileNameMap[fileId] || 'Загрузка...' }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    }
+    <p class="message-card-text"
+       [class.message-card__text--admin]="messageData.isAdminUser">
+      {{ messageData?.message }}</p>
+  </div>
+  <span class="message-card-timestamp">{{ messageData?.sentAt | date:'HH:mm' }}</span>
+</div>

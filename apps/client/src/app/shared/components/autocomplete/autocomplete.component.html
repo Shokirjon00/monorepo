@@ -1,0 +1,53 @@
+<div class="form-group autocomplete invalid" [class.open]="isOpenDropdown">
+  <div class="autocomplete-container" (emClickOutside)="isOpenDropdown = false;">
+    <div class="form-control d-flex-sb icon" [class.focused]="isOpenDropdown && !isBottomSheet()" (click)="toggle()"
+      [class.disabled]="!show()">
+      @if (!searchable()) {
+        <span class="placeholder">{{placeholder()}}</span>
+      }
+      @if (searchable()) {
+        <input
+          type="text"
+          class="autocomplete-search"
+          [class.disabled]="isBottomSheet() && isMobile"
+          [formControl]="searchField$"
+          [placeholder]="placeholder()">
+      }
+      @if (!searchable() && selected) {
+        <div class="value">{{selected[optionLabel()]}}</div>
+      }
+      <div class="arrow">
+        @if (loading) {
+          <span class="loader-spinner s brand"></span>
+        }
+      </div>
+      @if (!loading && searchField$.value) {
+        <svg-icon (click)="clear()" src="assets/icons/cancel-small.svg" class="c-pointer" />
+      }
+      <svg-icon (click)="close($event)" src="assets/images/arrow.svg" class="arrow-icon" [class.open]="isOpenDropdown" />
+    </div>
+  </div>
+  <div class="dropdown" [style.max-height]="maxHeight()" [pagination]="pagination" [selector]="'dropdown'" (emInfiniteScroll)="onScrolled()">
+    @if (isOpenDropdown) {
+      <ul emSelectTrigger class="dropdown-list"
+        [itemLength]="items.length"
+        [(isOpen)]="isOpenDropdown"
+        (valueChange)="valueChange($event)">
+        @for (option of items; track option) {
+          <li class="dropdown-item mb-1"
+            [class.selected]="selected?.id === option.id"
+            [class.active]="option.selected && !(selected[optionValue()] === option.id)"
+            (click)="onSelect(option)">
+            <div class="value">{{option.name}}</div>
+            <div>
+              <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" [svgClass]="'svg'" />
+            </div>
+          </li>
+        }
+      </ul>
+    }
+    @if (isOpenDropdown && !(selected || dataSource?.length)) {
+      <div class="dropdown-item">Нет данных</div>
+    }
+  </div>
+</div>

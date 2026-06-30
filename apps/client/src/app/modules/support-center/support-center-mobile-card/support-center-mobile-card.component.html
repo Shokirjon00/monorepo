@@ -1,0 +1,33 @@
+<div class="item-card" (click)="showDetail(application.id)">
+  <div class="top">
+    <div class="actions">
+      <div class="status">
+        <span class="indicator" [ngClass]="getStatusClass(application.supportApplicationStatusId)"></span>
+        <span class="text">{{ application.supportApplicationStatusName}}</span>
+      </div>
+    </div>
+    <div class="title">{{ application.name }}</div>
+    <div class="info">
+      <div class="info-item">
+        <div class="label">Тема</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.name || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">№</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.number || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Последнее сообщение</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application?.lastMessageAt ? (application.lastMessageAt | dateTime) : '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Оценка</div>
+        <div class="separator">:</div>
+        <div class="value">{{ application.rating || '-' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

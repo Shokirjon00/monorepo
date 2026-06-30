@@ -1,0 +1,120 @@
+@use "core/scss/form" as *;
+@use 'core/scss/styles' as *;
+@use "core/scss/variables" as *;
+
+.select-field {
+  cursor: pointer;
+  width: 100%;
+
+  &__container {
+    width: 100%;
+    position: relative;
+
+    .form-control {
+      background-color: $white-color;
+      tab-index: 0;
+      justify-content: flex-start;
+    }
+  }
+
+  ::ng-deep .value {
+    width: 100%;
+    @include flex_jc_sb;
+    margin-right: 16px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 26px;
+
+    & > * {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .placeholder {
+    color: $palette;
+    opacity: 1;
+  }
+
+  .arrow {
+    display: flex;
+    background-color: $white-color;
+    transition: 200ms;
+    >svg-icon{
+      line-height: 0;
+    }
+
+    eb-small-preloader {
+      margin-right: 4px;
+    }
+
+    .arrow-icon {
+      position: relative;
+      right: 8px;
+    }
+  }
+
+  .form-control {
+    @include flex_jc_sb;
+    min-height: 50px;
+    height: auto;
+
+    .value {
+      justify-content: flex-start;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      .selected-item {
+        padding: 8px 8px 8px 16px;
+        gap: 0.5rem;
+        background: $main-bg;
+        border-radius: 17px;
+        display: flex;
+        align-items: center;
+        margin: 4px 0;
+
+        button {
+          width: 16px;
+          height: 16px;
+          background: $inactive-icons;
+          border-radius: 24px;
+          border: none;
+          @include flex_ai_center;
+          line-height: 0;
+          padding-top: 4px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+      max-height: 500px;
+
+      &-item {
+        padding: 0.25rem 0.5rem;
+        background-color: transparent!important;
+        color: $link-color;
+
+        svg {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+        }
+
+        &:hover svg{
+          fill: transparent;
+        }
+      }
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: 200ms;
+      transform-origin: center;
+    }
+  }
+}

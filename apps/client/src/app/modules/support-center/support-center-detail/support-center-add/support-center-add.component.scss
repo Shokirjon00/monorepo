@@ -1,0 +1,175 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/card' as *;
+
+.support-center-add {
+  .title-3 {
+    font-size: 1.5rem;
+    line-height: 2em;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &-body {
+    margin: 2rem 3rem;
+
+    .body-container {
+      .left-block {
+        width: 50%;
+        border-right: 1px solid $brand-line;
+        padding-right: 5rem;
+      }
+
+      .right-block {
+        width: 50%;
+        padding-left: 5rem;
+      }
+    }
+  }
+
+  &-textarea {
+    .form {
+      max-width: 70%;
+    }
+
+    .label {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    textarea {
+      height: 260px;
+    }
+  }
+
+  &-contacts {
+    max-width: 70%;
+  }
+
+  &__send-btn {
+    .btn {
+      padding: 0 3rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .support-center-add {
+    .position-sticky {
+      position: absolute;
+      top: 57px;
+      width: 100%;
+    }
+
+    &-header {
+      flex-direction: column;
+    }
+
+    &-body {
+      margin: 2rem;
+      flex-direction: column;
+
+      .body-container {
+        padding-bottom: 1.5rem;
+
+        .left-block {
+          width: 100%;
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .right-block {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      .footer-container {
+        margin-top: 1.5rem;
+      }
+    }
+
+    &-contacts {
+      max-width: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .support-center-add {
+    .position-fixed {
+      position: absolute;
+      top: 57px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    &-header {
+      padding: 1.25rem 1rem;
+      flex-direction: row;
+      align-items: center;
+
+      .icon {
+        display: none;
+      }
+
+      .back {
+        display: block;
+        line-height: 0;
+      }
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+
+      .mobile-header {
+        width: 100%;
+        @include flex_align_center_justify_between();
+      }
+
+      .checkbox-toggle .toggle-title {
+        display: none;
+      }
+    }
+
+    &-body {
+      margin: 5rem 1rem 1rem 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+      .body-container {
+        padding-bottom: 0;
+        border: none;
+      }
+
+      .footer-container {
+        margin-top: 0;
+      }
+
+      .btn {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &-textarea {
+
+      .form {
+        max-width: 100%;
+      }
+
+      .label {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}

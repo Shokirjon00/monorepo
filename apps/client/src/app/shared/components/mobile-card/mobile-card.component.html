@@ -1,0 +1,40 @@
+<div class="mobile-card">
+  @for (item of items(); track item.id) {
+    <div class="item-card" (click)="onItemClick(item.id)">
+      <div class="top">
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [ngClass]="getStatusClass(item.statusId)"></span>
+            <span class="text">{{ item.statusName }}</span>
+          </div>
+        </div>
+        <div class="info small">
+          @for (col of displayColumns; track col.key) {
+            <div class="info-item">
+              <div class="label">{{ col.key }}</div>
+              <div class="separator">:</div>
+              <div class="value">{{ formatUserValue(item, col) }}
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if ((!items() || !items().length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+
+  @if (isMobile() && paginate() && items()?.length) {
+    <em-pagination [page]="paginate()" />
+  }
+</div>

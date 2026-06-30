@@ -1,0 +1,55 @@
+<div class="item-card">
+  <div class="top">
+    <div class="actions" (click)="toggle(payment)">
+      <div class="status">
+        <span class="indicator" [class]="statusLabel"></span>
+        <span class="text">{{ payment.paymentStatusGroupName }}</span>
+      </div>
+      <div class="toggle">
+        <svg-icon [src]="'/assets/icons/toggle.svg'" [class.open]="payment.isActive" />
+      </div>
+    </div>
+    <div class="title">{{ payment.merchantName }}</div>
+    <div class="info">
+      @for (item of paymentProperties; track item) {
+        <div class="info-item">
+          <div class="label">{{ item.label }}</div>
+          <div class="separator">:</div>
+          <div class="value">
+            @if (item.key === 'createdAt') {
+              {{ payment[item.key] ? (payment[item.key] | date: 'dd.MM.yyyy HH:mm') : '-' }}
+            }
+            @if (item.key !== 'createdAt') {
+              {{ payment[item.key] ? payment[item.key] : '-' }}
+            }
+          </div>
+
+        </div>
+      }
+
+      <div [@detailExpand]="payment.isActive ? 'expanded' : 'collapsed'">
+        @for (item of expandedPaymentProperties; track item) {
+          <div class="info-item">
+            <div class="label">{{ item.label }}</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment[item.key] }}</div>
+          </div>
+        }
+
+        @if (payment.params?.length) {
+          <div class="info-item">
+            <div class="label">Информация</div>
+            <div class="separator">:</div>
+            <div>
+              @for (param of payment.params; track param) {
+                <div class="value">
+                  {{ param || '-' }}
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

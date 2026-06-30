@@ -1,0 +1,23 @@
+@use "core/scss/flex" as *;
+@use "core/scss/styles" as *;
+@use "core/scss/variables" as *;
+
+:host{
+  height: 48px;
+}
+.breadcrumb {
+  width: 100%;
+  text-transform: uppercase;
+}
+::ng-deep {
+  .xng-breadcrumb-trail {
+    font-size: 14px;
+    line-height: 24px;
+    color: $text-color!important;
+  }
+  .xng-breadcrumb-link{
+    font-size: 14px;
+    line-height: 24px;
+    color: $inactive-icons;
+  }
+}

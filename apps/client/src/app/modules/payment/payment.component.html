@@ -1,0 +1,290 @@
+<div class="position-sticky">
+  <div class="h-line">
+    <div class="analytics-header">
+      <em-dropdown class="period-dropdown md-w-100"
+                   maxHeight="500px"
+                   id="payment-period-dropdown"
+                   [uniqueId]="'payment-period-dropdown'"
+                   [showClear]="queryParams['startDate'] && queryParams['endDate']"
+                   [path]="dataFilterApi"
+                   [selected]="dateType"
+                   [images]="dateTypeImage"
+                   [scrollHeight]="'315px'"
+                   [selectedId]="!dateFlag ? queryParams['startedAt'] : ''"
+                   [flag]="dateFlag"
+                   (changed)="dateChange($event)"
+                   (clearInput)="clearPeriod()"
+       />
+      <em-multi-dropdown class="pos-dropdown md-w-100"
+                         id="payment-merchant-dropdown"
+                         [uniqueId]="'payment-merchant-dropdown'"
+                         [isMultiSelect]="true"
+                         [canSearch]="true"
+                         [showClear]="true"
+                         [path]="merchantApi"
+                         [selected]="selectedMerchant"
+                         [selectedId]="queryParams['merchantId']"
+                         [searchPlaceholder]="'Название точки'"
+                         (changed)="merchantChange($event)"
+                         (clearInput)="clearMerchant()" />
+      <em-multi-dropdown class="pos-dropdown md-w-100"
+                         id="payment-pos-dropdown"
+                         [uniqueId]="'payment-pos-dropdown'"
+                         [isMultiSelect]="true"
+                         [showClear]="true"
+                         [path]="posesApi"
+                         [selected]="[selectedPos]"
+                         [customFilter]="posFilter"
+                         [selectedId]="queryParams['posId']"
+                         (changed)="posesChange($event)"
+                         (clearInput)="clearPos()" />
+      <em-dropdown class="pos-type-dropdown md-w-100"
+                   id="payment-pos-type-dropdown"
+                   [uniqueId]="'payment-pos-type-dropdown'"
+                   [path]="posesTypeApi"
+                   [showClear]="true"
+                   [selected]="selectedPosType"
+                   [show]="true"
+                   [selectedId]="queryParams['posTypeId']"
+                   (changed)="posesTypeChange($event)"
+                   (clearInput)="clearPosType()" />
+      <em-dropdown class="status-dropdown md-w-100"
+                   id="payment-status-dropdown"
+                   [uniqueId]="'payment-status-dropdown'"
+                   [path]="statusApi"
+                   [showClear]="true"
+                   [selected]="selectedStatus"
+                   [show]="true"
+                   [selectedId]="queryParams['paymentStatusGroupId']"
+                   (changed)="statusChange($event)"
+                   (clearInput)="clearStatus()" />
+      <em-dropdown class="pos-type-dropdown md-w-100"
+                   id="currency-dropdown"
+                   [path]="currencyApi"
+                   [showClear]="true"
+                   [selected]="currency"
+                   [show]="true"
+                   [selectedId]="queryParams['fromCurrencyId']"
+                   (changed)="currencyChange($event)"
+                   (clearInput)="clearCurrency()" />
+      <div class="form-add em-d-flex">
+        <div class="action">
+          <button class="action-item tooltip" (click)="showSimpleFilter = !showSimpleFilter">
+            <svg-icon class="em-d-flex-center" src="./assets/icons/plus.svg"
+                      [svgStyle]="showSimpleFilter ? {transform: 'rotate(45deg)'} : {transform: 'rotate(270deg)'}" />
+            <span class="tooltiptext">{{ showSimpleFilter ? 'Скрыть фильтр' : 'Показать фильтр' }}</span>
+          </button>
+        </div>
+        @if (isShowFilter) {
+          <div class="reset-filter">
+            <button type="button" (click)="resetFilter()">
+              Сбросить фильтры
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+    <div>
+      @if (showSimpleFilter) {
+        <div class="desktop-filter pl-6 pr-6 pb-5">
+          <em-quick-filter #quickFilterComponent
+            [showFilterTitle]="false"
+            [key]="captionKey"
+            [filterFields]="captions" />
+        </div>
+      }
+      <div class="mobile-filter">
+        <button type="button" [class.active]="isShowFilter" (click)="openFilter()">Фильтры</button>
+      </div>
+    </div>
+  </div>
+  @if (header?.tabs || header?.title) {
+    <div class="container d-flex-sb h-line xlg-fw-wrap">
+      <div class="tab" *ngxPermissionsOnly="'PaymentStatusGroupList'">
+        @for (status of paymentStatusGroup; track status) {
+          <a class="tab-item"
+             [class.active]="status.value === queryParams['paymentStatusGroupId']"
+             (click)="selectStatus(status.value)">
+            <span>{{ status.name }}</span>
+          </a>
+        }
+      </div>
+      <div class="em-d-flex em-ai-center xlg-fw-wrap tabs">
+        @if (header?.title) {
+          <div class="title-h1 mr-3">{{ header?.title }}</div>
+        }
+        <ng-container *ngxPermissionsOnly="'PaymentStatusGroupList'">
+          @if (paymentStatusAmounts) {
+            <div class="em-d-flex xlg-fw-wrap em-g-8 em-fw-wrap">
+              @for (paymentStatusAmount of paymentStatusAmounts; track paymentStatusAmount.statusType) {
+                <div class="em-d-flex payment-amount-container">
+                  <div [ngClass]="paymentStatusAmount.statusType.toLowerCase()" class="payment-status-amount em-d-flex">
+                    <div [ngClass]="paymentStatusAmount.statusType.toLowerCase()" class="payment-status-amount-status">
+                      {{ paymentStatusAmount.statusName }}:
+                    </div>
+                    <div class="text-wrap">
+                      {{ formatCurrencies(paymentStatusAmount.currencies) }}
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </ng-container>
+      </div>
+      <div class="d-flex-sb actions">
+        <div class="d-flex-sb v-line">
+          @for (action of actions; track action.name) {
+            <em-actions [actionData]="action"
+              (refreshTable)="reloadTable()"
+              [columns]="paymentFilterMode" />
+          }
+        </div>
+        <div class="ml-3">
+          @if (!!paginate) {
+            <em-pagination class="desktop-pagination"
+                           [page]="paginate" />
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="mobile-card">
+  @for (payment of payments; track payment; let i = $index) {
+    <div class="item-card">
+      <div class="top">
+        <div class="actions" (click)="payment.isActive = !payment.isActive">
+          <div class="status">
+            <span class="indicator" [class]="statusIndicator(payment['paymentStatusGroupId'])"></span>
+            <span class="text">{{ payment.paymentStatusGroupName }}</span>
+          </div>
+          <div class="toggle">
+            <svg-icon [src]="'/assets/icons/toggle.svg'" [class.open]="payment.isActive" />
+          </div>
+        </div>
+        <div class="title">{{ payment.merchantName }}</div>
+        <div class="info">
+          <div class="info-item">
+            <div class="label">Дата</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment?.createdAt ? (payment.createdAt | dateTime) : '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Касса</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.posName || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Сумма</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.amount || '-' }}</div>
+          </div>
+          <div [@detailExpand]="payment.isActive ? 'expanded' : 'collapsed'">
+            <div class="info-item">
+              <div class="label">Валюта</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.fromCurrencyIso || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Комиссия</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.commissionAmount || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Номер</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.number || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Информация</div>
+              <div class="separator">:</div>
+              <ng-container>
+                @if (payment.params && payment.params.length > 0; ) {
+                  <div>
+                    @for (param of payment.params; track param) {
+                      <div class="value">{{ param || '-' }}</div>
+                    }
+                  </div>
+                }
+              </ng-container>
+            </div>
+            <div class="info-item">
+              <div class="label">Кошелёк</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.userMsisdn || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Клиент</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.userFullName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Тип кассы</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.posTypeName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Адрес</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.address || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Кэш. от мерчанта</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.merchantCashbackAmount || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">К оплате</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.toPayAmount || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Сервис</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.serviceName || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-secondary" *ngxPermissionsOnly="'PaymentCancel'"
+                (click)="checkPaymentRefundStatus(payment.id)">Возврат
+        </button>
+        <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'PaymentPrintReceipt'"
+                (click)="getCheckInfo(payment.id)">Скачать
+        </button>
+      </div>
+    </div>
+  }
+  @if ((!payments || !payments.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (paginate && payments.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+
+<em-table [class.blur]="actionLoading"
+  (sortChange)="sortTable($event)"
+  (refund)="checkPaymentRefundStatus($event)"
+  (print)="getCheckInfo($event)"
+  [dataSource]="payments"
+  [captions]="captions"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />
+
+@if (actionLoading) {
+  <em-eskhata-bank-loader class="form-loader" />
+}
+<em-toast />

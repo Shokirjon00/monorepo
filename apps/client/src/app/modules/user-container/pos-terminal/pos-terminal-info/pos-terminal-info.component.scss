@@ -1,0 +1,64 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/variables' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use "core/scss/paddings" as *;
+
+.back {
+  display: none;
+}
+
+.user-admin {
+  margin: 5rem;
+}
+
+.no-data {
+  height: 100px;
+}
+
+@include media-breakpoint-down(md) {
+  .user-admin {
+    margin: 2rem;
+  }
+}
+
+
+@include media-breakpoint-down(sm) {
+  .position-sticky {
+    position: absolute;
+    top: 57px;
+    width: 100%;
+    z-index: 2;
+
+
+
+      .back {
+        display: block;
+        line-height: 0;
+        margin-right: 1rem;
+      }
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+
+      .icon {
+        width: 30px;
+        height: 0;
+      }
+
+  }
+
+  .user-admin {
+    padding-top: 4rem;
+    margin: 1rem 1.25rem;
+
+    .labels-data .key {
+      width: 150px;
+    }
+  }
+}

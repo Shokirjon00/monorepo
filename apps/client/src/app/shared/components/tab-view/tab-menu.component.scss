@@ -1,0 +1,200 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use "core/scss/mixins/breakpoints" as *;
+
+:host {
+  .tab {
+    display: flex;
+    align-items: flex-start;
+
+    &-item {
+      transition: 300ms ease-in-out;
+      padding: 0.5rem 1.5rem;
+      background: $main-bg;
+      border: 1px solid $brand-line;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 26px;
+      color: $palette;
+      position: relative;
+
+      span {
+        @include ellipsis-text();
+        color: $palette;
+        max-width: 350px;
+      }
+
+      &:first-child {
+        border-radius: 8px 0 0 8px;
+      }
+
+      &:hover {
+        background: $inactive-icons;
+        color: $label-color;
+      }
+
+      &:last-child {
+        border-radius: 0 8px 8px 0;
+      }
+
+      &.active {
+        border: 1px solid $primary-color;
+        background: $primary-color;
+
+        span {
+          color: $white-color;
+          font-weight: 500;
+        }
+
+        &:hover {
+          color: $white-color;
+          background: $primary-color;
+        }
+
+        svg-icon {
+          filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7466%) hue-rotate(116deg) brightness(96%) contrast(97%);
+        }
+      }
+    }
+
+    &__item {
+      transition: 300ms ease-in-out;
+      padding: 0.5rem 1.5rem;
+      background: $main-bg;
+      border: 1px solid $brand-line;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 26px;
+      color: $palette;
+      position: relative;
+
+      span {
+        @include ellipsis-text;
+        color: $palette;
+        max-width: 350px;
+      }
+
+      &:hover {
+        background: $inactive-icons;
+        color: $label-color;
+      }
+
+      &_active {
+        border: 1px solid $primary-color;
+        background: $primary-color;
+
+        span {
+          color: $white-color;
+          font-weight: 500;
+        }
+
+        &:hover {
+          color: $white-color;
+          background: $primary-color;
+        }
+
+        svg-icon {
+          filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7466%) hue-rotate(116deg) brightness(96%) contrast(97%);
+        }
+      }
+    }
+
+    .arrow {
+      display: block;
+      height: 26px;
+    }
+
+    .setting-info {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+      border-radius: 12px;
+      z-index: 99;
+      position: absolute;
+      padding: 1rem;
+      background-color: $white-color;
+      min-width: 200px;
+      left: 0;
+      top: 45px;
+      max-height: 500px;
+      overflow-y: scroll;
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .dropdown-list {
+      width: 100%;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      display: table;
+
+      .dropdown-list-item {
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 26px;
+        color: #8e9aaf;
+
+        span {
+          color: $palette;
+        }
+
+        &:hover {
+          background: $brand-hover;
+          color: $palette;
+
+          .dropdown-icon, svg {
+            fill: $palette;
+          }
+        }
+
+        &_active {
+          font-weight: 500;
+          border: 1px solid $primary-color;
+          background: $primary-color;
+
+          span {
+            color: $white-color;
+          }
+
+          &:hover {
+            color: $white-color;
+            background: $primary-color;
+          }
+
+          .dropdown-icon, svg {
+            fill: $white-color;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .tab {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    width: auto;
+    padding: 1rem 0;
+
+
+    &-item {
+      padding: 8px 24px;
+      border-radius: 8px !important;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0;
+    }
+
+    &.mobile-display {
+      display: none;
+    }
+  }
+}
+

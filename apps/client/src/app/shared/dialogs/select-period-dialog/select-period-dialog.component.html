@@ -1,0 +1,34 @@
+<div class="period-dialog">
+  <div class="calendar">
+    <div class="icon-left c-pointer" (click)="setPreviousMonth()">
+      <svg-icon src="./assets/icons/caret-left.svg" />
+    </div>
+    <div class="calendar-body">
+      <div class="left">
+        <div class="em-ta-c em-fw-700">{{showStartDate.month?.name}} {{showStartDate?.year}}</div>
+        <mat-month-view [activeDate]="currentMonth"
+          [(selected)]="dateRange"
+          (selectedChange)="selectedChange($event)"
+          #currentDate
+         />
+      </div>
+      <div class="right">
+        <div class="em-ta-c em-fw-700">{{showEndDate.month?.name}} {{showEndDate?.year}}</div>
+        <mat-month-view [activeDate]="nextMonth"
+          [(selected)]="dateRange"
+          (selectedChange)="selectedChange($event)"
+          #nextDate
+         />
+      </div>
+    </div>
+    <div class="icon-right c-pointer" (click)="setNextMonth()">
+      <svg-icon src="./assets/icons/caret-right.svg" />
+    </div>
+  </div>
+  <div class="period-dialog__bottom">
+    <button class="calendar-btn btn btn-secondary btn-lg mr-2" (click)="close()">Отмена</button>
+    <button class="calendar-btn btn btn-primary btn-lg" (click)="confirm()">Применить</button>
+  </div>
+</div>
+
+<em-toast />

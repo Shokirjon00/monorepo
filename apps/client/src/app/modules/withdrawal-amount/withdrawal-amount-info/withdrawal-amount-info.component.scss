@@ -1,0 +1,83 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/card' as *;
+
+.no-data {
+  height: 100px;
+}
+
+.mobile-card {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  em-table {
+    display: none;
+  }
+
+  .mobile-card {
+    display: block;
+
+    .label {
+      width: 110px!important;
+    }
+
+    .status {
+      @include flex_align_center();
+      gap: 0.5rem;
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+        flex-shrink: 0;
+        border-radius: 1rem;
+
+        &.completed {
+          background-color: $success-color;
+
+          ~ .text {
+            color: $success-color;
+          }
+        }
+
+        &.process-completed {
+          background-color: $steel-teal;
+
+          ~ .text {
+            color: $steel-teal;
+          }
+        }
+
+        &.rejected {
+          background-color: $danger-color;
+
+          ~ .text {
+            color: $danger-color;
+          }
+        }
+
+        &.in-process {
+          background-color: $gray-300;
+
+          ~ .text {
+            color: $gray-300;
+          }
+        }
+
+      }
+
+      .text {
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+    }
+  }
+
+  .title-h1 {
+    display: none;
+  }
+}
