@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '../helper';
+import { ACCESS_TOKEN_KEY, DEVICE_ID, REFRESH_TOKEN_KEY } from '../helper';
 import { IHttpResponseMeta } from '../core/interfaces/http-response.interface';
 import { LocalStorageService } from './local-storage.service';
 import { IToken } from '../core/interfaces/token.interface';
+import { sha256 } from 'js-sha256';
+import { environment } from '@env';
 
 @Injectable({
   providedIn: 'root',
@@ -59,5 +61,14 @@ export class TokenService {
     this.storage.remove(REFRESH_TOKEN_KEY);
     this._accessToken = null;
     this._refreshToken = null;
+  }
+
+  getHelloToken(): string {
+    const time = new Date().getTime().toString().substr(0, 10);
+    const id = localStorage.getItem(DEVICE_ID);
+    const hash = sha256(`${id}:${time}:${environment.key}`);
+    const tp1 = btoa(hash);
+    const tp2 = btoa(time.toString());
+    return tp1 + '.' + tp2;
   }
 }

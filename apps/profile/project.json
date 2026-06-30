@@ -16,7 +16,9 @@
         "tsConfig": "apps/profile/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "stylePreprocessorOptions": {
-          "includePaths": ["shared-core/src/core"]
+          "includePaths": [
+            "."
+          ]
         },
         "assets": [
           {
@@ -55,7 +57,8 @@
       "continuous": true,
       "executor": "@angular/build:dev-server",
       "options": {
-        "port": 4400
+        "port": 4400,
+        "proxyConfig": "apps/profile/proxy.conf.json"
       },
       "configurations": {
         "production": {

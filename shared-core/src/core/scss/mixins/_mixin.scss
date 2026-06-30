@@ -1,0 +1,140 @@
+
+/*
+X-Small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200px
+Extra extra large	xxl	≥1400px
+*/
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@mixin flex_row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex_jc_sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex_ai_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin em-d-flex-al-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin ellipsis-text($lines: 1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+
+@mixin indicator-block($color){
+  content: '';
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background-color: $color;
+  margin-right: 8px;
+}
+
+@mixin flex_column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex_column_justify_between() {
+  @include flex_column();
+  justify-content: space-between;
+}
+
+@mixin flex_justify_between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex_align_center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex_align_center_justify_between() {
+  @include flex_align_center();
+  justify-content: space-between;
+}
+
+
+@mixin flex_justify_center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex_row_justify_between() {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+@mixin flex_row_align_center() {
+  @include flex_row();
+  align-items: center;
+}
+
+@mixin border-color() {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+
+@mixin placeholder($color) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+  }
+}
+
+@mixin hide-date-elements {
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+@mixin datetime-text-visibility($state: hidden) {
+  @if $state == hidden {
+    &::-webkit-datetime-edit {
+      color: transparent;
+    }
+  } @else {
+    &::-webkit-datetime-edit {
+      color: inherit;
+    }
+  }
+}

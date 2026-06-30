@@ -75,6 +75,7 @@ export const ENDPOINTS = {
   gateways: 'gateways',
   gatewayIntegrationConfigurations: 'gateway_integration_configurations',
   hello: 'hello',
+  setToken: 'set_fcm_token',
   identities: 'identities',
   image: 'image',
   info: 'info',

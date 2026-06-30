@@ -1,56 +1,55 @@
 import { Injectable } from '@angular/core';
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
-import { Router } from '@angular/router';
 import { catchError, filter, finalize, switchMap, takeUntil } from 'rxjs/operators';
-import { environment as env } from '@environments/environment';
-import { ErrorService } from '@core/services/error.service';
-import { TokenService } from '@core/services/token.service';
-import { AuthService } from '@modules/auth/service/auth.service';
+import { AuthService } from '@shared-core/data-access/auth.service';
+import { ErrorService } from '@shared-core/data-access/error.service';
+import { TokenService } from '@shared-core/data-access/token.service';
+import { environment as env} from '@env';
 import { ErrorStatusCodeEnum } from '@core/enums/error-status-codes.enum';
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
   isRefreshingToken = false;
-  tokenSubject$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  tokenSubject$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   destroyQueue$ = new Subject();
-  private errorCode: number;
 
   constructor(
     private authService: AuthService,
     private errorService: ErrorService,
-    private router: Router,
-    private tokenService: TokenService,
-  ) { }
+    private tokenService: TokenService
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    return next.handle(req)
-      .pipe(
-        map((response: any) => {
-          switch (response.body?.errorCode) {
-            case ErrorStatusCodeEnum.TOKEN_EXPIRED:
-              throw response;
-            case ErrorStatusCodeEnum.TOKEN_REFRESH_EXPIRED:
-              this.endSession();
-              break;
-            case ErrorStatusCodeEnum.ERROR_AUTH:
-              this.endSession();
-              break;
-            default:
-              return response;
-          }
-        }),
-        catchError(error => {
-          if (error.body?.errorCode === ErrorStatusCodeEnum.TOKEN_EXPIRED) {
-            this.errorService.hasDialog = false;
-            return this.handleRefreshError(req, next);
-          }
-          throw error;
-        }),
-      );
+    return next.handle(req).pipe(
+      map((response: any) => {
+        switch (response.body?.errorCode) {
+          case ErrorStatusCodeEnum.TOKEN_EXPIRED:
+            throw response;
+          case ErrorStatusCodeEnum.TOKEN_REFRESH_EXPIRED:
+            this.endSession();
+            break;
+          case ErrorStatusCodeEnum.ERROR_AUTH:
+            this.endSession();
+            break;
+          default:
+            return response;
+        }
+      }),
+      catchError((error) => {
+        if (error.body?.errorCode === ErrorStatusCodeEnum.TOKEN_EXPIRED) {
+          this.errorService.hasDialog = false;
+          return this.handleRefreshError(req, next);
+        }
+        throw error;
+      })
+    );
   }
 
-  handleRefreshError(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+  handleRefreshError(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<any> {
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
       if (req.url.includes(env.api.authenticate)) {
@@ -62,41 +61,39 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
         return of(null);
       }
       if (this.tokenService.refreshToken?.length) {
-        return this.authService.refresh()
-          .pipe(
-            switchMap(res => {
-              if (res.status) {
-                this.tokenService.setTokens(res.meta);
-                this.tokenSubject$.next(this.tokenService.accessToken);
-                // TODO only this case
-              } else if (res.errorCode === ErrorStatusCodeEnum.BAD_REQUEST) {
-                this.endSession();
-                this.destroyQueue$.next(true);
-              }
-              return next.handle(req);
-            }),
-            finalize(() => this.isRefreshingToken = false)
-          );
+        return this.authService.refresh().pipe(
+          switchMap((res: any) => {
+            if (res.status) {
+              this.tokenService.setTokens(res.meta);
+              this.tokenSubject$.next(this.tokenService.accessToken);
+              // TODO only this case
+            } else if (res.errorCode === ErrorStatusCodeEnum.BAD_REQUEST) {
+              this.endSession();
+              this.destroyQueue$.next(true);
+            }
+            return next.handle(req);
+          }),
+          finalize(() => (this.isRefreshingToken = false))
+        );
       } else {
         this.endSession();
         this.destroyQueue$.next(true);
         return next.handle(req);
       }
     } else {
-      return this.tokenSubject$
-        .pipe(
-          filter(token => token != null),
-          switchMap(() => next.handle(req)),
-          takeUntil(this.destroyQueue$)
-        );
+      return this.tokenSubject$.pipe(
+        filter((token) => token != null),
+        switchMap(() => next.handle(req)),
+        takeUntil(this.destroyQueue$)
+      );
     }
   }
 
   private getTempToken(next: HttpHandler, req: HttpRequest<any>): Observable<any> {
-    return this.authService.login({username: '', password: ''})
+    return this.authService.hello()
       .pipe(
         switchMap((helloRes) => {
-          this.authService.temporaryToken = helloRes.data.temporaryToken;
+          this.authService.temporaryToken = helloRes.meta.temporaryToken;
           return next.handle(req);
         }),
         finalize(() => this.isRefreshingToken = false)

@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { ProfileComponent } from './pages/profile/profile.component';
 
-export const routes: Routes = [
-  { path: '', redirectTo: 'profile', pathMatch: 'full' },
-  { path: 'profile', component: ProfileComponent },
-  { path: '**', redirectTo: 'profile' },
+export const APP_ROUTES: Routes = [
+  {
+    path: 'auth',
+    loadComponent: () => import('./pages/auth/auth.component').then(m => m.AuthComponent),
+    loadChildren: () => import('./pages/auth/auth.routing').then(m => m.AUTH_ROUTES)
+  },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' }
 ];

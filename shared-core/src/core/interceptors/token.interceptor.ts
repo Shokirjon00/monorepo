@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment as env} from '@environments/environment';
-import {TokenService} from '@core/services/token.service';
-import {AuthService} from '@modules/auth/service/auth.service';
+import { environment as env} from '@env';
+import { TokenService } from '@shared-core/data-access/token.service';
+import { AuthService } from '../../data-access/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -34,9 +34,12 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(tokenReq);
   }
 
-
   private getToken(url: string): string {
-    if (url.includes(env.api.authenticate) || (url.includes(`/${env.api.setPassword}`) || url.includes(`/${env.api.identities}`)) && !url.includes(env.api.logout )) {
+    if (url.includes(env.api.hello)) {
+      return this.tokenService.getHelloToken();
+    }
+
+    if (url.includes(env.api.authenticate) || (url.includes(`/${env.api.setPassword}`) || url.includes(`/${env.api.identities}`)) && !url.includes(env.api.logout)) {
       return this.authService.temporaryToken;
     }
 
