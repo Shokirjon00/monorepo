@@ -1,0 +1,23 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'systemFiltersForm'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="navigateToDetail($event)"
+  (edit)="edit($event)"
+  (settingEdit)="settingEdit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="settings"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [loading]="loading()" />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

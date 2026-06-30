@@ -1,0 +1,33 @@
+<div class="integration-type-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-8">
+    <div class="title text-center">Удаление типа интеграции</div>
+    <div class="subtitle">При удалении также будут удалены все настройки по этой интеграции. Необходимо выбрать новый
+      тип интеграции
+    </div>
+  </div>
+  <div class="integration-type-dialog-content">
+    <form [formGroup]="form">
+      <div class="change-status mb-2">
+        <p class="change-status-text">Переместить</p>
+        <div class="checkbox-toggle">
+          <input type="checkbox" id="switch1" formControlName="isMove">
+          <label for="switch1">Toggle</label>
+        </div>
+      </div>
+      @if (form.get('isMove')?.value) {
+        <div class="form">
+          <div class="input">
+            <em-simple-select-list action="Выберите тип интеграции"
+              (changed)="selectIntegrationType($event)"
+              [dataSource]="integrationType"
+             />
+          </div>
+        </div>
+      }
+    </form>
+  </div>
+  <div class="em-d-flex em-jc-c">
+    <button class="btn btn-secondary btn-lg mr-2" (click)="close()">Отмена</button>
+    <button class="btn btn-primary btn-lg" (click)="onSubmit()">Сохранить</button>
+  </div>
+</div>

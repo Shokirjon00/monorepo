@@ -1,0 +1,143 @@
+<form class="w-100 user-admin-edit" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="user-admin-edit-header w-100 d-flex-sb" header-center-default>
+      <div class="title-h1">{{ adminUserId ? 'Редактировать ' : 'Новый администратор ' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'AdminUserActiveStatus'" class="checkbox-toggle ml-1">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/>
+          <label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="user-admin-edit-body" [class.blur]="submitted">
+    <div class="body-container  em-d-flex em-fw-wrap">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Фамилия*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Введите фамилию"
+                   [class.is-invalid]="f['lastName']?.invalid && f['lastName']?.touched">
+            <em-validator [fieldControl]="f['lastName']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Имя*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="Введите имя"
+                   [class.is-invalid]="f['firstName']?.invalid && f['firstName']?.touched">
+            <em-validator [fieldControl]="f['firstName']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Отчество</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="middleName"
+                   placeholder="Введите отчество"
+                   [class.is-invalid]="f['middleName']?.invalid && f['middleName']?.touched">
+            <em-validator [fieldControl]="f['middleName']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Логин*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="userName"
+                   placeholder="Введите логин"
+                   [class.is-invalid]="f['userName']?.invalid && f['userName']?.touched">
+            <em-validator [fieldControl]="f['userName']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Номер телефона*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="phoneNumber" placeholder="+992 (ХХ) ХХХ ХХ ХХ"
+                   mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                   [class.is-invalid]="f['phoneNumber']?.invalid && f['phoneNumber']?.touched">
+            <em-validator [fieldControl]="f['phoneNumber']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Email*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="email"
+                   placeholder="Введите email"
+                   [class.is-invalid]="f['email']?.invalid && f['email']?.touched">
+            <em-validator [fieldControl]="f['email']" />
+          </div>
+        </div>
+        <div class="form" formArrayName="roles">
+          @for (adminRole of adminRoles.controls; track adminRole; let i = $index) {
+            <div>
+              <div class="label">Роль*</div>
+              <div class="input">
+                <em-simple-select-list action="Выберите роли"
+                  [formControlName]="i"
+                  [dataSource]="adminRoleValues" />
+              </div>
+              <em-validator [fieldControl]="adminRole" />
+            </div>
+          }
+        </div>
+      </div>
+      <div class="w-50 right-block">
+        @if (branches) {
+          <div class="w-100 branches">
+            <div class="searchbar mb-3 pt-5">
+              <div class="em-title">Филиалы</div>
+              <div class="form">
+                <div class="input em-d-flex em-ai-center">
+                  <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" (keyup)="searchBranch()"
+                         type="text" class="form-control" placeholder="Поиск">
+                  <svg-icon class="icon" src="assets/icons/search.svg" />
+                  <label class="circle-checkbox">
+                    <input type="checkbox"
+                           [checked]="branches.length === branchArray.length"
+                           (change)="checkAllBranches($event)">
+                    <div class="check em-d-flex-center">
+                      <svg-icon src="assets/icons/check.svg" />
+                    </div>
+                    Все
+                  </label>
+                </div>
+              </div>
+            </div>
+            @for (branch of filteredBranches; track branch.id; let i = $index) {
+              <div class="em-d-flex pt-1 pb-1">
+                <label class="circle-checkbox">
+                  <input type="checkbox"
+                         [checked]="branchArray.value.includes(branch.id)"
+                         (change)="branchSelect(branch.id, $event.target)">
+                  <div class="check em-d-flex-center">
+                    <svg-icon src="assets/icons/check.svg" />
+                  </div>
+                  {{ branch.name }}
+                </label>
+              </div>
+            }
+            @if (!filteredBranches.length) {
+              <div class="no-data">Филиал не найден</div>
+            }
+          </div>
+        }
+        <em-validator [fieldControl]="f['branches']" />
+      </div>
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

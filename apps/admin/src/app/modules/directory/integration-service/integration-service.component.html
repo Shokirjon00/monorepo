@@ -1,0 +1,9 @@
+<em-header2 [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true" />
+<div class="services">
+  @for (item of services; track item) {
+    <a class="item" [href]="item.url" target="_blank">
+      <img [src]="item.image" alt="">
+    </a>
+  }
+</div>

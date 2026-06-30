@@ -1,0 +1,17 @@
+@mixin input_placeholder($color, $font-weight: 400) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1; /* Firefox */
+    font-weight: $font-weight;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+    font-weight: $font-weight;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+    font-weight: $font-weight;
+  }
+}

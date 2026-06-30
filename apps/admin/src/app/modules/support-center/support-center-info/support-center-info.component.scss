@@ -1,0 +1,46 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import 'core/scss/card';
+
+.support-center-info {
+  .title-3 {
+    font-size: 1.5rem;
+    line-height: 2em;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__body {
+    margin: 2rem 3rem;
+
+    &__textarea {
+      .form {
+        width: 100%;
+      }
+
+      .label {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+
+    &__contacts {
+      max-width: 70%;
+    }
+
+    &__send-btn {
+      .btn {
+        padding: 0 3rem;
+      }
+    }
+
+    &__labels {
+      gap: 3rem;
+    }
+  }
+}

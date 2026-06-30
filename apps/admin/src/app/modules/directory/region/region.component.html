@@ -1,0 +1,29 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true"
+  [filterFields]="captions"
+  [actions]="actions"
+  [filterStorageKey]="'regionFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+                    [columns]="captions"/>
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="detail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="regions"
+  [captions]="captions"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />
+<em-toast />

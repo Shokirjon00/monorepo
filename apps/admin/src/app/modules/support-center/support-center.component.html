@@ -1,0 +1,27 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [enableDropdown]="false"
+  [filterStorageKey]="'support-center-filters'">
+
+  <ng-container header-actions>
+
+    @if (paginate) {
+      <em-pagination class="pl-3" [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (detail)="showDetail($event)"
+  [dataSource]="support"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+  [rowActions]="tableActions"
+  (changeStatusModal)="openReceiptDialog($event)"
+  (setOperatorModal)="openUserDialog($event)"
+ />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

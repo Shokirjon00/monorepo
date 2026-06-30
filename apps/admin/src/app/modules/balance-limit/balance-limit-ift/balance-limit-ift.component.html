@@ -1,0 +1,153 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems"
+  [filterStorageKey]="'balanceLimitIft'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<div class="pos-edit" [class.blur]="loading()">
+  <div class="padding-6">
+    <div class="labels-data">
+      <div class="nrt v-line">
+        <div class="em-d-flex">
+          <span class="key">Баланс</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.nrt.amount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Счет</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.nrt.accountNumber }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Текущая позиция</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.nrt.currentPositionAmount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Текущий остаток</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.nrt.currentBalanceAmount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Валюта</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.nrt.currencyIsoName }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Последнее обновление</span><span>:</span>
+          <span class="data">{{ iftLimit?.nrt.lastRefreshDateTime | dateTime }}</span>
+        </div>
+        @if (iftLimit?.nrt.canEdit) {
+          <div class="form">
+            <div class="label">Сумма</div>
+            <div class="input">
+              <input type="number"
+                     class="form-control"
+                     placeholder="Введите сумму"
+                     [formControl]="amountFormControl"
+                     [class.is-invalid]="amountFormControl?.invalid && amountFormControl?.touched">
+              <em-validator [fieldControl]="amountFormControl" />
+            </div>
+          </div>
+        }
+        <div class="actions">
+          <div *ngxPermissionsOnly="'IFTLimitRefresh'">
+            @if (iftLimit?.nrt.canRefresh) {
+              <button type="button" class="button-tooltip" (click)="refreshIftLimit(iftLimit?.nrt.accountNumber)">
+                <svg-icon src="assets/icons/reload.svg" />
+                <span class="tooltip-text">Синхронизировать</span>
+              </button>
+            }
+          </div>
+          <div *ngxPermissionsOnly="'IFTLimitUpdate'">
+            @if (iftLimit?.nrt.canEdit) {
+              <button type="button" class="button-tooltip" (click)="confirmAction(iftLimit?.nrt.accountNumber)">
+                <svg-icon src="assets/icons/save.svg" />
+                <span class="tooltip-text">Сохранить</span>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="ift">
+        <div class="em-d-flex">
+          <span class="key">Баланс</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.amount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Счет</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.accountNumber }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Текущая позиция</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.currentPositionAmount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Текущий остаток</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.currentBalanceAmount }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Валюта</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.currencyIsoName }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Последнее обновление</span>
+          <span>:</span>
+          <span class="data">{{ iftLimit?.ift.lastRefreshDateTime | dateTime }}</span>
+        </div>
+        @if (iftLimit?.ift.canEdit) {
+          <div class="form">
+            <div class="label">Сумма</div>
+            <div class="input">
+              <input type="number"
+                     class="form-control"
+                     placeholder="Введите сумму"
+                     [formControl]="amountFormControl"
+                     [class.is-invalid]="amountFormControl?.invalid && amountFormControl?.touched">
+              <em-validator [fieldControl]="amountFormControl" />
+            </div>
+          </div>
+        }
+        <div class="actions">
+          <div *ngxPermissionsOnly="'IFTLimitRefresh'">
+            @if (iftLimit?.ift.canRefresh) {
+              <button type="button" class="button-tooltip" (click)="refreshIftLimit(iftLimit?.ift.accountNumber)">
+                <svg-icon src="assets/icons/reload.svg" />
+                <span class="tooltip-text">Синхронизировать</span>
+              </button>
+            }
+          </div>
+          <div *ngxPermissionsOnly="'IFTLimitUpdate'">
+            @if (iftLimit?.ift.canEdit) {
+              <button type="button" class="button-tooltip" (click)="confirmAction(iftLimit?.ift.accountNumber)">
+                <svg-icon src="assets/icons/save.svg" />
+                <span class="tooltip-text">Сохранить</span>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-6">
+    <em-table [dataSource]="iftLimitHistory"
+      [captions]="columns"
+      (sortChange)="sortTable($event)"
+      [loading]="historyLoading" />
+  </div>
+</div>
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

@@ -1,0 +1,27 @@
+<div class="bar">
+  <div class="bar-tabs">
+    <em-tab-menu [tabItems]="tabs()" />
+  </div>
+
+  @if (showStatus()) {
+    <div class="bar-top">
+      <span class="status-pill" [class.is-ok]="statusOk()" [class.is-bad]="!statusOk()">
+        <span class="status-pill-dot"></span>
+        <span class="status-pill-text">Система работает нормально</span>
+      </span>
+
+      <span class="status-updated">
+        <img class="status-updated-svg" src="assets/icons/analytics/status-updated.svg" alt="">
+        <span>Обновлено: {{ updatedAt() }}</span>
+      </span>
+
+      <button type="button" class="status-btn" title="Обновить" (click)="refresh()">
+        <img class="status-btn-svg" src="assets/icons/analytics/status-refresh.svg" alt="Обновить">
+      </button>
+
+      <button type="button" class="status-btn" title="Настройки" (click)="openSettings()">
+        <img class="status-btn-svg" src="assets/icons/analytics/status-settings.svg" alt="Настройки">
+      </button>
+    </div>
+  }
+</div>

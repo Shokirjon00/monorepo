@@ -1,0 +1,102 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ cashbackRatesDetail?.name || 'Добавить ставку кэшбэка' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="addCashback()">
+            <svg-icon src="assets/icons/plus.svg" />
+            <span class="tooltip-text">Добавить</span>
+          </button>
+        </div>
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'CashbackActiveStatus'" class="checkbox-toggle ml-1">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 h-line">
+    <div class="form">
+      <div class="label">Наименование ставки кэшбэка</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+  </div>
+  @if (cashBackArray.controls) {
+    <div class="padding-6 h-line" formArrayName="cashbackGradations">
+      @for (gradation of cashBackArray.controls; track gradation; let i = $index) {
+        <div class="em-d-flex em-dr-row em-g-40 mb-3" [formGroupName]="i">
+          <div class="form mb-0">
+            <div class="label">Наименование условия</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="name" placeholder="Введите наименование"
+                     [class.is-invalid]="gradation.get('name')?.invalid && gradation.get('name')?.touched">
+              <em-validator [fieldControl]="gradation.get('name')" />
+            </div>
+          </div>
+          <div class="form mb-0">
+            <div class="label">Интервал от</div>
+            <div class="input">
+              <input type="text" mask="separator.2" class="form-control" placeholder="Введите значение"
+                     formControlName="minValue"
+                     [class.is-invalid]="gradation.get('minValue')?.invalid && gradation.get('minValue')?.touched">
+              <em-validator [fieldControl]="gradation.get('minValue')" />
+            </div>
+          </div>
+          <div class="form mb-0">
+            <div class="label">Интервал до</div>
+            <div class="input">
+              <input type="text" mask="separator.2" class="form-control" placeholder="Введите значение"
+                     formControlName="maxValue"
+                     [class.is-invalid]="gradation.get('maxValue')?.invalid && gradation.get('maxValue')?.touched">
+              <em-validator [fieldControl]="gradation.get('maxValue')" />
+            </div>
+          </div>
+          <div class="form mb-0">
+            <div class="label">Размер кэшбэка</div>
+            <div class="input">
+              <input type="text" class="form-control" placeholder="Введите значение"
+                     mask="separator.2" formControlName="value"
+                     [class.is-invalid]="gradation.get('value')?.invalid && gradation.get('value')?.touched">
+              <em-validator [fieldControl]="gradation.get('value')" />
+            </div>
+          </div>
+          <div class="form em-d-flex-center mb-0">
+            <label class="circle-checkbox">
+              <input type="checkbox" formControlName="isPercentage">
+              <div class="check em-d-flex-center ">
+                <svg-icon src="assets/icons/check.svg" />
+              </div>
+              Процент от суммы
+            </label>
+            <em-validator [fieldControl]="gradation.get('isPercentage')" />
+          </div>
+          <div class="em-d-flex-center c-pointer" (click)="deleteCashBack(i)">
+            <svg-icon src="assets/icons/delete.svg" />
+          </div>
+        </div>
+      }
+      <em-validator [fieldControl]="f['commissionGradations']" />
+    </div>
+  }
+</form>
+@if (loading) {
+  <em-eb-loader class="loader" />
+}
+<em-toast />

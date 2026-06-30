@@ -1,0 +1,68 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{updateUrl === 'new' ? "Добавить" : "Редактировать"}}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'PaymentContinueRuleAccordanceActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+
+  <div class="padding-6">
+    <div class="form">
+      <div class="label">Продолжение платежа*</div>
+      <div class="em-title">
+        {{continueDetail?.paymentStatusName}}: {{continueDetail?.fromGatewayName}} → {{continueDetail?.toGatewayName}}
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Статус транзакции для изменения*</div>
+      <div class="input">
+        <em-autocomplete formControlName="paymentStatusId"
+          [placeholder]="'Статус платежа'"
+          [searchable]="true"
+          [selectWithOutSearch]="true"
+          [path]="apiPaymentStatusesPath" />
+        <em-validator [fieldControl]="f['paymentStatusId']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Статус синхронизации для изменения</div>
+      <div class="input">
+        <em-autocomplete formControlName="paymentSyncStatusId"
+          [placeholder]="'Статус синхронизации для изменения'"
+          [searchable]="true"
+          [selectWithOutSearch]="true"
+          [path]="apiPaymentSyncStatusesPath" />
+        <em-validator [fieldControl]="f['paymentSyncStatusId']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Сообщение</div>
+      <div class="input">
+        <input formControlName="message" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['message']?.invalid && f['message']?.touched">
+        <em-validator [fieldControl]="f['message']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

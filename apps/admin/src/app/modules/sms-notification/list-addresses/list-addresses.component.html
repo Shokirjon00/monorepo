@@ -1,0 +1,23 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'listAddressFiltersForm'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table [class.blur]="actionLoading()"
+  (checkStatus)="checkList($event)"
+  (sortChange)="sortTable($event)"
+  (link)="link($event)"
+  [optionActions]="optionActions"
+  [dataSource]="list"
+  [captions]="columns"
+  [loading]="loading()" />
+@if (actionLoading()) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

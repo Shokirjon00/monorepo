@@ -1,0 +1,88 @@
+<form class="support-center-info" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <h3 class="title-3">Информация об обращении</h3>
+    </div>
+  </em-header2>
+  <div class="support-center-info__body" [class.blur]="submitted">
+    <div class="body-container em-d-flex em-fw-wrap pb-2">
+      <div class="margin-5 em-d-flex em-fw-wrap">
+        <div class="labels-data em-g-8 v-line pr-6">
+          <div class="em-d-flex">
+            <span class="key">Название</span>
+            <span>:</span>
+            <span class="data">{{ supportDetail?.name || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Категория</span>
+            <span>:</span>
+            <span class="data">{{ supportDetail?.supportApplicationCategoryName || '-' }}</span>
+          </div>
+        </div>
+        <div class="labels-data em-g-8 pl-6">
+          <div class="em-d-flex">
+            <span class="key">Номер телефона</span>
+            <span>:</span>
+            <span class="data">{{ supportDetail?.contactPhoneNumber || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Электронная почта</span>
+            <span>:</span>
+            <span class="data">{{ supportDetail?.contactEmail || '-' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    @if (supportDetail?.canMessage && !supportDetail?.isCompleted) {
+      <div class="body-container em-d-flex support-center-info__textarea">
+        <div class="form">
+          <div class="label mb-2">Опишите проблему</div>
+          <div class="text-area">
+                    <textarea formControlName="message"
+                              placeholder="Введите сообщение"
+                              [class.is-invalid]="f['message']?.invalid && f['message']?.touched">
+                    </textarea>
+            <em-validator [fieldControl]="f['message']" />
+          </div>
+        </div>
+      </div>
+      <div>
+        @if (isUploadVisible) {
+          <em-upload-field formControlName="attachedFile"
+            [canPrint]="false"
+            [fileLimit]="5"
+            formStyle="item"
+            placeHolder="Прикрепить файл png, jpeg, jpg"
+            [fileTypes]="['image/png', 'image/jpeg', 'image/jpg']"
+            [memType]="uploadFile.memType"
+            [uploadPath]="uploadFile.uploadPath"
+            [fileStorageUrl]="fileStorageUrl"
+            [fileStorageToken]="fileStorageToken"
+           />
+        }
+
+      </div>
+        <div class="body-container pt-5 em-d-flex em-fw-wrap">
+          <div class="support-center-info__send-btn">
+            <button type="submit"
+                    class="btn-primary btn btn-md"
+                    (click)="onCreateAppeal()">
+              Отправить
+            </button>
+          </div>
+        </div>
+    }
+    @if (supportDetail?.supportApplicationMessages) {
+      @for (message of supportDetail.supportApplicationMessages; let i = $index; track message.sentAt) {
+        <em-message-card [messageData]="message"
+                         [fileStorageUrl]="fileStorageUrl"
+                         [fileStorageToken]="fileStorageToken"
+                         [fileIds]="fileIds[i]" />
+      }
+    }
+  </div>
+</form>
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

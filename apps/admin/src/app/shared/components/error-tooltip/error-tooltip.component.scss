@@ -1,0 +1,16 @@
+@import "core/scss/variables";
+
+.error-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  background: $white;
+  border: 1px solid $reject-border;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.625rem;
+  color: $reject-border;
+  font-size: 0.75rem;
+  z-index: 100;
+  box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}

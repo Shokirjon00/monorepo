@@ -1,0 +1,37 @@
+<div class="payment-continue">
+  <div class="title mb-1 text-center">Вывод средств</div>
+  <div class="sub-title mb-6 text-center">Успешно: {{ data.completedCount }}   Отказано: {{ data.failedCount }}</div>
+  <div class="dialog-table">
+    <div class="dialog-table_header h-line em-d-flex">
+      <div class="w-50">
+        <div class="dialog-table_title">ID</div>
+      </div>
+      <div class="w-50">
+        <div class="dialog-table_title">Сообщение</div>
+      </div>
+    </div>
+    @if (data.createIssueMoneyPaymentsResult.length) {
+      <div style="overflow-y: scroll;max-height: 60vh;">
+        @for (payment of data.createIssueMoneyPaymentsResult; track payment) {
+          <div class="dialog-table_body h-line em-d-flex">
+            <div class="dialog-table_value em-d-flex em-ai-center w-50">
+              <div class="mr-2">
+                <svg-icon class="em-d-flex-center"
+                          [svgStyle]="payment.isCorrect ? {stroke:'#5BB318'} : {fill:'#E91B04'}"
+                          [src]="payment.isCorrect ? 'assets/icons/check.svg' : 'assets/icons/cancel.svg'" />
+              </div>
+              <div>{{ payment.id }}</div>
+            </div>
+            <div class="dialog-table_value em-d-flex em-ai-center w-50">{{ payment.message }}</div>
+          </div>
+        }
+      </div>
+    }
+    @if (!data.createIssueMoneyPaymentsResult.length) {
+      <div class="no-data em-ta-c">Нет данных для показа</div>
+    }
+  </div>
+  <div class="mt-3 em-d-flex-center">
+    <button class="btn btn-primary padding-1 payment-continue__btn" (click)="onClose($event)">Закрыть</button>
+  </div>
+</div>

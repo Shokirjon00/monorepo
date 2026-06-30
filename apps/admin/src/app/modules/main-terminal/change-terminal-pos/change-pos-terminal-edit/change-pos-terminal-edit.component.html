@@ -1,0 +1,189 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <em-header2 [showBreadcrumb]="true">
+        <div class="d-flex-sb w-100" header-center-default>
+            <div class="title-h1">{{ changePosTerEdit()?.posName }}</div>
+            <div class="em-d-flex em-ai-center">
+                <div class="v-line mr-1 pr-1">
+                    <button type="button" class="button-tooltip"
+                            (click)="back()" [class.disabled]="submitted()">
+                        <svg-icon src="assets/icons/cancel.svg"/>
+                        <span class="tooltip-text">Отмена</span>
+                    </button>
+                </div>
+                <div class="v-line pr-1">
+                    <button type="button" class="button-tooltip"
+                            (click)="onSubmit()" [disabled]="!canSubmit()" [class.disabled]="!canSubmit()">
+                        <svg-icon src="assets/icons/save.svg"/>
+                        <span class="tooltip-text">Сохранить</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </em-header2>
+
+    @if (infoRows().length) {
+        <div class="em-d-flex em-g-64 padding-6">
+            <div class="em-d-flex em-g-16 w-50">
+                <div class="labels-data">
+                    @for (row of infoRows(); track row.key) {
+                        <div class="em-d-flex">
+                            <span class="key">{{ row.key }}</span>
+                            <span>:</span>
+                            <span class="data">
+                @if (row.isDate) {
+                    {{ row.value | dateTime }}
+                } @else {
+                    {{ row.value || '-' }}
+                }
+              </span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="pos-edit" [class.blur]="submitted()">
+        <div class="padding-6">
+            <div class="em-d-flex em-fw-wrap">
+
+                <div class="w-50 v-line pr-6">
+                    <div class="form">
+                        <div class="label">Статус терминала*</div>
+                        <div class="input">
+                            <em-autocomplete
+                                    [searchable]="true"
+                                    [selectWithOutSearch]="true"
+                                    [placeholder]="'Выберите статус терминала'"
+                                    [staticData]="terminalStatuses()"
+                                    formControlName="terminalStatusId"
+                                    [class.is-invalid]="f['terminalStatusId']?.invalid && f['terminalStatusId']?.touched"/>
+                            <em-validator [fieldControl]="f['terminalStatusId']"/>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Сегмент*</div>
+                        <div class="input">
+                            <em-autocomplete
+                                    [searchable]="true"
+                                    [selectWithOutSearch]="true"
+                                    [placeholder]="'Выберите сегмент'"
+                                    [path]="companySegment"
+                                    formControlName="segmentId"
+                                    [class.is-invalid]="f['segmentId']?.invalid && f['segmentId']?.touched"/>
+                            <em-validator [fieldControl]="f['segmentId']"/>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Модель терминала</div>
+                        <div class="input">
+                            <em-autocomplete
+                                    [searchable]="true"
+                                    [selectWithOutSearch]="true"
+                                    [placeholder]="'Введите бренд'"
+                                    [path]="terminalModels"
+                                    formControlName="terminalModelId"
+                                    [class.is-invalid]="f['terminalModelId']?.invalid && f['terminalModelId']?.touched"/>
+                            <em-validator [fieldControl]="f['terminalModelId']"/>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Номер телефона</div>
+                        <div class="input">
+                            <input formControlName="simPos" type="text"
+                                   mask="+000 (00) 000 00 00"
+                                   placeholder="+992 (ХХ) ХХХ ХХ ХХ"
+                                   class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Инвентарный номер</div>
+                        <div class="input">
+                            <input formControlName="inventoryNumber" placeholder="Введите инвентарный номер"
+                                   type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">SN терминала</div>
+                        <div class="input">
+                            <input formControlName="terminalSerialNumber"
+                                   type="text" class="form-control" placeholder="Вводите SN терминала">
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Владелец</div>
+                        <div class="input">
+                            <input formControlName="ownerName" type="text"
+                                   class="form-control" placeholder="Введите владельца">
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Менеджер</div>
+                        <div class="input">
+                            <em-autocomplete
+                                    [searchable]="true"
+                                    [selectWithOutSearch]="true"
+                                    [path]="businessManager"
+                                    [placeholder]="'Выберите менеджера'"
+                                    formControlName="managerId"/>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Бизнес менеджер</div>
+                        <div class="input">
+                            <em-autocomplete
+                                    [searchable]="true"
+                                    [selectWithOutSearch]="true"
+                                    [path]="businessManager"
+                                    [placeholder]="'Выберите бизнес менеджера'"
+                                    formControlName="businessManagerId"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-50 pl-6">
+                    @for (field of dateFields; track field.control) {
+                        <div class="form">
+                            <div class="label">{{ field.label }}</div>
+                            <div class="input">
+                                <input [formControlName]="field.control"
+                                       type="datetime-local"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form">
+                        <div class="label">Номер акта установки</div>
+                        <div class="input">
+                            <input formControlName="installationActNumber" type="number"
+                                   class="form-control" placeholder="Введите номер акта установки">
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <div class="label">Номер акта снятия</div>
+                        <div class="input">
+                            <input formControlName="removalActNumber" type="number"
+                                   class="form-control" placeholder="Введите номер акта снятия">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @if (submitted()) {
+        <em-eb-loader class="form-loader"/>
+    }
+</form>
+<em-toast/>

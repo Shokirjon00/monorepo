@@ -1,0 +1,26 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [actions]="actions"
+  [filterFields]="columns"
+  [enableDropdown] = true
+  [filterStorageKey]="'department-code-list'">
+
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+          [columns]="columns" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (edit)="edit($event)"
+  [dataSource]="departmentCodes"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [loading]="loading()" />

@@ -1,0 +1,187 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ bankDetail?.name || "Добавить банк" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'BankActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6" [class.blur]="submitted">
+    <div class="em-d-flex em-fw-wrap">
+      <div class="w-50 v-line pr-6">
+        <div class="form">
+          <div class="label">Наименование*</div>
+          <div class="input">
+            <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">ИНН*</div>
+          <div class="input">
+            <input formControlName="inn" type="text" class="form-control" placeholder="Введите ИНН"
+                   mask="000 000 000"
+                   [class.is-invalid]="f['inn']?.invalid && f['inn']?.touched">
+            <em-validator [fieldControl]="f['inn']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">ЕИН*</div>
+          <div class="input">
+            <input formControlName="ein" type="text" class="form-control" placeholder="Введите ЕИН"
+                   [class.is-invalid]="f['ein']?.invalid && f['ein']?.touched">
+            <em-validator [fieldControl]="f['ein']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Тип банка*</div>
+          <div class="input">
+            <em-autocomplete [searchable]="true"
+              [selectWithOutSearch]="true"
+              [placeholder]="'Выберите банк'"
+              formControlName="bankTypeId"
+              [path]="getBankTypes" />
+            <em-validator [fieldControl]="f['bankTypeId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Код ABS</div>
+          <div class="input">
+            <input formControlName="extCodeAbs" type="text" class="form-control" placeholder="Введите код ABS"
+                   [class.is-invalid]="f['extCodeAbs']?.invalid && f['extCodeAbs']?.touched">
+            <em-validator [fieldControl]="f['extCodeAbs']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Код EQMS</div>
+          <div class="input">
+            <input formControlName="extCodeEqms" type="number" class="form-control" placeholder="Введите код EQMS"
+                   [class.is-invalid]="f['extCodeEqms']?.invalid && f['extCodeEqms']?.touched">
+            <em-validator [fieldControl]="f['extCodeEqms']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Позиция*</div>
+          <div class="input">
+            <input formControlName="position" type="number" class="form-control" placeholder="Введите значение"
+                   [class.is-invalid]="f['position']?.invalid && f['position']?.touched">
+            <em-validator [fieldControl]="f['position']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="em-d-flex em-ai-center em-g-8">
+            <div class="toggle-title">Возможность возврата платежей</div>
+            <label class="toggle-checkbox">
+              <input type="checkbox" formControlName="canRefund">
+              <span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="form">
+          <div class="label">Счет к получению</div>
+          <div class="input">
+            <input formControlName="debitAccountAbsCode" type="text" class="form-control" placeholder="Введите значение"
+                   [class.is-invalid]="f['debitAccountAbsCode']?.invalid && f['debitAccountAbsCode']?.touched">
+            <em-validator [fieldControl]="f['debitAccountAbsCode']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Счет к оплате</div>
+          <div class="input">
+            <input formControlName="creditAccountAbsCode" type="text" class="form-control" placeholder="Введите значение"
+                   [class.is-invalid]="f['creditAccountAbsCode']?.invalid && f['creditAccountAbsCode']?.touched">
+            <em-validator [fieldControl]="f['creditAccountAbsCode']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Кор-счет</div>
+          <div class="input">
+            <input formControlName="correspondentAccountNumber" type="text" class="form-control"
+                   placeholder="Введите кор-счет"
+                   mask="0000 0000 0000 0000 0000"
+                   [class.is-invalid]="f['correspondentAccountNumber']?.invalid && f['correspondentAccountNumber']?.touched">
+            <em-validator [fieldControl]="f['correspondentAccountNumber']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Кор.счет в EQMS</div>
+          <div class="input">
+            <input formControlName="correspondentAccountNumberEqms" type="text" class="form-control"
+                   placeholder="Введите Кор.счет в EQMS"
+                   [class.is-invalid]="f['correspondentAccountNumberEqms']?.invalid && f['correspondentAccountNumberEqms']?.touched">
+            <em-validator [fieldControl]="f['correspondentAccountNumberEqms']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">БИК</div>
+          <div class="input">
+            <input formControlName="bic" type="text" class="form-control" placeholder="Введите БИК"
+                   mask="000 000 000"
+                   [class.is-invalid]="f['bic']?.invalid && f['bic']?.touched">
+            <em-validator [fieldControl]="f['bic']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">БИКEQMS</div>
+          <div class="input">
+            <input formControlName="bicEqms" type="text" class="form-control" placeholder="Введите БИКEQMS"
+                   [class.is-invalid]="f['bicEqms']?.invalid && f['bicEqms']?.touched">
+            <em-validator [fieldControl]="f['bicEqms']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Приоритет*</div>
+          <div class="input">
+            <input formControlName="priority" type="number" class="form-control" placeholder="Введите значение"
+                   [class.is-invalid]="f['priority']?.invalid && f['priority']?.touched">
+            <em-validator [fieldControl]="f['priority']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Адрес</div>
+          <div class="input">
+            <input formControlName="address" type="text" class="form-control" placeholder="Введите адрес"
+                   [class.is-invalid]="f['address']?.invalid && f['address']?.touched">
+            <em-validator [fieldControl]="f['address']" />
+          </div>
+        </div>
+        <ng-container *ngxPermissionsOnly="'BankUploadIcon'">
+          <em-upload-logo formControlName="iconFileStorageId" class="mr-3"
+                  [action]="'логотип'"
+                  [imgLabel]="'Логотип банка'"
+                  [fileStorageToken]="fileStorageToken"
+                  [fileStorageUrl]="fileStorageUrl"
+                  [uploadFile]="uploadFile"
+                  [formDataKey]="customLogoKey" />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+
+<em-toast />

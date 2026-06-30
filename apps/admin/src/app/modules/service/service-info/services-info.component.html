@@ -1,0 +1,59 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [pageTitle]="header.title">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </ng-container>
+</em-header2>
+<div class="padding-7 em-d-flex em-dr-columm em-g-8">
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>Название сервиса</span><span>:</span></div>
+      <div><span>Код</span><span>:</span></div>
+      <div><span>Код АБС</span><span>:</span></div>
+      <div><span>Код процессинга</span><span>:</span></div>
+      <div><span>Шлюз</span><span>:</span></div>
+      <div><span>Пазиция</span><span>:</span></div>
+      <div><span>Коммисия</span><span>:</span></div>
+      <div><span>Создан</span><span>:</span></div>
+      <div><span>Создал</span><span>:</span></div>
+      <div><span>Изменено</span><span>:</span></div>
+      <div><span>Изменил</span><span>:</span></div>
+      <div><span>Мин.сумма</span><span>:</span></div>
+      <div><span>Мак.сумма</span><span>:</span></div>
+      <div><span>Иконка</span></div>
+
+    </div>
+    <div class="data">
+      <span>{{ servicesDetail?.name || '-' }}</span>
+      <span>{{ servicesDetail?.code || '-' }}</span>
+      <span>{{ servicesDetail?.extCodeAbs || '-' }}</span>
+      <span>{{ servicesDetail?.extCodeProcessing || '-' }}</span>
+      <span>{{ servicesDetail?.gatewayName || '-' }}</span>
+      <span>{{ servicesDetail?.position || '-' }}</span>
+      <span>{{ servicesDetail?.commissionValue || '-' }}</span>
+      <span>{{ servicesDetail?.createdAt | dateTime }}</span>
+      <span>{{ servicesDetail?.createdByName || '-' }}</span>
+      <span>{{ servicesDetail?.modifiedAt | dateTime }}</span>
+      <span>{{ servicesDetail?.modifiedByName || '-' }}</span>
+      <span>{{ servicesDetail?.minValue || '-' }}</span>
+      <span>{{ servicesDetail?.maxValue || '-' }}</span>
+    </div>
+  </div>
+  <div class="images">
+    @if (iconId) {
+      <img [src]="iconId" alt="" class="service-icon">
+    }
+  </div>
+  @if ((!iconId) && !loading) {
+    <div class="no-data">
+      Изображения отсутствуют
+    </div>
+  }
+</div>
+

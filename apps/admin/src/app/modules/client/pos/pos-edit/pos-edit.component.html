@@ -1,0 +1,176 @@
+<form class="p-relatives" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1">{{posDetail?.name ? 'Редактировать кассу' : 'Добавить кассу' }}</div>
+    <div class="em-d-flex">
+      <div class="v-line mr-1 pr-1">
+        <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/cancel.svg" />
+          <span class="tooltip-text">Отмена</span>
+        </button>
+      </div>
+      <div class="v-line pr-1">
+        <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/save.svg" />
+          <span class="tooltip-text">Сохранить</span>
+        </button>
+      </div>
+      <div *ngxPermissionsOnly="'PosActiveStatus'" class="checkbox-toggle ml-2">
+        <div class="toggle-title">Активировать</div>
+        <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+      </div>
+    </div>
+  </div>
+  </em-header2>
+  <div class="pos-edit" [class.blur]="submitted">
+    <div class="padding-6">
+      <div class="em-d-flex em-fw-wrap">
+        <div class="w-50 v-line pr-6">
+          <div class="form">
+            <div class="label">ID в EQMS</div>
+            <div class="input">
+              <input type="text"
+                     class="form-control"
+                     formControlName="extCodeEqms"
+                     [class.is-invalid]="f['extCodeEqms']?.invalid && f['extCodeEqms']?.touched"
+                     placeholder="Введите ID в EQMS">
+              <em-validator [fieldControl]="f['extCodeEqms']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Наименование кассы*</div>
+            <div class="input">
+              <input type="text"
+                     class="form-control"
+                     formControlName="name"
+                     [class.is-invalid]="f['name']?.invalid && f['name']?.touched"
+                     placeholder="Введите наименование">
+              <em-validator [fieldControl]="f['name']" />
+            </div>
+          </div>
+          <div class="form" formGroupName="posContactJson">
+            <div class="form">
+              <div class="label">ФИО кассира</div>
+              <div class="input">
+                <input type="text" class="form-control"
+                       formControlName="cashierName"
+                       placeholder="ФИО кассира"
+                       [class.is-invalid]="posContactJsonControls['cashierName']?.invalid && posContactJsonControls['cashierName']?.touched">
+                <em-validator [fieldControl]="posContactJsonControls['cashierName']" />
+              </div>
+            </div>
+            <div class="form" formArrayName="smsPhoneNumbers">
+              @for (smsPhoneNumber of smsPhoneNumbers.controls; track smsPhoneNumber; let i = $index) {
+                <div class="mb-2">
+                  <div class="label">Номер телефона*</div>
+                  <div class="input add-number-pos">
+                    <input type="text" class="form-control"
+                           mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                           [class.is-invalid]="smsPhoneNumber?.invalid && smsPhoneNumber?.touched"
+                           [formControlName]="i"
+                           placeholder="+992 (XX) XXX XXXX">
+                    @if (i !== 0) {
+                      <div class="add-phone" (click)="removePhoneNumber(i)">
+                        <svg-icon class="em-d-flex-center ml-2" src="assets/icons/delete.svg" />
+                      </div>
+                    }
+                    <em-validator [fieldControl]="smsPhoneNumber" />
+                  </div>
+                </div>
+              }
+              <em-validator [fieldControl]="smsPhoneNumbers" />
+            </div>
+            @if (smsPhoneNumbers.value.length < 4) {
+              <div class="em-d-flex em-ai-center em-g-8 add-number mb-3" (click)="addPhoneNumber()">
+                <svg-icon src="assets/icons/plus.svg" />
+                Добавить номер телефона
+              </div>
+            }
+            <div class="form">
+              <div class="label">Номер телефона в EQMS</div>
+              <div class="input">
+                <input type="text"
+                       class="form-control"
+                       placeholder="+992 (XX) XXX XX XX"
+                       mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                       formControlName="eqmsPhoneNumber"
+                       [class.is-invalid]="f['eqmsPhoneNumber']?.invalid && f['eqmsPhoneNumber']?.touched">
+                <em-validator [fieldControl]="f['eqmsPhoneNumber']" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-50 pl-6">
+          <div class="form" formGroupName="posContactJson">
+            <div class="form" formArrayName="emails">
+              @for (email of emails.controls; track email; let i = $index) {
+                <div>
+                  <div class="label">Электронная почта</div>
+                  <div class="input">
+                    <input type="text" class="form-control" [formControlName]="i" placeholder="example@domain.ru">
+                    <em-validator [fieldControl]="email" />
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Тип кассы*</div>
+            <div class="input">
+              <em-simple-select-list formControlName="posTypeId"
+                [dataSource]="posTypesValue"
+                action="Выберите тип кассы" />
+              <em-validator [fieldControl]="f['posTypeId']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Тип интеграции*</div>
+            <div class="input">
+              <em-simple-select-list action="Выберите тип интеграции"
+                formControlName="integrationTypeId"
+                [dataSource]="integrationsTypeValue" />
+              <em-validator [fieldControl]="f['integrationTypeId']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">SN Терминала</div>
+            <div class="input">
+              <input type="text"
+                     class="form-control"
+                     formControlName="terminalSerialNumber"
+                     [class.is-invalid]="f['terminalSerialNumber']?.invalid && f['terminalSerialNumber']?.touched"
+                     placeholder="Введите SN терминала">
+              <em-validator [fieldControl]="f['terminalSerialNumber']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">ID Терминала</div>
+            <div class="input">
+              <input type="text"
+                     class="form-control"
+                     formControlName="terminalId"
+                     [class.is-invalid]="f['terminalId']?.invalid && f['terminalId']?.touched"
+                     placeholder="Введите ID терминала">
+              <em-validator [fieldControl]="f['terminalId']" />
+            </div>
+          </div>
+          <div class="form" *ngxPermissionsOnly="'PosEditSingleQR'">
+            <div class="label">Текст QR</div>
+            <div class="input">
+              <input type="text"
+                     class="form-control"
+                     formControlName="qrText"
+                     [class.is-invalid]="f['qrText']?.invalid && f['qrText']?.touched"
+                     placeholder="Введите текст QR">
+              <em-validator [fieldControl]="f['qrText']" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

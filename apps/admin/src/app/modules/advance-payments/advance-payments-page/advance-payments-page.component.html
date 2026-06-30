@@ -1,0 +1,39 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'advance-payments-filters'">
+  @if (paymentStatusAmounts) {
+    <div class="em-d-flex em-g-8 status-scroll" header-center-actions>
+      @for (status of paymentStatusAmounts; track status) {
+        <div class="em-d-flex status-card">
+          <div [ngClass]="status.statusCode.toLowerCase()" class="em-d-flex amount">
+            <div [ngClass]="status.statusCode.toLowerCase()" class="amount-status">{{ status.statusName }}:</div>
+            <div [ngClass]="status.statusCode.toLowerCase()" class="text-wrap">
+              {{ status.amount | mask:  'separator' }}с / {{ status.count }}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  }
+  <ng-container header-actions>
+      <div class="d-flex-sb pl-3 v-line-left">
+        @for (action of actions; track action) {
+          <em-actions [actionData]="action" />
+        }
+      </div>
+    @if (paginate) {
+      <em-pagination class="pl-3" [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (link)="link($event)"
+  [dataSource]="advances"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />

@@ -1,0 +1,159 @@
+@import "core/scss/variables";
+@import 'core/scss/mixins/breakpoints';
+
+.dialog {
+  max-width: 882px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  padding: 0;
+  border-radius: 0;
+
+  &-close {
+    background-image: url('/assets/icons/close.svg');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+  }
+
+  &-left {
+    .image {
+      width: 100%;
+      display: block;
+    }
+
+    .features-title {
+      padding: 3rem;
+      font-weight: 600;
+      font-size: 2.5rem;
+      line-height: 2.75rem;
+      color: $gunmetal-blue;
+      margin: 0;
+    }
+  }
+
+  .mobile-background {
+    display: none;
+  }
+
+  &-right {
+    padding: 2rem 2rem 2rem 1rem;
+    @include flex_column();
+    justify-content: space-evenly;
+    gap: 1rem;
+
+    &-title {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: $midnight-blue;
+    }
+
+    &-items {
+      height: 44vh;
+      overflow-y: auto;
+
+      .item {
+        &-description {
+          font-size: 1rem;
+          line-height: 1.5rem;
+          color: $slate-gray;
+          margin: 0 0 0.75rem;
+        }
+      }
+
+      .loader {
+        @include flex_justify_center();
+      }
+    }
+
+    &-action {
+      .btn-primary {
+        margin: 0 auto;
+        width: 100%;
+        height: 60px;
+        background-color: $royal-blue;
+        color: $white;
+        border-radius: 6px;
+        border: none;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .dialog {
+    overflow-y: auto;
+    grid-template-columns: 100%;
+    padding: 0;
+
+    &-left {
+      .image {
+        display: none;
+      }
+
+      .features-title {
+        padding: 2rem 2rem 0 2rem;
+        color: $indigo-blue;
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 40px;
+      }
+    }
+
+    &-right {
+      padding: 0 2rem;
+
+      &-title {
+        display: none;
+      }
+
+      &-items {
+        height: 35vh;
+
+        .item {
+          &-title {
+            font-size: 1.25rem;
+            color: $text-color;
+            margin: 2rem 0 1rem;
+          }
+
+          &-description {
+            line-height: 24px;
+          }
+        }
+      }
+
+      &-action {
+        display: none;
+      }
+    }
+
+    .mobile-background {
+      display: block;
+      margin-top: 2rem;
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      &-image {
+        width: 100%;
+      }
+
+      .btn-primary {
+        position: absolute;
+        bottom: 25px;
+        width: 276px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

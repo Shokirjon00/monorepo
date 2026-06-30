@@ -1,0 +1,367 @@
+<form class="w-100 p-relative" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1"> {{ updateUrl === 'new' ? 'Новая торговая точка' : 'Редактировать торговую точку' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg"/>
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg"/>
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div class="checkbox-toggle mr-2 pr-2 ml-2 v-line">
+          <div class="toggle-title">Показать в главном</div>
+          <input id="isShowOnMain" type="checkbox" formControlName="isShowOnMain">
+          <label for="isShowOnMain">Toggle</label>
+        </div>
+        <div *ngxPermissionsOnly="'MerchantVerify'" class="checkbox-toggle">
+          <div class="toggle-title">Проверено</div>
+          <input type="checkbox" id="verify" formControlName="isVerified"
+                 (change)="changeIsVerified(form.value.isVerified)">
+          <label for="verify">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="merchant-edit" [class.blur]="submitted">
+    <div class="padding-6 h-line">
+      <div class="em-d-flex em-fw-wrap">
+        <div class="w-50 v-line pr-6">
+          <div class="form">
+            <div class="label">ID в EQMS</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="extCodeEqms"
+                     [class.is-invalid]="f['extCodeEqms']?.invalid && f['extCodeEqms']?.touched"
+                     placeholder="Введите ID в EQMS">
+              <em-validator [fieldControl]="f['extCodeEqms']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Наименование точки*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="name" placeholder="Введите наименование"
+                     [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+              <em-validator [fieldControl]="f['name']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Регион*</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                               [selectWithOutSearch]="true"
+                               [placeholder]="'Регион'"
+                               [customFilter]="countryFilter"
+                               formControlName="regionId"
+                               (changed)="changedRegion($event)"
+                               [path]="regionApi"/>
+              <em-validator [fieldControl]="f['regionId']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Район*</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                               [selectWithOutSearch]="true"
+                               [placeholder]="'Район'"
+                               [customFilter]="regionFilter"
+                               formControlName="areaId"
+                               (changed)="changedArea($event)"
+                               [show]="areaDisabled"
+                               [path]="areaApi"/>
+              <em-validator [fieldControl]="f['areaId']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Город*</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                               [selectWithOutSearch]="true"
+                               [placeholder]="'Город'"
+                               [customFilter]="areaFilter"
+                               formControlName="cityId"
+                               [show]="cityDisabled"
+                               [path]="cityApi"/>
+              <em-validator [fieldControl]="f['cityId']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Адрес*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="address" placeholder="Введите адрес"
+                     [class.is-invalid]="f['address']?.invalid && f['address']?.touched">
+              <em-validator [fieldControl]="f['address']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Позиция</div>
+            <div class="input">
+              <input type="number" class="form-control" formControlName="position"
+                     [class.is-invalid]="f['position']?.invalid && f['position']?.touched"
+                     placeholder="Введите позицию">
+              <em-validator [fieldControl]="f['position']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Подробное описание точки</div>
+            <div class="textarea">
+                      <textarea class="form-control" formControlName="description"
+                                [class.is-invalid]="f['description']?.invalid && f['description']?.touched"
+                                placeholder="Введите подробное описание точки">
+                      </textarea>
+              <em-validator [fieldControl]="f['description']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Рабочие дни*</div>
+            <div class="input em-g-8 em-d-flex items-center">
+              <em-simple-select-list formControlName="merchantWorkDayId"
+                                     [dataSource]="workingDays"
+                                     action="Выберите рабочие дни"/>
+
+              <div class="em-d-flex items-center c-pointer" (click)="openWorkingDayModal()">
+                <svg-icon class="em-d-flex-center" src="assets/icons/plus.svg"/>
+              </div>
+            </div>
+            <em-validator [fieldControl]="f['merchantWorkDayId']"/>
+          </div>
+        </div>
+        <div class="w-50 pl-6">
+          <div formGroupName="merchantContactJson">
+            <div class="form">
+              <div class="label">Телефон точки</div>
+              <div class="input">
+                <input type="text" class="form-control" formControlName="phoneNumber" placeholder="+992 (XX) XXX XX XX"
+                       mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                       [class.is-invalid]="contactsControls['phoneNumber']?.invalid && contactsControls['phoneNumber']?.touched">
+                <em-validator [fieldControl]="contactsControls['phoneNumber']"/>
+              </div>
+            </div>
+            <div class="form">
+              <div class="label">E-mail</div>
+              <div class="input">
+                <input type="text" class="form-control" formControlName="email" placeholder="Введите почту"
+                       [class.is-invalid]="contactsControls['email']?.invalid && contactsControls['email']?.touched">
+                <em-validator [fieldControl]="contactsControls['email']"/>
+              </div>
+            </div>
+            <div class="form">
+              <div class="label">Владелец</div>
+              <div class="input">
+                <input type="text" class="form-control" formControlName="managerName"
+                       placeholder="Введите имя владельца"
+                       [class.is-invalid]="contactsControls['managerName']?.invalid && contactsControls['managerName']?.touched">
+                <em-validator [fieldControl]="contactsControls['managerName']"/>
+              </div>
+            </div>
+            <div class="form">
+              <div class="label">Телефон владельца</div>
+              <div class="input">
+                <input type="text" class="form-control" formControlName="managerPhoneNumber"
+                       placeholder="+992 (XX) XXX XX XX"
+                       mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                       [class.is-invalid]="contactsControls['managerPhoneNumber']?.invalid && contactsControls['managerPhoneNumber']?.touched">
+                <em-validator [fieldControl]="contactsControls['managerPhoneNumber']"/>
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Категория*</div>
+            <div class="input">
+              <em-autocomplete formControlName="categoryId"
+                               (changed)="changeCategories($event)"
+                               [searchable]="true"
+                               [selectWithOutSearch]="true"
+                               [placeholder]="'Категория'"
+                               [path]="categoryApi"/>
+              <em-validator [fieldControl]="f['categoryId']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Подкатегория</div>
+            <div class="input">
+              <em-simple-select-list formControlName="subCategoryId"
+                                     action="Выберите подкатегорию"
+                                     [dataSource]="subCategories"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Шаблон назначения</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                               [selectWithOutSearch]="true"
+                               [placeholder]="'Выберите шаблон назначения'"
+                               formControlName="issueMoneyPaymentPurposeId"
+                               [path]="paymentPurposesApi"/>
+              <em-validator [fieldControl]="f['issueMoneyPaymentPurposeId']"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-6 h-line">
+      <div class="title-h1 mb-6">Реквизиты</div>
+      <div class="em-d-flex em-fw-wrap">
+        <div class="em-d-flex em-dr-columm w-50 v-line pr-7">
+          @if (bankName) {
+            <div class="form">
+              <div class="label">Банк</div>
+              <div class="input">
+                <input type="text" [value]="bankName" class="form-control disabled"
+                       placeholder="Выберете расчётный счёт" readonly>
+              </div>
+            </div>
+          }
+          <div class="form">
+            <div class="label">Расчётный счёт</div>
+            <div class="input">
+              <em-simple-select-list formControlName="paymentAccountId"
+                                     optionLabel="number"
+                                     action="Выберите расчётный счёт"
+                                     (changed)="getBankName($event)"
+                                     [dataSource]="requisites"
+                                     (scrolled)="onLoadMore()"
+                                     [pagination]="pagination"/>
+              <em-validator [fieldControl]="f['paymentAccountId']"/>
+            </div>
+          </div>
+          @if (isTreasury()) {
+            <div class="em-title em-fw-700 mb-2">Настройки МинФина</div>
+            <div class="form">
+              <div class="label">Класс дохода*</div>
+              <div class="input">
+                <em-autocomplete [searchable]="true"
+                                 [selectWithOutSearch]="true"
+                                 [placeholder]="'Выберите класс дохода'"
+                                 formControlName="merchantGovernmentIncomeId"
+                                 [path]="incomeApi"/>
+                <em-validator [fieldControl]="f['merchantGovernmentIncomeId']"/>
+              </div>
+            </div>
+
+            <div class="form">
+              <div class="label">Ведомство*</div>
+              <div class="input">
+                <em-autocomplete [searchable]="true"
+                                 [selectWithOutSearch]="true"
+                                 [placeholder]="'Выберите ведомство'"
+                                 formControlName="merchantGovernmentDepartmentId"
+                                 [path]="departmentApi"/>
+                <em-validator [fieldControl]="f['merchantGovernmentDepartmentId']"/>
+              </div>
+            </div>
+
+            <div class="form">
+              <div class="label">Регион*</div>
+              <div class="input">
+                <em-autocomplete [searchable]="true"
+                                 [selectWithOutSearch]="true"
+                                 [placeholder]="'Выберите регион'"
+                                 [customFilter]="regionFilter"
+                                 formControlName="merchantGovernmentAreaId"
+                                 [path]="areaApi"/>
+                <em-validator [fieldControl]="f['merchantGovernmentAreaId']"/>
+              </div>
+            </div>
+          }
+
+        </div>
+        <div class="em-d-flex em-dr-columm w-50 pl-6">
+          <div class="em-d-flex em-g-8 mb-5">
+            <div class="toggle-title">Перевод на счёт карты</div>
+          </div>
+          @if (cardBankName) {
+            <div class="form disabled">
+              <div class="label">Банк</div>
+              <div class="input">
+                <input type="text" [value]="cardBankName" class="form-control disabled"
+                       placeholder="Выберете расчётный счёт" readonly>
+              </div>
+            </div>
+          }
+
+          @if (receiver) {
+            <div class="form disabled">
+              <div class="label">ФИО</div>
+              <div class="input">
+                <input type="text" [value]="receiver" class="form-control disabled" placeholder="Напишите ФИО" readonly>
+              </div>
+            </div>
+          }
+
+          @if (inn) {
+            <div class="form disabled">
+              <div class="label">ИНН</div>
+              <div class="input">
+                <input type="text" [value]="inn" class="form-control disabled" placeholder="Укажите ИНН" readonly>
+              </div>
+            </div>
+          }
+          <div class="form" [ngClass]="isHidden() ? '' : 'disabled'">
+            <div class="label">Расчётный счёт</div>
+            <div class="input">
+              <em-simple-select-list [optionLabel]="'number'"
+                                     [selected]="clearFields"
+                                     action="Выберите расчётный счёт"
+                                     formControlName="paymentCardAccountId"
+                                     (changed)="getCardBankName($event)"
+                                     [dataSource]="requisitesCard"/>
+              <em-validator [fieldControl]="f['paymentCardAccountId']"/>
+            </div>
+          </div>
+          <div class="form" [class.hidden]="!form.controls['paymentAccountId'].value">
+            <label class="checkbox em-d-flex em-ai-center">
+              <input type="checkbox" class="mr-2" (change)="getCheckedRequisite()" [class.hidden]="isHidden()">
+              <p class="mb-0">Перевод на счёт карты</p>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-6">
+      <div class="title-h1 mb-6">Логотип торговой точки</div>
+      <div class="form em-d-flex em-g-16">
+        <em-upload-logo *ngxPermissionsOnly="'MerchantUploadLogo'"
+                        formControlName="imgLoginMain" class="mr-3"
+                        [action]="'фото на главном экране'"
+                        [imgLabel]="'Картинка главного экрана'"
+                        [fileStorageToken]="fileStorageToken"
+                        [fileStorageUrl]="fileStorageUrl"
+                        [uploadFile]="uploadLogo.bind(this)"
+                        [formDataKey]="customLogoKey"/>
+        <em-upload-logo *ngxPermissionsOnly="'MerchantUploadLogo'"
+                        formControlName="imgLogoList" class="mr-3"
+                        [action]="'логотип в списке'"
+                        [imgLabel]="'Логотип в списке'"
+                        [fileStorageToken]="fileStorageToken"
+                        [fileStorageUrl]="fileStorageUrl"
+                        [uploadFile]="uploadLogo.bind(this)"
+                        [formDataKey]="customLogoKey"/>
+        <em-upload-logo *ngxPermissionsOnly="'MerchantUploadLogo'"
+                        formControlName="imgLogoDetail"
+                        [action]="'логотип подробно'"
+                        [imgLabel]="'Логотип подробно'"
+                        [fileStorageToken]="fileStorageToken"
+                        [fileStorageUrl]="fileStorageUrl"
+                        [uploadFile]="uploadLogo.bind(this)"
+                        [formDataKey]="customLogoKey"/>
+
+      </div>
+    </div>
+    <div class="padding-6">
+      <div class="title-h1 mb-6">На карте</div>
+      <em-map [latitude]="merchantDetail?.latitude"
+              [longitude]="merchantDetail?.longitude"
+              (changed)="changeMap($event)"/>
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader"/>
+  }
+</form>
+<em-toast/>

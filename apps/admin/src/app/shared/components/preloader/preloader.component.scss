@@ -1,0 +1,79 @@
+@use "sass:math";
+@import "core/scss/variables";
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.preloader {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+}
+
+.animated {
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+}
+
+
+.preloaderContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  min-height: 64px;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.lds-spinner {
+  display: block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+
+@for $i from 1 through 12 {
+  .lds-spinner div:nth-child(#{$i}) {
+    transform: (rotate($i * 30deg));
+    animation-delay: #{-1.1 - math.div($i, 10)}s;
+  }
+}
+.lds-spinner div {
+  transform-origin: 32px 32px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 29px;
+  width: 5px;
+  height: 14px;
+  border-radius: 20%;
+  background: $primary-color;
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

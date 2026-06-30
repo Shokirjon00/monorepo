@@ -1,0 +1,18 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'single-qr'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="singleQr"
+  [captions]="columns"
+  [loading]="loading()"
+  [captionKey]="captionKey"
+  [fileStorageUrl]="fileStorageUrl"
+  [fileStorageToken]="fileStorageToken" />

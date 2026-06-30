@@ -1,0 +1,157 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex">
+      <div class="v-line mr-1 pr-1" *ngxPermissionsOnly="'PosQrToAttachPosTerminal'">
+        <button type="button" class="button-tooltip" (click)="openQrDialog()">
+          <svg-icon src="assets/icons/qr.svg" />
+          <span class="tooltip-text">Подключения POS-терминала</span>
+        </button>
+      </div>
+      <button type="button" class="button-tooltip" (click)="navigateToPosUpdate()" *ngxPermissionsOnly="'PosUpdate'">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать кассу</span>
+      </button>
+    </div>
+  </div>
+</em-header2>
+@if (posDetail) {
+  <div class="em-d-flex em-g-64 padding-6">
+    <div class="em-d-flex em-g-16 w-50 v-line">
+      <div class="labels-data">
+        <div class="em-d-flex">
+          <span class="key">ID кассы</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.id || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">ID в EQMS</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.extCodeEqms || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">ID Терминала</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.terminalId || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Названия кассы</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.name || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Адрес</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.address || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">ФИО кассира</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.posContactJson.cashierName || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Номер телефона</span>
+          <span>:</span>
+          <span
+            class="data em-dr-row em-fw-wrap">@for (phone of posDetail.posContactJson.smsPhoneNumbers; track phone) {
+            <span>{{ phone }},</span>
+          }</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Номер телефона в EQMS</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.posContactJson.eqmsPhoneNumber || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Почта</span>
+          <span>:</span>
+          <span class="data">{{ posDetail.posContactJson.emails || '-' }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="em-d-flex em-g-16 w-50 v-line">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">Тип кассы</span><span>:</span> <span
+          class="data">{{ posDetail.posTypeName || '-' }}</span>
+        </div>
+        <div class="em-d-flex"><span class="key">Тип интеграции</span><span>:</span> <span
+          class="data">{{ posDetail.integrationType || '-' }}</span>
+        </div>
+        <div class="em-d-flex"><span class="key">Статус</span><span>:</span> <span
+          class="data">{{ posDetail.statusName || '-' }}</span>
+        </div>
+        <div class="em-d-flex"><span class="key">Точка</span><span>:</span> <span
+          class="data">{{ posDetail.merchantName || '-' }}</span>
+        </div>
+        <div class="em-d-flex"><span class="key">Дата последней синхронизации</span><span>:</span><span
+          class="data">{{ posDetail.lastSyncEqms | dateTime }}</span></div>
+      </div>
+    </div>
+  </div>
+}
+<div class="padding-6">
+  @if (eQMSQrCodeSrc) {
+    <div class="mb-3">
+      <h2 class="em-fw-700">Размеры QR</h2>
+      <div class="em-d-flex em-fw-wrap em-g-40 mr-7">
+        @for (qrSize of qrSizes; track qrSize; let i = $index) {
+          <div>
+            <div class="em-d-flex em-g-40">
+              <label class="l-radio">
+                <input type="radio"
+                       (click)="changeQrSize(qrSize)"
+                       [checked]="qrSize.isSelected">
+                <span> {{ qrSize.value }}</span>
+              </label>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+  @if (eQMSQrCodeSrc) {
+    <div class="em-d-flex mb-3">
+      <div class="mb-0">
+        <ng-container *ngxPermissionsOnly="'PosQrCodeGeneration'">
+          <a
+            class="em-primary-color c-pointer em-fw-700 mr-3"
+            (click)="downloadQrWithBackground()">
+            Скачать QR
+          </a>
+        </ng-container>
+      </div>
+      <div class="em-primary-color c-pointer em-fw-700" [previewOnly]="false" [useExistingCss]="true"
+           printSectionId="qr" emPrint>Распечатать
+      </div>
+    </div>
+  }
+  @if (eQMSQrCode) {
+    <div #qrContainer id="qr" class="em-d-flex em-ai-center">
+      <div
+        [ngStyle]="{ 'background-image': 'url(&quot;assets/images/'+ selectedQrSize +'.png&quot;)', 'background-position': 'center','background-repeat': 'no-repeat' }"
+        class="qr" [className]="'qr-' + selectedQrSize ">
+        <div class="qr-code">
+          <div class="qr-code-body" [className]="'qr-code-body-' + selectedQrSize ">
+            <div class="qr-code-title" [className]="'qr-code-title-' + selectedQrSize ">{{ posDetail?.name }}</div>
+            <qrcode [class.qr-margin-left]="isTitleLong()"
+                    class="qr-svg "
+                    [qrdata]="eQMSQrCode"
+                    [allowEmptyString]="true"
+                    [elementType]="'svg'"
+                    [width]="qrBody"
+                    [imageWidth]="50"
+                    [imageHeight]="50"
+                    [colorDark]="'#293241'"
+                    [colorLight]="'#EBEBEB'"
+                    (qrCodeURL)="changeURL($event,'eqms')"
+             />
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+@if (loading) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

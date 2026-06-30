@@ -1,0 +1,43 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.sms-text {
+  .form {
+    max-width: 100%;
+  }
+}
+  .chips {
+    width: 100%;
+    padding-top: 12px;
+
+    &-input {
+      width: 100%;
+    }
+  }
+
+mat-chip.mat-chip.mat-focus-indicator.mat-primary.mat-standard-chip.mat-chip-with-trailing-icon.ng-star-inserted {
+  background: #e5e5e5;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+::ng-deep .mdc-text-field--filled {
+  background-color: #ffffff !important;
+  padding: 0 !important;
+  &:hover {
+    background-color: #ffffff !important;
+    .mat-mdc-form-field-focus-overlay {
+      opacity: 0 !important;
+    }
+  }
+}
+
+::ng-deep .mat-mdc-form-field-focus-overlay {
+  background-color: #ffffff !important;
+  border: none;
+}

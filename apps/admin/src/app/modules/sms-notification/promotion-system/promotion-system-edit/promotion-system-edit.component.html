@@ -1,0 +1,126 @@
+<form class="w-100" [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <span class="title-h1">{{ smsNotificationsDetail?.name || "Редактировать" }}</span>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div class="checkbox-toggle ml-1">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch"></label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="balance-limit">
+    <div class="em-d-flex pt-6 pb-6">
+      <div class="w-50 pr-6 pl-6 v-line">
+        <div class="form">
+          <div class="label">Токен телеграм-бота</div>
+          <div class="input">
+            <input formControlName="botHash" type="text" class="form-control" placeholder="Адрес бота"
+                   [class.is-invalid]="f['botHash']?.invalid && f['botHash']?.touched">
+            <em-validator [fieldControl]="f['botHash']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">ID Группы</div>
+          <div class="input">
+            <mat-form-field appearance="fill">
+              <mat-chip-grid #chipList aria-label="Group IDs">
+                @for (groupId of groupsId.controls; track groupId; let i = $index) {
+                  <mat-chip-row
+                    [removable]="removable"
+                    (removed)="remove(groupId.value)">
+                    {{ groupId.value }}
+                    @if (removable) {
+                      <mat-icon matChipRemove>
+                        <img src="assets/icons/cancel.svg" alt="" height="19" width="19">
+                      </mat-icon>
+                    }
+                  </mat-chip-row>
+                }
+              </mat-chip-grid>
+              <div class="chips-input">
+                <input
+                  #chipInput
+                  class="form-control"
+                  type="number"
+                  maxlength="10"
+                  placeholder="Введите значение"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (keydown.enter)="add($event)"
+                  [attr.disabled]="groupsId.length >= 5 ? true : null">
+              </div>
+            </mat-form-field>
+
+            <em-validator [fieldControl]="f['groupsId']" />
+          </div>
+        </div>
+        @if (id === '837b1f19-a692-4a89-8ade-3c7616ecb1e1') {
+          <div class="form">
+            <div class="label">Порог срабатывания триггера по сумме</div>
+            <div class="input">
+              <input formControlName="triggerPrice" type="number" class="form-control" placeholder="Введите значение"
+                     [class.is-invalid]="f['triggerPrice']?.invalid && f['triggerPrice']?.touched">
+              <em-validator [fieldControl]="f['triggerPrice']" />
+            </div>
+          </div>
+        }
+        @if (id !== '837b1f19-a692-4a89-8ade-3c7616ecb1e1') {
+          <div class="form">
+            <div class="label">Порог срабатывания триггера по количеству</div>
+            <div class="input">
+              <input formControlName="triggerCount" type="number" class="form-control" placeholder="Введите значение"
+                     mask="separator.2" maxlength="17"
+                     [class.is-invalid]="f['triggerCount']?.invalid && f['triggerCount']?.touched">
+              <em-validator [fieldControl]="f['triggerCount']" />
+            </div>
+          </div>
+        }
+      </div>
+      <div class="w-50 pr-6 pl-6 ">
+        @if (id !== '837b1f19-a692-4a89-8ade-3c7616ecb1e1') {
+          <div class="form">
+            <div class="label">Промежуток времени для неуспешных транзакций</div>
+            <div class="input">
+              <input type="time" class="form-control" step="1" formControlName="interval"
+                     [class.is-invalid]="f['interval']?.invalid && f['interval']?.touched">
+              <em-validator [fieldControl]="f['interval']" />
+            </div>
+          </div>
+        }
+        <div class="form">
+          <div class="label">Интервал между сообщениями</div>
+          <div class="input">
+            <input type="time" class="form-control" step="1" formControlName="delay"
+                   [class.is-invalid]="f['delay']?.invalid && f['delay']?.touched">
+            <em-validator [fieldControl]="f['delay']" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sms-text padding-6">
+      <div class="form">
+        <div class="label">Текст сообщения</div>
+        <div class="input">
+          <input type="text" class="form-control" formControlName="message"
+                 placeholder="Существуюушие ключи Лимит:	@amount Счет:	@account Потрачено:	@spent Осталось:	@remained">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

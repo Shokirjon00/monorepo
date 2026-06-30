@@ -1,0 +1,74 @@
+<em-header2 [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems" />
+<div class="container d-flex-sb h-line">
+  <div class="title-h1 w-100">SMS и уведомления</div>
+  <div *ngxPermissionsOnly="'NotificationSettingCreate'" class="em-d-flex em-ai-center ml-3">
+    <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+      <svg-icon src="assets/icons/save.svg" />
+      <span class="tooltip-text">Сохранить</span>
+    </button>
+  </div>
+</div>
+<div class="sms-notification">
+  <div class="em-d-flex padding-6 h-line">
+    <div class="sms-notification-left w-33 v-line">
+      <div class="em-font em-fw-500 em-subtitle em-fs-20 mb-3">Мобильный оператор для отправки сообщений</div>
+      <div class="em-d-flex em-fw-wrap em-g-40">
+        @for (mobileOperator of smsDetail?.mobileOperators; track mobileOperator; let i = $index) {
+          <div>
+            <div class="em-d-flex em-g-40">
+              <label class="l-radio">
+                <input type="radio"
+                  (click)="selectOperator(mobileOperator)"
+                  [checked]="mobileOperator.isSelected">
+                  <span> {{mobileOperator.name}}</span>
+                </label>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="sms-notification-right w-33 v-line pl-5">
+        <div class="em-font em-fw-500 em-subtitle em-fs-20 mb-3">Мессенджер для отправки уведомлений</div>
+        <div class="em-d-flex em-fw-wrap em-g-40 ">
+          @for (messenger of smsDetail?.messengers; track messenger; let i = $index) {
+            <label class="circle-checkbox">
+              <div>
+                <input type="checkbox" [(ngModel)]="messenger.isSelected">
+                <div class="check em-d-flex-center ">
+                  <svg-icon src="assets/icons/check.svg" />
+                </div>
+                {{messenger.name}}
+              </div>
+            </label>
+          }
+        </div>
+      </div>
+      <div class="w-33 pl-5 em-d-flex em-ai-center" (emClickOutside)="open=false">
+        <div class="form">
+          <div class="em-font em-fw-500 em-subtitle em-fs-20 mb-3">Приоритет отправки уведомлений</div>
+          @if (selectedPriority) {
+            <div class="input">
+              <em-simple-select-list [showClear]="false"
+                [selected]="selectedPriority"
+                [dataSource]="smsDetail?.messageSendingPriorities"
+                (changed)="selectPriority($event)"
+               />
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="sms-text padding-6">
+      <div class="form">
+        <div class="label">Текст сообщения*</div>
+        <div class="input">
+          <input type="text" class="form-control" [(ngModel)]="smsDetail.messageText">
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (loading()) {
+    <em-eb-loader class="loader" />
+  }
+  <em-toast />

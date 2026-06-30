@@ -1,0 +1,237 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/mixin';
+@import 'core/scss/mixins/breakpoints';
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.dlg {
+  @include flex_column();
+  width: 600px;
+  max-width: 100%;
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 16px;
+
+  &-head {
+    @include flex_align_center_justify_between();
+    margin-bottom: 1rem;
+  }
+
+  &-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $gunmetal-blue;
+  }
+
+  &-close {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: $main-bg;
+    color: $secondary-text-color;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: color-mix(in srgb, $danger-color 14%, transparent);
+      color: $danger-color;
+    }
+  }
+
+  &-body {
+    @include flex_column();
+    gap: 1rem;
+    max-height: 65vh;
+    overflow-y: auto;
+    transition: opacity 0.2s ease;
+
+    &.is-loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+
+  &-row {
+    @include flex_column();
+    gap: 0.4rem;
+  }
+
+  &-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $light-slate;
+  }
+
+  &-input {
+    height: 40px;
+    padding: 0 0.85rem;
+    border: 1px solid $brand-line;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: $gunmetal-blue;
+    background: $white;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    min-width: 0;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(78, 73, 206, 0.12);
+    }
+  }
+
+  &-section {
+    @include flex_column();
+    gap: 0.6rem;
+    padding: 0.85rem;
+    border: 1px solid $brand-line;
+    border-radius: 12px;
+    background: color-mix(in srgb, $main-bg 50%, transparent);
+  }
+
+  &-section-head {
+    @include flex_align_center_justify_between();
+  }
+
+  &-section-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $gunmetal-blue;
+  }
+
+  &-add {
+    height: 30px;
+    padding: 0 0.7rem;
+    border: 1px dashed $primary-color;
+    border-radius: 8px;
+    background: transparent;
+    color: $primary-color;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: color-mix(in srgb, $primary-color 8%, transparent);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      border-color: $brand-line;
+      color: $light-slate;
+    }
+  }
+
+  &-plans {
+    @include flex_column();
+    gap: 0.45rem;
+    min-height: 210px;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  &-plan {
+    display: grid;
+    grid-template-columns: 70px 56px 1fr 1fr 32px;
+    gap: 0.4rem;
+    align-items: center;
+
+    &-head {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: $light-slate;
+      padding: 0 0.25rem;
+    }
+
+    .dlg-input {
+      height: 36px;
+      padding: 0 0.55rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  &-empty {
+    @include flex_column_ai_jc_center();
+    flex: 1;
+    min-height: 180px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: $light-slate;
+  }
+
+  &-remove {
+    @include flex_ai_center();
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    background: color-mix(in srgb, $danger-color 10%, transparent);
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: color-mix(in srgb, $danger-color 22%, transparent);
+    }
+  }
+
+  &-remove-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &-actions {
+    @include flex_justify_end();
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  &-btn {
+    height: 38px;
+    padding: 0 1rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &-ghost {
+      background: $white;
+      border-color: $brand-line;
+      color: $secondary-text-color;
+
+      &:hover:not(:disabled) {
+        background: $main-bg;
+      }
+    }
+
+    &-primary {
+      background: $primary-color;
+      color: $white;
+
+      &:hover:not(:disabled) {
+        background: $primary-color-hover;
+      }
+    }
+  }
+}
+
+:host {
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}

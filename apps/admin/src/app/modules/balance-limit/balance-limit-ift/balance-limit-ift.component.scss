@@ -1,0 +1,38 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.labels-data {
+  flex-direction: row;
+  gap: 20px;
+
+  .nrt,
+  .ift {
+    width: 50%;
+    position: relative;
+
+    .actions {
+      position: absolute;
+      display: flex;
+      top: -5px;
+      right: 10px;
+      gap: 0;
+
+      svg-icon {
+        line-height: 0;
+      }
+    }
+  }
+
+  .key {
+    width: 170px;
+  }
+}
+
+.form {
+  margin-top: 40px;
+  width: 300px;
+  margin-bottom: 0;
+}

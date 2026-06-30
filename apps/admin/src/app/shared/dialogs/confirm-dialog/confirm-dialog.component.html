@@ -1,0 +1,38 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center" [innerHTML]="data.title"></div>
+  </div>
+  @if (data.showInput) {
+    <div  class="form">
+      <div class="label">Примечание</div>
+      <div class="input">
+        <input type="text" class="form-control" [(ngModel)]="inputValue" placeholder="Введите примечание">
+        @if (showError) {
+          <span class="em-danger-color" >
+            Заполните пустое поле
+          </span>
+        }
+      </div>
+    </div>
+  }
+  @if (data.options?.length) {
+    <div class="dialog-options">
+      <div class="close-icon">
+        <svg-icon class="icon" src="assets/images/close.svg" (click)="onCancel()" />
+      </div>
+      @for (option of data.options; track option) {
+        <button
+          class="dialog-button"
+          (click)="onSelect(option.id)">
+          {{ option.name }}
+        </button>
+      }
+    </div>
+  }
+  @if (!data.options?.length) {
+    <div class="em-d-flex em-jc-c">
+      <button class="btn btn-secondary btn-lg mr-2" (click)="onCancel()">{{data?.cancelButtonText || 'Отмена'}}</button>
+      <button class="btn btn-primary btn-lg" (click)="onConfirm()">{{data?.successButtonText || 'Подтвердить'}}</button>
+    </div>
+  }
+</div>

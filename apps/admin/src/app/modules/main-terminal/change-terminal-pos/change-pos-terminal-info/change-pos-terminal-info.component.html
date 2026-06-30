@@ -1,0 +1,32 @@
+<div class="position-sticky">
+  <div class="header">
+    <em-breadcrumbs class="em-d-flex-center"/>
+  </div>
+  <div class="d-flex-sb form-container pt-5 pb-5 h-line">
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'PosTerminalUpdate'" class="icon ml-3" (click)="navigateToInfo()">
+      <button type="button" class="button-tooltip" (click)="navigateToInfo()">
+        <svg-icon src="assets/icons/pen.svg"/>
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="padding-7 w-50">
+  <div class="labels-data">
+    @for (row of infoRows(); track row.key) {
+      <div class="em-d-flex">
+        <span class="key">{{ row.key }}</span>
+        <span>:</span>
+        <span class="data">
+          @if (row.isDate) {
+            {{ row.value ? (row.value | dateTime) : '-' }}
+          } @else {
+            {{ row.value || '-' }}
+          }
+        </span>
+      </div>
+    }
+  </div>
+</div>

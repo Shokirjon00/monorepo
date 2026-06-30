@@ -1,0 +1,45 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Информация</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="padding-7">
+  @if (settingDetail) {
+    <div class="em-d-flex em-g-16 w-50 pr-6">
+      <div class="labels-data">
+        <div class="em-d-flex">
+          <span class="key">ID</span>
+          <span>:</span>
+          <span class="data">{{ settingDetail.id || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Код</span>
+          <span>:</span>
+          <span class="data">{{ settingDetail.code || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Описание</span>
+          <span>:</span>
+          <span class="data">{{ settingDetail.description || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Дата последнего изменения</span>
+          <span>:</span>
+          <span class="data">{{ (settingDetail.modifiedAt  | dateTime) || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Параметр</span>
+          <span>:</span>
+          <span class="data">{{ settingDetail.settingJson || '-' }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'AreaUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToAreaUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+
+<div class="padding-7">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование*</span><span>:</span><span
+      class="data">{{ areaDetail?.name }}</span></div>
+    <div class="em-d-flex"><span class="key">Код</span><span>:</span><span
+      class="data">{{ areaDetail?.code || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Код ABS*</span><span>:</span><span
+      class="data">{{ areaDetail?.extCodeAbs || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Регион</span><span>:</span><span
+      class="data">{{ areaDetail?.regionName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ areaDetail?.statusName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Примечание</span><span>:</span><span
+      class="data">{{ areaDetail?.description || '-' }}</span></div>
+  </div>
+</div>

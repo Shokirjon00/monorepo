@@ -1,0 +1,12 @@
+<div class="mt-4 html-editor-container">
+  <div class="em-d-flex em-dr-columm w-50">
+    <div class="label mb-1">HTML Редактор</div>
+    <div #codeHost class="code-editor-host"></div>
+  </div>
+  <div class="w-50">
+    <div class="em-d-flex em-dr-columm c-preview-height">
+      <div class="label mb-1">Превью</div>
+      <div class="preview" [innerHTML]="beautifiedHtml()"></div>
+    </div>
+  </div>
+</div>

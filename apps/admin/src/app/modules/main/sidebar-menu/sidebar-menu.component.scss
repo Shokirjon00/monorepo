@@ -1,0 +1,423 @@
+@import "core/scss/variables";
+@import "core/scss/flex";
+@import "core/scss/styles";
+@import "core/scss/margins";
+@import "core/scss/form";
+@import "core/scss/mixins/breakpoints";
+@import "core/scss/mixins/mixin";
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  overflow: auto;
+  display: contents;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: $main-bg;
+  @include flex_column_justify_between();
+
+  &-user {
+    padding: 0.5rem;
+
+    .group {
+      @include flex_column
+    }
+
+    .close {
+      display: none;
+    }
+
+    &-profile {
+      display: flex;
+
+      .user-data {
+        position: relative;
+
+        .data-group {
+          position: relative;
+          margin-right: 1.75rem;
+
+          .avatar {
+            object-fit: cover;
+            cursor: pointer;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+          }
+
+          .setting {
+            position: absolute;
+            background-color: $white-color;
+            box-shadow: 0 6px 24px #00000029;
+            right: 5px;
+            top: 45px;
+            padding: 3px;
+            border-radius: 50%;
+            @include flex_ai_center();
+            border: none;
+            cursor: pointer;
+            outline: none;
+
+            svg-icon {
+              line-height: 0;
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+
+      .open .dropdown {
+        display: block;
+        min-width: 220px;
+      }
+
+      .test-text {
+        color: $danger-color;
+        font-size: 1.125rem;
+        font-weight: 700;
+      }
+    }
+
+    &-info {
+
+      .title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 31px;
+      }
+
+      .subtitle {
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 23px;
+        color: $palette;
+      }
+    }
+  }
+
+  &-nav {
+
+    &-item {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      margin-bottom: 4px;
+
+      .route {
+        position: relative;
+        line-height: 19px;
+        color: $palette;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        @include flex_align_center();
+
+        &:hover {
+          font-weight: 500;
+          color: $main-black;
+          background-color: $brand-hover;
+
+          .icon {
+            background: $main-black;
+          }
+        }
+
+        &.active {
+          background-color: $primary-color;
+          font-weight: 500;
+          color: $white-color;
+
+          .icon {
+            background-color: $white-color;
+          }
+        }
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 16px;
+      width: 232px;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      width: 40px;
+      min-width: 40px;
+      height: 22px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      background-color: $text-color;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+
+      &-analytics {
+        -webkit-mask: url("/assets/icons/piechart.svg") no-repeat 0;
+        mask: url("/assets/icons/piechart.svg") no-repeat 0;
+      }
+
+      &-clients {
+        -webkit-mask: url("/assets/icons/client.svg") no-repeat 0;
+        mask: url("/assets/icons/client.svg") no-repeat 0;
+      }
+
+      &-transactions {
+        -webkit-mask: url("/assets/icons/payment.svg") no-repeat 0;
+        mask: url("/assets/icons/payment.svg") no-repeat 0;
+      }
+
+      &-advance {
+        -webkit-mask: url("/assets/icons/coins-hand.svg") no-repeat 0;
+        mask: url("/assets/icons/coins-hand.svg") no-repeat 0;
+      }
+
+      &-main-terminal {
+        -webkit-mask: url("/assets/icons/cloud-drizzle.svg") no-repeat 0;
+        mask: url("/assets/icons/cloud-drizzle.svg") no-repeat 0;
+      }
+
+      &-job-log {
+        -webkit-mask: url("/assets/icons/notebook.svg") no-repeat 0;
+        mask: url("/assets/icons/notebook.svg") no-repeat 0;
+      }
+
+      &-ift-log {
+        -webkit-mask: url("/assets/icons/ift.svg") no-repeat 0;
+        mask: url("/assets/icons/ift.svg") no-repeat 0;
+      }
+
+      &-mailing {
+        -webkit-mask: url("/assets/icons/mailing.svg") no-repeat 0;
+        mask: url("/assets/icons/mailing.svg") no-repeat 0;
+      }
+
+      &-bank-promotion {
+        -webkit-mask: url("/assets/icons/gift.svg") no-repeat 0;
+        mask: url("/assets/icons/gift.svg") no-repeat 0;
+      }
+
+      &-promotion-system {
+        -webkit-mask: url("/assets/icons/notification.svg") no-repeat 0;
+        mask: url("/assets/icons/notification.svg") no-repeat 0;
+      }
+
+      &-withdrawal-amount {
+        -webkit-mask: url("/assets/icons/withdrawal-amount.svg") no-repeat 0;
+        mask: url("/assets/icons/withdrawal-amount.svg") no-repeat 0;
+      }
+
+      &-register {
+        -webkit-mask: url("/assets/icons/reestr.svg") no-repeat 0;
+        mask: url("/assets/icons/reestr.svg") no-repeat 0;
+      }
+
+      &-company-registration-applications {
+        -webkit-mask: url("/assets/icons/company-registration-applications.svg") no-repeat 0;
+        mask: url("/assets/icons/company-registration-applications.svg") no-repeat 0;
+      }
+
+      &-export-queue {
+        -webkit-mask: url("/assets/icons/export-queue.svg") no-repeat 0;
+        mask: url("/assets/icons/export-queue.svg") no-repeat 0;
+      }
+
+      &-order {
+        -webkit-mask: url("/assets/icons/order.svg") no-repeat 0;
+        mask: url("/assets/icons/order.svg") no-repeat 0;
+      }
+
+      &-integration {
+        -webkit-mask: url("/assets/icons/puzzle.svg") no-repeat 0;
+        mask: url("/assets/icons/puzzle.svg") no-repeat 0;
+      }
+
+      &-balance-limit {
+        -webkit-mask: url("/assets/icons/limit.svg") no-repeat 0;
+        mask: url("/assets/icons/limit.svg") no-repeat 0;
+      }
+
+      &-user {
+        -webkit-mask: url("/assets/icons/user.svg") no-repeat 0;
+        mask: url("/assets/icons/user.svg") no-repeat 0;
+      }
+
+      &-report {
+        -webkit-mask: url("/assets/icons/document.svg") no-repeat 0;
+        mask: url("/assets/icons/document.svg") no-repeat 0;
+      }
+
+      &-services {
+        -webkit-mask: url("/assets/icons/services.svg") no-repeat 0;
+        mask: url("/assets/icons/services.svg") no-repeat 0;
+      }
+
+      &-news {
+        -webkit-mask: url("/assets/icons/news.svg") no-repeat 0;
+        mask: url("/assets/icons/news.svg") no-repeat 0;
+      }
+
+      &-directory {
+        -webkit-mask: url("/assets/icons/book.svg") no-repeat 0;
+        mask: url("/assets/icons/book.svg") no-repeat 0;
+      }
+
+      &-setting {
+        -webkit-mask: url("/assets/icons/settings.svg") no-repeat 0;
+        mask: url("/assets/icons/settings.svg") no-repeat 0;
+      }
+
+      &-logout {
+        -webkit-mask: url("/assets/icons/logout.svg") no-repeat 0;
+        mask: url("/assets/icons/logout.svg") no-repeat 0;
+      }
+
+      &-edit {
+        -webkit-mask: url("/assets/icons/edit.svg") no-repeat 0;
+        mask: url("/assets/icons/edit.svg") no-repeat 0;
+      }
+
+      &-continue-rules {
+        -webkit-mask: url("/assets/icons/warn.svg") no-repeat 0;
+        mask: url("/assets/icons/warn.svg") no-repeat 0;
+      }
+
+      &-payments-refund-applications {
+        -webkit-mask: url("/assets/icons/refund-application.svg") no-repeat 0;
+        mask: url("/assets/icons/refund-application.svg") no-repeat 0;
+      }
+
+      &-help {
+        -webkit-mask: url("/assets/icons/headset.svg") no-repeat 0;
+        mask: url("/assets/icons/headset.svg") no-repeat 0;
+      }
+    }
+  }
+
+  .version {
+    padding: 0 12px;
+    color: $main-black;
+  }
+}
+
+
+
+@include media-breakpoint-down(sm) {
+  .sidebar {
+    width: 100vw;
+    height: 100vh;
+    padding: 16px;
+    background-color: $white !important;
+
+    &-user {
+      @include flex_align_center_justify_between();
+      margin-bottom: 16px;
+      padding: 0.5rem 0 0.5rem 0.5rem;
+
+      .group {
+        @include flex_row();
+      }
+
+      .close {
+        display: block;
+        line-height: 0;
+      }
+
+      &-profile {
+
+        .user-data .data-group {
+          margin-right: 12px;
+          line-height: 0;
+
+          .avatar {
+            width: 40px;
+            height: 40px;
+            position: relative;
+          }
+
+          .setting {
+            right: 0;
+            top: 25px;
+            padding: 2px;
+
+            svg-icon {
+              transform: scale(1.3);
+            }
+          }
+        }
+
+        .dropdown {
+          min-width: 180px !important;
+
+          &__item {
+            margin-bottom: 0;
+          }
+        }
+
+        .test-text {
+          display: none;
+        }
+      }
+
+      &-info {
+        position: relative;
+
+        .title {
+          font-size: 1.125rem;
+          font-weight: 700;
+          line-height: 22px;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+          line-height: 20px;
+        }
+
+        &.test:after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: $danger-color;
+          border-radius: 50%;
+          top: -5px;
+          right: -20px;
+        }
+      }
+    }
+
+    .version {
+      padding: 0;
+    }
+
+    .position-stickys {
+      background-color: $white;
+      position: sticky;
+      width: -webkit-fill-available;
+      top: -1rem;
+      z-index: 3;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}

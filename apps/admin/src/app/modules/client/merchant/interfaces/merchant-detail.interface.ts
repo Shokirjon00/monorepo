@@ -1,0 +1,60 @@
+export interface IMerchantDetail {
+  id?:string;
+  name: string;
+  extCodeEqms: number;
+  companyId?: string;
+  companyName: string;
+  regionId: string;
+  regionName: string;
+  areaId: string;
+  areaName: string;
+  cityId?: string;
+  cityName: string;
+  countryId: string;
+  address: string;
+  phoneNumber: string;
+  email: string;
+  managerName: string;
+  managerPhoneNumber: string;
+  branchName: string;
+  commissionId?: string;
+  commissionName?: string;
+  categoryId?: string;
+  categoryName?: string;
+  subCategoryId?: string;
+  subCategoryName?: string;
+  merchantWorkDayId?: string;
+  workDayName: string;
+  paymentAccountId?: string;
+  paymentAccountName?: string;
+  paymentAccountNumber?: string;
+  paymentCardAccountId?: string;
+  paymentCardAccountName?: string;
+  paymentCardAccountNumber?: string;
+  position: string;
+  latitude?: number;
+  longitude?: number;
+  description: string;
+  isActive: boolean
+  statusName?: string;
+  isVerified: boolean;
+  isShowOnMain?: boolean;
+  showOnMainName?: string;
+  imgLoginMain?: string;
+  imgLogoList?: string;
+  imgLogoDetail?: string;
+  lastIssueAt: string;
+  lastIssuePreparePaymentNumber: number;
+  lastIssuePaymentNumber: number;
+  merchantIntegrationJsons: [];
+  merchantContactJson?: MerchantContactJson;
+  verifiedName: string;
+  lastSyncEqms: string;
+}
+
+interface MerchantContactJson{
+  phoneNumber: string;
+  email: string;
+  managerName: string;
+  managerPhoneNumber: string
+}

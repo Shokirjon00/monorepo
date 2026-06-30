@@ -1,0 +1,116 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import 'core/scss/card';
+
+
+.status-scroll {
+  overflow: hidden;
+  overflow-x: scroll;
+
+  .status-card {
+    > .all {
+      background: $white-300;
+      border: 1px solid $white-200;
+    }
+
+    > .completed {
+      background: $success-bg;
+      border: 1px solid $success-border;
+    }
+
+    > .returned {
+      background: $refunded-bg;
+      border: 1px solid $refunded-border;
+    }
+
+    > .canceled {
+      background: #fffaf0;
+      border: 1px solid $danger-border;
+    }
+
+    > .in_process {
+      background: $process;
+      border: 1px solid #e4dc87;
+    }
+
+    > .rejected {
+      background: $danger-bg;
+      border: 1px solid $reject-border;
+    }
+
+    > .not_verified {
+      background: $not_verified-bg;
+      border: 1px solid $not_verified-border;
+    }
+
+    > .unknown {
+      background: $unknown;
+      border: 1px solid $primary-color;
+    }
+
+    .amount {
+      width: max-content;
+      padding: 0.25rem 1rem;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 24px;
+
+      &-status {
+        font-size: 14px;
+        margin-right: 0.5rem;
+      }
+
+      .all {
+        color: $gray-700;
+      }
+
+      .completed {
+        color: $success-color;
+      }
+
+      .returned {
+        color: $refunded-color;
+      }
+
+      .canceled {
+        color: #FFAA00;
+      }
+
+      .rejected {
+        color: $danger-color;
+      }
+
+      .not_verified {
+        color: $not_verified-border;
+      }
+
+      .unknown {
+        color: $primary-color;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+.mobile-card, .scroll-top {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  .mobile-card, .scroll-top {
+    display: block;
+  }
+}

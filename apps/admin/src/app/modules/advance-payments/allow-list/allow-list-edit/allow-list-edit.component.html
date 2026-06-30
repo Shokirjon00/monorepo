@@ -1,0 +1,115 @@
+<form class="w-100 p-relative" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">Настройки выдачи аванса</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip v-line mr-1" (click)="back()" [class.disabled]="submitted()">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip v-line" (click)="onSubmit()" [class.disabled]="submitted()">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="merchant-edit" [class.blur]="submitted()">
+    <div class="padding-6 em-d-flex em-fw-wrap">
+      <div class="w-50 v-line pr-6">
+        <div class="form">
+          <div class="label">Организация*</div>
+          <div class="input">
+            <em-autocomplete [searchable]="true"
+              formControlName="companyId"
+              [placeholder]="'Выберите организацию'"
+              [customFilter]="companyFilter"
+              (changed)="selectedCompany($event)"
+              [selectWithOutSearch]="true"
+              [path]="companyDictionaryApi" />
+            <em-validator [fieldControl]="f['companyId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Счет зачисления аванса*</div>
+          <div class="input">
+            <em-simple-select-list formControlName="advancePayoutAccountId"
+              optionLabel="number"
+              [dataSource]="advance"
+              action="Выберите cчет зачисления аванса" />
+            <em-validator [fieldControl]="f['advancePayoutAccountId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Счет для погашения*</div>
+          <div class="input">
+            <em-simple-select-list formControlName="advanceRepaymentAccountId"
+              optionLabel="number"
+              [dataSource]="settlements"
+              action="Выберите cчет для погашения" />
+            <em-validator [fieldControl]="f['advanceRepaymentAccountId']" />
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="form">
+          <div class="label">Номер договора*</div>
+          <div class="input">
+            <input formControlName="contractInfo" type="text" class="form-control"
+                   placeholder="Введите номер договора"
+                   [class.is-invalid]="f['contractInfo']?.invalid && f['contractInfo']?.touched">
+            <em-validator [fieldControl]="f['contractInfo']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Сумма аванса*</div>
+          <div class="input">
+            <input formControlName="amount" type="number" class="form-control"
+                   placeholder="Введите сумму аванса"
+                   [class.is-invalid]="f['amount']?.invalid && f['amount']?.touched">
+            <em-validator [fieldControl]="f['amount']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Значение повышенной комиссии*</div>
+          <div class="input">
+            <em-simple-select-list formControlName="commissionId"
+              [dataSource]="commissions"
+              action="Выберите комиссию" />
+            <em-validator [fieldControl]="f['commissionId']" />
+          </div>
+        </div>
+      </div>
+      <div class="form mb-6">
+        <div class="title-h1 mb-6">Документы</div>
+        <div class="input em-d-flex">
+          <em-upload-field formControlName="contractFileId"
+            permissionName="AdvancePayoutOfferUploadContract"
+            [fileLimit]="1"
+            [canPrint]="false"
+            [memType]="uploadFile.mimeType"
+            [fileTypes]="['application/pdf']"
+            [uploadPath]="uploadFile.uploadPath"
+            [fileStorageToken]="fileStorageToken"
+            [fileStorageUrl]="fileStorageUrl"
+           />
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (submitted()) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

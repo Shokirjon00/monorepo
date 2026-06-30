@@ -1,0 +1,36 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+  gap: 2rem;
+
+  .title {
+    font-weight: 700;
+    color: #DD0F00;
+    font-size: 18px;
+  }
+
+  .description {
+    font-weight: 700;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}

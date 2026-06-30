@@ -1,0 +1,28 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'CashbackUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-6">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование*</span><span>:</span><span
+      class="data">{{ cashbackRatesDetail?.name }}</span></div>
+    <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+      class="data">{{ cashbackRatesDetail?.createdAt | dateTime }}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ cashbackRatesDetail?.statusName || '-' }}</span></div>
+  </div>
+</div>
+<em-table [dataSource]="cashbackRatesDetail?.cashbackGradations"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />

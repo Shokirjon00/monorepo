@@ -1,0 +1,162 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/breakpoints';
+@import 'core/scss/mixins/mixin';
+
+:host {
+  display: block;
+}
+
+.bar {
+  @include flex_align_center_justify_between();
+  gap: 1rem;
+  padding: 0;
+  flex-wrap: wrap;
+
+  &-top {
+    @include flex_align_center_justify_end();
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &-tabs {
+    display: flex;
+    padding: 0.3rem;
+    background: $white;
+    border-radius: 14px;
+    overflow: hidden;
+
+    :host ::ng-deep em-tab-menu {
+      .tab {
+        gap: 0.25rem;
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+
+      .tab-item, .tab__item {
+        position: relative;
+        @include em-d-flex-al-start();
+        gap: 0.4rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $secondary-text-color;
+        background: transparent;
+        border: none;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        text-decoration: none;
+
+        &::before, &::after {
+          display: none !important;
+        }
+
+        &:hover {
+          background: color-mix(in srgb, $primary-color 8%, transparent);
+          color: $primary-color;
+        }
+
+        &.active {
+          background: linear-gradient(135deg, $primary-color, color-mix(in srgb, $primary-color 70%, #2C7BE3));
+          color: $white;
+          box-shadow: 0 6px 16px color-mix(in srgb, $primary-color 26%, transparent);
+        }
+      }
+    }
+  }
+}
+
+.status-pill {
+  @include em-d-flex-al-center();
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, $success-color 12%, transparent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: $success-color;
+
+  &.is-bad {
+    background: color-mix(in srgb, $danger-color 12%, transparent);
+    color: $danger-color;
+  }
+
+  &-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 25%, transparent);
+    animation: bar-status-pulse 2s ease-out infinite;
+  }
+}
+
+.status-updated {
+  @include em-d-flex-al-center();
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 10px;
+  background: $main-bg;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: $secondary-text-color;
+
+  &-svg {
+    width: 14px;
+    height: 14px;
+    color: $light-slate;
+  }
+}
+
+.status-btn {
+  @include flex_ai_center();
+  padding: 0.5rem;
+  line-height: 0;
+  border: 1px solid $brand-line;
+  border-radius: 10px;
+  background: $white;
+  color: $secondary-text-color;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  &-svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: color-mix(in srgb, $primary-color 8%, transparent);
+    border-color: transparent;
+    color: $primary-color;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes bar-status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 30%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, currentColor 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 0%, transparent);
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .bar-top {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .status-pill-text {
+    display: none;
+  }
+  .status-updated {
+    font-size: 0.72rem;
+  }
+}

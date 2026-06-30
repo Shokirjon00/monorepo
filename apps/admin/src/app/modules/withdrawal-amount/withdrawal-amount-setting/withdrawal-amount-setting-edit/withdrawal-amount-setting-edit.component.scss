@@ -1,0 +1,37 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.form {
+  .setting-input{
+    max-width: 72px;
+    width: 100%;
+  }
+}
+
+.withdrawal-amount {
+  display: flex;
+  flex-direction: column;
+
+  &__body {
+
+    &-switches {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      margin-bottom: 3rem;
+
+      .select-all {
+        max-width: 652px;
+        width: 100%;
+      }
+    }
+
+    .no-merchant{
+      color: $danger-color;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="w-100 em-d-flex em-jc-sb padding-1">
+  <div class="title-h1">Штамп и Титулка</div>
+  <div class="icon w-100" (click)="close()">
+    <svg-icon src="assets/icons/cancel.svg" />
+  </div>
+</div>
+
+<form [formGroup]="stampControl" class="account-edit-dialog h-100">
+  <div class="em-d-flex em-g-8">
+    @for ( upload of uploads; track upload.key) {
+      <em-upload-logo [formControlName]="upload.key"
+        [action]="'картинку в формате'"
+        [imgLabel]="upload.label"
+        [fileStorageToken]="fileStorageToken"
+        [fileStorageUrl]="fileStorageUrl"
+        [uploadFile]="getUploadFile(upload.key)"
+        [formDataKey]="upload.key"
+        [cancel]="false" />
+    }
+  </div>
+</form>
+
+<em-toast />

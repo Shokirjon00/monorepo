@@ -1,0 +1,35 @@
+<em-header2 [tabMenuItems]="tabMenuItems" [showBreadcrumb]="true" />
+<div class="report">
+  <div class="report-body">
+    <form class="content p-relatives" [class.blur]="submitted" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-body em-d-flex md-fw-wrap md-mb-5">
+        <div class="form mr-3 md-mr-0 em-d-flex em-jc-fe em-dr-columm">
+          <div class="label">Вид отчета</div>
+          <div class="input">
+            <em-simple-select-list formControlName="adminReportId"
+              [action]="'Выберите вид отчета'"
+              [dataSource]="reportDictionary" />
+            <em-validator [fieldControl]="f['adminReportId']" />
+          </div>
+        </div>
+        <div class="date-filter md-w-100" (click)="dateChange()">
+          <svg-icon class="mr-1" src="./assets/icons/period.svg" />
+          @if (dateType) {
+            <span> {{ dateType.name }}</span>
+          }
+        </div>
+      </div>
+      <div class="em-d-flex md-fw-wrap action-filter">
+        <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-md btn-primary">Сформировать
+        </button>
+        <button [disabled]="!form.value" type="button" class="btn btn-md btn-secondary md-w-100" (click)="resetForm()">
+          Очистить фильтр
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+@if (submitted) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

@@ -1,0 +1,73 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems">
+  <ng-container header-actions>
+  <div class="d-flex-sb">
+    @for (action of actions; track action) {
+      <em-actions
+        [actionData]="action"
+        [disabled]="loading()"
+        (orderWebhook)="resendWebhook()"
+        ></em-actions>
+    }
+  </div>
+  </ng-container>
+</em-header2>
+@if (orderHistory) {
+  <div class="container padding-6 h-line">
+    <div class="em-d-flex">
+        <div class="labels-data">
+          <div class="em-d-flex">
+            <span class="key">Внешний номер заказа</span><span>:</span>
+            <span class="data">{{ orderHistory.invoiceId || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">ID платежа</span><span>:</span>
+            <span class="data">{{ orderHistory.paymentId || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">ID внешнего платежа</span><span>:</span>
+            <span class="data">{{ orderHistory.extPaymentSessionNumber || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Касса</span><span>:</span>
+            <span class="data">{{ orderHistory.posName || '-' }} </span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Сумма</span><span>:</span>
+            <span class="data">{{ orderHistory.amount || '-' }} TJS</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Статус покупки</span><span>:</span>
+            <span class="data">{{ orderHistory.orderStatusName || '-' }}</span>
+          </div>
+          <div class="em-d-flex h-line pb-1">
+            <span class="key">Дата покупки</span><span>:</span>
+            <span class="data">{{ orderHistory?.paymentCreatedAt | dateTime }}</span>
+          </div>
+        </div>
+    </div>
+    <div class="order-block pt-1">
+      <div class="header-order">
+        <span class="order-row">Наименование товара</span>
+        <span class="order-row">: Кол-во</span>
+        <span class="order-row">: Цена</span>
+      </div>
+
+      @if (orderHistory.items?.length > 0) {
+        @for (product of orderHistory.items; track product) {
+          <div class="item-row">
+            <span class="order-span">{{ product.name || '-' }}</span>
+            <span class="order-span">: {{ product.quantity || '-' }} {{ product.unit || '-' }}</span>
+            <span class="order-span">: {{ product.price || '-' }} TJS</span>
+          </div>
+        }
+      } @else {
+        <div class="no-data">Нет данных для показа</div>
+      }
+    </div>
+
+  </div>
+}
+<em-toast></em-toast>
+

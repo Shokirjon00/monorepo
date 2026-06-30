@@ -1,0 +1,56 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+  </div>
+</em-header2>
+<div class="padding-6 user-admin">
+  @if (userDetail) {
+    <div class="merchant-info em-d-flex">
+      <div class="em-d-flex em-g-16 w-50 pr-6">
+        <div class="labels-data ">
+          <div class="em-d-flex">
+            <span class="key">Пользователь</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.fullname || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Тип действия</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.type || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Таблица</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.tableName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Старое значение</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.oldValues || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Новое значение</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.newValues || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Измененные столбцы</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.affectedColumns || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Идентификатор</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.primaryKey || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Дата и время</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.createdAt | dateTime }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<em-toast />

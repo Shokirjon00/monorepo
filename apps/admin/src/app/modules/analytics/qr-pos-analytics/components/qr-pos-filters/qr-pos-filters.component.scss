@@ -1,0 +1,69 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/mixin';
+
+.filters {
+  @include flex_nowrap_ai_end();
+  gap: 0.6rem 0.75rem;
+
+  &-field {
+    position: relative;
+    @include flex_column();
+    gap: 0.3rem;
+    flex: 1 1 0;
+    min-width: 0;
+
+    &:has(.select-field.open) {
+      z-index: 30;
+    }
+  }
+
+  &-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: $light-slate;
+    padding-left: 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-reset {
+    flex: 0 0 auto;
+    @include flex_ai_center();
+    align-self: flex-end;
+    gap: 0.45rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid $brand-line;
+    border-radius: 10px;
+    background: $white;
+    color: $secondary-text-color;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      border-color: $primary-color;
+      color: $primary-color;
+      background: color-mix(in srgb, $primary-color 6%, transparent);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      background: $main-bg;
+      border-color: $brand-line;
+      color: $light-slate;
+    }
+  }
+
+  &-reset-svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+:host ::ng-deep .filters-field .select-field.open .dropdown {
+  z-index: 50;
+}

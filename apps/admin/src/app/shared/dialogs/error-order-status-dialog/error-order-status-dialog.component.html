@@ -1,0 +1,14 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center">Ошибка!</div>
+    <p class="description">Не удалось сменить статусы у этих заказов</p>
+  </div>
+  <div class="items">
+    @for (orderId of orderIds; track orderId) {
+      <span>{{ orderId }}</span>
+    }
+  </div>
+  <div class="em-d-flex em-jc-c">
+    <button class="btn btn-primary btn-lg" (click)="onCancel()">Закрыть</button>
+  </div>
+</div>

@@ -1,0 +1,185 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/breakpoints';
+
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  flex: 1 1 auto;
+}
+
+.acq {
+  display: flex;
+  gap: clamp(0.75rem, 1vw, 1.5rem);
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+
+  &-chart {
+    flex: 0 0 38%;
+    min-width: 140px;
+    max-width: 280px;
+    @include flex_ai_center();
+
+    apx-chart {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-metrics {
+    flex: 1;
+    min-width: 0;
+    @include flex_column();
+    gap: clamp(0.25rem, 0.3vw, 0.45rem);
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $light-color;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+}
+
+.metric {
+  @include flex_column();
+  gap: 0.3rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid $brand-line;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: acq-metric-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  @include acq-metric-accent($primary-color);
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.04}s;
+    }
+  }
+
+  &:hover {
+    transform: translateX(2px);
+  }
+
+  &-head {
+    @include em-d-flex-al-center();
+    gap: 0.45rem;
+    min-width: 0;
+  }
+
+  &-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &-c-qr {
+    @include acq-metric-accent($accent-green);
+  }
+
+  &-c-pos {
+    @include acq-metric-accent($accent-blue);
+  }
+
+  &-label {
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(0.78rem, 0.7vw, 1rem);
+    font-weight: 500;
+    color: $gunmetal-blue;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-percent {
+    font-size: clamp(0.8rem, 0.75vw, 1rem);
+    font-weight: 500;
+    color: $primary-color;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  &-bottom {
+    @include em-d-flex-al-center();
+    gap: 0.5rem;
+  }
+
+  &-track {
+    display: block;
+    flex: 1;
+    height: 6px;
+    border-radius: 8px;
+    background: color-mix(in srgb, $primary-color 10%, $main-bg);
+    overflow: hidden;
+  }
+
+  &-fill {
+    display: block;
+    height: 100%;
+    min-width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+      color-mix(in srgb, $primary-color 65%, white),
+      $primary-color);
+    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &-value {
+    font-size: clamp(0.7rem, 0.65vw, 0.85rem);
+    font-weight: 500;
+    color: $secondary-text-color;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .acq {
+    flex-direction: column;
+
+    &-chart {
+      flex: 0 0 auto;
+      height: 220px;
+      max-width: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(xxxl) {
+  :host {
+    min-height: 360px;
+  }
+}
+
+@include media-breakpoint-up(xxxxl) {
+  :host {
+    min-height: 440px;
+  }
+}
+
+
+@keyframes acq-metric-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

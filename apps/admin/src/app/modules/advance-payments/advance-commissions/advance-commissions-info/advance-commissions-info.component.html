@@ -1,0 +1,34 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'CommissionUpdate'">
+        <button type="button" class="button-tooltip" (click)="edit()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+
+<div class="em-d-flex em-g-16 w-100 padding-6">
+  <div class="labels">
+    <div><span>Наименование*</span><span>:</span></div>
+    <div><span>Дата начало</span><span>:</span></div>
+    <div><span>Дата окончание</span><span>:</span></div>
+    <div><span>Статус</span><span>:</span></div>
+  </div>
+  <div class="data">
+    <span>{{ commission?.name || '-' }}</span>
+    <span>{{ commission?.startDate | dateTime }}</span>
+    <span>{{ commission?.endDate | dateTime }}</span>
+    <span>{{ commission?.statusName || '-' }}</span>
+  </div>
+</div>
+
+<em-table [dataSource]="commission?.commissionGradations"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />

@@ -1,0 +1,29 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="actions"
+  [filterStorageKey]="'payment-without-child-filters'">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+          (syncStatus)="selectedItemsExist ? syncStatusHandler(paymentIds) : null"
+          (syncPaymentInfo)="selectedItemsExist ? syncStatusHandler([paymentId]) : null" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<em-table (selectedItems)="checkedTableItems($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="dataSource"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+  (link)="navigateToCompany($event)"
+ />
+<em-toast />

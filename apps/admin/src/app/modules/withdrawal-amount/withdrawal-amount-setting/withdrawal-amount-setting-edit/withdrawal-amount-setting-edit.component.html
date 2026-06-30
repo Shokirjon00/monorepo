@@ -1,0 +1,144 @@
+<form [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ id ? 'Редактировать настройку вывода средств' : 'Новая настройка вывода средств' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()"
+                  [class.disabled]="merchantsFormArray.length === 0 || submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'IssueMoneySettingActiveStatus'" class="ml-2 checkbox-toggle">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch"></label>
+        </div>
+        <div *ngxPermissionsOnly="'IssueMoneySettingActiveStatus'" class="ml-2 checkbox-toggle">
+          <div class="toggle-title">Ручной вывод</div>
+          <input type="checkbox" id="withdrawalAmount" formControlName="canManuallyIssue"/><label for="withdrawalAmount"></label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="withdrawal-amount padding-6" [class.blur]="submitted">
+    <div class="withdrawal-amount__head">
+      <div class="form">
+        <div class="label">Организация</div>
+        <div class="input" [class.wrapper]="this.updateUrl !== 'new'">
+          <em-autocomplete formControlName="companyId"
+            (changed)="selectedCompany($event)"
+            [class.pointer-events-none]="(this.updateUrl !== 'new')"
+            [searchable]="true"
+            [placeholder]="'Организация'"
+            [customFilter]="companyFilter"
+            [path]="apiCompaniesPath" />
+        </div>
+      </div>
+    </div>
+    <div class="withdrawal-amount__body">
+      <div class="withdrawal-amount__body-switches">
+        <div class="select-all">
+          <div class="checkbox-toggle pr-3 mr-3">
+            <div class="toggle-title">Выбрать все торговые точки</div>
+            <input type="checkbox"
+                   [(ngModel)]="isMerchantSame"
+                   [checked]="isMerchantSame"
+                   [ngModelOptions]="{standalone: true}"
+                   (change)="chooseAllMerchants()"
+                   id="switchFist"/><label for="switchFist">Toggle</label>
+          </div>
+        </div>
+        <div class="select-all">
+          <div class="checkbox-toggle pr-3 mr-3">
+            <div class="toggle-title">Одинаковое время для всех точек</div>
+            <input type="checkbox"
+                   [(ngModel)]="isTimeSame"
+                   [checked]="isTimeSame"
+                   [ngModelOptions]="{standalone: true}"
+                   (change)="chooseAllMerchantTimes()"
+                   id="switchSecond"/><label for="switchSecond">Toggle</label>
+          </div>
+        </div>
+        <div class="select-all">
+          <div class="checkbox-toggle pr-3 mr-3">
+            <div class="toggle-title">Одинаковые условия для всех точек</div>
+            <input type="checkbox"
+                   [(ngModel)]="isTermsSame"
+                   [checked]="isTermsSame"
+                   [ngModelOptions]="{standalone: true}"
+                   (change)="chooseAllMerchantTerms()"
+                   id="switchThird"/><label for="switchThird">Toggle</label>
+          </div>
+        </div>
+      </div>
+      <ng-container formArrayName="merchants">
+        @for (merchant of merchantsFormArray.controls; track merchant; let i = $index) {
+          <div class="em-d-flex em-dr-columm mb-3">
+            <div class="d-flex-sb em-g-30 w-100" [formGroupName]="i">
+              <div class="form mb-0">
+                <label class="circle-checkbox">
+                  <input type="checkbox" formControlName="isActive" (change)="chooseMerchant(merchant)">
+                  <div class="check em-d-flex-center">
+                    <svg-icon src="assets/icons/check.svg" />
+                  </div>
+                  {{ merchant.get('name')?.value }}
+                </label>
+              </div>
+              <div class="form mb-0 em-d-flex">
+                <div class="em-d-flex w-100">
+                  <input class="form-control input-time w-50 mr-1"
+                         (change)="chooseMerchantTime(merchant)"
+                         type="time"
+                         placeholder="00:00"
+                         step="5"
+                         formControlName="runAt">
+                  @if (merchant.get('issueMoneyPeriodTypeId')?.value === PeriodId.CYCLICAL) {
+                    <input class="form-control input-time w-50"
+                           (change)="chooseMerchantTime(merchant)"
+                           type="time"
+                           placeholder="00:00"
+                           step="5"
+                           formControlName="finishAt">
+                  }
+                </div>
+              </div>
+              <div class="form mb-0 gap-2 p-relative">
+                <div class="em-d-flex em-ai-center gap-1">
+                  <div class="input">
+                    <em-simple-select-list formControlName="issueMoneyPeriodTypeId"
+                      [action]="'Выберите условия'"
+                      [dataSource]="periodTypes"
+                      (changed)="chooseMerchantTerm($event, merchant)" />
+                  </div>
+                  @if (merchant.get('issueMoneyPeriodTypeId')?.value) {
+                    <img
+                      ngSrc="./assets/icons/info.svg"
+                      alt="info icon"
+                      height="24" width="24"
+                      [emTooltip]="period[merchant.get('issueMoneyPeriodTypeId')?.value]?.text || ''">
+                  }
+                </div>
+              </div>
+            </div>
+            <em-validator [fieldControl]="merchant" />
+          </div>
+        }
+      </ng-container>
+      @if (isNotMerchant) {
+        <div class="no-merchant">У этой организации нету мерчанта добавьте мерчант</div>
+      }
+      <em-validator [fieldControl]="f['merchants']" />
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

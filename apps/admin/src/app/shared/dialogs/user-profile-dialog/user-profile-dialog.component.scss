@@ -1,0 +1,80 @@
+@import "core/scss/flex";
+@import "core/scss/margins";
+@import "core/scss/variables";
+@import "core/scss/button";
+@import "core/scss/styles";
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.upload-file {
+  display: none;
+}
+
+.user-profile {
+  width: 450px;
+  padding: 2.5rem;
+
+  &-logo {
+    position: relative;
+
+    .change-avatar {
+      position: absolute;
+      bottom: 9px;
+      left: 70px;
+      background: #FFFFFF;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+      border-radius: 60px;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      svg-icon {
+        line-height: 0;
+      }
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-close {
+      cursor: pointer;
+    }
+  }
+
+  &-info {
+    margin: 2.5rem 0;
+
+    .info-title {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 26px;
+      color: $text-color;
+    }
+
+    .info-subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      color: #7D8597;
+    }
+  }
+
+  .footer__btn {
+    padding: 1rem 0;
+  }
+}

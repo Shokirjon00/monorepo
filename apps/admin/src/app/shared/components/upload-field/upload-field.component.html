@@ -1,0 +1,89 @@
+<div class="upload-field">
+  <div class="files">
+    @if (loading() && files.length === 0 && !readOnly()) {
+      <div class="em-d-flex file loader-item {{formStyle()}}">
+        <div class="files-item">
+          <span class="loader-spinner s brand"></span>
+          <span>Загрузка..</span>
+        </div>
+      </div>
+    }
+
+    @for (file of files; track file; let i = $index) {
+      @if (file.showStatus) {
+        <div [ngClass]="file.status"
+             class="em-d-flex file {{file.status}} {{formStyle()}} file-clickable"
+             (click)="showDocument(file)">
+          <div class="files-item">
+            @if (IsPdf(file.fileType)) {
+              <svg-icon class="mr-2" src="./assets/icons/pdf-document.svg" />
+            }
+            @if (isImage(file.fileType)) {
+              <svg-icon class="mr-2" src="./assets/icons/png-icon.svg" />
+            }
+            @if (!IsPdf(file.fileType) && !isImage(file.fileType)) {
+              <svg-icon class="mr-2" src="./assets/icons/file-icon.svg" />
+            }
+            <span>{{ file.fileName }}</span>
+          </div>
+
+          @if (!readOnly()) {
+            <div class="status-icon" (click)="$event.stopPropagation()">
+              @if (file.status === 'progress') {
+                <span class="loader-spinner s brand"></span>
+              }
+              @if (file.status === 'success') {
+                <svg-icon class="file-status"
+                  src="./assets/images/close.svg"
+                  (click)="deleteFile($event, file, i)" />
+              }
+              @if (!file.status) {
+                <svg-icon class="file-status1"
+                  src="./assets/images/close.svg"
+                  (click)="deleteFormFile($event, file, i)" />
+              }
+              @if (file.status === 'error') {
+                <svg-icon class="file-status"
+                  src="./assets/images/repeat.svg"
+                  (click)="retryUpload(file, i)" />
+              }
+            </div>
+          }
+        </div>
+      }
+    }
+
+    @if (readOnly() && files.length === 0) {
+      <button type="button" class="btn upload-btn" [class]="formStyle()">
+        <svg-icon src="./assets/images/refresh-cw-alert.svg" />
+        <span>Файл отсутствует</span>
+      </button>
+    }
+
+    <ng-container *ngxPermissionsOnly="permissionName()">
+      @if (!readOnly() && !limitExceeded) {
+        <button type="button" class="btn upload-btn"
+                [class]="formStyle()"
+                (click)="triggerFileInput()">
+          <svg-icon src="./assets/images/cloud-arrow-up.svg" />
+          <span [innerHTML]="placeHolder()"></span>
+        </button>
+      }
+    </ng-container>
+
+    @if (canPrint()) {
+      <button *ngxPermissionsOnly="templatePermissionName()" type="button" class="btn upload-btn"
+              (click)="printDocument()">
+        Печать шаблона договора
+      </button>
+    }
+  </div>
+
+  @if (!readOnly()) {
+    <input [id]="'fileInput_' + instanceId"
+           type="file"
+           class="upload-field__file"
+           [accept]="memType()"
+           (change)="onChangeFiles($event)">
+  }
+</div>

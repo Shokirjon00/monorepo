@@ -1,0 +1,35 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems"
+  [actions]="actions">
+  <ng-container header-actions>
+    @for (action of actions; track action) {
+      <em-actions (continuePayment)="paymentContinue()"
+        [disabled]="loading()"
+        (issueMoney)="issueMoney()"
+        (syncStatus)="selectedItemsExist ? syncStatusHandler(paymentIds) : null"
+        (syncPaymentInfo)="selectedItemsExist ? syncStatusHandler([paymentId]) : null"
+        (paymentRefund)="checkPaymentRefundStatus()"
+        [actionData]="action"
+       />
+    }
+    @if (paginate) {
+      <em-pagination class="pl-3 v-line-left" [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<em-table (selectedItems)="checkedTableItems($event)"
+  (sortChange)="sortTable($event)"
+  (detail)="showDetail($event)"
+  (edit)="editPayment($event)"
+  [dataSource]="paymentChildren"
+  [captions]="captions"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+<em-toast />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

@@ -1,0 +1,71 @@
+<div class="sidebar">
+  <div class="sidebar-block">
+    <div class="sidebar-user position-stickys">
+      <div class="group">
+        <div class="sidebar-user-profile">
+          <div class="user-data" [class.open]="showDropdown" (emClickOutside)="showDropdown = false">
+            <div class="data-group">
+              <img class="avatar" [src]="avatarImg ||'assets/no-image.png'" (click)="openDropdown()"/>
+              <button type="button" class="setting" (click)="openDropdown()">
+                <svg-icon [src]="'./assets/icons/gear.svg'" />
+              </button>
+            </div>
+            <div class="dropdown">
+              <ul class="dropdown-list">
+                @for (userRoute of userRoutes; track userRoute) {
+                  <li class="dropdown-item mb-1"
+                      *ngxPermissionsOnly="userRoute.permissionName"
+                      (click)="onSelect(userRoute.code)">
+                    <div class="em-d-flex">
+                      <div class="value">{{ userRoute.text }}</div>
+                    </div>
+                    <div>
+                      <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" />
+                    </div>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+          @if (isTest) {
+            <div class="test-text">Тестовый</div>
+          }
+        </div>
+        <div class="sidebar-user-info" [class.test]="isTest">
+          <div class="title">{{ userInfo?.shortName }}</div>
+          <div class="subtitle">{{ userInfo?.roleName }}</div>
+        </div>
+      </div>
+      <svg-icon class="close" (click)="closed.emit()" [src]="'./assets/icons/cross.svg'" />
+    </div>
+    <div class="sidebar-nav">
+      @for (menuItem of menus; track menuItem) {
+        <div class="sidebar-nav-item">
+          <a *ngxPermissionsOnly="menuItem.permissionName"
+             class="route"
+             [routerLink]="['/', menuItem.route]"
+             routerLinkActive="active"
+             (click)="navigate(menuItem)">
+            <div class="icon icon-{{menuItem.route}}"></div>
+            <div class="name em-font em-subtitle">{{ menuItem.text }}</div>
+            @if (menuItem.hasBadge) {
+              <span class="badge"></span>
+            }
+          </a>
+        </div>
+      }
+      <div class="sidebar-nav-item">
+        <a class="route" (click)="showLogoutDialog()">
+          <div class="icon icon-logout"></div>
+          <div class="name em-font em-subtitle">Выйти</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="version mb-1 mt-5">
+      <svg-icon src="./assets/icons/brand-log2.svg" />
+      <div>Эсхата Мерчант <br> v {{ appVersion }}</div>
+    </div>
+  </div>
+</div>

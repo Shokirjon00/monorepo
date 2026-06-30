@@ -1,0 +1,256 @@
+@import 'core/scss/variables';
+
+/*
+X-Small	None	<576px
+Small	sm	≥576px
+Medium	md	≥768px
+Large	lg	≥992px
+Extra large	xl	≥1200px
+Extra extra large	xxl	≥1400px
+QHD	xxxl	≥2560px
+UHD / 4K	xxxxl	≥3840px
+*/
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 2560px,
+  xxxxl: 3840px
+);
+
+@mixin flex_row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex_wrap() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex_jc_sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex_ai_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_nowrap_ai_end() {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+@mixin em-d-flex-al-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin em-d-flex-al-start() {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin ellipsis-text($lines: 1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+
+@mixin indicator-block($color){
+  content: '';
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background-color: $color;
+  margin-right: 8px;
+}
+
+@mixin flex_column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex_column_ai_jc_center() {
+  @include flex_column();
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_column_justify_between() {
+  @include flex_column();
+  justify-content: space-between;
+}
+
+@mixin flex_justify_between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex_align_center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex_align_center_justify_between() {
+  @include flex_align_center();
+  justify-content: space-between;
+}
+
+@mixin flex_align_center_justify_end() {
+  @include flex_align_center();
+  justify-content: flex-end;
+}
+
+@mixin flex_justify_center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex_justify_end() {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin flex_row_justify_between() {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+@mixin flex_row_align_center() {
+  @include flex_row();
+  align-items: center;
+}
+
+@mixin border-color() {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+
+@mixin placeholder($color) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+  }
+
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+  }
+}
+
+@mixin hide-date-elements {
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+@mixin datetime-text-visibility($state: hidden) {
+  @if $state == hidden {
+    &::-webkit-datetime-edit {
+      color: transparent;
+    }
+  } @else {
+    &::-webkit-datetime-edit {
+      color: inherit;
+    }
+  }
+}
+
+@mixin panel-accent($accent) {
+  &:not(.panel-full):hover {
+    box-shadow: 0 18px 42px color-mix(in srgb, $accent 18%, transparent);
+    background:
+      radial-gradient(180px 150px at 100% -12%, color-mix(in srgb, $accent 12%, transparent), transparent 70%),
+      $white;
+  }
+
+  .panel-accent { background: $accent; }
+}
+
+@mixin acq-metric-accent($c) {
+  background: linear-gradient(135deg, color-mix(in srgb, $c 6%, transparent), transparent 70%);
+  border-color: color-mix(in srgb, $c 14%, $brand-line);
+
+  &:hover {
+    box-shadow: 0 8px 18px color-mix(in srgb, $c 14%, transparent);
+  }
+
+  .metric-dot {
+    background: $c;
+    box-shadow: 0 0 0 3px color-mix(in srgb, $c 16%, transparent);
+  }
+
+  .metric-percent {
+    color: $c;
+  }
+
+  .metric-track {
+    background: color-mix(in srgb, $c 10%, $main-bg);
+  }
+
+  .metric-fill {
+    background: linear-gradient(90deg, color-mix(in srgb, $c 65%, white), $c);
+  }
+}
+
+@mixin pf-accent($c) {
+  .pf-row-dot {
+    background: $c;
+    box-shadow: 0 0 0 3px color-mix(in srgb, $c 18%, transparent);
+  }
+
+  .pf-track {
+    background: color-mix(in srgb, $c 8%, $main-bg);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, $c 10%, transparent);
+  }
+
+  .pf-bar {
+    background: linear-gradient(90deg, color-mix(in srgb, $c 55%, white), $c);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 12px color-mix(in srgb, $c 35%, transparent);
+  }
+}
+
+@mixin ma-subchart-accent($accent) {
+  background: linear-gradient(180deg, color-mix(in srgb, $accent 5%, transparent), transparent 60%), $white;
+
+  &:hover {
+    box-shadow: 0 12px 28px color-mix(in srgb, $accent 14%, transparent);
+  }
+
+  .ma-subtitle::before {
+    background: $accent;
+  }
+}
+
+@mixin ma-panel-accent($accent) {
+  &:hover {
+    box-shadow: 0 18px 42px color-mix(in srgb, $accent 18%, transparent);
+    background:
+      radial-gradient(180px 150px at 100% -12%, color-mix(in srgb, $accent 12%, transparent), transparent 70%),
+      $white;
+  }
+
+  .ma-panel-accent {
+    background: $accent;
+  }
+}

@@ -12,7 +12,7 @@ export default [
         'error',
         {
           type: 'attribute',
-          prefix: 'appAdmin',
+          prefix: 'em',
           style: 'camelCase',
         },
       ],
@@ -20,7 +20,7 @@ export default [
         'error',
         {
           type: 'element',
-          prefix: 'app-admin',
+          prefix: 'em',
           style: 'kebab-case',
         },
       ],

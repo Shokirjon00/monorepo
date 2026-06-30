@@ -1,0 +1,16 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+.client-role{
+  height: calc(100vh - 218px);
+}
+
+.permissions{
+  padding: 0 2.5rem 2.5rem;
+  overflow-y: auto;
+  border-radius: 20px;
+  border: 1px solid $border-color;
+}

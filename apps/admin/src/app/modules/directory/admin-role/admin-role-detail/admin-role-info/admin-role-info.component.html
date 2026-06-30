@@ -1,0 +1,40 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+        <button type="button" class="button-tooltip" *ngxPermissionsOnly="'AdminUserRoleUpdate'" (click)="navigate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+    </div>
+  </div>
+</em-header2>
+
+<div class="padding-6">
+  <div class="labels-data">
+    <div class="em-d-flex">
+      <span class="key">Наименование*</span>
+      <span>:</span>
+      <span class="data">{{ adminRoleDetail?.name }}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Примечание</span>
+      <span>:</span>
+      <span class="data">{{ adminRoleDetail?.description || '-' }}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Статус</span>
+      <span>:</span>
+      <span class="data">{{ adminRoleDetail?.statusName || '-' }}</span>
+    </div>
+    <div class="em-d-flex em-ai-start">
+      <span class="key">Доступ</span>
+      <span>:</span>
+      <span class="value">
+        @for (permission of adminRoleDetail?.permissions; track permission) {
+          <span>{{ permission || '-' }}</span>
+        }
+      </span>
+    </div>
+  </div>
+</div>

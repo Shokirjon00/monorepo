@@ -1,0 +1,244 @@
+<div class="main-filter">
+  <div class="main-filter-top">
+    <div class="close">
+      <img src="assets/icons/cross.svg"
+           [mat-dialog-close]="false"
+           class="svg-icon"
+           alt="">
+    </div>
+
+    <div class="title">Фильтр</div>
+
+    @if (showAddFilterButton) {
+      <div class="create" (click)="addFilterLabel()">
+        <img src="assets/icons/wallet-move.svg" alt="">
+      </div>
+    }
+  </div>
+
+  <div class="main-filter-body">
+    <div class="form-body">
+
+      @for (filterItem of filterItems; track filterItem.field; let idx = $index) {
+
+        <div class="form-input-group em-d-flex em-ai-center em-jc-sb"
+             (emClickOutside)="closeDropdown(idx)">
+
+          <div class="d-flex-sb filtered-value p-relative"
+               [ngClass]="{
+                 invalid:
+                   filterItem.field === 'inn' &&
+                   filterItem.value &&
+                   !isInnValid(filterItem.value)
+               }">
+
+            <div class="em-d-flex w-100 em-ai-center">
+
+              @if (filterItem.filterType === 'date') {
+                <div class="em-d-flex em-ai-center w-100">
+                  <div class="em-d-flex em-dr-columm w-100">
+
+                    <div class="em-d-flex em-ai-center">
+                      <div class="arrow" (click)="openList(idx)">
+                        <img class="mr-1 em-d-flex-center"
+                             src="assets/images/arrow.svg"
+                             alt="">
+                      </div>
+                      <div class="mr-1 max-content-width">
+                        {{ filterItem.key }}:
+                      </div>
+                    </div>
+
+                    <div class="em-d-flex em-ai-center gap-1 mobile-date">
+                      <div class="input-container w-50">
+                        <input
+                          [(ngModel)]="filterItem.startDate"
+                          type="datetime-local"
+                          class="filter-value hidden-calendar-icon"
+                          [max]="filterItem.endDate">
+                      </div>
+
+                      <div class="input-container w-50">
+                        <input
+                          [(ngModel)]="filterItem.endDate"
+                          type="datetime-local"
+                          class="filter-value hidden-calendar-icon"
+                          max="2030-01-01T23:59"
+                          [max]="filterItem.startDate">
+                      </div>
+                    </div>
+                  </div>
+
+                  @if (filterItem.startDate || filterItem.endDate) {
+                    <div class="arrow mr-1 cancel"
+                         (click)="clearInput(filterItem)">
+                      <img src="assets/icons/cancel.svg"
+                           class="em-d-flex-center"
+                           alt="">
+                    </div>
+                  }
+                </div>
+
+              } @else {
+                <div class="em-d-flex em-ai-center w-100">
+
+                  <div class="em-d-flex em-ai-center">
+                    <div class="arrow" (click)="openList(idx)">
+                      <img class="mr-1 em-d-flex-center"
+                           src="assets/images/arrow.svg"
+                           alt="">
+                    </div>
+                    <div class="mr-1 max-content-width">
+                      {{ filterItem.key }}:
+                    </div>
+                  </div>
+
+                  @switch (filterItem.filterType) {
+
+                    @case ('list') {
+                      <em-simple-select-list [(ngModel)]="filterItem.value"
+                        (changed)="selectListItem('action_type', $event?.value)"
+                        [dataSource]="activeStatus"
+                        optionValue="value"
+                        optionLabel="key"
+                        [isBottomSheet]="true"
+                        (dropdownToggle)="dropdownOpened(idx, $event)"
+                        action="Выберите статус" />
+                    }
+
+                    @case ('payment_refund_application_statuses') {
+                      <em-simple-select-list [(ngModel)]="filterItem.value"
+                        (changed)="selectListItem('statusId', $event?.value)"
+                        [dataSource]="refundApplicationStatus"
+                        optionValue="value"
+                        optionLabel="key"
+                        [isBottomSheet]="true"
+                        action="выберите статус" />
+                    }
+
+                    @case ('send_type') {
+                      <em-simple-select-list [(ngModel)]="filterItem.value"
+                        (changed)="selectListItem('sendType', $event?.value)"
+                        [dataSource]="sendType"
+                        optionValue="value"
+                        optionLabel="key"
+                        [isBottomSheet]="true"
+                        action="выберите тип" />
+                    }
+
+                    @case ('refund_type') {
+                      <em-simple-select-list [(ngModel)]="filterItem.value"
+                        (changed)="selectListItem('canRefundName', $event?.value)"
+                        [dataSource]="refundType"
+                        optionValue="value"
+                        optionLabel="key"
+                        [isBottomSheet]="true"
+                        action="выберите тип" />
+                    }
+
+                    @case ('action_type') {
+                      <em-simple-select-list [(ngModel)]="filterItem.value"
+                        (changed)="selectListItem('type', $event?.value)"
+                        [dataSource]="actionType"
+                        optionValue="value"
+                        optionLabel="key"
+                        [isBottomSheet]="true"
+                        action="Выберите тип" />
+                    }
+
+                    @case ('search-dropdown') {
+                      <em-select-field-search [(ngModel)]="filterItem.value"
+                        [apiUrl]="filterItem.apiUrl"
+                        optionValue="id"
+                        optionLabel="name"
+                        [isBottomSheet]="true"
+                        [placeholder]="filterItem.placeholder"
+                        [sendRequestImmediately]="false"
+                        (changed)="onSearchItemSelected($event, filterItem, filterItem.placeholder)"
+                        (openBottomSheets)="onOpenBottomSheet(filterItem)" />
+                    }
+
+                    @case ('dropdown') {
+                      <em-custom-select-list [(ngModel)]="filterItem.value"
+                        [apiUrl]="filterItem.apiUrl"
+                        optionValue="id"
+                        optionLabel="name"
+                        [isBottomSheet]="true"
+                        (changed)="selectStatusType($event)"
+                        (dropdownToggle)="dropdownOpened(idx, $event)"
+                        action="Выберите статус" />
+                    }
+
+                    @case ('text') {
+                      <input
+                        [(ngModel)]="filterItem.value"
+                        type="text"
+                        class="w-100 filter-value"
+                        [attr.inputmode]="filterItem.field === 'inn' ? 'numeric' : null"
+                        [attr.maxlength]="filterItem.field === 'inn' ? 9 : null"
+                        (input)="onInputValidation(filterItem)"
+                        [disabled]="hasInvalidInn() && filterItem.field !== 'inn'">
+                    }
+
+                    @case ('number') {
+                      <input
+                        [(ngModel)]="filterItem.value"
+                        type="number"
+                        class="w-100 filter-value"
+                        [attr.inputmode]="filterItem.field === 'inn' ? 'numeric' : null"
+                        [attr.maxlength]="filterItem.field === 'inn' ? 9 : null"
+                        (input)="onInputValidation(filterItem)"
+                        [disabled]="hasInvalidInn() && filterItem.field !== 'inn'">
+                    }
+
+                  }
+
+                  @if (filterItem.value) {
+                    <div class="arrow mr-1"
+                         (click)="clearInput(filterItem)">
+                      <img src="assets/icons/cancel.svg"
+                           class="em-d-flex-center"
+                           alt="">
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+
+          @if (filterItems.length > 1) {
+            <div class="p-relative"
+                 (click)="removeField(idx, filterItem.field)">
+              <img src="assets/icons/delete.svg"
+                   class="em-d-flex-center ml-1"
+                   alt="">
+            </div>
+          }
+        </div>
+
+        @if (filterItem.field === 'inn' &&
+        filterItem.value &&
+        !isInnValid(filterItem.value)) {
+          <div class="validation-error">
+            ИНН должен состоять ровно из 9 цифр
+          </div>
+        }
+      }
+    </div>
+
+    <div class="main-filter-bottom">
+      <button class="btn btn-secondary"
+              type="button"
+              (click)="resetFilter()">
+        Сбросить фильтры
+      </button>
+
+      <button class="btn btn-primary"
+              type="button"
+              (click)="applyFilter()"
+              [disabled]="hasInvalidInn()">
+        Применить
+      </button>
+    </div>
+  </div>
+</div>

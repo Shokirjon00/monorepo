@@ -1,0 +1,127 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import "core/scss/mixins/breakpoints";
+
+
+.login {
+  width: 100%;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px);
+  border-radius: 32px;
+
+  &-form {
+    padding: 2rem 0;
+
+    .form-label{
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      color: $white-color;
+    }
+
+    .form-control {
+      min-width: 360px;
+      color: $white-color;
+      background-color: transparent;
+
+      &::-webkit-input-placeholder {
+        color: $white-color;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+      }
+
+      &:-moz-placeholder { /* Firefox 18- */
+        color: $white-color;
+      }
+
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: $white-color;
+      }
+
+      &:-ms-input-placeholder {
+        color: $white-color;
+      }
+
+      &::placeholder {
+        color: $white-color;
+      }
+    }
+    .check-label{
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: $white-color;
+    }
+  }
+
+  input[type="checkbox"] {
+    border: 2px solid $white-color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+  }
+
+  input[type="checkbox"]::before {
+    background: $primary-color;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+    background-image: url("/assets/images/check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 17px;
+    background-color: $primary-color;
+    border: none;
+  }
+
+  .footer__btn {
+    padding: 1rem 0;
+    height: 3.5rem;
+  }
+}
+
+.passShow{
+  cursor: pointer;
+  position: relative;
+  float: right;
+  top: -32px;
+}
+
+@include media-breakpoint-down(md) {
+  .login {
+    width: 85vw;
+    padding: 2rem;
+    &-form {
+      padding: 3rem 0;
+      .form-control{
+        min-width: auto;
+      }
+    }
+    .footer__btn {
+      padding: .5rem 0;
+    }
+  }
+}

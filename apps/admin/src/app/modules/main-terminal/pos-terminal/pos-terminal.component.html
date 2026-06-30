@@ -1,0 +1,25 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'pos-terminal'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (link)="link($event)"
+  (remove)="deletePosTerminal($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="posTerminal"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+@if (loading()) {
+  <em-eb-loader class="loader" />
+}

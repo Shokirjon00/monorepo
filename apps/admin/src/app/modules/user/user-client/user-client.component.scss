@@ -1,0 +1,10 @@
+@import "core/scss/styles";
+@import "core/scss/flex";
+
+
+@include media-breakpoint-down(sm) {
+  .d-flex-sb {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}

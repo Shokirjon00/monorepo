@@ -1,0 +1,35 @@
+@if (data(); as d) {
+  <div class="pf">
+    <div class="pf-rows">
+      @for (row of rows(); track row.key) {
+        <div class="pf-row" [ngClass]="'pf-c-' + row.key">
+          <div class="pf-row-head">
+            <span class="pf-row-label">
+              <span class="pf-row-dot"></span>
+              {{ row.label }}
+            </span>
+            <span class="pf-row-value">{{ row.value | emNumber: '1.0-2' }}</span>
+          </div>
+          <div class="pf-track">
+            <div class="pf-bar" [style.width.%]="row.heightPercent"></div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="pf-summary">
+      @if (planCompletion() !== null) {
+        <div class="pf-stat" [class.is-good]="planCompletion()! >= 100" [class.is-mid]="planCompletion()! < 100">
+          <span class="pf-stat-num">{{ planCompletion() }}%</span>
+          <span class="pf-stat-cap">Выполнение плана</span>
+        </div>
+      }
+      @if (forecastVsPlan() !== null) {
+        <div class="pf-stat" [class.is-good]="forecastVsPlan()! >= 0" [class.is-bad]="forecastVsPlan()! < 0">
+          <span class="pf-stat-num">{{ forecastVsPlan()! >= 0 ? '+' : '' }}{{ forecastVsPlan() }}%</span>
+          <span class="pf-stat-cap">Прогноз к плану</span>
+        </div>
+      }
+    </div>
+  </div>
+}

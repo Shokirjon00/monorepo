@@ -1,0 +1,120 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ gatewaysSetup?.bankName }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 country em-d-flex">
+    <div class="w-50 v-line pr-6">
+      <div class="form">
+        <div class="label">Веб-хук URL</div>
+        <div class="input">
+          <input formControlName="webhookUrl" type="text" class="form-control" placeholder="Введите URL веб-хука: example(https://yourdomain.com)"
+            [class.is-invalid]="f['webhookUrl']?.invalid && f['webhookUrl']?.touched">
+            <em-validator [fieldControl]="f['webhookUrl']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">URL возврата платежей</div>
+          <div class="input">
+            <input formControlName="refundUrl" type="text" class="form-control" placeholder="Введите URL для возврата платежей: example(https://yourpayment.com)"
+              [class.is-invalid]="f['refundUrl']?.invalid && f['refundUrl']?.touched">
+              <em-validator [fieldControl]="f['refundUrl']" />
+            </div>
+          </div>
+          <div class="form-body em-d-flex md-fw-wrap md-mb-5">
+            <div class="form md-mr-0">
+              <div class="label">Секретный ключ</div>
+              <div class="input">
+                {{ isOpenMap['privateKey'] ? form.get('privateKey')?.value : maskedValue('privateKey') }}
+              </div>
+            </div>
+            <em-toggle-visibility-button [isVisible]="isOpenMap['privateKey']"
+              (toggle)="toggleVisibility('privateKey')" />
+            <div class="icon-item tooltip em-d-flex" (click)="copyHashKey('privateKey')">
+              <svg-icon src="assets/icons/copy.svg" />
+              <span class="tooltiptext">Копировать</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="w-50 pl-6">
+          <div class="form-body em-d-flex md-fw-wrap md-mb-5">
+            <div class="form md-mr-0">
+              <div class="label">API-ключ</div>
+              <div class="input">
+                {{ isOpenMap['apiKey'] ? form.get('apiKey')?.value : maskedValue('apiKey') }}
+              </div>
+            </div>
+            <em-toggle-visibility-button [isVisible]="isOpenMap['apiKey']"
+              (toggle)="toggleVisibility('apiKey')" />
+            <div class="icon-item tooltip em-d-flex" (click)="copyHashKey('apiKey')">
+              <svg-icon src="assets/icons/copy.svg" />
+              <span class="tooltiptext">Копировать</span>
+            </div>
+          </div>
+          <div class="form">
+            <h3 class="label">Сетевые адреса*</h3>
+            <div class="input">
+              <mat-form-field appearance="fill">
+                <mat-chip-grid #chipList aria-label="Group IDs">
+                  @for (groupId of groupsId.controls; track i; let i = $index) {
+                    <mat-chip-row
+                      [removable]="removable"
+                      (removed)="removeGroupById(groupId.value)"
+                      >
+                      {{ groupId.value }}
+                      @if (removable) {
+                        <mat-icon matChipRemove>
+                          <img ngSrc="assets/icons/cancel.svg" alt="" height="19" width="19" />
+                        </mat-icon>
+                      }
+                    </mat-chip-row>
+                  }
+                </mat-chip-grid>
+                <div class="chips-input">
+                  <input
+                    #chipInput
+                    class="form-control"
+                    type="text"
+                    placeholder="Укажите IP-адрес, example: 192.168.0.1"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (keydown.enter)="addApiAddress($event)"
+                    (input)="onInputChange($event)"
+                    (blur)="validatePendingInput()"
+                    [disabled]="groupsId.length >= MAX_ADDRESSES"
+                    />
+                  </div>
+                </mat-form-field>
+              </div>
+              <em-validator [fieldControl]="f['networkAddresses']" />
+            </div>
+            <div class="form">
+              <div class="label">Доступ к API*</div>
+              <div class="input">
+                <em-simple-select-list formControlName="externalApiAccessTypeId"
+                  [dataSource]="accessTypesId"
+                  action="Выберите доступ к API" />
+                <em-validator [fieldControl]="f['externalApiAccessTypeId']" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <em-toast />

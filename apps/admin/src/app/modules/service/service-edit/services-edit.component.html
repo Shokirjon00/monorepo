@@ -1,0 +1,129 @@
+<form class="w-100 p-relative" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1"> {{ servicesDetail?.name || 'Добавить сервис' }}</div>
+      <div class="em-d-flex em-ai-center">
+        <button type="button" class="button-tooltip v-line mr-1" (click)="back()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/cancel.svg" />
+          <span class="tooltip-text">Отмена</span>
+        </button>
+        <button type="button" class="button-tooltip v-line" (click)="onSubmit()" [class.disabled]="submitted">
+          <svg-icon src="assets/icons/save.svg" />
+          <span class="tooltip-text">Сохранить</span>
+        </button>
+        <div class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="merchant-edit" [class.blur]="submitted">
+    <div class="padding-6 em-d-flex em-fw-wrap">
+      <div class="w-50 v-line pr-6">
+        <div class="form">
+          <div class="label">Название сервиса*</div>
+          <div class="input">
+            <input formControlName="name" type="text" class="form-control"
+                   placeholder="Введите название сервиса"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Код АБС</div>
+          <div class="input">
+            <input formControlName="extCodeAbs" type="text" class="form-control"
+                   placeholder="Введите ABS код"
+                   [class.is-invalid]="f['extCodeAbs']?.invalid && f['extCodeAbs']?.touched">
+            <em-validator [fieldControl]="f['extCodeAbs']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Код</div>
+          <div class="input">
+            <input formControlName="code" type="text" class="form-control"
+                   placeholder="Введите код"
+                   [class.is-invalid]="f['code']?.invalid && f['code']?.touched">
+            <em-validator [fieldControl]="f['code']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Код процессинга</div>
+          <div class="input">
+            <input formControlName="extCodeProcessing" type="text" class="form-control"
+                   placeholder="Введите код процессинга"
+                   [class.is-invalid]="f['extCodeProcessing']?.invalid && f['extCodeProcessing']?.touched">
+            <em-validator [fieldControl]="f['extCodeProcessing']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Минимальная сумма</div>
+          <div class="input">
+            <input formControlName="minValue" type="number" class="form-control"
+                   placeholder="Введите минимальная сумма"
+                   [class.is-invalid]="f['minValue']?.invalid && f['minValue']?.touched">
+            <em-validator [fieldControl]="f['minValue']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Максимальная сумма</div>
+          <div class="input">
+            <input formControlName="maxValue" type="number" class="form-control"
+                   placeholder="Введите максимальная сумма"
+                   [class.is-invalid]="f['maxValue']?.invalid && f['maxValue']?.touched">
+            <em-validator [fieldControl]="f['maxValue']" />
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="form">
+          <div class="label">Позиция</div>
+          <div class="input">
+            <input formControlName="position" type="number" class="form-control"
+                   placeholder="Введите позиция"
+                   [class.is-invalid]="f['position']?.invalid && f['position']?.touched">
+            <em-validator [fieldControl]="f['position']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Шлюз</div>
+          <div class="input">
+            <em-simple-select-list formControlName="gatewayId"
+              [dataSource]="gateways"
+              action="Выберите шлюз" />
+            <em-validator [fieldControl]="f['gatewayId']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Комиссия*</div>
+          <div class="input">
+            <input formControlName="commissionValue" type="number" class="form-control"
+                   placeholder="Введите комиссия"
+                   [class.is-invalid]="f['commissionValue']?.invalid && f['commissionValue']?.touched">
+            <em-validator [fieldControl]="f['commissionValue']" />
+          </div>
+        </div>
+        <div class="form em-d-flex em-dr-columm em-g-8">
+          <div class="label">Загрузите логотип (не более 2 мб. png/jpeg/jpg)</div>
+          <div class="form em-d-flex em-g-16">
+            <em-upload-logo formControlName="iconId" class="mr-3"
+              [action]="'логотип'"
+              [imgLabel]="'Логотип сервиса'"
+              [fileStorageToken]="fileStorageToken"
+              [fileStorageUrl]="fileStorageUrl"
+              [uploadFile]="uploadLogo.bind(this)"
+              [formDataKey]="customLogoKey" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (submitted) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

@@ -1,0 +1,47 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center">Результат импорта</div>
+  </div>
+
+  <div class="form mb-0">
+    <div class="counters">
+      <div class="counter counter-success">
+        <div class="counter-value">{{ data.createdCount }}</div>
+        <div class="counter-label">Создано</div>
+      </div>
+      <div class="counter counter-closed">
+        <div class="counter-value">{{ data.closedCount }}</div>
+        <div class="counter-label">Закрыто</div>
+      </div>
+    </div>
+
+    @if (data.notFoundTids?.length) {
+      <div class="not-found">
+        <div class="not-found-title">
+          <span>Не найденные терминалы</span>
+          <span class="not-found-badge">{{ data.notFoundTids.length }}</span>
+        </div>
+
+        <div class="grid-table">
+          <div class="grid-table-head">
+            <div class="grid-table-cell">Строка</div>
+            <div class="grid-table-cell">ID терминала</div>
+          </div>
+
+          <div class="grid-table-body">
+            @for (item of data.notFoundTids; track item.rowNumber) {
+              <div class="grid-table-row">
+                <div class="grid-table-cell">{{ item.rowNumber }}</div>
+                <div class="grid-table-cell">{{ item.tid }}</div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="em-d-flex em-jc-c">
+    <button class="btn btn-secondary btn-lg mr-2" (click)="close()">Закрыть</button>
+  </div>
+</div>

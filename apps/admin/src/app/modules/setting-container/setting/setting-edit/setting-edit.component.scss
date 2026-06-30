@@ -1,0 +1,22 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import "jsoneditor/dist/jsoneditor.min.css";
+
+textarea.jsoneditor-text {
+  min-height: 350px;
+}
+
+json-editor,
+json-editor .jsoneditor,
+json-editor > div,
+json-editor jsoneditor-outer {
+  height: 500px !important;
+  min-height: 500px !important;
+}
+
+.ace_editor.ace-jsoneditor {
+  min-height: 500px !important;
+}

@@ -1,0 +1,25 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'AccountCategoryTypeUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-6 account-category-type-info">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование*</span><span>:</span><span
+      class="data">{{acCatDetail?.name}}</span></div>
+    <div class="em-d-flex"><span class="key">Код</span><span>:</span><span
+      class="data">{{acCatDetail?.code || '-'}}</span></div>
+    <div class="em-d-flex"><span class="key">Позиция</span><span>:</span><span
+      class="data">{{acCatDetail?.position || '-'}}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{acCatDetail?.statusName || '-'}}</span></div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'retailOutlet'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (sortChange)="sortTable($event)"
+  (edit)="edit($event)"
+  [dataSource]="retailOutlet"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [rowActions]="tableActions"
+  [loading]="loading" />
+<em-toast />

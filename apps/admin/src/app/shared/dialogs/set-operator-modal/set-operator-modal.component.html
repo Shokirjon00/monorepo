@@ -1,0 +1,58 @@
+<div class="modal">
+  <h2 class="modal__title">{{ data.title }}</h2>
+
+  <div class="modal__form-group mt-4">
+    <label class="modal__form-group-label">Ответственный пользователь</label>
+    <div class="modal__form-group-select" (click)="toggleStatusDropdown()">
+      <span>{{ selectedOperatorName }}</span>
+      <i class="modal__form-group-select-arrow"></i>
+    </div>
+
+    @if (dropdownStatusOpen()) {
+      <div>
+        <input
+          type="text"
+          class="modal__form-group-search"
+          placeholder="Поиск пользователя..."
+          [value]="searchTerm()"
+          (input)="onSearchInput($any($event.target).value)"
+        />
+      </div>
+      <ul
+        class="modal__form-group-options"
+        [selector]="'modal__form-group-options'"
+        [pagination]="pagination"
+        (emInfiniteScroll)="loadNextPage()">
+        @for (user of filteredUsers; track user.id) {
+          <li
+            class="modal__form-group-options-item"
+            (click)="selectStatus(user.id)"
+          >
+            {{ user.name }}
+          </li>
+        }
+
+        @if (isLoadingMore()) {
+          <li class="loading">Загрузка...</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="modal__button-group mt-6">
+    <button
+      class="modal__button-group-btn modal__button-group-btn--cancel"
+      (click)="onCancel()"
+    >
+      Отмена
+    </button>
+
+    <button
+      class="modal__button-group-btn modal__button-group-btn--submit"
+      [disabled]="isUnchanged"
+      (click)="onSubmit()"
+    >
+      Выбрать
+    </button>
+  </div>
+</div>

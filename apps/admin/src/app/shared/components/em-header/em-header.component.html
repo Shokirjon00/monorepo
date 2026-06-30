@@ -1,0 +1,38 @@
+<div class="position-sticky">
+  <div class="header">
+    @if (filterFields()?.length) {
+      <em-quick-filter [defaultFilterField]="defaultFilterField()"
+        [key]="filterStorageKey()"
+        [filterFields]="filterFields()"
+        [field]="field()"
+        [filterParams]="filterParams()" />
+    }
+    @if (showBreadcrumb()) {
+      <em-breadcrumbs class="em-d-flex em-ai-center" />
+    }
+  </div>
+  <div class="container d-flex-sb em-ai-start gap-2 h-line d-blocks">
+
+    <ng-content select="[header-center-default]" />
+
+    @if (pageTitle()) {
+      <div class="title-h1">{{ pageTitle() }}</div>
+    }
+
+    <em-tab-menu [tabItems]="tabMenuItems()" [enableDropdown]="enableDropdown()"
+                 [dropdownLabel]="dropdownLabel()" />
+
+    <ng-content select="[header-center-actions]" />
+
+    <ng-content select="[header-right-actions]" />
+
+    <div class="d-flex-sb action-group action-container">
+      <ng-content select="[header-actions]" />
+    </div>
+    @if (showMobileFilter()) {
+      <div class="mobile-filter">
+        <button type="button" (click)="openFilter()" [class.active]="isShowFilter">Фильтры</button>
+      </div>
+    }
+  </div>
+</div>

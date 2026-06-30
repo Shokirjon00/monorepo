@@ -1,0 +1,25 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'ServiceParamUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-6">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование</span><span>:</span><span
+      class="data">{{ directoryOptionsDetail?.name }}</span></div>
+    <div class="em-d-flex"><span class="key">Ключ</span><span>:</span><span
+      class="data">{{ directoryOptionsDetail?.key }}</span></div>
+    <div class="em-d-flex"><span class="key">ID</span><span>:</span><span
+      class="data">{{ directoryOptionsDetail?.id }}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ directoryOptionsDetail?.statusName || '-' }}</span></div>
+  </div>
+</div>

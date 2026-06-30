@@ -1,0 +1,86 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ clientRolesDetail?.name || "Добавить роль клиента" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'ClientUserRoleActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 client-role">
+    <div class="em-d-flex em-fw-wrap h-100">
+      <div class="w-50 pr-7">
+        <div class="form">
+          <div class="label">Наименование*</div>
+          <div class="input">
+            <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование роли"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Описание</div>
+          <div class="input">
+            <input formControlName="description" type="text" class="form-control" placeholder="Введите примичание">
+          </div>
+        </div>
+      </div>
+      <div *ngxPermissionsOnly="'ClientUserPermissionList'" class="w-50 pl-7 h-100">
+        <div class="w-100 h-100 permissions">
+          <div class="position-sticky mb-3  pt-5">
+            <div class="em-title ">Настройки доступа</div>
+            <div class="form">
+              <div class="input em-d-flex em-ai-center">
+                <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" (keyup)="search()" type="text"
+                       class="form-control" placeholder="Поиск">
+                <svg-icon class="icon" src="assets/icons/search.svg" />
+                <label class="circle-checkbox">
+                  <input type="checkbox"
+                         [checked]="permissions.length === permissionsArray.length"
+                         (change)="checkAllPermission($event)">
+                  <div class="check em-d-flex-center">
+                    <svg-icon src="assets/icons/check.svg" />
+                  </div>
+                  Все
+                </label>
+              </div>
+            </div>
+          </div>
+          @for (permission of filterPermissions; track permission; let i = $index) {
+            <div class="em-d-flex pt-1 pb-1">
+              <label class="circle-checkbox">
+                <input type="checkbox"
+                       [checked]="permissionsArray.value.includes(permission.id)"
+                       (change)="permissionSelect(permission.id, $event.target)">
+                <div class="check em-d-flex-center">
+                  <svg-icon src="assets/icons/check.svg" />
+                </div>
+                {{ permission.name }}
+              </label>
+            </div>
+          }
+        </div>
+        <em-validator [fieldControl]="f['permissions']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

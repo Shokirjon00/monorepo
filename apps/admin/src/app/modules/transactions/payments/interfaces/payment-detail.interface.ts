@@ -1,0 +1,36 @@
+export interface IPaymentDetail {
+  id: string;
+  createdAt: string;
+  finishedAt: string;
+  merchantName: string;
+  posName: string;
+  posTypeName: string;
+  paymentStatusGroupName: string;
+  serviceName: string;
+  userMsisdn: string;
+  fromAccountNumber: string;
+  fromAmount: string;
+  toAmount: string;
+  number: string;
+  payloadJson: string;
+  fromGatewayName: string;
+  toGatewayName: string;
+  paymentStatusName: string;
+  paymentSyncStatusName: string;
+  paymentStatusDetailName: string;
+  sessionNumber: string;
+  transactionIdEO: string;
+  documentNumberAbs: string;
+  paymentRefundReasonName: string;
+  fromGatewayId: string;
+  toGatewayId: string;
+  paymentStatusId: string;
+  description: string;
+  invoiceNumber: string;
+  lock: string;
+  paymentUpdate: string;
+  isLock: boolean;
+  toAccountNumber: string;
+  bankEmitentName: string;
+  bankAcquirerName: string;
+}

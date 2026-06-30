@@ -1,0 +1,63 @@
+@import '../../../../../core/scss/variables';
+@import '../../../../../core/scss/styles';
+@import '../../../../../core/scss/flex';
+@import '../../../../../core/scss/button';
+@import '../../../../../core/scss/margins';
+@import '../../../../../core/scss/form';
+@import '../../../../../core/scss/paddings';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.payment-continue {
+  width: 847px;
+  padding: 2rem;
+
+  &__btn {
+    width: 240px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  word-break: break-word;
+}
+
+.sub-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.dialog-table {
+  width: 100%;
+
+  &_header {
+    padding: 12px 56px;
+  }
+
+  &_title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &_body {
+    padding: 1.5rem 1rem;
+
+  }
+
+  &_value {
+    font-size: 14px;
+    line-height: 16px;
+    color: #878E98;
+  }
+}
+
+::ng-deep.mat-mdc-dialog-container {
+  border-radius: 20px;
+  padding: 2.5rem;
+}

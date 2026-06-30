@@ -1,0 +1,65 @@
+import {ICaption} from "@core/interfaces/table.interface";
+
+export const WITHDRAWALAMOUNTINFO_COLUMNS : ICaption[] = [
+  {
+    key: 'Статус',
+    field: 'issueMoneyRegistryStatusName',
+    type: 'text',
+    filterType: 'text',
+    isSelected: true,
+    width: '155px',
+  },
+  {
+    key: 'Организация',
+    field: 'companyName',
+    type: 'link',
+    filterType: 'text',
+    isSelected: true,
+    width: '155px',
+  },
+  {
+    key: 'Создано',
+    field: 'createdAt',
+    type: 'date',
+    filterType: 'date',
+    isSelected: true,
+  },
+  {
+    key: 'Создал',
+    field: 'createdByName',
+    type: 'text',
+    filterType: 'text',
+    isSelected: true,
+  },
+  {
+    key: 'Количество',
+    field: 'issueMoneyRegistriesMerchantsCount',
+    type: 'number',
+    filterType: 'number',
+    isSelected: true,
+    width: '155px',
+  },
+  {
+    key: 'Сумма',
+    field: 'amount',
+    type: 'number',
+    filterType: 'number',
+    isSelected: true,
+    width: '155px',
+  },
+  {
+    key: 'Тип',
+    field: 'isSchedulerName',
+    type: 'text',
+    filterType: 'text',
+    isSelected: true,
+    width: '155px',
+  },
+  {
+    key: 'Изменено',
+    field: 'modifiedAt',
+    type: 'date',
+    filterType: 'date',
+    isSelected: true,
+  },
+]

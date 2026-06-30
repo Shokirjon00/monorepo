@@ -1,0 +1,51 @@
+<div class="paginator em-d-flex-center em-g-8" (emClickOutside)="close()">
+
+  <div class="page-size" (click)="toggle()" (emClickOutside)="showPagSize = false">
+    <div class="em-d-flex-center pr-5 v-line page-size-label"
+         [class.open]="showPagSize">
+      <div>Показать: {{ page.pageSize }}</div>
+    </div>
+    <div class="dropdown">
+      @for (pageSize of pagSizes; track pageSize) {
+        <ul class="dropdown-list"
+            (click)="setPageSize(pageSize)"
+            [class.active]="page.pageSize === pageSize">
+          <li class="dropdown-item mb-1">
+            <div class="em-d-flex">
+              <div class="value">{{ pageSize }}</div>
+            </div>
+          </li>
+        </ul>
+      }
+    </div>
+  </div>
+
+  <div class="paginator-num em-d-flex-center"
+       [ngClass]="{'disabled':!page.hasPreviousPage}"
+       (click)="previousPage()">
+    <svg-icon class="em-d-flex-center"
+              src="assets/images/arrow-left.svg"
+              [svgStyle]="{fill:'#8E9AAF'}"
+    ></svg-icon>
+  </div>
+
+  @if (!isOpen) {
+    <div class="paginator-num em-d-flex-center" (click)="setPageNumber($event)">
+      {{ page.pageNumber }}<span>/{{ page.totalPages }}</span>
+    </div>
+  }
+
+  @if (isOpen) {
+    <div class="paginator-input em-d-flex-center">
+      <input type="number" #inputElement [(ngModel)]="currentPage" (keydown.enter)="enterPage($event)">
+    </div>
+  }
+
+  <div class="paginator-num em-d-flex-center"
+       (click)="nextPage()"
+       [ngClass]="{'disabled':!page.hasNextPage}">
+    <svg-icon class="arrow-right em-d-flex-center" src="assets/images/arrow-left.svg"
+              [svgStyle]="{fill:'#8E9AAF'}"></svg-icon>
+  </div>
+
+</div>

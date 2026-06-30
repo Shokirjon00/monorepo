@@ -1,0 +1,93 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+          [disabled]="loading()"
+          (unlockPayment)="paymentUnlock(paymentDetail)"
+          (syncStatus)="syncStatus(paymentId)"
+          (syncPaymentInfo)="syncStatus([paymentId])"
+          (paymentRefund)="checkPaymentRefundStatus()" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+
+@if (paymentDetail) {
+  <div class="em-d-flex padding-6">
+    <div class="w-50 v-line pr-6">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">ID</span><span>:</span><span
+          class="data">{{ paymentDetail.id }}</span></div>
+        <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+          class="data">{{ paymentDetail.paymentStatusGroupName }}</span></div>
+        <div class="em-d-flex"><span class="key">Создан</span><span>:</span><span
+          class="data">{{ paymentDetail.createdAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Завершен</span><span>:</span><span
+          class="data">{{ paymentDetail.finishedAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Сервис</span><span>:</span><span
+          class="data">{{ paymentDetail.serviceName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Номер кашелька</span><span>:</span><span
+          class="data">{{ paymentDetail.userMsisdn }}</span></div>
+        <div class="em-d-flex"><span class="key">Плательщик</span><span>:</span><span
+          class="data">{{ paymentDetail.fromAccountNumber }}</span></div>
+        <div class="em-d-flex"><span class="key">Сумма оплаты</span><span>:</span><span
+          class="data">{{ paymentDetail.fromAmount }}</span></div>
+        <div class="em-d-flex"><span class="key">Сумма пополнения</span><span>:</span><span
+          class="data">{{ paymentDetail.toAmount }}</span></div>
+        <div class="em-d-flex"><span class="key">Номер документа</span><span>:</span><span
+          class="data">{{ paymentDetail.number }}</span></div>
+        <div class="em-d-flex"><span class="key">Инвойс номер</span><span>:</span><span
+          class="data">{{ paymentDetail.invoiceNumber || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Доп.параметры</span><span>:</span><span
+          class="data">{{ paymentDetail.payloadJson }}</span></div>
+        <div (click)="navigateToJobLog()" class="link">Журнал задач</div>
+        <div (click)="navigateToArchiveJournal()" class="link">Журнал задач архив</div>
+      </div>
+    </div>
+    <div class="w-50 pl-6">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">Точка</span><span>:</span><span
+          class="data">{{ paymentDetail.merchantName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Касса</span><span>:</span><span
+          class="data">{{ paymentDetail.posName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Тип кассы</span><span>:</span><span
+          class="data">{{ paymentDetail.posTypeName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Шлюз плательщика</span><span>:</span><span
+          class="data">{{ paymentDetail.fromGatewayName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Шлюз получателя</span><span>:</span><span
+          class="data">{{ paymentDetail.toGatewayName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Подробный статус</span><span>:</span><span
+          class="data">{{ paymentDetail.paymentStatusName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Подробный статус ошибки</span><span>:</span><span
+          class="data">{{ paymentDetail.paymentStatusDetailName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Статус синхронизации</span><span>:</span><span
+          class="data">{{ paymentDetail.paymentSyncStatusName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Сессия</span><span>:</span><span
+          class="data">{{ paymentDetail.sessionNumber || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">ID платежа в ЭО</span><span>:</span><span
+          class="data">{{ paymentDetail.transactionIdEO || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">ID проводки в АБС</span><span>:</span><span
+          class="data">{{ paymentDetail.documentNumberAbs || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Причина возврата</span><span>:</span><span
+          class="data">{{ paymentDetail.paymentRefundReasonName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Описание</span><span>:</span><span
+          class="data">{{ paymentDetail.description || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Банк эмитент</span><span>:</span><span
+          class="data">{{ paymentDetail.bankEmitentName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Банк эквайер</span><span>:</span><span
+          class="data">{{ paymentDetail.bankAcquirerName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Получатель</span><span>:</span><span
+          class="data">{{ paymentDetail.toAccountNumber || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Блокирован</span><span>:</span><span
+          class="data">{{ paymentDetail.lock || '-' }}</span></div>
+      </div>
+    </div>
+  </div>
+}
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

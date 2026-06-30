@@ -1,0 +1,17 @@
+export interface IPosTerminal {
+  id: string,
+  posId: string,
+  number: string,
+  posName: string,
+  phoneNumber: string,
+  extCodeAbs: string,
+  address: string,
+  name: string,
+  model: string,
+  appVersion: string,
+  os: string,
+  createdAt: string,
+  modifiedAt: string,
+  companyId: string,
+  merchantId: string,
+}

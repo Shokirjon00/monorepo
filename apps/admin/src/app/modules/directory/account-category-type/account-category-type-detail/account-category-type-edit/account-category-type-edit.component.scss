@@ -1,0 +1,10 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+.account-category-type-edit {
+  overflow: auto;
+  height: calc(100vh - 202px);
+}

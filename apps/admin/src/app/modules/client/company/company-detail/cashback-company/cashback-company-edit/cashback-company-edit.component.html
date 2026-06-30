@@ -1,0 +1,146 @@
+<form class="w-100" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">Кэшбэк</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()">
+            <svg-icon src="assets/icons/cancel.svg"/>
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()">
+            <svg-icon src="assets/icons/save.svg"/>
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'CashbackCompanyActiveStatus'" class="ml-2 checkbox-toggle">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class='cashback-company-edit'>
+    <div class="h-line">
+      <div class="em-d-flex pt-7 pb-7">
+        @if (isEskhataAcquirer) {
+          <div class="w-50 v-line form-container">
+            <div class="title-h1">Кэшбэк от мерчанта</div>
+            <div class="form">
+              <div class="label">Процент</div>
+              <div class="input">
+                <em-simple-select-list action="Выберите процент"
+                                       formControlName="companyCashbackId"
+                                       [dataSource]="companyCashback"/>
+                <em-validator [fieldControl]="f['companyCashbackId']"/>
+              </div>
+            </div>
+            <div class="form">
+              <div class="label">Период кэшбэка</div>
+              <div class="input">
+                <div class="em-d-flex">
+                  <input type="date" class="form-control" formControlName="companyStartDate" placeholder="00.00.0000">
+                  <input type="date" class="form-control" formControlName="companyEndDate" placeholder="00.00.0000">
+                  <div class="arrow" (click)="getPeriodTime('companyStartDate','companyEndDate')">
+                    <svg-icon src="assets/images/arrow.svg"/>
+                  </div>
+                </div>
+              </div>
+              <em-validator [fieldControl]="f['companyStartDate']"/>
+              <em-validator [fieldControl]="f['companyEndDate']"/>
+            </div>
+          </div>
+        }
+        <div class="w-50 form-container">
+          <div class="title-h1">Кэшбэк от банка</div>
+          <div class="form">
+            <div class="label">Процент</div>
+            <div class="input">
+              <em-simple-select-list formControlName="bankCashbackId"
+                                     action="Выберите процент"
+                                     [dataSource]="companyCashback"/>
+              <em-validator [fieldControl]="f['bankCashbackId']"/>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Период кэшбэка</div>
+            <div class="input">
+              <div class="em-d-flex">
+                <input type="date" class="form-control" formControlName="bankStartDate"
+                       placeholder="00.00.0000">
+                <input type="date" class="form-control" formControlName="bankEndDate"
+                       placeholder="00.00.0000">
+                <div class="arrow" (click)="getPeriodTime('bankStartDate', 'bankEndDate')">
+                  <svg-icon src="assets/images/arrow.svg"/>
+                </div>
+              </div>
+            </div>
+            <em-validator [fieldControl]="f['bankStartDate']"/>
+            <em-validator [fieldControl]="f['bankEndDate']"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-7 h-line">
+      <div class="form">
+        <div class="label">Тип*</div>
+        <div class="input">
+          <em-simple-select-list action="Выберите тип"
+                                 formControlName="cashbackAccrualTypeId"
+                                 [dataSource]="accrualTypes"/>
+          <em-validator [fieldControl]="f['cashbackAccrualTypeId']"/>
+        </div>
+      </div>
+      <div class="form">
+        <div class="label">Примечание</div>
+        <div class="input">
+          <input type="text" class="form-control" formControlName="description" placeholder="Введите примечание"
+                 [class.is-invalid]="f['description']?.invalid && f['description']?.touched">
+          <em-validator [fieldControl]="f['description']"/>
+        </div>
+      </div>
+      <div class="form">
+        <div class="label">Дни и время кэшбэка</div>
+        <div class="input">
+          <input class="form-control" [value]="weekDays" (click)="getDateTime()"/>
+        </div>
+      </div>
+    </div>
+    <div class="padding-7 h-line">
+      <div class="title-h1">Выберите торговые точки*</div>
+      @for (merchant of merchants; track merchant; let i = $index) {
+        <div [class.is-invalid]="f['merchants']?.invalid && f['merchants']?.touched"
+             class="v-line padding-3">
+          <label class="circle-checkbox">
+            <input type="checkbox" (change)="merchantSelect(merchant.id)"
+                   [checked]="cashbackDetail?.merchants.includes(merchant.id)">
+            <div class="check em-d-flex-center ">
+              <svg-icon src="assets/icons/check.svg"/>
+            </div>
+            {{ merchant.name }}
+          </label>
+        </div>
+      }
+      <em-validator [fieldControl]="f['merchants']"/>
+    </div>
+    <div class="padding-7">
+      <div class="title-h1 mb-3">Документы</div>
+      <div class="em-d-flex em-fw-wrap em-g-16">
+        <em-upload-field formControlName="contractFiles"
+                         permissionName="CashbackCompanyUpload"
+                         [canPrint]="false"
+                         [memType]="uploadFile.memType"
+                         [uploadPath]="uploadFile.uploadPath"
+                         [fileTypes]="['application/pdf']"
+                         [fileStorageUrl]="fileStorageUrl"
+                         [fileStorageToken]="fileStorageToken"
+                         (deactivateFileIds)="deactivateFileIds($event)"
+                         [fileLimit]="5"/>
+        <em-validator [fieldControl]="f['contractFiles']"/>
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast/>

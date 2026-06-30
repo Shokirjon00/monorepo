@@ -1,8 +1,8 @@
 export default {
   displayName: 'admin',
   preset: '../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/admin',
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
+  coverageDirectory: '../../coverage/apps/admin',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -11,6 +11,12 @@ export default {
         stringifyContentPathRegex: '\\.(html|svg)$',
       },
     ],
+  },
+  moduleNameMapper: {
+    '^@core/(.*)$': '<rootDir>/src/app/core/$1',
+    '^@shared/(.*)$': '<rootDir>/src/app/shared/$1',
+    '^@modules/(.*)$': '<rootDir>/src/app/modules/$1',
+    '^@environments/(.*)$': '<rootDir>/src/environments/$1',
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [

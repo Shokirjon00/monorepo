@@ -1,0 +1,88 @@
+@import './core/scss/flex';
+@import './core/scss/styles';
+@import './core/scss/mixins/mixin';
+@import './core/scss/mixins/sizes';
+@import './core/scss/variables';
+
+.em-chips {
+
+  .chips-list {
+    display: flex;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    @include flex_justify_center();
+    background: $border-line;
+    color: $primary-color;
+    padding: $space-2 $space-3;
+    border-radius: $radius-lg;
+    font-size: $font-size-sm;
+    box-shadow: 0 1px 0 rgba(31, 45, 120, 0.08);
+  }
+
+  .chip-text {
+    margin-right: $space-2;
+  }
+
+  .chip-remove {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: $main-black;
+    font-size: $font-size-md;
+  }
+
+  .chip-input {
+    background: $white;
+    padding: $space-1 $space-2;
+    border-radius: $radius-sm;
+    @include flex_align_center();
+    border: 1px dashed $gray-300;
+  }
+
+  .chip-input-field {
+    border: none;
+    outline: none;
+    padding: $space-1 $space-2;
+    width: rem(245);
+    font-size: $font-size-sm;
+  }
+
+  .chip-add {
+    background: transparent;
+    border: none;
+    border-radius: $radius-md;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .chips-input {
+    @include flex_justify_center();
+    gap: $space-2;
+  }
+
+  .chips-input input {
+    flex: 1;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    border: 1px solid $gray-300;
+  }
+
+  .btn-add {
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    background: $primary-color;
+    color: $white;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .no-items {
+    color: $main-black;
+    font-size: $font-size-sm;
+  }
+}

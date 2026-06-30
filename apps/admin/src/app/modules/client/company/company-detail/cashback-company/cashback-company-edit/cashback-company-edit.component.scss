@@ -1,0 +1,13 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+
+
+.cashback-company-edit{
+    display: block;
+    overflow: auto;
+    height: calc(100vh - 195px);
+}

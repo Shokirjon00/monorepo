@@ -1,0 +1,191 @@
+@import "core/scss/form";
+@import 'core/scss/flex';
+@import "core/scss/variables";
+@import 'core/scss/styles';
+@import 'core/scss/paddings';
+
+:host {
+
+  &.is-invalid {
+    .form-control {
+      border-color: $danger-color;
+    }
+  }
+
+  &.small {
+    .form-control {
+      padding: 11px 16px !important;
+      height: 40px !important;
+    }
+
+    .select-field .arrow img {
+      width: 9px;
+      height: 9px;
+      right: -2px;
+    }
+
+    .value, .placeholder {
+      font-size: 1rem !important;
+      white-space: nowrap;
+    }
+  }
+}
+
+.select-field {
+  cursor: pointer;
+  //max-width: 216px;
+
+  &__container {
+    width: 100%;
+    position: relative;
+
+    .form-control {
+      tab-index: 0;
+      background-color: $main-bg;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      height: 42px;
+      border-bottom: none;
+
+      &:hover {
+        border-color: transparent;
+        background-color: $li-grey-hover;
+      }
+
+      svg-icon {
+        line-height: 0;
+        transform: scale(0.8);
+      }
+
+      &.mobile {
+        background-color: transparent;
+        border-bottom: 1px solid $color-grey-400;
+        border-radius: 0;
+        margin: 10px 0;
+        padding: 0.5rem 0;
+      }
+
+      &.disabled {
+
+        &:hover {
+          border: none;
+        }
+        .value {
+          color: $inactive-icons;
+        }
+      }
+
+      .value {
+        @include ellipsis-text();
+      }
+    }
+  }
+
+  ::ng-deep .value {
+    width: 100%;
+    @include flex_jc_sb();
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 26px;
+
+    & > * {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .placeholder {
+    color: #8E9AAF;
+    width: 100%;
+    font-size: inherit;
+    margin-right: 16px;
+  }
+
+  .arrow {
+    display: flex;
+    background-color: #fff;
+    transition: 200ms;
+    >svg-icon{
+      line-height: 0;
+    }
+
+    eb-small-preloader {
+      margin-right: 4px;
+    }
+
+    .arrow-icon {
+      position: relative;
+      right: 8px;
+    }
+  }
+
+  .form-control {
+    @include flex_jc_sb();
+    gap: 1rem;
+
+    .value {
+      color: $secondary-text-color;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-right: 0;
+    }
+
+    &.disabled {
+      background: $main-bg;
+    }
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: 200ms;
+      transform-origin: center;
+    }
+  }
+
+  &__sm {
+    .form-control {
+      padding: 10px 4px 10px 16px;
+      height: 40px;
+    }
+
+    .placeholder {
+      font-size: 1rem;
+    }
+
+    .value {
+      font-size: 1rem;
+
+      p {
+        font-size: inherit;
+      }
+    }
+  }
+}
+
+.company-logo{
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  font-size: 14px;
+  background-color: $grey-700-color;
+  color: $white-color;
+  border-radius: 50%;
+}
+
+.drop-value{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}

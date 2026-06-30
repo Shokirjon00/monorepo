@@ -1,0 +1,126 @@
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import "core/scss/form";
+@import 'core/scss/styles';
+@import "core/scss/mixins/breakpoints";
+
+.user-admin-edit {
+
+  &-body {
+    margin: 5rem;
+
+    .body-container {
+      padding-bottom: 3rem;
+
+      .left-block {
+        width: 50%;
+        border-right: 1px solid $brand-line;
+        padding-right: 5rem;
+      }
+
+      .right-block {
+        width: 50%;
+        padding-left: 5rem;
+
+        .searchbar{
+          background: #FFFFFF;
+          top: 0;
+          position: sticky;
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  .branches {
+    height: 700px;
+    padding: 0 2.5rem 2.5rem;
+    overflow-y: auto;
+    border-radius: 20px;
+    border: 1px solid $border-color;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .user-admin-edit {
+
+    &-header {
+      flex-direction: column;
+    }
+
+    &-body {
+      margin: 2rem;
+      flex-direction: column;
+
+      .body-container {
+        padding-bottom: 1.5rem;
+
+        .left-block {
+          width: 100%;
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .right-block {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      .footer-container {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .user-admin-edit {
+
+    .header {
+
+      &:nth-child(1) {
+        display: none;
+      }
+    }
+
+    &-header {
+      padding: 1.25rem 3rem;
+      flex-direction: row;
+      align-items: center;
+
+      .icon {
+        display: none;
+      }
+
+      .back {
+        display: block;
+        line-height: 0;
+      }
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+
+      .checkbox-toggle .toggle-title {
+        display: none;
+      }
+    }
+
+    &-body {
+      margin: 5rem 1rem 1rem 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+      .body-container {
+        padding-bottom: 0;
+        border: none;
+      }
+    }
+  }
+}
+

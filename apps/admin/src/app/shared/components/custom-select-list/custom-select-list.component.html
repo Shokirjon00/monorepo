@@ -1,0 +1,45 @@
+<div class="form-group select-field" [class.open]="isOpenDropdown">
+  <div class="select-field-container" (emClickOutside)="isOpenDropdown = false">
+    <div (click)="toggle()" class="form-control" [class.disabled]="!inDisabled">
+      @if (!selected) {
+        <span class="placeholder">{{ action }}</span>
+      }
+      @if (selected) {
+        <div class="value">{{ selected[optionLabel] }}</div>
+      }
+      @if (showClear && selected) {
+        <img (click)="clearValue($event)"
+             class="cancel-icons" src="assets/icons/cancel.svg" alt="">
+      }
+      <img class="arrow" src="assets/images/arrow.svg" alt="">
+    </div>
+    <div class="dropdown">
+      @if (items?.length) {
+        <ul emSelectTrigger
+            class="dropdown-list"
+            role="listbox"
+            [itemLength]="items.length"
+            [(isOpen)]="isOpenDropdown">
+          @for (actionItem of items; track actionItem) {
+            <li class="dropdown-item mb-1"
+                [class.selected]="selected && (selected[optionValue] === actionItem[optionValue])"
+                [class.active]="actionItem.selected && !(selected[optionValue] === actionItem[optionValue])"
+                (click)="onSelect(actionItem)"
+                role="option">
+              <div class="em-d-flex">
+                @if (actionItem.icon) {
+                  <img class="em-d-flex-center mr-1 dropdown__logo"
+                       [src]="'./assets/icons/' + actionItem.icon" alt="">
+                }
+                <div class="dropdown-item-value">{{ actionItem[optionLabel] }}</div>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+      @if (!items?.length) {
+        <div class="dropdown-item">Нет данных</div>
+      }
+    </div>
+  </div>
+</div>

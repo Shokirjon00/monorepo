@@ -1,0 +1,179 @@
+@import "core/scss/font";
+@import 'core/scss/variables';
+@import 'core/scss/mixins/mixin';
+@import 'core/scss/mixins/breakpoints';
+
+.mobile-card {
+  padding: 1rem 1rem 1.5rem 1rem;
+  margin-bottom: 2rem;
+  overflow-y: auto;
+
+  .loading {
+    @include flex_justify_center();
+    margin-top: 1rem;
+  }
+
+  .item-card {
+    @include flex_column();
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: $white-color;
+    gap: 1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+    margin-bottom: 1rem;
+
+    .top {
+      @include flex_column();
+      gap: 0.5rem;
+
+      .actions {
+        @include flex_justify_between();
+
+        .status {
+          @include flex_align_center();
+          gap: 0.5rem;
+
+          .indicator {
+            width: 8px;
+            height: 8px;
+            flex-shrink: 0;
+            border-radius: 1rem;
+
+            &.completed {
+              background-color: $success-color;
+
+              ~ .text {
+                color: $success-color;
+              }
+            }
+
+            &.process-completed {
+              background-color: $deep-aqua;
+
+              ~ .text {
+                color: $deep-aqua;
+              }
+            }
+
+            &.rejected {
+              background-color: $danger-color;
+
+              ~ .text {
+                color: $danger-color;
+              }
+            }
+
+            &.no-verified {
+              background-color: $pastel-blue;
+
+              ~ .text {
+                color: $pastel-blue;
+              }
+            }
+
+            &.in-process {
+              background-color: $gray-300;
+
+              ~ .text {
+                color: $gray-300;
+              }
+            }
+
+            &.returned {
+              background-color: $returned-indicator;
+
+              ~ .text {
+                color: $returned-indicator;
+              }
+            }
+
+            &.unknown {
+              background-color: $primary-color;
+
+              ~ .text {
+                color: $primary-color;
+              }
+            }
+
+            &.cancel {
+              background-color: $black;
+
+              ~ .text {
+                color: $black;
+              }
+            }
+          }
+
+          .text {
+            font-size: 0.75rem;
+            line-height: 1rem;
+          }
+        }
+
+        .toggle {
+          @include flex_align_center();
+
+          .open {
+            rotate: 180deg;
+            transition: rotate .25s;
+          }
+
+          svg-icon {
+            line-height: 0;
+            rotate: 0deg;
+            transition: rotate .25s;
+          }
+        }
+      }
+
+      .title {
+        color: $slate-gray;
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.5rem;
+      }
+
+      .info {
+        @include flex_column();
+
+        &.active {
+          height: 100%;
+        }
+
+        &.small .info-item {
+          .label {
+            width: 90px;
+            flex-shrink: 0;
+          }
+
+          .value {
+            width: 100%;
+          }
+        }
+
+        &-item {
+          @include flex_align_center();
+          gap: 1rem;
+
+          .label, .value {
+            width: 130px;
+            color: $steel-blue;
+            font-size: 0.875rem;
+            line-height: 1rem;
+          }
+        }
+      }
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+
+      .btn {
+        width: 100%;
+        padding: 0.5rem 1.25rem;
+      }
+    }
+  }
+}

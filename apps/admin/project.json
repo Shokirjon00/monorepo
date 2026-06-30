@@ -2,61 +2,122 @@
   "name": "admin",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app-admin",
+  "prefix": "em",
   "sourceRoot": "apps/admin/src",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular/build:application",
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/admin",
-        "browser": "apps/admin/src/main.ts",
-        "polyfills": ["zone.js"],
+        "index": "apps/admin/src/index.html",
+        "main": "apps/admin/src/main.ts",
+        "polyfills": "apps/admin/src/polyfills.ts",
         "tsConfig": "apps/admin/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
         "stylePreprocessorOptions": {
-          "includePaths": ["shared-core/src/core"]
+          "includePaths": ["apps/admin/src/app", "node_modules"]
         },
         "assets": [
+          "apps/admin/src/favicon.ico",
+          "apps/admin/src/assets",
           {
             "glob": "**/*",
-            "input": "apps/admin/public",
-            "output": "public"
+            "input": "apps/admin/src/assets",
+            "output": "/assets"
           }
         ],
-        "styles": ["apps/admin/src/styles.scss"]
+        "allowedCommonJsDependencies": [
+          "qrcode",
+          "apexcharts",
+          "file-saver",
+          "pdfjs-dist/build/pdf",
+          "pdfjs-dist/web/pdf_viewer",
+          "js-sha256",
+          "print-js",
+          "leaflet",
+          "moment"
+        ],
+        "styles": [
+          { "input": "apps/admin/src/styles.scss", "inject": false },
+          { "input": "apps/admin/src/late-styles.scss", "inject": false },
+          { "input": "node_modules/driver.js/dist/driver.css", "inject": false }
+        ],
+        "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/admin/ngsw-config.json",
+        "outputHashing": "all"
       },
       "configurations": {
-        "production": {
-          "budgets": [
+        "test": {
+          "fileReplacements": [
             {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
+              "replace": "apps/admin/src/environments/environment.ts",
+              "with": "apps/admin/src/environments/environment.testing.ts"
             }
           ],
-          "outputHashing": "all"
+          "optimization": true,
+          "outputHashing": "bundles",
+          "sourceMap": true,
+          "namedChunks": true,
+          "extractLicenses": true,
+          "buildOptimizer": false,
+          "budgets": [
+            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
+            { "type": "anyComponentStyle", "maximumWarning": "60kb", "maximumError": "100kb" }
+          ]
+        },
+        "pre-prod": {
+          "fileReplacements": [
+            {
+              "replace": "apps/admin/src/environments/environment.ts",
+              "with": "apps/admin/src/environments/environment.pre-prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "bundles",
+          "sourceMap": true,
+          "namedChunks": true,
+          "extractLicenses": true,
+          "buildOptimizer": true,
+          "budgets": [
+            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
+            { "type": "anyComponentStyle", "maximumWarning": "60kb", "maximumError": "100kb" }
+          ]
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/admin/src/environments/environment.ts",
+              "with": "apps/admin/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "bundles",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "buildOptimizer": true,
+          "budgets": [
+            { "type": "initial", "maximumWarning": "2mb", "maximumError": "5mb" },
+            { "type": "anyComponentStyle", "maximumWarning": "60kb", "maximumError": "100kb" }
+          ]
         },
         "development": {
+          "buildOptimizer": false,
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": false
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "production"
     },
     "serve": {
       "continuous": true,
-      "executor": "@angular/build:dev-server",
+      "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "port": 4300,
-        "proxyConfig": "apps/admin/proxy.conf.json"
+        "port": 4200
       },
       "configurations": {
         "production": {
@@ -69,7 +130,7 @@
       "defaultConfiguration": "development"
     },
     "extract-i18n": {
-      "executor": "@angular/build:extract-i18n",
+      "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
         "buildTarget": "admin:build"
       }
@@ -90,8 +151,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "admin:build",
-        "port": 4200,
-        "staticFilePath": "dist/apps/admin/browser",
+        "staticFilePath": "dist/apps/admin",
         "spa": true
       }
     }

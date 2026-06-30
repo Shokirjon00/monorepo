@@ -1,0 +1,29 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+          [disabled]="loading()"
+          (paymentRefund)="checkPaymentRefundStatus()"
+          [actionStatus]="actionStatus" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination
+        class="pl-3"
+        [page]="paginate"></em-pagination>
+    }
+  </ng-container>
+</em-header2>
+<em-table [dataSource]="paymentHistory"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+<em-toast />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

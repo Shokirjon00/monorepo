@@ -1,0 +1,212 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/mixin';
+
+:host {
+  display: block;
+}
+
+.panel {
+  @include flex_column();
+  gap: 1rem;
+  height: 100%;
+  padding: 1.25rem;
+  background: $white;
+  border: 1px solid $brand-line;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(16, 24, 34, 0.04);
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, background 0.3s ease;
+
+  &:not(&-full):hover {
+    transform: translateY(-3px);
+    border-color: transparent;
+  }
+
+  &-head {
+    @include em-d-flex-al-center();
+    gap: 0.6rem;
+  }
+
+  &-accent {
+    width: 6px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    background: $primary-color;
+  }
+
+  &-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $gunmetal-blue;
+    letter-spacing: -0.01em;
+  }
+
+  &-actions {
+    @include em-d-flex-al-center();
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  &-btn {
+    @include flex_ai_center();
+    padding: 0.5rem;
+    line-height: 0;
+    border: 1px solid $brand-line;
+    border-radius: 10px;
+    background: $white;
+    color: $secondary-text-color;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: $active-item;
+      border-color: transparent;
+      color: $primary-color;
+      transform: translateY(-1px) scale(1.05);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.92);
+    }
+
+    &:disabled {
+      cursor: progress;
+    }
+
+    svg-icon {
+      display: flex;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+  }
+
+  &-btn-expand:hover &-icon {
+    transform: scale(1.12) rotate(0.5turn);
+  }
+
+  &-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(78, 73, 206, 0.25);
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: qp-spin 0.7s linear infinite;
+  }
+
+  &-empty {
+    flex: 1;
+    min-height: 140px;
+    @include flex_column_ai_jc_center();
+    gap: 0.5rem;
+    color: $light-slate;
+    animation: qp-fade-in 0.35s ease both;
+  }
+
+  &-empty-text {
+    font-size: clamp(0.85rem, 0.8vw, 1.05rem);
+    font-weight: 600;
+  }
+
+  &-body {
+    flex: 1;
+    min-height: 0;
+    @include flex_column();
+  }
+
+  &-full {
+    position: fixed;
+    inset: clamp(8px, 2vw, 24px);
+    z-index: 1001;
+    margin: 0;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    overflow: auto;
+    border-color: transparent;
+    border-radius: 18px;
+    box-shadow: 0 40px 110px rgba(16, 24, 34, 0.35);
+    animation: qp-panel-zoom-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    .panel-body {
+      flex: 1;
+      gap: 1rem;
+    }
+  }
+
+  &-closing {
+    animation: qp-panel-zoom-out 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+}
+
+:host(.acc-green) .panel, .panel.acc-green {
+  @include panel-accent($accent-green);
+}
+
+:host(.acc-blue) .panel, .panel.acc-blue {
+  @include panel-accent($accent-blue);
+}
+
+:host(.acc-purple) .panel, .panel.acc-purple {
+  @include panel-accent($accent-purple);
+}
+
+:host(.acc-orange) .panel, .panel.acc-orange {
+  @include panel-accent($accent-orange);
+}
+
+:host(.acc-indigo) .panel, .panel.acc-indigo {
+  @include panel-accent($accent-indigo);
+}
+
+:host(.acc-teal) .panel, .panel.acc-teal {
+  @include panel-accent($accent-teal);
+}
+
+:host(.acc-red) .panel, .panel.acc-red {
+  @include panel-accent($accent-red);
+}
+
+@keyframes qp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes qp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qp-panel-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes qp-panel-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}

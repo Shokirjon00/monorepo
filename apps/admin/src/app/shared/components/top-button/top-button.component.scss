@@ -1,0 +1,17 @@
+@import 'core/scss/mixins/mixin';
+
+.scroll-top {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  background: #DEDFE2;
+  border: none;
+  @include flex_ai_center();
+
+  svg-icon  {
+    line-height: 0;
+  }
+}

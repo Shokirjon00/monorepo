@@ -1,0 +1,10 @@
+<div class="w-100 em-d-flex em-jc-sb padding-1">
+  <div class="title-h1">Просмотр изображение</div>
+  <div class="icon w-100" (click)="close()">
+    <svg-icon src="assets/icons/cancel.svg" />
+  </div>
+</div>
+@if (imageUrl) {
+  <img [src]="imageUrl" alt="Preview Image" class="preview-image">
+}
+

@@ -1,0 +1,31 @@
+@import 'core/scss/styles';
+@import 'core/scss/mixins/mixin';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/button';
+
+.list-registration-position {
+  background-color: $white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 96px;
+  z-index: 1;
+}
+
+.form-left {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.comment-meta {
+  font-weight: 500;
+  margin-right: 5px;
+
+  .date-time {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: $gray-500;
+  }
+}
