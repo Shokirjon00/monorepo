@@ -16,7 +16,7 @@
         "polyfills": "apps/client/src/polyfills.ts",
         "tsConfig": "apps/client/tsconfig.app.json",
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/client/src/app"]
+          "includePaths": ["apps/client/src/app", "libs/shared/styles"]
         },
         "assets": [
           "apps/client/src/favicon.ico",
