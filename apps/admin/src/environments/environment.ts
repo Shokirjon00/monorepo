@@ -1,3 +1,4 @@
+import { Environment } from "@eskhata/environment";
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.tour.json`.
@@ -10,7 +11,7 @@ const DOMAIN = 'http://10.10.202.229:1441/';   //test
 // const DOMAIN = 'http://192.168.118.86:7088/';   //<Bahromako
 
 const FILESERVER = 'http://10.10.202.220:1440/';
-export const environment = {
+export const environment: Environment = {
   isTest: true,
   production: false,
   domain: DOMAIN,

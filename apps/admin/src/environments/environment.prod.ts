@@ -1,8 +1,9 @@
+import { Environment } from "@eskhata/environment";
  import {ENDPOINTS} from '@core/endpoints';
 
 const DOMAIN = 'https://merchadmin.eskhata.com/';
 const FILESERVER = 'https://filestorage.eskhata.com/';
-export const environment = {
+export const environment: Environment = {
   isTest: false,
   production: true,
   domain: DOMAIN,

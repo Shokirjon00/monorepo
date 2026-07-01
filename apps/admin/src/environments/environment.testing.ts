@@ -1,8 +1,9 @@
+import { Environment } from "@eskhata/environment";
 import {ENDPOINTS} from '@core/endpoints';
 
 const DOMAIN = 'http://10.10.202.229:1441/';
 const FILESERVER = 'http://10.10.202.220:1440/';
-export const environment = {
+export const environment: Environment = {
   isTest: true,
   production: true,
   domain: DOMAIN,

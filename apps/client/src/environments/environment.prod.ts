@@ -1,9 +1,10 @@
+import { Environment } from "@eskhata/environment";
 import {ENDPOINTS} from '@core/endpoints';
 import { version } from '../../../../package.json';
 
 const DOMAIN = 'https://cab.eskhata.com/';
 const FILESERVER = 'https://filestorage.eskhata.com/';
-export const environment = {
+export const environment: Environment = {
   isTest: false,
   production: true,
   domain: DOMAIN,

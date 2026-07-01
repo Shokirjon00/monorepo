@@ -25,7 +25,8 @@
       "@shared/*": ["app/shared/*"],
       "@modules/*": ["app/modules/*"],
       "@environments/*": ["environments/*"],
-      "@eskhata/util": ["../../../libs/shared/util/src/index.ts"]
+      "@eskhata/util": ["../../../libs/shared/util/src/index.ts"],
+      "@eskhata/environment": ["../../../libs/shared/environment/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -1,3 +1,4 @@
+import { Environment } from "@eskhata/environment";
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -12,7 +13,7 @@ const DOMAIN = 'http://10.10.202.226:1441/'
 
 const FILESERVER = 'http://10.10.202.220:1440/';
 
-export const environment = {
+export const environment: Environment = {
   isTest: true,
   production: false,
   domain: DOMAIN,
