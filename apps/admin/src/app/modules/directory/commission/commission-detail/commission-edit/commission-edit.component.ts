@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { IHeader } from '@core/interfaces/header.interface';
 import { HeaderService } from '@core/services/header.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {NgxPermissionsGuard} from 'ngx-permissions';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import { PaymentContinueRulesComponent } from '@modules/payment-continue-rules/payment-continue-rules.component';
 import { PaymentContinueRulesEditComponent } from '@modules/payment-continue-rules/payment-continue-rules-detail/payment-continue-rules-edit/payment-continue-rules-edit.component';
 import { PaymentContinueRulesDetailComponent } from '@modules/payment-continue-rules/payment-continue-rules-detail/payment-continue-rules-detail.component';

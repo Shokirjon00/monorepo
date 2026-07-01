@@ -7,7 +7,7 @@ import {UserService} from '@core/services/user.service';
 import {HelperService} from '@core/services/helper.service';
 import {AlertDialogComponent} from '@shared/dialogs/alert-dialog/alert-dialog.component';
 import {MessageService} from '@core/services/message.service';
-import {ToastEnum} from '@core/enums/toast-enum';
+import {ToastEnum} from '@eskhata/util';
 import {of} from 'rxjs';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {NgxPermissionsModule} from 'ngx-permissions';

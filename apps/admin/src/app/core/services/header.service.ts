@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IHeader } from '@core/interfaces/header.interface';
 import { IAction } from '@shared/components/actions/actions.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IPaymentStatusAmount, ITransaction } from "@modules/transactions/payments/interfaces";
 

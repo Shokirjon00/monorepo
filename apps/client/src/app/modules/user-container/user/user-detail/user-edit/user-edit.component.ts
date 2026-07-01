@@ -9,7 +9,7 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ISelect } from '@core/interfaces/select.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IHeader } from '@core/interfaces/header.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of, timer } from 'rxjs';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { PosService } from '@modules/merchant-container/pos/services/pos.service';

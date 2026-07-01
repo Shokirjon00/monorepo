@@ -11,7 +11,7 @@ import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 import { MessageService } from "@core/services/message.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";

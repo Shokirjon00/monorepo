@@ -12,7 +12,7 @@ import { CashbackLimitService } from '@modules/directory/cashback-limit/services
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DataTimeComponent } from '@shared/components/data-time/data-time.component';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { WeekShortEnum } from '@core/enums/week';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

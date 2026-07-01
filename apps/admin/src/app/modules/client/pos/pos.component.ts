@@ -8,7 +8,7 @@ import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { IPos } from '@modules/client/pos/interfaces/pos.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IMerchantDetail } from '@modules/client/merchant/interfaces/merchant-detail.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';

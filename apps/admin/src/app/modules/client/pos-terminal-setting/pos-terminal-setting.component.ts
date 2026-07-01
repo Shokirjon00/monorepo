@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IPosTerminalSettingInterface } from "@modules/client/pos-terminal-setting/interfaces/pos-terminal-setting.interface";
 import { PosTerminalSettingService } from "@modules/client/pos-terminal-setting/services/pos-terminal-setting.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { ToastComponent } from "@shared/components/toast/toast.component";
 import { PosTerminalsConstants } from "@modules/client/pos-terminal/pos-terminals.constants";
 import { ITab } from "@core/interfaces/header.interface";

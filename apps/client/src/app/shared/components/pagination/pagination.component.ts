@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, Input, OnChanges, SimpleChanges, viewChild } from '@angular/core';
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { HeaderService } from "@core/services/header.service";
 import { DestroyableComponent } from "@core/directives/destroyable.component";
 

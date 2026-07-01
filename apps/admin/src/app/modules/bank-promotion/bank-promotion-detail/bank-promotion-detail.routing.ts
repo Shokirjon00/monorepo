@@ -1,6 +1,6 @@
 import { BankPromotionDetailComponent } from '@modules/bank-promotion/bank-promotion-detail/bank-promotion-detail.component';
 import { Routes } from '@angular/router';
-import { ComponentGuard } from '@core/guards/component.guard';
+import { ComponentGuard } from '@eskhata/util';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { BankPromotionInfoComponent } from '@modules/bank-promotion/bank-promotion-detail/bank-promotion-info/bank-promotion-info.component';
 

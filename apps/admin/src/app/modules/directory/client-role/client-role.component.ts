@@ -5,7 +5,7 @@ import { IClientRole } from '@modules/directory/client-role/interfaces/client-ro
 import { ICaption, IRowAction } from '@core/interfaces/table.interface';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { ITab } from '@core/interfaces/header.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ClientRoleService } from '@modules/directory/client-role/services/client-role.service';

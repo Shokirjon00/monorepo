@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {AreaComponent} from '@modules/directory/area/area.component';
 import {AreaEditComponent} from '@modules/directory/area/area-detail/area-edit/area-edit.component';
 import {AreaInfoComponent} from '@modules/directory/area/area-detail/area-info/area-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 export const AREA_ROUTES: Routes = [

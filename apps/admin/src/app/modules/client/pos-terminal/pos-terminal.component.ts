@@ -9,7 +9,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { combineLatest, takeUntil } from "rxjs";
 import { parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { finalize } from "rxjs/operators";
 import { NgxPermissionsService } from "ngx-permissions";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";

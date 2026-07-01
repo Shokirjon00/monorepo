@@ -8,7 +8,7 @@ import { CodeModalComponent } from "@shared/dialogs/code-modal/code-modal.compon
 import { Router } from "@angular/router";
 import { OfferService } from "@modules/advance-payments/deal-conditions/service/offer.service";
 import { finalize } from "rxjs/operators";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { MessageService } from "@core/services/message.service";
 import { loadFile } from "@core/utils/load-file";

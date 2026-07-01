@@ -3,7 +3,7 @@ import { IPayment } from '@modules/payment/interfaces/payment.interface';
 import { SharedModule } from '@shared/shared.module';
 import { DatePipe } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { EXPAND_DETAIL } from '@shared/animations';
+import { EXPAND_DETAIL } from '@eskhata/util';
 
 @Component({
   selector: 'em-shift-info-mobile-card',

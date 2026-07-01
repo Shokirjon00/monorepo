@@ -19,7 +19,7 @@ import { TableService } from "@shared/components/table/services/table.service";
 import { MatDialog } from "@angular/material/dialog";
 import { IAction } from "@shared/components/actions/actions.interface";
 import { ImportResultDialogComponent } from "@shared/dialogs/import-result-dialog/import-result-dialog.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 
 @Component({

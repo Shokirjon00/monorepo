@@ -6,7 +6,7 @@ import {
 import {
   CashbackRatesInfoComponent
 } from '@modules/directory/cashback-rates/casback-rates-detail/cashback-rates-info/cashback-rates-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 export const CASHBACK_ROUTING: Routes = [

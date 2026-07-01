@@ -4,7 +4,7 @@ import { MessageService } from '@core/services/message.service';
 
 import { FormArray, FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { PosService } from '@modules/merchant-container/pos/services/pos.service';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { ToastModule } from '@shared/components/toast/toast.module';

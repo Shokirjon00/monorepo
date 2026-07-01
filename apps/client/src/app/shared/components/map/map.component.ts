@@ -3,7 +3,7 @@ import * as L from 'leaflet';
 import { environment } from '@environments/environment';
 import { Observable, Subscriber, timer } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 
 @Component({

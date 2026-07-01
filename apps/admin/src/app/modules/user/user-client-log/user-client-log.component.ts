@@ -5,7 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ICaption } from '@core/interfaces/table.interface';
 import { finalize, takeUntil } from 'rxjs';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';
 import { IUserLog } from '@core/interfaces/user-log.interface';

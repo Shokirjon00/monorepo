@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, inject, OnInit, signal, viewChild} from '@angular/core';
 import { TableComponent } from '@shared/components/table/table.component';
 import { ICaption } from '@core/interfaces/table.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';

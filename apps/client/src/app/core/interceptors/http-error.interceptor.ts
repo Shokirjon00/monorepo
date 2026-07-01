@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { ErrorStatusCodeEnum } from '@core/enums/error-status-codes.enum';
+import { ErrorStatusCodeEnum } from '@eskhata/util';
 import { ErrorService } from '@core/services/error.service';
 import { Router } from '@angular/router';
 import { environment as env } from '@environments/environment';

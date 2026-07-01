@@ -8,14 +8,14 @@ import { finalize, mergeMap, of, takeUntil } from 'rxjs';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { ActivatedRoute } from '@angular/router';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IMerchant } from '@modules/client/merchant/interfaces/merchant.interface';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import {
   WithdrawalAmountService
 } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
 import { Location } from '@angular/common';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { debounceTime, delay } from 'rxjs/operators';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';

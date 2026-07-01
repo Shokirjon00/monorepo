@@ -6,7 +6,7 @@ import { NotificationSettingsService } from '../services/notification-settings.s
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DestroyRef } from '@angular/core';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { EMPTY } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { finalize, switchMap } from 'rxjs/operators';

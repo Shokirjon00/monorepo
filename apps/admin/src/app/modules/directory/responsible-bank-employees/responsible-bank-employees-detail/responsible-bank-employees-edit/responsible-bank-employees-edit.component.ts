@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '@core/services/message.service';
 import { Observable, of, takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ResBankEmpService } from '@modules/directory/responsible-bank-employees/services/res-bank-emp.service';
 import { IResBankEmp } from '@modules/directory/responsible-bank-employees/interfaces/res-bank-emp.interface';
 import { delay, finalize, mergeMap } from 'rxjs/operators';

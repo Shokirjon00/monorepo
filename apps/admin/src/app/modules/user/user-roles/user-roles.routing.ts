@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {UserRolesComponent} from "@modules/user/user-roles/user-roles.component";
 import {UserRolesInfoComponent} from "@modules/user/user-roles/user-detail/user-roles-info/user-roles-info.component";
 import {UserRolesDetailComponent} from "@modules/user/user-roles/user-detail/user-roles-detail.component";

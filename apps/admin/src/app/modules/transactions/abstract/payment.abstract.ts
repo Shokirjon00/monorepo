@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { MessageService } from '@core/services';
 import { IPaymentContinue, IPaymentDetail } from '@modules/transactions/payments/interfaces';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import {
   PaymentConfirmDialogComponent
 } from "../payments/shared/payment-confirm-dialog/payment-confirm-dialog.component";

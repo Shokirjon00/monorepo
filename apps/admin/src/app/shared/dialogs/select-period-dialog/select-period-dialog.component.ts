@@ -2,7 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, viewChild} 
 import moment, {Moment} from 'moment';
 import {DateRange, MatDatepickerModule, MatMonthView} from '@angular/material/datepicker';
 import {BehaviorSubject} from 'rxjs';
-import {ToastEnum} from '@core/enums/toast-enum';
+import {ToastEnum} from '@eskhata/util';
 import {MessageService} from '@core/services/message.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AngularSvgIconModule} from 'angular-svg-icon';

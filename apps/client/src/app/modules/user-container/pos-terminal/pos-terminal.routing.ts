@@ -1,6 +1,6 @@
 import { PosTerminalComponent } from "@modules/user-container/pos-terminal/pos-terminal.component";
 import { NgxPermissionsGuard } from "ngx-permissions";
-import { ComponentGuard } from "@core/guards/component.guard";
+import { ComponentGuard } from '@eskhata/util';
 
 export const POS_TERMINAL_ROUTES = [
   {

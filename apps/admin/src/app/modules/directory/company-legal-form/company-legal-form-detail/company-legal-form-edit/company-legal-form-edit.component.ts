@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanyLegalFormService } from '@modules/directory/company-legal-form/services/company-legal-form.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, finalize, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';

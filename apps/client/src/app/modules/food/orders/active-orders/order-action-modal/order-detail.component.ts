@@ -13,7 +13,7 @@ import {
 } from '@modules/food/orders/active-orders/order-action-modal/order-detail.constants';
 import { MessageService } from '@core/services/message.service';
 import { ToastModule } from '@shared/components/toast/toast.module';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, timer } from 'rxjs';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { AutocompleteService } from '@core/services/autocomplete.service';
 import { ActivatedRoute } from '@angular/router';
 import { ISelect } from '@core/interfaces/select.interface';

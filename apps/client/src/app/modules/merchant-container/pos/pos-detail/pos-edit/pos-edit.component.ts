@@ -14,7 +14,7 @@ import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { ISelect } from '@core/interfaces/select.interface';
 import { PosService } from '@modules/merchant-container/pos/services/pos.service';
 import { IPosDetail } from '@modules/merchant-container/pos/interfaces/pos.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { IHeader } from '@core/interfaces/header.interface';
 import { HeaderService } from '@core/services/header.service';

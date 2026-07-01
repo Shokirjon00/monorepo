@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { Location } from '@angular/common';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { finalize, of } from 'rxjs';

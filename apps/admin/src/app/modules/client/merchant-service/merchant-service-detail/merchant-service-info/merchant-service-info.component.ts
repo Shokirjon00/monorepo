@@ -7,7 +7,7 @@ import { NgxPermissionsModule } from "ngx-permissions";
 import { MerchantServiceService } from "@modules/client/merchant-service/services/merchant-service.service";
 import { IMerchantService } from "@modules/client/merchant-service/interfaces/merchant-service.interface";
 import { TableComponent } from "@shared/components/table/table.component";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { MERCHANT_SERVICE_INFO_COLUMNS } from "@modules/client/merchant-service/merchant-service-detail/merchant-service-info/merchant-service-info.columns";
 import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 

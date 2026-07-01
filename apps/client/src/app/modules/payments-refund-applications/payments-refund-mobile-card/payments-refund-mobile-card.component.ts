@@ -2,7 +2,7 @@ import { Component, Input, output } from '@angular/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { IPaymentRefundApplications } from '@core/interfaces/payments-refund-applications.interface';
-import { EXPAND_DETAIL } from '@shared/animations';
+import { EXPAND_DETAIL } from '@eskhata/util';
 import { DateTimePipe } from '@core/pipe/date-time.pipe';
 
 @Component({

@@ -5,7 +5,7 @@ import {
   CompanyRegistrationApplicationsService
 } from "@modules/company-registration/list-registration/services/company-registration.service";
 import { ICaption, IRowAction } from "@core/interfaces/table.interface";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { IFilterParams } from "@core/interfaces/filter-params.interface";
 import { HeaderService } from "@core/services/header.service";

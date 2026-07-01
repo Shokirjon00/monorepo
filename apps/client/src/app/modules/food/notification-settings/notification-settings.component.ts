@@ -7,7 +7,7 @@ import { NotificationSettingsService } from './services/notification-settings.se
 import { TelegramConnectModalComponent } from './telegram-connect-modal/telegram-connect-modal.component';
 import { TelegramSubscriptionStatus } from './interfaces/notification-settings.interface';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ToastModule } from '@shared/components/toast/toast.module';
 
 import { NgxPermissionsModule } from 'ngx-permissions';

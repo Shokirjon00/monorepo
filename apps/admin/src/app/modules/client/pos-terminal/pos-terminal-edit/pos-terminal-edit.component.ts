@@ -14,7 +14,7 @@ import { MerchantService } from "@modules/client/merchant/services/merchant.serv
 import { PosService } from "@modules/client/pos/services/pos.service";
 import { delay, finalize, mergeMap } from "rxjs/operators";
 import { Observable, of, takeUntil } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { ToastComponent } from "@shared/components/toast/toast.component";

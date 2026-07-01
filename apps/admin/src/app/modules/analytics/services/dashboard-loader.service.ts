@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 
 @Injectable()
 export class DashboardLoaderService {

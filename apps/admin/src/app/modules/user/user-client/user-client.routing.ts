@@ -3,7 +3,7 @@ import {UserClientComponent} from '@modules/user/user-client/user-client.compone
 import {UserDetailComponent} from '@modules/user/user-client/user-detail/user-detail.component';
 import {UserEditComponent} from '@modules/user/user-client/user-detail/user-edit/user-edit.component';
 import {UserInfoComponent} from '@modules/user/user-client/user-detail/user-info/user-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const USER_LIST_ROUTING: Routes = [
   {

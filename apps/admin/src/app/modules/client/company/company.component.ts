@@ -5,7 +5,7 @@ import { TableComponent } from '@shared/components/table/table.component';
 import { ICaption, IRowAction } from '@core/interfaces/table.interface';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { ICompany } from '@modules/client/company/interfaces/company.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { parseFilterParams } from '@core/utils/filter-util';

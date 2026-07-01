@@ -23,7 +23,7 @@ import { FileSaverService } from "ngx-filesaver";
 import { IAction } from "@shared/components/actions/actions.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { DataSourceService } from "@core/services/data-source.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { DomSanitizer } from "@angular/platform-browser";
 import { MessageService } from "@core/services";
 

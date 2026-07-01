@@ -6,7 +6,7 @@ import { BalanceLimitService } from '@modules/balance-limit/services/balance-lim
 import { IBalanceLimit } from '@modules/balance-limit/Interfaces/balance-limit.interface';
 import { Location } from '@angular/common'
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';

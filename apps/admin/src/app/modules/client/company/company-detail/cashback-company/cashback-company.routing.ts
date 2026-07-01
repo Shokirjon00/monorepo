@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ComponentGuard } from '@core/guards/component.guard';
+import { ComponentGuard } from '@eskhata/util';
 import { ngxPermissionsGuard } from 'ngx-permissions';
 
 export const CASHBACK_COMPANY_ROUTING: Routes = [

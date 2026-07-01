@@ -16,7 +16,7 @@ import { EMPaginationComponent } from '@shared/components/em-pagination/paginati
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { AccountService } from '@core/services/account.service';
 import { HeaderService } from '@core/services/header.service';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IAccount } from '@modules/client/company/interfaces/account.interface';
 import { ITab } from '@core/interfaces/header.interface';

@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   viewChild,
 } from '@angular/core';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';

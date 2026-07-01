@@ -11,7 +11,7 @@ import { isPhone } from "@core/helper";
 import { MessageService } from "@core/services/message.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils/filter-util";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { AccountService } from "@modules/merchant-container/account/services/account.service";
 import { IntegrationService } from "@modules/merchant-container/merchant/services/integration.service";
 import { provideNgxMask } from "ngx-mask";

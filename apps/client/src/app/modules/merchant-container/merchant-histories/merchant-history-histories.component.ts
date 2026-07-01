@@ -28,7 +28,7 @@ import { MerchantConstants } from '@modules/merchant-container/merchant/merchant
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { DateTimePipe } from '@core/pipe/date-time.pipe';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces';
 
 import { isPhone } from '@core/helper';

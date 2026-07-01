@@ -10,7 +10,7 @@ import { Location } from '@angular/common'
 import { IHeader } from '@core/interfaces/header.interface';
 import { HeaderService } from '@core/services/header.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { environment } from '@environments/environment';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';

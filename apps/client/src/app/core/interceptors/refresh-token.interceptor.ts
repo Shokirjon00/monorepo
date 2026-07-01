@@ -2,7 +2,7 @@ import { DestroyRef, inject, Injectable } from '@angular/core';
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, finalize, switchMap } from 'rxjs/operators';
-import { ErrorStatusCodeEnum } from '@core/enums/error-status-codes.enum';
+import { ErrorStatusCodeEnum } from '@eskhata/util';
 import { environment as env } from '@environments/environment';
 import { ErrorService } from '@core/services/error.service';
 import { TokenService } from '@core/services/token.service';

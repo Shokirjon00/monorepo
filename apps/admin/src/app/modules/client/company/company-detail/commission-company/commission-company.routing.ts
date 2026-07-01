@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ngxPermissionsGuard } from "ngx-permissions";
-import { ComponentGuard } from "@core/guards/component.guard";
+import { ComponentGuard } from '@eskhata/util';
 
 export const COMMISSION_COMPANY_ROUTING: Routes = [
   {

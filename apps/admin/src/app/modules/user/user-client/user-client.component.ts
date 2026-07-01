@@ -8,7 +8,7 @@ import { ClientUsersService } from '@modules/user/user-client/services/client-us
 import { IAction } from '@shared/components/actions/actions.interface';
 import { ITab } from '@core/interfaces/header.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { IUsers } from '@modules/user/user-client/interfaces/users.interface';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';

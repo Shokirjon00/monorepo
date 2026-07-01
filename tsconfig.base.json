@@ -17,7 +17,8 @@
     "paths": {
       "@shared-core/*": ["shared-core/src/*"],
       "@core/*": ["shared-core/src/core/*"],
-      "@env": ["environments/environment"]
+      "@env": ["environments/environment"],
+      "@eskhata/util": ["libs/shared/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

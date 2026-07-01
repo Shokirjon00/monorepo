@@ -3,11 +3,11 @@ import { CompanyInfoService } from '@modules/merchant-container/company-info/ser
 import { ChoosePhoneNumberDialogComponent } from '@modules/merchant-container/pos/pos-detail/choose-phone-number-dialog/choose-phone-number-dialog.component';
 import { HeaderService } from '@core/services/header.service';
 import { ICompanyInfo } from '@modules/merchant-container/company-info/interfaces/company-info.interface';
-import { MemTypeEnum } from '@core/enums/mem-type.enum';
+import { MemTypeEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { IAction } from '@shared/components/actions/action.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ToastModule } from '@shared/components/toast/toast.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';

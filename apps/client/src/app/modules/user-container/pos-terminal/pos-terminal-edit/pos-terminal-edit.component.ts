@@ -16,7 +16,7 @@ import { IFilterParams, IHeader } from "@core/interfaces";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "@core/services/message.service";
 import { HeaderService } from "@core/services/header.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { finalize, map, Observable, of, Subject, timer } from "rxjs";
 import { mergeMap, takeUntil } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";

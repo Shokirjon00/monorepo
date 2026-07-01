@@ -12,7 +12,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { DeliveryMethodsService } from "@modules/food/delivery-methods/services/delivery-methods.service";
 import { IDeliveryMethods } from "@modules/food/delivery-methods/interfaces/delivery-methods.interface";
 import { MessageService } from "@core/services/message.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { finalize, of } from "rxjs";
 import { ToastModule } from "@shared/components/toast/toast.module";

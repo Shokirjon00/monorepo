@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { TableComponent } from '@shared/components/table/table.component';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { finalize, of } from 'rxjs';
@@ -8,7 +8,7 @@ import { parseFilterParams } from '@core/utils/filter-util';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { delay, mergeMap } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-load
 import { SharedModule } from '@shared/shared.module';
 import { isPhone } from '@core/helper';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { EXPAND_DETAIL } from '@shared/animations';
+import { EXPAND_DETAIL } from '@eskhata/util';
 import { PaymentsRefundApplicationsConstants } from '@modules/payments-refund-applications/payments-refund-applications.constants';
 import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';

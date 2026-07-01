@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, viewChild, ViewChild } from '@angular/core';
-import {IPaginate} from '@core/interfaces/paginate.interface';
+import {IPaginate} from '@eskhata/util';
 import {HeaderService} from '@core/services/header.service';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {FormsModule} from '@angular/forms';

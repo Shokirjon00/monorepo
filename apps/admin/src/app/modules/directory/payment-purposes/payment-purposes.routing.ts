@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {PaymentPurposesComponent} from '@modules/directory/payment-purposes/payment-purposes.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 import {
   PaymentPurposesEditComponent

@@ -12,7 +12,7 @@ import { SupportCenterService } from "@modules/support-center/services/support-c
 import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
 import { MatDialog } from "@angular/material/dialog";
 import { ChangeStatusModalComponent } from "@shared/dialogs/change-status-modal/change-status-modal.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 import { UserAdminService } from "@modules/user/user-admin/services/user-admin.service";
 import { SetOperatorModalComponent } from "@shared/dialogs/set-operator-modal/set-operator-modal.component";

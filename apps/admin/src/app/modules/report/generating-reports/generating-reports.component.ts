@@ -7,7 +7,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { MessageService } from '@core/services/message.service';
 import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";

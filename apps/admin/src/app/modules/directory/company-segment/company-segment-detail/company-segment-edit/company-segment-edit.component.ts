@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { CompanySegmentService } from '@modules/directory/company-segment/services/company-segment.service';
 import { Location } from '@angular/common';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';

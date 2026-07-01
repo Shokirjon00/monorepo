@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MessageService } from '@core/services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';

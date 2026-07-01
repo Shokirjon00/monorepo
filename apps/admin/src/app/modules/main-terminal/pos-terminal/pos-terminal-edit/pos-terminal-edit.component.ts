@@ -18,7 +18,7 @@ import { environment as env } from '@environments/environment';
 import { MessageService } from "@core/services";
 import { delay, finalize, mergeMap } from "rxjs/operators";
 import { Observable, of, takeUntil } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";

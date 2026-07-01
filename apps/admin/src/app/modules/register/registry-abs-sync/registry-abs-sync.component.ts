@@ -3,7 +3,7 @@ import { TableComponent } from "@shared/components/table/table.component";
 import { DestroyableComponent } from "@core/abstract/destroyable.component";
 import { ICaption } from "@core/interfaces/table.interface";
 import { IAction } from "@shared/components/actions/actions.interface";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { IFilterParams } from "@core/interfaces/filter-params.interface";
 import { finalize, takeUntil } from "rxjs";

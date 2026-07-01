@@ -6,7 +6,7 @@ import { environment as env } from '@environments/environment';
 import { ErrorService } from '@core/services/error.service';
 import { TokenService } from '@core/services/token.service';
 import { AuthService } from '@modules/auth/service/auth.service';
-import { ErrorStatusCodeEnum } from '@core/enums/error-status-codes.enum';
+import { ErrorStatusCodeEnum } from '@eskhata/util';
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {

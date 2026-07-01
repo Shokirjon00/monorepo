@@ -1,4 +1,4 @@
-import {IPaginate} from '@core/interfaces/paginate.interface';
+import {IPaginate} from '@eskhata/util';
 import {IHeader} from '@core/interfaces/header.interface';
 import {IAction} from '@shared/components/actions/actions.interface';
 

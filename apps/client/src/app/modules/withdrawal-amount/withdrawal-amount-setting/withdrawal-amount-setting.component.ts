@@ -15,7 +15,7 @@ import { DatePipe, Location } from "@angular/common";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IHeader } from "@core/interfaces/header.interface";
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { WithdrawalAmountSettingsDialogComponent } from "@shared/dialogs/withdrawal-amount-settings-dialog/withdrawal-amount-settings-dialog.component";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { IssueMoneySettingsValidator } from "@core/validators/settings-validator";

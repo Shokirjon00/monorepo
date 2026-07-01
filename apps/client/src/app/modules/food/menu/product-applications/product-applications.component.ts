@@ -9,7 +9,7 @@ import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils/filter-util";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { ProductApplicationConstants } from "@modules/food/menu/product-applications/product-application.constants";
 import { ProductApplicationsService } from "@modules/food/menu/services/product-application.service";
 import { DatePipe } from "@angular/common";

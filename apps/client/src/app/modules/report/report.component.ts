@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { ValidatorModule } from '@shared/components/validator/validator.module';
 import { environment as env } from '@environments/environment';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { FileSaverService } from 'ngx-filesaver';
 import { MessageService } from '@core/services/message.service';

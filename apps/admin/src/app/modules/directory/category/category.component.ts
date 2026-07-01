@@ -8,7 +8,7 @@ import { ICaption, IRowAction } from '@core/interfaces/table.interface';
 import { ICategory } from '@modules/directory/category/interfaces/category.interface';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { ITab } from '@core/interfaces/header.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';

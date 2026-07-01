@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { MessageService } from '@core/services/message.service';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { IAdminRole, IPermissions } from '@modules/directory/admin-role/interfaces/admin-role.interface';
 import { AdminRoleService } from '@modules/directory/admin-role/services/admin-role.service';
 import { delay, mergeMap } from 'rxjs/operators';

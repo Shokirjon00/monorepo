@@ -6,7 +6,7 @@ import { IHeader } from '@core/interfaces/header.interface';
 import { ISelect } from '@core/interfaces/select.interface';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { environment } from '@environments/environment';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';

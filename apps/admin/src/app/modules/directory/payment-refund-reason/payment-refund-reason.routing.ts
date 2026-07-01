@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {PaymentRefundReasonComponent} from './payment-refund-reason.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 import {
   PaymentRefundReasonEditComponent

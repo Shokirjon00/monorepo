@@ -3,7 +3,7 @@ import {CommissionComponent} from '@modules/directory/commission/commission.comp
 import {CommissionEditComponent} from '@modules/directory/commission/commission-detail/commission-edit/commission-edit.component';
 import {CommissionDetailComponent} from '@modules/directory/commission/commission-detail/commission-detail.component';
 import {CommissionInfoComponent} from '@modules/directory/commission/commission-detail/commission-info/commission-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const COMMISSION_ROUTES: Routes = [
   {

@@ -9,7 +9,7 @@ import { DestroyableComponent } from "@core/directives/destroyable.component";
 import { IFilterParams } from "@core/interfaces/filter-params.interface";
 import { HeaderService } from "@core/services/header.service";
 import { parseFilterParams } from "@core/utils/filter-util";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { isPhone } from '@core/helper';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsService } from 'ngx-permissions';
 import { SharedModule } from "@shared/shared.module";

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, forwardRef, inject, Input, OnInit, output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { ActivatedRoute, Params } from '@angular/router';

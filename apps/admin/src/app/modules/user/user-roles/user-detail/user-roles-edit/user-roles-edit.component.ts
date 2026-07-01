@@ -8,7 +8,7 @@ import { ISelect } from '@core/interfaces/select.interface';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import { PosService } from '@modules/client/pos/services/pos.service';
 import { IHeader } from '@core/interfaces/header.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { environment as env } from '@environments/environment';

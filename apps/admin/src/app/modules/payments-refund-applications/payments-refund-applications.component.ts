@@ -4,7 +4,7 @@ import { IPaymentRefundApplications } from "@core/interfaces/payments-refund-app
 import {
   PaymentsRefundApplicationsConstants
 } from "@modules/payments-refund-applications/payments-refund-applications.constants";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { IFilterParams } from "@core/interfaces/filter-params.interface";
 import { RefundPaymentApplicationService } from "@core/services/payments-refund-applications.services";
@@ -16,7 +16,7 @@ import { MessageService } from "@core/services/message.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ICaption, IRowAction } from "@core/interfaces/table.interface";
 import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { DomSanitizer } from "@angular/platform-browser";
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { delay, mergeMap } from "rxjs/operators";

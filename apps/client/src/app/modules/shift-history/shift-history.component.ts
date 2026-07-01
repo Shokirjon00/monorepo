@@ -14,7 +14,7 @@ import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-load
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ShiftHistoryService } from '@modules/shift-history/service/shift-history.service';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 import { ToastModule } from '@shared/components/toast/toast.module';

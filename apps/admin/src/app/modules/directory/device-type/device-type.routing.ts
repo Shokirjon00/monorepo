@@ -3,7 +3,7 @@ import {DeviceTypeComponent} from '@modules/directory/device-type/device-type.co
 import {
   DeviceTypeEditComponent
 } from '@modules/directory/device-type/device-type-detail/device-type-edit/device-type-edit.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const DEVICE_TYPE_ROUTES: Routes = [
   {

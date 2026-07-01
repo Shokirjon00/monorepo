@@ -6,7 +6,7 @@ import { DeviceTypeService } from '@modules/directory/device-type/services/devic
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { Location } from '@angular/common'
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

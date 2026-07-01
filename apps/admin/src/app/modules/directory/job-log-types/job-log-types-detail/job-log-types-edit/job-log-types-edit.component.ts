@@ -8,7 +8,7 @@ import { MessageService } from "@core/services/message.service";
 import { IParam } from "@core/interfaces/param.interface";
 import { WhiteSpaceValidator } from "@core/validators/white-space-validator";
 import { finalize, Observable, of, takeUntil } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { ToastComponent } from "@shared/components/toast/toast.component";

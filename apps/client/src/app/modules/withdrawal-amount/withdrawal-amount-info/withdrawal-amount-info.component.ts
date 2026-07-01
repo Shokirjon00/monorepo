@@ -7,7 +7,7 @@ import { TableComponent } from '@shared/components/table/table.component';
 import { WithdrawalAmountService } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
 import { WithdrawalAmountInfoConstants } from '@modules/withdrawal-amount/withdrawal-amount-info/withdrawal-amount-info.constants';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { IAction } from '@shared/components/actions/action.interface';
 import { isPhone } from '@core/helper';
@@ -22,7 +22,7 @@ import { DateTimePipe } from '@core/pipe/date-time.pipe';
 import { WithdrawalSelectedCompanyAmountDialogComponent } from '@modules/withdrawal-amount/withdrawal-selected-company-amount-dialog/withdrawal-selected-company-amount-dialog.component';
 import { ActionEnum } from '@core/enums/action-enum';
 import { IWithdrawalAmount } from '@modules/withdrawal-amount/interfaces/withdrawal-amount.interface';
-import { EXPAND_DETAIL } from '@shared/animations';
+import { EXPAND_DETAIL } from '@eskhata/util';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { TableConstants } from '@shared/components/table/table.constants';
 

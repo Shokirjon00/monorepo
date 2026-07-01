@@ -6,7 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { HeaderService } from '@core/services/header.service';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ICashbackCompany } from '@modules/client/company/company-detail/cashback-company/interfaces/cashback-company.interface';
 import { CashbackCompanyService } from '@modules/client/company/company-detail/cashback-company/services/cashback-company.service';
 import { parseFilterParams } from '@core/utils/filter-util';

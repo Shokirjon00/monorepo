@@ -6,7 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { HeaderService } from '@core/services/header.service';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { ToastComponent } from "@shared/components/toast/toast.component";
 import { ActionsComponent } from "@shared/components/actions/actions.component";
@@ -28,7 +28,7 @@ import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-d
 import { MatDialog } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { DatePipe } from "@angular/common";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 

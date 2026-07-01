@@ -7,7 +7,7 @@ import { environment as env, environment } from '@environments/environment';
 import { Location } from '@angular/common';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { MatDialog } from '@angular/material/dialog';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';

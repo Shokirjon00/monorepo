@@ -12,9 +12,9 @@ import {
 } from '@modules/withdrawal-amount/withdrawal-amount-info/interfaces/withdrawal-amount-merchants.interface';
 import { IHeader } from '@core/interfaces/header.interface';
 import { HeaderService } from '@core/services/header.service';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';

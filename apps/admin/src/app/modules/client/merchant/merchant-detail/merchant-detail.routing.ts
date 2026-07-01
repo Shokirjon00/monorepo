@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { MerchantDetailComponent } from '@modules/client/merchant/merchant-detail/merchant-detail.component';
-import { ComponentGuard } from '@core/guards/component.guard';
+import { ComponentGuard } from '@eskhata/util';
 
 export const MERCHANT_DETAIL_ROUTES: Routes = [
   {

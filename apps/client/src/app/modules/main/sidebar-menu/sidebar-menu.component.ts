@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@modules/auth/service/auth.service';
 import { TokenService } from '@core/services/token.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { UserProfileDialogComponent } from '@shared/dialogs/user-profile-dialog/user-profile-dialog.component';
 import {
   UserChangePasswordDialogComponent

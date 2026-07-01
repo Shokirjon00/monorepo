@@ -10,7 +10,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MessageService } from "@core/services";
 import { ActivatedRoute } from "@angular/router";
 import { finalize, Observable, of, takeUntil } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";

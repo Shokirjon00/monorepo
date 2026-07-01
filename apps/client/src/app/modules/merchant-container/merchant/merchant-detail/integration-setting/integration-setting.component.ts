@@ -4,7 +4,7 @@ import { IntegrationService } from '@modules/merchant-container/merchant/service
 import { takeUntil } from 'rxjs';
 import { HeaderService } from '@core/services/header.service';
 import { finalize } from 'rxjs/operators';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { ClipboardService } from 'ngx-clipboard';
 import { SvgIconComponent } from "angular-svg-icon";

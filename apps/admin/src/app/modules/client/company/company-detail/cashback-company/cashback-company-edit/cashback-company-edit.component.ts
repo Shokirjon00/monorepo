@@ -8,7 +8,7 @@ import { CashbackRatesService } from '@modules/directory/cashback-rates/services
 import { ActivatedRoute, Params } from '@angular/router';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { HeaderService } from '@core/services/header.service';
 import { IHeader } from '@core/interfaces/header.interface';

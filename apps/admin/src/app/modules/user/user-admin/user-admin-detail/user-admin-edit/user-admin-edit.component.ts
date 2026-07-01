@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { finalize, Observable, of, timer } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAdminService } from '@modules/user/user-admin/services/user-admin.service';

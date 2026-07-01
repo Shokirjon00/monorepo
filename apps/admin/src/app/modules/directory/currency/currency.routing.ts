@@ -1,7 +1,7 @@
 import {Routes} from "@angular/router";
 import {CurrencyComponent} from "@modules/directory/currency/currency.component";
 import {NgxPermissionsGuard} from "ngx-permissions";
-import {ComponentGuard} from "@core/guards/component.guard";
+import {ComponentGuard} from '@eskhata/util';
 import {CurrencyEditComponent} from "@modules/directory/currency/currency-detail/currency-edit/currency-edit.component";
 
 export const CURRENCY_ROUTING: Routes = [

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { TableComponent } from "@shared/components/table/table.component";
 import { ICaption } from "@core/interfaces/table.interface";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute } from "@angular/router";
 import { CompanyRegistrationApplicationsService } from "@modules/company-registration/list-registration/services/company-registration.service";
 import { finalize, takeUntil } from "rxjs";

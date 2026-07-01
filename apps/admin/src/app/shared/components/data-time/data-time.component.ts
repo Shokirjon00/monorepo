@@ -1,7 +1,7 @@
 import { Component, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Params } from '@angular/router';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { ToastComponent } from '@shared/components/toast/toast.component';
 import { FormsModule } from '@angular/forms';

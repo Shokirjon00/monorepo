@@ -9,7 +9,7 @@ import {
   Validators
 } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MessageService } from '@core/services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';

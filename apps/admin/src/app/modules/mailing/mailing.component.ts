@@ -6,7 +6,7 @@ import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { MailingService } from '@modules/mailing/services/mailing.service';
 import { IMailing } from '@modules/mailing/interfaces/mailing.interface';

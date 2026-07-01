@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {CategoryComponent} from './category.component';
 import {CategoryEditComponent} from '@modules/directory/category/category-detail/category-edit/category-edit.component';
 import {CategoryInfoComponent} from '@modules/directory/category/category-detail/category-info/category-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 export const CATEGORY_ROUTING: Routes = [

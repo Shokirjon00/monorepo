@@ -10,7 +10,7 @@ import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { GatewaysService } from "@modules/setting-container/gateways/services/gateways.service";
 import { IParam } from "@core/interfaces/param.interface";
 import { finalize, Observable, of, takeUntil } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { WhiteSpaceValidator } from "@core/validators/white-space-validator";

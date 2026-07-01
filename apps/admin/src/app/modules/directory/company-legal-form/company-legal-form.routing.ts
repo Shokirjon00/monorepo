@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {CompanyLegalFormComponent} from '@modules/directory/company-legal-form/company-legal-form.component';
 import {
   CompanyLegalFormEditComponent

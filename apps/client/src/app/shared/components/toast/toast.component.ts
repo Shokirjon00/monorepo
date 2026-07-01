@@ -22,7 +22,7 @@ import { PrimeTemplateDirective } from '@core/directives/prime-template/prime-te
 import { PrimeNgConfigService } from '@core/services/prime-ng-config.service';
 import Zindexutils from '@core/utils/zindexutils';
 import { UniqueComponentId } from '@core/utils/uniquecomponentid';
-import { ObjectUtils } from '@core/utils/objectutils';
+import { ObjectUtils } from '@eskhata/util';
 import { ToastItemComponent } from '@shared/components/toast/toast-item/toast-item.component';
 import { CommonModule } from '@angular/common';
 

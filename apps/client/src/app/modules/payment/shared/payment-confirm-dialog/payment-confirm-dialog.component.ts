@@ -12,7 +12,7 @@ import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { finalize } from 'rxjs/operators';
 import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 
 
 @Component({

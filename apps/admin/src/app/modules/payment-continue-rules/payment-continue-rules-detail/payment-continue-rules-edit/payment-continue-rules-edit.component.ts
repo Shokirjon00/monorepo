@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

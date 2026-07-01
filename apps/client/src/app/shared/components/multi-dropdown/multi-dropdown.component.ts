@@ -12,7 +12,7 @@ import {
 import { FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { AutocompleteService } from '@core/services/autocomplete.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ISelect } from '@core/interfaces/select.interface';

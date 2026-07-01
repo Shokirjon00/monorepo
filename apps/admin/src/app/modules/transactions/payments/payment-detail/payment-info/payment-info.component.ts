@@ -11,7 +11,7 @@ import { PaymentsInfoConstants } from '../payment-info/payment-info.constants';
 import { AbstractPaymentComponent } from '@modules/transactions/abstract/payment.abstract';
 import { PaymentInfoService } from './service/payment-info.service';
 import { IPaymentDetail } from '@modules/transactions/payments/interfaces';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { finalize, takeUntil } from 'rxjs';
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';

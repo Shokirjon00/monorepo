@@ -10,7 +10,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { isPhone } from "@core/helper";
 import { MessageService } from "@core/services/message.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { ActiveOrdersConstants } from "@modules/food/orders/active-orders/active-orders.constants";
 import { OrdersService } from "@modules/food/orders/active-orders/services/active-orders.service";
 import { IOrders } from "@modules/food/orders/active-orders/interfaces/active-orders.interface";

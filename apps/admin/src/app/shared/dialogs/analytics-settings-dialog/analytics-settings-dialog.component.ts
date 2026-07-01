@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {catchError, finalize} from 'rxjs/operators';
 import { MessageService } from '@core/services';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { QrPosAnalyticsApiService } from '@modules/analytics/services/qr-pos-analytics-api.service';
 import {
   IQrPosQuarterPlan,

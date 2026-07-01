@@ -18,7 +18,7 @@ import { ActivatedRoute } from "@angular/router";
 import { MessageService } from "@core/services";
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { DateFormatEnum } from "@core/enums/date-format.enum";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { SelectPeriodDialogComponent } from "@shared/dialogs/select-period-dialog/select-period-dialog.component";

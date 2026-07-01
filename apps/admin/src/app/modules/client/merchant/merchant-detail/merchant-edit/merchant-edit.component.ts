@@ -10,7 +10,7 @@ import { IMerchantDetail } from '@modules/client/merchant/interfaces/merchant-de
 import { WorkingDayService } from '@modules/directory/working-day/services/working-day.service';
 import { CommonModule, Location } from '@angular/common';
 import { CommissionService } from '@modules/directory/commission/services/commission.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { TokenService } from '@core/services/token.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { LOGIN_PATTERN } from '@core/helper';

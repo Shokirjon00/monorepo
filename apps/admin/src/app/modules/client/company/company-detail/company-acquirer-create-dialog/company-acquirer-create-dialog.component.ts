@@ -5,7 +5,7 @@ import {DestroyableComponent} from '@core/abstract/destroyable.component';
 import {ISelect} from '@core/interfaces/select.interface';
 import {finalize, of, takeUntil} from 'rxjs';
 import {MessageService} from '@core/services/message.service';
-import {ToastEnum} from '@core/enums/toast-enum';
+import {ToastEnum} from '@eskhata/util';
 import {environment as env, environment} from '@environments/environment';
 import {delay, mergeMap} from 'rxjs/operators';
 import {setValidationErrors} from '@core/validators/set-validation-errors';

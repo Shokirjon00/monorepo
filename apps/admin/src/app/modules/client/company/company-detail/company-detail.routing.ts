@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { CompanyDetailComponent } from '@modules/client/company/company-detail/company-detail.component';
 import { CompanyInfoComponent } from '@modules/client/company/company-detail/company-info/company-info.component';
-import { ComponentGuard } from '@core/guards/component.guard';
+import { ComponentGuard } from '@eskhata/util';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
 export const COMPANY_DETAIL_ROUTES: Routes = [

@@ -3,7 +3,7 @@ import { BrandComponent } from './brand.component';
 import { BrandEditComponent } from './brand-detail/brand-edit/brand-edit.component';
 import { BrandInfoComponent } from '@modules/directory/terminal-models/brand-detail/brand-info/brand-info.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
-import {ComponentGuard} from "@core/guards/component.guard";
+import {ComponentGuard} from '@eskhata/util';
 
 export const TERMINAL_MODELS_ROUTING: Routes = [
   {

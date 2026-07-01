@@ -6,7 +6,7 @@ import {
 import {
   AdminRoleInfoComponent
 } from '@modules/directory/admin-role/admin-role-detail/admin-role-info/admin-role-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {AdminRoleDetailComponent} from '@modules/directory/admin-role/admin-role-detail/admin-role-detail.component';
 
 export const ADMIN_ROLES_ROUTING: Routes = [

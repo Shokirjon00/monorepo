@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({

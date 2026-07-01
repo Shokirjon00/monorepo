@@ -11,7 +11,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { DateTimePipe } from "@core/pipe/date-time.pipe";
 import { ActionsComponent } from "@shared/components/actions/actions.component";
 import { IAction } from "@shared/components/actions/actions.interface";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 import { ToastComponent } from "@shared/components/toast/toast.component";
 

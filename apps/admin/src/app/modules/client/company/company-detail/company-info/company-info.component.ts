@@ -7,7 +7,7 @@ import {
   ChoosePhoneNumberDialogComponent
 } from '@modules/client/company/company-detail/choose-phone-number-dialog/choose-phone-number-dialog';
 import {MatDialog} from '@angular/material/dialog';
-import {ToastEnum} from '@core/enums/toast-enum';
+import {ToastEnum} from '@eskhata/util';
 import {MessageService} from '@core/services/message.service';
 import {DateTimePipe} from "@core/pipe/date-time.pipe";
 import {UploadFieldComponent} from "@shared/components/upload-field/upload-field.component";

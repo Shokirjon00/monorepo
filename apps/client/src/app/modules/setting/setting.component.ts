@@ -8,7 +8,7 @@ import { ToastModule } from '@shared/components/toast/toast.module';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { SettingService } from '@modules/setting/service/setting.service';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { ClipboardService } from 'ngx-clipboard';

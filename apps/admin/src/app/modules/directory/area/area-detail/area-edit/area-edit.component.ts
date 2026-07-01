@@ -10,7 +10,7 @@ import { RegionService } from '@modules/directory/region/services/region.service
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IAreaDetail } from '@modules/directory/area/interfaces/area-detail.interface';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { environment } from '@environments/environment';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';

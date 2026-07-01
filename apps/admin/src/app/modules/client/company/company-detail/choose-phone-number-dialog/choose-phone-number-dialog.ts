@@ -4,7 +4,7 @@ import { MessageService } from '@core/services/message.service';
 import { FormArray, FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { CompanyService } from '@modules/client/company/services/company.service';
 

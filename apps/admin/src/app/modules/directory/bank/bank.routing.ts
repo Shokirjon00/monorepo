@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { BankComponent } from '@modules/directory/bank/bank.component';
 import { BankEditComponent } from '@modules/directory/bank/bank-detail/bank-edit/bank-edit.component';
 import { BankInfoComponent } from '@modules/directory/bank/bank-detail/bank-info/bank-info.component';
-import { ComponentGuard } from '@core/guards/component.guard';
+import { ComponentGuard } from '@eskhata/util';
 
 export const BANK_ROUTES: Routes = [
   {

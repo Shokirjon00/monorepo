@@ -9,7 +9,7 @@ import { ISelect } from '@core/interfaces/select.interface';
 import {
   PaymentRefundReasonService
 } from '@modules/directory/payment-refund-reason/services/payment-refund-reason.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 

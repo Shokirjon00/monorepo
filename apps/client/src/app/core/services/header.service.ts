@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from "rxjs";
 import { IHeader, IHeaderBack } from "@core/interfaces/header.interface";
 import { IAction } from "@shared/components/actions/action.interface";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 
 @Injectable({
   providedIn: 'root'

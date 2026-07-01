@@ -13,7 +13,7 @@ import { CommonModule, Location } from '@angular/common';
 import { ClientRoleService } from '@modules/directory/client-role/services/client-role.service';
 import { MessageService } from '@core/services/message.service';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

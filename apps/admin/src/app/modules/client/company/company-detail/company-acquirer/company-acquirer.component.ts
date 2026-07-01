@@ -4,7 +4,7 @@ import { HeaderService } from '@core/services/header.service';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { TableComponent } from '@shared/components/table/table.component';
 import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { MessageService } from '@core/services/message.service';
@@ -13,7 +13,7 @@ import { CompanyService } from '@modules/client/company/services/company.service
 import { IAcquirer } from '@core/interfaces/acquirer.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanyAcquirerCreateDialogComponent } from '@modules/client/company/company-detail/company-acquirer-create-dialog/company-acquirer-create-dialog.component';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ToastComponent } from '@shared/components/toast/toast.component';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { CompanyAcquirerConstants } from "@modules/client/company/company-detail/company-acquirer/company-acquirer.constants";

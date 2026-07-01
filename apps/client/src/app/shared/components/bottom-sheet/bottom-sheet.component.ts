@@ -8,7 +8,7 @@ import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { ActivatedRoute } from '@angular/router';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { AutocompleteService } from '@core/services/autocomplete.service';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { InfiniteScrollDirective } from '@core/directives/infinite-scroll.directive';
 

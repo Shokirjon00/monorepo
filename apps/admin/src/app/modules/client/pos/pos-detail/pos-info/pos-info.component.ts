@@ -13,7 +13,7 @@ import { QRCodeComponent } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { PosQrDialogComponent } from '@shared/dialogs/pos-qr-dialog/pos-qr-dialog.component';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";

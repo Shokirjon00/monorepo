@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { CodeService } from "@shared/dialogs/code-modal/code/code.service";
 import { MessageService } from "@core/services/message.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IResetInterface } from "@modules/auth/interfaces/reset.interface";
 import { environment } from "@environments/environment";

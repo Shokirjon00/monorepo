@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {CompanySegmentComponent} from '@modules/directory/company-segment/company-segment.component';
 import {
   CompanySegmentEditComponent

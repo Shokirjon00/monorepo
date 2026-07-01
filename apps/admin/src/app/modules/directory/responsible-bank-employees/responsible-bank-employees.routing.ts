@@ -8,7 +8,7 @@ import {
 import {
   ResponsibleBankEmployeesInfoComponent
 } from '@modules/directory/responsible-bank-employees/responsible-bank-employees-detail/responsible-bank-employees-info/responsible-bank-employees-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const RES_BANK_EMP_ROUTING: Routes = [
   {

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MultiSelectListModule } from '@shared/components/multi-select-list/multi-select-list.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { SharedModule } from '@shared/shared.module';
 import { RetailOutletService } from '@modules/company-registration/retail-outlet/services/retail-outlet.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

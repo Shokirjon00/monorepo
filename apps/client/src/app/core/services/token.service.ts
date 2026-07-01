@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ACCESS_TOKEN_KEY, DEVICE_ID, REFRESH_TOKEN_KEY } from '@core/helper';
-import { IToken } from '@core/interfaces/token.interface';
+import { IToken } from '@eskhata/util';
 import { SessionStorageService } from '@core/services/session-storage.service';
 import { Subject } from 'rxjs';
 import { sha256 } from 'js-sha256';

@@ -6,7 +6,7 @@ import {
 import {
   SubcategoryInfoComponent
 } from '@modules/directory/subcategory/subcategory-detail/subcategory-info/subcategory-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 export const SUBCATEGORY_ROUTING: Routes = [

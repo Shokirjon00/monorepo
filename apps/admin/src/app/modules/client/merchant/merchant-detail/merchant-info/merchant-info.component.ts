@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HeaderService } from '@core/services/header.service';
 import { loadFile } from '@core/utils/load-file';
 import { HelperService } from '@core/services/helper.service';
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MigrationOfOutletsComponent } from "@modules/client/pos/migration-of-outlets/migration-of-outlets.component";
 import { MatDialog } from "@angular/material/dialog";
 import { MessageService } from "@core/services/message.service";

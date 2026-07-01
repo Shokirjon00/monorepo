@@ -10,7 +10,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { NgxMaskDirective } from 'ngx-mask';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services';
 import { DateTimePipe } from '@core/pipe/date-time.pipe';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

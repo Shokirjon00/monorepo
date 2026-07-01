@@ -9,7 +9,7 @@ import { CategoryService } from '@core/services/category.service';
 import { WorkingDayService } from '@core/services/working-day.service';
 import { SubcategoryService } from '@core/services/subcategory.service';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { environment as env } from '@environments/environment';
 import { Location } from '@angular/common';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';

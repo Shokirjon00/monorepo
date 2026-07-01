@@ -7,7 +7,7 @@ import { MessageService } from '@core/services/message.service';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { IPaymentContinueRuleAccordanceDetail } from '@modules/payment-continue-rules/interfaces/payment-continue-rule-accordance-detail.interface';
 import { PaymentContinueRuleAccordancesService } from '@modules/payment-continue-rules/services/payment-continue-rule-accordances.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of, Subject, takeUntil } from 'rxjs';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

@@ -6,7 +6,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { loadFile } from '@core/utils/load-file';
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ToastComponent } from '@shared/components/toast/toast.component';
 import { PreloaderComponent } from '@shared/components/preloader/preloader.component';

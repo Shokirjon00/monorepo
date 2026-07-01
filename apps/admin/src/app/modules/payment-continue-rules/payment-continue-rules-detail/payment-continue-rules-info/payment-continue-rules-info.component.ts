@@ -6,7 +6,7 @@ import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { finalize, takeUntil } from 'rxjs';
 import { ICaption, IRowAction } from '@core/interfaces/table.interface';
 import { IAction } from '@shared/components/actions/actions.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import {
   IPaymentContinueRuleAccordance
 } from '@modules/payment-continue-rules/interfaces/payment-continue-rule-accordance.interface';

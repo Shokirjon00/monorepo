@@ -6,7 +6,7 @@ import {
 import {
   WithdrawalAmountSettingDetailComponent
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/withdrawal-amount-setting-detail/withdrawal-amount-setting-detail.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const WITHDRAWAL_AMOUNT_SETTING_ROUTER: Routes = [
   {

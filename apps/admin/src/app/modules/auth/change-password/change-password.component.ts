@@ -5,7 +5,7 @@ import { AuthService } from '@modules/auth/service/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from '@core/services/message.service';
 import { finalize, takeUntil } from 'rxjs';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { PasswordValidator } from '@core/validators/password-validator';
 import { SvgIconComponent } from "angular-svg-icon";

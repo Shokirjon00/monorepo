@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { ComponentGuard } from "@core/guards/component.guard";
+import { ComponentGuard } from '@eskhata/util';
 import { NgxPermissionsGuard } from "ngx-permissions";
 
 export const POS_TERMINAL_DETAIL_ROUTING: Routes = [

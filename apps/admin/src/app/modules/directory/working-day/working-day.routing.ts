@@ -3,7 +3,7 @@ import {WorkingDayComponent} from '@modules/directory/working-day/working-day.co
 import {
   WorkingDayEditComponent
 } from '@modules/directory/working-day/working-day-detail/working-day-edit/working-day-edit.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const WORKING_DAY_ROUTES: Routes = [
   {

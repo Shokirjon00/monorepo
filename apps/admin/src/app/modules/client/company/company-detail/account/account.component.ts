@@ -7,7 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AccountService } from '@core/services/account.service';
 import { finalize, takeUntil } from 'rxjs';
 import { AccountEditDialogComponent } from '@modules/client/company/company-detail/account-edit-dialog/account-edit-dialog.component';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IAccount } from '@modules/client/company/interfaces/account.interface';
 import { HeaderService } from '@core/services/header.service';

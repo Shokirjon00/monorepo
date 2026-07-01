@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from '@shared/shared.module';
 import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { BottomSheetComponent } from '@shared/components/bottom-sheet/bottom-sheet.component';
 import { isPhone } from '@core/helper';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';

@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { finalize, takeUntil } from 'rxjs';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { MessageService } from "@core/services/message.service";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
 

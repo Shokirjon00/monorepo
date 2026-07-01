@@ -2,7 +2,7 @@ import {Routes} from "@angular/router";
 import {DirectoryOptionsComponent} from "@modules/directory/directory-options/directory-options.component";
 import {NgxPermissionsGuard} from "ngx-permissions";
 import {DirectoryOptionsInfoComponent} from "@modules/directory/directory-options/directory-options-detail/directory-options-info/directory-options-info.component";
-import {ComponentGuard} from "@core/guards/component.guard";
+import {ComponentGuard} from '@eskhata/util';
 import {DirectoryOptionsEditComponent} from "@modules/directory/directory-options/directory-options-detail/directory-options-edit/directory-options-edit.component";
 
 export const DIRECTORY_OPTIONS_ROUTING: Routes = [

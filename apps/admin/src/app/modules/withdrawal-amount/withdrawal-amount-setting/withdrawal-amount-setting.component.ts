@@ -10,7 +10,7 @@ import {
 import {
   IWithdrawSet
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/interfaces/withdrawal-amount-setting.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IAction } from '@shared/components/actions/actions.interface';

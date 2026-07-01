@@ -9,7 +9,7 @@ import { IPaymentDetail } from '@modules/transactions/payments/interfaces';
 import { IHeader, IParam, ISelect } from '@core/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderService, MessageService } from '@core/services';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, finalize, mergeMap } from 'rxjs/operators';
 import { of, takeUntil } from 'rxjs';
 import { setValidationErrors } from '@core/validators/set-validation-errors';

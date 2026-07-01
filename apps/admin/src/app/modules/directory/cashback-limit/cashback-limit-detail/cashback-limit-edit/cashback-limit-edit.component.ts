@@ -6,7 +6,7 @@ import { CashbackLimitService } from '@modules/directory/cashback-limit/services
 import { ISelect } from '@core/interfaces/select.interface';
 import { Location } from '@angular/common'
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ICashbackLimitDetail } from '@modules/directory/cashback-limit/interfaces/cashback-limit-detail.interface';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';

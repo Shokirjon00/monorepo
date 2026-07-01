@@ -3,7 +3,7 @@ import moment, { Moment } from 'moment';
 import { DateRange, MatMonthView } from '@angular/material/datepicker';
 import { BehaviorSubject } from 'rxjs';
 import { DateAdapter } from '@angular/material/core';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import 'moment/locale/ru';

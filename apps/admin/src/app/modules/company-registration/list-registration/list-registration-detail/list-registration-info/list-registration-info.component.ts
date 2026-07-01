@@ -22,7 +22,7 @@ import { EmHeaderComponent } from "@shared/components/em-header/em-header.compon
 import {DynamicUploadFieldComponent} from "@shared/components/dynamic-upload-field/dynamic-upload-field.component";
 import {ToastComponent} from "@shared/components/toast/toast.component";
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import {DateTimePipe} from "@core/pipe/date-time.pipe";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 

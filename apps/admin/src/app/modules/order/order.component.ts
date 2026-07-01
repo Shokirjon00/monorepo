@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { TableComponent } from '@shared/components/table/table.component';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ICaption } from '@core/interfaces/table.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IHeader } from '@core/interfaces/header.interface';

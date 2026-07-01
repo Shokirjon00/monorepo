@@ -9,7 +9,7 @@ import { CommissionCompanyService } from "@modules/client/company/company-detail
 import { ICommissionCompany } from "@modules/client/company/company-detail/commission-company/interfaces/commission-company.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { finalize } from "rxjs";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 import { ToastComponent } from "@shared/components/toast/toast.component";
 import { DateTimePipe } from "@core/pipe/date-time.pipe";

@@ -23,7 +23,7 @@ import { PrimeTemplate } from '@core/directives/prime-template/prime-template';
 import { PrimeNgConfigService } from '@core/services/prime-ng-config.service';
 import Zindexutils from '@core/utils/zindexutils';
 import { UniqueComponentId } from '@core/utils/uniquecomponentid';
-import { ObjectUtils } from '@core/utils/objectutils';
+import { ObjectUtils } from '@eskhata/util';
 import { ToastModule } from '@shared/components/toast/toast.module';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 

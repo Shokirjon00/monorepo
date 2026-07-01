@@ -6,7 +6,7 @@ import { WorkingDayService } from '@modules/directory/working-day/services/worki
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { Location } from '@angular/common'
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { WhiteSpaceValidator } from '@core/validators/white-space-validator';

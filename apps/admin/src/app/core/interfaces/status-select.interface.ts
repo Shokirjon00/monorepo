@@ -1,4 +1,4 @@
-import {ActiveSelect} from '@core/enums/active-select';
+import {ActiveSelect} from '@eskhata/util';
 
 export interface IStatusSelect {
   type: ActiveSelect;

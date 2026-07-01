@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {AccountCategoryTypeComponent} from '@modules/directory/account-category-type/account-category-type.component';
 import {
   AccountCategoryTypeDetailComponent

@@ -10,7 +10,7 @@ import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils/filter-util";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { ProductConstants } from "@modules/food/menu/products/product.constants";
 import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { ActionsComponent } from "@shared/components/actions/actions.component";

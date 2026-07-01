@@ -11,7 +11,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { takeUntil } from "rxjs";
 import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { finalize } from "rxjs/operators";
 import { ITab } from "@core/interfaces/header.interface";
 import { PosTerminalConstants } from "@modules/main-terminal/pos-terminal/pos-terminal.constants";

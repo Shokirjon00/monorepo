@@ -7,7 +7,7 @@ import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { PasswordValidator } from '@core/validators/password-validator';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { PreventSpaceDirective } from "@core/directives/space-false.directive";
 import { ValidatorComponent } from "@shared/components/validator/validator.component";

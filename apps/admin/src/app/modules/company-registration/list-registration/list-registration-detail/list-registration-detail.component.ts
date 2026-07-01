@@ -3,7 +3,7 @@ import { NgxPermissionsModule } from "ngx-permissions";
 import { ActivatedRoute, Params, RouterOutlet } from "@angular/router";
 import { ToastComponent } from "@shared/components/toast/toast.component";
 import { IHeader, ITab } from "@core/interfaces/header.interface";
-import { IPaginate } from "@core/interfaces/paginate.interface";
+import { IPaginate } from '@eskhata/util';
 import { DestroyableComponent } from "@core/abstract/destroyable.component";
 import { IAction } from "@shared/components/actions/actions.interface";
 import { SharedModule } from "@shared/shared.module";

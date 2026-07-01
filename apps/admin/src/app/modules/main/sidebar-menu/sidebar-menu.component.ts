@@ -13,7 +13,7 @@ import {
 import { UserService } from '@core/services/user.service';
 import { IUserInfo, IUserProfile } from '@core/interfaces/user.interface';
 import { MessageService } from '@core/services/message.service';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { HelperService } from '@core/services/helper.service';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';

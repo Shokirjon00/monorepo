@@ -1,7 +1,7 @@
 import { Directive, Input, OnDestroy, OnInit, output, } from '@angular/core';
-import { KeyboardEnum } from '@core/enums/keyboard.enum';
+import { KeyboardEnum } from '@eskhata/util';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ActiveSelect } from '@core/enums/active-select';
+import { ActiveSelect } from '@eskhata/util';
 import { IStatusSelect } from '@core/interfaces/status-select.interface';
 
 @Directive({

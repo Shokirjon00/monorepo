@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {RegionComponent} from '@modules/directory/region/region.component';
 import {RegionEditComponent} from '@modules/directory/region/region-detail/region-edit/region-edit.component';
 import {RegionInfoComponent} from '@modules/directory/region/region-detail/region-info/region-info.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 
 export const REGION_ROUTES: Routes = [
   {

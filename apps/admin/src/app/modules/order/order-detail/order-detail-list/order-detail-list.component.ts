@@ -13,7 +13,7 @@ import { ITab } from "@core/interfaces/header.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActionsComponent } from "@shared/components/actions/actions.component";
 import { IAction } from "@shared/components/actions/actions.interface";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
 import { ToastComponent } from "@shared/components/toast/toast.component";
 

@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';
 import { finalize } from 'rxjs/operators';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ActionsComponent } from '@shared/components/actions/actions.component';
 import { ITab } from '@core/interfaces/header.interface';
 import { PaymentsDetailConstants } from '../payment-detail.constants';

@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';

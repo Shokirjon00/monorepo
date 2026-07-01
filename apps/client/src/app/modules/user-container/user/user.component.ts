@@ -4,7 +4,7 @@ import { TableComponent } from '@shared/components/table/table.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IAction } from '@shared/components/actions/action.interface';
 import { ITab } from '@core/interfaces/header.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';

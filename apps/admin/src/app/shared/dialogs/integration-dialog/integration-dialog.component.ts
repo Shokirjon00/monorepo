@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModu
 import { delay, mergeMap, takeUntil } from 'rxjs/operators';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { ISelect } from '@core/interfaces/select.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of } from 'rxjs';
 import { MessageService } from '@core/services/message.service';
 import { IIntegration } from '@modules/client/merchant/interfaces/integration.interface';

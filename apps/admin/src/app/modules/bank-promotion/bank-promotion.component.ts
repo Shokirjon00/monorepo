@@ -8,7 +8,7 @@ import { IBankPromotion } from '@modules/bank-promotion/interfaces/bank-promotio
 import { BankPromotionService } from '@modules/bank-promotion/services/bank-promotion.service';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { setDefaultFilterValue } from '@core/utils/route-param-parse';
 import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";

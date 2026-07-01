@@ -15,7 +15,7 @@ import { Observable } from "rxjs";
 import { ConfirmDialogComponent, ConfirmDialogModel } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { MessageService } from "@core/services";
 import { MatDialog } from "@angular/material/dialog";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 
 @Component({
   standalone: true,

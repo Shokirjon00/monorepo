@@ -5,7 +5,7 @@ import { MessageService } from "@core/services";
 import { ActivatedRoute } from "@angular/router";
 import { SupportCenterService } from "@modules/support-center/services/support-center.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { UploadFieldComponent } from "@shared/components/upload-field/upload-field.component";
 import { finalize, of } from "rxjs";
 import { CompanyService } from "@modules/client/company/services/company.service";

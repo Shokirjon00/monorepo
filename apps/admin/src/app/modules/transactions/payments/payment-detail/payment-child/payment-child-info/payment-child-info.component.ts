@@ -14,7 +14,7 @@ import {
   PaymentsInfoConstants
 } from "@modules/transactions/payments/payment-detail/payment-info/payment-info.constants";
 import { MessageService } from "@core/services";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import {

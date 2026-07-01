@@ -1,4 +1,4 @@
-import {ToastEnum} from "@core/enums/toast-enum";
+import {ToastEnum} from '@eskhata/util';
 
 export interface IMessage {
   severity?: ToastEnum;

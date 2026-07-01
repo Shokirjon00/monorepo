@@ -13,7 +13,7 @@ import { ISubcategoryDetail } from "@modules/directory/subcategory/interfaces/su
 import { IHeader, IParam, ISelect } from "@core/interfaces";
 import { HeaderService, MessageService } from "@core/services";
 import { MatDialog } from "@angular/material/dialog";
-import { ToastEnum } from "@core/enums/toast-enum";
+import { ToastEnum } from '@eskhata/util';
 import { delayWhen, tap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { WhiteSpaceValidator } from "@core/validators/white-space-validator";

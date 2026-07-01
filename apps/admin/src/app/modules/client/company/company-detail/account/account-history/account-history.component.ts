@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, viewChild } from '@angular/core';
 import { ICaption } from '@core/interfaces/table.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IAccountHistory } from '@modules/client/company/interfaces/account-history.interface';

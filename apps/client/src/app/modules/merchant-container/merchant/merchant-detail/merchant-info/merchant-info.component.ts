@@ -6,7 +6,7 @@ import { HeaderService } from '@core/services/header.service';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { HelperService } from '@core/services/helper.service';
 import { loadFile } from '@core/utils/load-file';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { SharedModule } from '@shared/shared.module';
 import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';

@@ -6,7 +6,7 @@ import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { BalanceLimitService } from '@modules/balance-limit/services/balance-limit.service';
 import { finalize, takeUntil } from 'rxjs';
 import { IBalanceLimit } from '@modules/balance-limit/Interfaces/balance-limit.interface';
-import { IPaginate } from '@core/interfaces/paginate.interface';
+import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { CaptionService } from '@core/services/caption.service';

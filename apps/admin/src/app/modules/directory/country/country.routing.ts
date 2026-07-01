@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {CountryComponent} from '@modules/directory/country/country.component';
 import {CountryInfoComponent} from '@modules/directory/country/country-detail/country-info/country-info.component';
 import {CountryEditComponent} from '@modules/directory/country/country-detail/country-edit/country-edit.component';
-import {ComponentGuard} from '@core/guards/component.guard';
+import {ComponentGuard} from '@eskhata/util';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 export const COUNTRY_ROUTING: Routes = [

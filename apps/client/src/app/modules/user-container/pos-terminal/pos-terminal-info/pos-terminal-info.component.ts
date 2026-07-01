@@ -11,7 +11,7 @@ import { HeaderService } from '@core/services/header.service';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { finalize, Observable, takeUntil } from 'rxjs';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { ToastModule } from '@shared/components/toast/toast.module';
 import { PosTerminalService } from '@modules/user-container/pos-terminal/services/pos-terminal.service';
 import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';

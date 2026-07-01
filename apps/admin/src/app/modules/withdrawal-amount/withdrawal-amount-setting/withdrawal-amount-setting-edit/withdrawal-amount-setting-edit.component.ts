@@ -29,7 +29,7 @@ import { IHeader } from '@core/interfaces/header.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { delay, mergeMap } from 'rxjs/operators';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import {
   WithdrawalAmountSettingsDialogComponent
 } from '@shared/dialogs/withdrawal-amount-settings-dialog/withdrawal-amount-settings-dialog.component';

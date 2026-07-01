@@ -15,7 +15,7 @@ import { PosService } from '@modules/client/pos/services/pos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { IPosDetail } from '@modules/client/pos/interfaces/pos-detail.interface';
-import { ToastEnum } from '@core/enums/toast-enum';
+import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { HeaderService } from '@core/services/header.service';
 import { IHeader } from '@core/interfaces/header.interface';
