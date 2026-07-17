@@ -17,7 +17,7 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudId": "68ff5d2d14dcc52b4cadf808",
+  "nxCloudId": "6a59f25ddf60205f6fbf98eb",
   "targetDefaults": {
     "@angular/build:application": {
       "cache": true,
@@ -55,18 +55,8 @@
     }
   },
   "plugins": [
-    {
-      "plugin": "@nx/playwright/plugin",
-      "options": {
-        "targetName": "e2e"
-      }
-    },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    }
+    { "plugin": "@nx/playwright/plugin", "options": { "targetName": "e2e" } },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } }
   ],
   "generators": {
     "@nx/angular:application": {
@@ -75,12 +65,7 @@
       "style": "scss",
       "unitTestRunner": "jest"
     },
-    "@nx/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "none"
-    },
-    "@nx/angular:component": {
-      "style": "css"
-    }
+    "@nx/angular:library": { "linter": "eslint", "unitTestRunner": "none" },
+    "@nx/angular:component": { "style": "css" }
   }
 }
