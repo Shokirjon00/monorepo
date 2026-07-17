@@ -13,10 +13,9 @@ import { ISubcategoryDetail } from "@modules/directory/subcategory/interfaces/su
 import { IHeader, IParam, ISelect } from "@core/interfaces";
 import { HeaderService, MessageService } from "@core/services";
 import { MatDialog } from "@angular/material/dialog";
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delayWhen, tap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { WhiteSpaceValidator } from "@core/validators/white-space-validator";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IBrandDetail } from "@modules/directory/terminal-models/interfaces/brand-detail.interface";

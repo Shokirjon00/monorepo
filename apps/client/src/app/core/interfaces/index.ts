@@ -1,4 +1,4 @@
-export * from './status-select.interface';
+export { IStatusSelect } from '@eskhata/util';
 export { IPaginate } from '@eskhata/util';
 export * from './filter-params.interface';
 export * from './table.interface';

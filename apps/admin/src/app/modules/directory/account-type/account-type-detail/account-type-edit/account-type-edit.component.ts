@@ -8,10 +8,9 @@ import { Location } from '@angular/common';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountTypeService } from '@modules/directory/account-type/services/account-type.service';
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { GatewaysService } from '@core/services/gateways.service';
 import {
   AccountCategoryTypeService

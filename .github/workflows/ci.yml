@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+# Отменяем предыдущие запуски для той же ветки/PR — экономит агентов
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      # Токен из cloud.nx.app → Settings. Добавить в GitHub:
+      # Settings → Secrets and variables → Actions → New repository secret
+      NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # nx affected сравнивает с базой — нужна полная история
+          fetch-depth: 0
+          filter: tree:0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # Несколько библиотек объявляют peer-зависимости на Angular 19 — без флага install падает
+      - run: npm ci --legacy-peer-deps
+
+      # Распределение задач по агентам Nx Cloud (DTE).
+      # Раскомментировать ПОСЛЕ клейма workspace на cloud.nx.app и добавления секрета.
+      # - run: npx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+
+      # Вычисляет NX_BASE / NX_HEAD, чтобы `nx affected` знал границу сравнения
+      - uses: nrwl/nx-set-shas@v4
+
+      - name: Lint / Test / Build (только затронутые проекты)
+        run: npx nx affected -t lint test build --parallel=3

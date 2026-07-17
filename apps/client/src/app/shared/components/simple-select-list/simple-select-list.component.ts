@@ -1,7 +1,6 @@
 import { AfterContentInit, Component, DestroyRef, inject, Input, output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ActiveSelect } from '@eskhata/util';
-import { IStatusSelect } from '@core/interfaces/status-select.interface';
+import { ActiveSelect, IStatusSelect } from '@eskhata/util';
 import { BottomSheetComponent } from '@shared/components/bottom-sheet/bottom-sheet.component';
 import { isPhone } from '@core/helper';
 import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';

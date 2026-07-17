@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HeaderService } from '@core/services/header.service';
 import { DestroyableComponent } from '@core/abstract/destroyable.component';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { IPaginate } from '@eskhata/util';
+import { IPaginate, ToastEnum } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { IIntegration, IIntegrationSetting } from '@modules/client/company/company-detail/integration-setting/interfaces/integration-setting';
 import { IntegrationSettingService } from '@modules/client/company/company-detail/integration-setting/services/integration-setting.service';
@@ -13,7 +13,6 @@ import { ValidatorComponent } from '@shared/components/validator/validator.compo
 import { SvgIconComponent } from 'angular-svg-icon';
 import { EXPAND_DETAIL } from '@core/animations';
 import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { ToastComponent } from '@shared/components/toast/toast.component';
 import { IIntegrationType } from '@modules/client/company/company-detail/integration-setting/interfaces/integration-type';

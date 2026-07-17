@@ -10,12 +10,11 @@ import {
 } from "@modules/directory/directory-options/interfaces/directory-options-detail.interfaces";
 import { ActivatedRoute } from "@angular/router";
 import { DirectoryOptionsService } from "@modules/directory/directory-options/services/directory-options.service";
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { MessageService } from "@core/services/message.service";
-import { WhiteSpaceValidator } from "@core/validators/white-space-validator";
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { latinPatternValidator } from "@core/utils/custom-validators";

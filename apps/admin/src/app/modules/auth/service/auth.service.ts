@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment as env } from '@environments/environment';
 import { DEVICE_ID } from '@core/helper';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
-import { ILogin, ILoginForm } from '@modules/auth/interfaces/login.interface';
+import { ILogin, ILoginForm } from '@eskhata/session';
 import { getOSName } from '@core/utils';
 import { TokenService } from '@core/services/token.service';
 import { v4 as uuidv4 } from 'uuid';

@@ -11,7 +11,7 @@ import {
   WithdrawalAmountService
 } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IPaginate } from '@eskhata/util';
+import { IPaginate, ToastEnum } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { HeaderService } from '@core/services/header.service';
 import { ITab } from '@core/interfaces/header.interface';
@@ -19,7 +19,6 @@ import { setDefaultFilterValue } from '@core/utils/route-param-parse';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import {
   WithdrawalAmountMerchantService

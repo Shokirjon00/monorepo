@@ -13,7 +13,7 @@ import {
 import { DestroyableComponent } from '@core/directives/destroyable.component';
 import { ProductsService } from '@modules/food/menu/services/product.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
+import { WhiteSpaceValidator, ToastEnum } from '@eskhata/util';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { ToastModule } from '@shared/components/toast/toast.module';
@@ -33,7 +33,6 @@ import {
   CdkDropList,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { ToastEnum } from '@eskhata/util';
 import { mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { MessageService } from '@core/services/message.service';

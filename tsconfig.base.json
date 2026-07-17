@@ -15,11 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@shared-core/*": ["shared-core/src/*"],
-      "@core/*": ["shared-core/src/core/*"],
-      "@env": ["environments/environment"],
       "@eskhata/util": ["libs/shared/util/src/index.ts"],
-      "@eskhata/environment": ["libs/shared/environment/src/index.ts"]
+      "@eskhata/environment": ["libs/shared/environment/src/index.ts"],
+      "@eskhata/session": ["libs/entities/session/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

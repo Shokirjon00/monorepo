@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "em",
   "sourceRoot": "apps/client/src",
-  "tags": [],
+  "tags": ["scope:client", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser-esbuild",

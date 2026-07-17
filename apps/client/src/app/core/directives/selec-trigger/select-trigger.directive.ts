@@ -1,8 +1,6 @@
 import { Directive, Input, OnDestroy, OnInit, output, } from '@angular/core';
-import { KeyboardEnum } from '@eskhata/util';
+import { KeyboardEnum, ActiveSelect, IStatusSelect } from '@eskhata/util';
 import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ActiveSelect } from '@eskhata/util';
-import { IStatusSelect } from '@core/interfaces/status-select.interface';
 
 @Directive({
   selector: '[emSelectTrigger]',

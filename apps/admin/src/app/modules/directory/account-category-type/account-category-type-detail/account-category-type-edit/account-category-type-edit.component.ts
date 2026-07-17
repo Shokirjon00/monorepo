@@ -11,10 +11,9 @@ import {
 } from '@modules/directory/account-category-type/services/account-category-type.service';
 import { MessageService } from '@core/services/message.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
 import { IParam } from '@core/interfaces/param.interface';
 import { SvgIconComponent } from "angular-svg-icon";

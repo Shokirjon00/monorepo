@@ -12,11 +12,10 @@ import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { IParam } from "@core/interfaces";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, Observable, of } from "rxjs";
 import { delay, mergeMap} from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { WhiteSpaceValidator } from "@core/validators/white-space-validator";
 import { IncomeCode } from "@modules/directory/income-code/services/income-code";
 import { IncomeCodeDetail } from "@modules/directory/income-code/interfaces/income-code-detail";
 

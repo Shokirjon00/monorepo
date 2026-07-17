@@ -10,7 +10,7 @@ import { IMerchantDetail } from '@modules/client/merchant/interfaces/merchant-de
 import { WorkingDayService } from '@modules/directory/working-day/services/working-day.service';
 import { CommonModule, Location } from '@angular/common';
 import { CommissionService } from '@modules/directory/commission/services/commission.service';
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { MessageService } from '@core/services/message.service';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { IFilterParams } from '@core/interfaces/filter-params.interface';
@@ -18,7 +18,6 @@ import { SubcategoryService } from '@modules/directory/subcategory/services/subc
 import { environment as env, environment } from '@environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { PhoneValidator } from '@core/validators/phone-validator';
-import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { setNestedGroupValidationErrors, setValidationErrors } from '@core/validators/set-validation-errors';
 import { delay } from 'rxjs/operators';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';

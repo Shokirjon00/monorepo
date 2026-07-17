@@ -48,3 +48,8 @@ Thumbs.db
 # Source projects being migrated into the NX monorepo (copied out of, not committed)
 /eskhata-merchant-admin-web
 /eskhata-merchant-client-web
+
+.env
+.env.*
+
+.nx/migrate-runs

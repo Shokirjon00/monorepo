@@ -1,5 +1,6 @@
 import nx from '@nx/eslint-plugin';
 import baseConfig from '../../eslint.config.mjs';
+import techDebt from '../../eslint.tech-debt.mjs';
 
 export default [
   ...baseConfig,
@@ -31,4 +32,6 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  // Должен идти последним, чтобы перекрыть 'error' из flat/angular*
+  ...techDebt,
 ];

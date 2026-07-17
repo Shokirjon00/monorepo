@@ -2,13 +2,12 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { DestroyableComponent } from "@core/directives/destroyable.component";
 import { AuthService } from "@modules/auth/service/auth.service";
 import { TokenService } from "@core/services/token.service";
-import { RouteEnum } from '@eskhata/util';
+import { RouteEnum, ToastEnum } from '@eskhata/util';
 import { Component, inject, OnInit } from '@angular/core';
 import { finalize, takeUntil } from "rxjs";
 import { Router } from "@angular/router";
 import { MessageService } from "@core/services/message.service";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { ToastEnum } from '@eskhata/util';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { SvgIconComponent } from "angular-svg-icon";
 import { SharedModule } from "@shared/shared.module";

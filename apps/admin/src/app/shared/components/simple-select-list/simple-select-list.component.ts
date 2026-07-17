@@ -10,8 +10,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isGuid } from '@core/utils/is-guid';
-import { ActiveSelect } from '@eskhata/util';
-import { IStatusSelect } from '@core/interfaces/status-select.interface';
+import { ActiveSelect, IStatusSelect } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
 import { SelectTriggerModule } from '@core/directives/selec-trigger/select-trigger.module';

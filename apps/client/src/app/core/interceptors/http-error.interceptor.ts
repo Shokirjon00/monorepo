@@ -1,14 +1,13 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { ErrorStatusCodeEnum } from '@eskhata/util';
+import { ErrorStatusCodeEnum, ErrorTextConstants } from '@eskhata/util';
 import { ErrorService } from '@core/services/error.service';
 import { Router } from '@angular/router';
 import { environment as env } from '@environments/environment';
 import { TokenService } from '@core/services/token.service';
 import { AuthService } from "@modules/auth/service/auth.service";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
-import { ErrorTextConstants } from "@core/constants/error-text.constants";
 import { inject } from '@angular/core';
 
 export class HttpErrorInterceptor implements HttpInterceptor {

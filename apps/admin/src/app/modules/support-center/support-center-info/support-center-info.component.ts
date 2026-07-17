@@ -5,7 +5,7 @@ import { MessageService } from "@core/services";
 import { ActivatedRoute } from "@angular/router";
 import { SupportCenterService } from "@modules/support-center/services/support-center.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { UploadFieldComponent } from "@shared/components/upload-field/upload-field.component";
 import { finalize, of } from "rxjs";
 import { CompanyService } from "@modules/client/company/services/company.service";
@@ -14,7 +14,6 @@ import { ToastComponent } from "@shared/components/toast/toast.component";
 import { delay, mergeMap } from "rxjs/operators";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { WhiteSpaceValidator } from "@core/validators/white-space-validator";
 
 @Component({
   selector: 'em-support-center-info',

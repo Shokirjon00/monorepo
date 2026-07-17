@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { finalize, Observable, of, timer } from 'rxjs';
-import { ToastEnum } from '@eskhata/util';
+import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAdminService } from '@modules/user/user-admin/services/user-admin.service';
@@ -11,7 +11,6 @@ import { ISelect } from '@core/interfaces/select.interface';
 import { BranchService } from '@modules/directory/branch/services/branch.service';
 import { delay, filter, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { WhiteSpaceValidator } from '@core/validators/white-space-validator';
 import { EskhataEmailValidator } from '@core/validators/email-validator';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { PhoneValidator } from '@core/validators/phone-validator';

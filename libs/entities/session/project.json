@@ -1,0 +1,13 @@
+{
+  "name": "session",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/entities/session/src",
+  "prefix": "em",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:entity"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
