@@ -1,13 +1,3 @@
-/**
- * TECH DEBT — временные послабления для legacy-кода apps/admin и apps/client.
- *
- * Эти правила нарушены ~1174 раза в коде, унаследованном из двух отдельных
- * проектов. Они понижены до 'warn', чтобы CI был зелёным и ловил РЕГРЕССИИ
- * (границы FSD, реальные ошибки), а не тонул в накопленном долге.
- *
- * Политика ratchet: чиним категорию → возвращаем её в 'error' → удаляем отсюда.
- * Подключается ТОЛЬКО в apps/*; библиотеки в libs/* держим на строгом уровне.
- */
 export default [
   {
     files: ['**/*.ts'],
@@ -27,7 +17,6 @@ export default [
   {
     files: ['**/*.html'],
     rules: {
-      // a11y — требуют правки разметки, не автофиксятся
       '@angular-eslint/template/click-events-have-key-events': 'warn',
       '@angular-eslint/template/interactive-supports-focus': 'warn',
       '@angular-eslint/template/label-has-associated-control': 'warn',

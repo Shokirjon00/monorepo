@@ -18,8 +18,6 @@ export default {
     '^@modules/(.*)$': '<rootDir>/src/app/modules/$1',
     '^@environments/(.*)$': '<rootDir>/src/environments/$1',
   },
-  // uuid v13 — чистый ESM ("type": "module"), CJS-сборки нет: его нужно
-  // прогонять через transform, иначе jest падает на `Unexpected token 'export'`
   transformIgnorePatterns: ['node_modules/(?!(?:uuid|.*\\.mjs$))'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',

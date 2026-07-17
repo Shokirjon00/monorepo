@@ -16,13 +16,10 @@ export default [
           enforceBuildableLibDependency: true,
           allow: [
             '^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$',
-            // app-внутренний импорт собственного env-конфига (только в apps/*)
             '^environments/environment$',
-            // чтение версии приложения из корневого package.json
             '\\.\\./.*package\\.json$',
           ],
           depConstraints: [
-            // ── Scope axis: приложения изолированы, shared доступен всем ──
             {
               sourceTag: 'scope:shared',
               onlyDependOnLibsWithTags: ['scope:shared'],
@@ -35,7 +32,6 @@ export default [
               sourceTag: 'scope:client',
               onlyDependOnLibsWithTags: ['scope:client', 'scope:shared'],
             },
-            // ── Layer axis (FSD): зависимости только вниз по слоям ──
             {
               sourceTag: 'type:app',
               onlyDependOnLibsWithTags: [

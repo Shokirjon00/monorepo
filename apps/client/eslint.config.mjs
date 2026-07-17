@@ -32,6 +32,5 @@ export default [
     // Override or add rules here
     rules: {},
   },
-  // Должен идти последним, чтобы перекрыть 'error' из flat/angular*
   ...techDebt,
 ];
