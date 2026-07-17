@@ -1,0 +1,85 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="cashback-header">
+      <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" (click)="back()" />
+      <div class="title-h1 w-100">Информация</div>
+    </div>
+
+  </div>
+</em-header2>
+<div class="cashback-info">
+  <div class="labels-data">
+    <div class="em-d-flex">
+      <span class="key">Кэшбэк от мерчанта</span>
+      <span>:</span>
+      <span class="data">{{cashbackDetail?.companyCashbackName || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Период</span>
+      <span>:</span>
+      <span class="data">с {{(cashbackDetail?.companyStartDate | date:'dd.MM.yyyy') || '-'}} по {{(cashbackDetail?.companyEndDate | date:'dd.MM.yyyy') || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Тип</span>
+      <span>:</span>
+      <span class="data">{{cashbackDetail?.cashbackAccrualTypeName || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Понедельник</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.monday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.monday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Вторник</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.tuesday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.tuesday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Среда</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.wednesday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.wednesday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Четверг</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.thursday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.thursday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Пятница</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.friday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.friday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Суббота</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.saturday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.saturday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Воскресенье</span>
+      <span>:</span>
+      <span class="data">с {{cashbackDetail?.cashbackParamJson.sunday.from || '-'}} по {{cashbackDetail?.cashbackParamJson.sunday.to || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Примечание</span>
+      <span>:</span>
+      <span class="data">{{cashbackDetail?.description || '-'}}</span>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Создано</span>
+      <span>:</span>
+      <div class="value">{{ cashbackDetail?.createdAt ? (cashbackDetail.createdAt | dateTime) : '-' }}</div>
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Изменено</span>
+      <span>:</span>
+      <div class="value">{{ cashbackDetail?.modifiedAt ? (cashbackDetail.modifiedAt | dateTime) : '-' }}</div>
+
+    </div>
+    <div class="em-d-flex">
+      <span class="key">Статус</span>
+      <span>:</span>
+      <span class="data">{{cashbackDetail?.statusName || '-'}}</span>
+    </div>
+  </div>
+</div>
+

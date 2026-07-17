@@ -1,0 +1,50 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Информация</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="padding-7">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ allowListDetail?.statusName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Организация</span><span>:</span><span
+      class="data">{{ allowListDetail?.companyName || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Счет для зачисления аванса</span><span>:</span><span
+      class="data">{{ allowListDetail?.advancePayoutAccountNumber || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Счет для погашения аванса</span><span>:</span><span
+      class="data">{{ allowListDetail?.advanceRepaymentAccountNumber || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Сумма аванса</span><span>:</span><span
+      class="data">{{ allowListDetail?.amount || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Значение повышенной комиссии</span><span>:</span><span
+      class="data">{{ (allowListDetail?.commissionName) || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Номер договора</span><span>:</span><span
+      class="data">{{ allowListDetail?.contractInfo || '-' }}</span>
+    </div>
+
+  </div>
+  <div class="form mt-4">
+    <div class="title-h1 mb-6">Документы</div>
+    <div class="input em-d-flex" [formGroup]="form">
+      <em-upload-field [readOnly]="true"
+        [canPrint]="false"
+        [memType]="uploadFile.memType"
+        [uploadPath]="uploadFile.uploadPath"
+        formControlName="contractFileId"
+        [fileStorageUrl]="fileStorageUrl"
+        [fileStorageToken]="fileStorageToken"
+       />
+    </div>
+  </div>
+</div>

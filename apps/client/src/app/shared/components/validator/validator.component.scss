@@ -1,0 +1,8 @@
+@use "core/scss/form" as *;
+.form-group {
+  display: block;
+
+  > li {
+    display: list-item;
+  }
+}

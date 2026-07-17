@@ -1,0 +1,30 @@
+<em-header2
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [showBreadcrumb]="false"
+  [filterStorageKey]="'advancePaymentsFiltersForm'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Авансовые выплаты</span>
+  </div>
+  <ng-container header-actions>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="advancePayments"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="tableLoading()" />
+
+<em-mobile-card [items]="advancePayments"
+  [columns]="cardFields"
+  [paginate]="paginate"
+  [isMobile]="isMobile"
+  [loading]="tableLoading()"
+  (cardClick)="showDetail($event)"
+ />
+

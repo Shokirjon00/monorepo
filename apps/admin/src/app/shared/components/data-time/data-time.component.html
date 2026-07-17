@@ -1,0 +1,53 @@
+<div class="data-time-container em-d-flex em-dr-columm em-g-40">
+  <div class="data-time-title w-100 text-center">Выберите дни и время кэшбэка</div>
+
+  <div>
+    <div class="em-d-flex em-g-8 data-row padding-1 h-line">
+      <div class="w-50 data-time-header">День недели</div>
+      <div class="w-50 data-time-header">Время начала</div>
+      <div class="w-50 data-time-header">Время окончания</div>
+      <div class="w-33 text-center data-time-header">24 часа</div>
+      <div class="w-33 text-center data-time-header">Статус</div>
+    </div>
+    @for (day of dataWeekKeysArray; track day) {
+      <div
+        class="em-d-flex-center em-g-8 data-row padding-1 h-line">
+        <div class="w-50 data-time-header">{{ weeks[day] }}</div>
+        <div class="w-50 data-time-header">
+          <input class="form-control input-time"
+                 type="time"
+                 step="1"
+                 placeholder="00:00:00"
+                 [(ngModel)]="data[day]['from']"
+                 [disabled]="!data[day]['isActive']">
+        </div>
+        <div class="w-50 data-time-header">
+          <input class="form-control input-time"
+                 type="time"
+                 step="1"
+                 placeholder="00:00:00"
+                 [(ngModel)]="data[day]['to']"
+                 [disabled]="!data[day]['isActive']">
+        </div>
+        <div class="w-33 em-d-flex-center">
+          <label class="toggle-checkbox">
+            <input type="checkbox" [checked]="data[day]['from'] === '00:00:00' && data[day]['to'] === '23:59:59'"
+                   (change)="selectedTime(day,  $event)">
+            <span></span>
+          </label>
+        </div>
+        <div class="w-33 em-d-flex-center">
+          <label class="toggle-checkbox">
+            <input type="checkbox" [(ngModel)]="data[day]['isActive']">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="em-d-flex-center">
+    <button class="btn btn-secondary btn-lg mr-2 w-50" (click)="closeDialog()">Отмена</button>
+    <button class="btn btn-primary btn-lg w-50" (click)="saveDate()">Применить</button>
+  </div>
+</div>
+<em-toast />

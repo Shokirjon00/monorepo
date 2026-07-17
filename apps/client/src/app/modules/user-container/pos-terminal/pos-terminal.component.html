@@ -1,0 +1,86 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true"
+  [dropdownLabel]="'POS-терминал'"
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [actions]="actions"
+  [filterStorageKey]="'posTerminalFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+      [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="posTerminal"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()" />
+@if (loading() && !isMobile) {
+  <em-eskhata-bank-loader />
+}
+
+<div class="mobile-card">
+  @for (posTerminal of posTerminal; track posTerminal.id) {
+    <div class="item-card" (click)="showDetail(posTerminal.id)">
+      <div class="top">
+        <div class="title">{{posTerminal.fullName}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [class]="posTerminal.isActive ? 'completed' : 'rejected'"></span>
+            <span class="text">{{posTerminal.statusName}}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">Логин</div>
+            <div class="separator">:</div>
+            <div class="value">{{posTerminal.userName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Email</div>
+            <div class="separator">:</div>
+            <div class="value">{{posTerminal.email || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Роль</div>
+            <div class="separator">:</div>
+            <div class="value">{{posTerminal.roleName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Номер телефона</div>
+            <div class="separator">:</div>
+            <div class="value">{{posTerminal.phoneNumber || '-'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'PosTerminalUserUpdate'" (click)="edit(posTerminal.id); $event.stopPropagation()">Редактировать</button>
+      </div>
+    </div>
+  }
+  @if ((!posTerminal || !posTerminal.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && posTerminal.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

@@ -1,0 +1,162 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/mixins/mixin' as *;
+
+.banner {
+  position: relative;
+  display: flex;
+  padding: 1.7rem;
+  background: linear-gradient(265.38deg, $primary-indigo -2.24%, $light-sky-blue 110.78%);
+  overflow: hidden;
+
+  .currency-bg {
+    position: absolute;
+    right: 0;
+    bottom: -7px;
+    z-index: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+
+    .card-pictures {
+      width: clamp(250px, 40vw, 770px);
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  > *:not(picture) {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-title {
+    color: $white-color;
+    font-weight: 500;
+    font-size: clamp(1rem, 2vw + 0.5rem, 3rem);
+    line-height: 120%;
+  }
+
+  &-group {
+    @include flex_justify_end();
+    flex-direction: column;
+    align-items: flex-end;
+
+    .banner-price {
+      position: relative;
+      color: $white-color;
+      font-weight: 800;
+      font-size: clamp(1rem, 2vw + 0.5rem, 3rem);
+      line-height: 120%;
+      text-transform: uppercase;
+      margin: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -2rem;
+        left: 22px;
+        width: 1rem;
+        height: 1rem;
+        background: url("assets/images/star.svg") no-repeat center;
+        background-size: contain;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -1.8rem;
+        right: -0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: url("assets/images/star.svg") no-repeat center;
+        background-size: contain;
+      }
+    }
+
+    .banner-currency {
+      color: $white-color;
+      font-weight: 800;
+      font-size: clamp(1rem, 1.2vw, 1.5rem);
+      line-height: 100%;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .banner {
+    padding: 1.2rem;
+
+    .currency-bg{
+      .card-pictures {
+        width: clamp(170px, 40vw, 770px);
+      }
+    }
+
+    &-title {
+      width: 100%;
+      color: $white-color;
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 120%;
+    }
+
+    &-group {
+      @include flex_align_end();
+
+      .banner-price {
+        color: $white-color;
+        font-weight: 800;
+        font-size: 1.25rem;
+        line-height: 120%;
+        text-transform: uppercase;
+        margin: 0;
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -1rem;
+          left: 0.25rem;
+          width: 0.625rem;
+          height: 0.625rem;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: -1.125rem;
+          right: -0.25rem;
+          width: 0.75rem;
+          height: 0.75rem;
+        }
+      }
+
+      .banner-currency {
+        color: $white-color;
+        font-weight: 800;
+        font-size: 0.5rem;
+        line-height: 100%;
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+  }
+
+}

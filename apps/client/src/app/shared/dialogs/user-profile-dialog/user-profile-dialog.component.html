@@ -1,0 +1,33 @@
+<div class="user-profile">
+  <div class="em-d-flex em-jc-sb user-profile-logo">
+    <div class="avatar">
+      <img alt="profile-image" class="profile-image" [src]="avatarImg ||'assets/icons/no-image.png'"/>
+      <div *ngxPermissionsOnly="'UserUploadAvatar'" class="change-avatar" (click)="fileAvatar.click()">
+        <svg-icon src="assets/icons/camera.svg" />
+      </div>
+      <input #fileAvatar type="file" multiple class="upload-file" [accept]="memType" (change)="onChangeFiles($event)">
+    </div>
+    <div class="close">
+      <div class="title">Профиль</div>
+      <svg-icon class="c-pointer" src="/assets/icons/cross.svg" [mat-dialog-close]="true" />
+    </div>
+  </div>
+  <div class="user-profile-info">
+    <div class="mb-3">
+      <div class="info-title mb-1">ФИО</div>
+      <div class="info-subtitle">{{userProfile.fullName}}</div>
+    </div>
+    <div class="mb-3">
+      <div class="info-title mb-1">Логин</div>
+<!--      <div class="info-subtitle">{{userProfile.userName}}</div>-->
+    </div>
+    <div class="">
+      <div class="info-title mb-1">Email</div>
+      <div class="info-subtitle">{{userProfile.email}}</div>
+    </div>
+  </div>
+  <div class="user-profile-button">
+    <button class="btn btn-primary w-100" [mat-dialog-close]="true">Закрыть</button>
+  </div>
+</div>
+<em-toast />

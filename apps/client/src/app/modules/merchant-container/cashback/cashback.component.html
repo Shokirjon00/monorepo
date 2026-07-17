@@ -1,0 +1,83 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="captions"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'cashbackFiltersForm'">
+  <ng-container header-actions>
+    <div class="em-d-flex-center v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="cashCompanies"
+  [captionKey]="captionKey"
+  [captions]="captions"
+  [loading]="loading"
+ />
+
+<div class="mobile-card">
+  @for (cashCompany of cashCompanies; track cashCompany) {
+    <div class="item-card" (click)="showDetail(cashCompany.id)">
+      <div class="top">
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [class]="cashCompany.isActive ? 'completed' : 'rejected'"></span>
+            <span class="text">{{ cashCompany.statusName }}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">От мерчанта</div>
+            <div class="separator">:</div>
+            <div class="value">{{ cashCompany.companyCashbackName }}
+              с {{ cashCompany.companyStartDate | date:'dd.MM.yyyy' }} по {{ cashCompany.companyEndDate | date:'dd.MM.yyyy HH:mm'}}
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="label">От Банка</div>
+            <div class="separator">:</div>
+            <div class="value">{{ cashCompany.bankCashbackName }} с {{ cashCompany.bankStartDate | date:'dd.MM.yyyy HH:mm' }}
+              по {{ cashCompany.bankEndDate | date:'dd.MM.yyyy HH:mm'}}
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="label">Тип Кэшбэка</div>
+            <div class="separator">:</div>
+            <div class="value">{{ cashCompany.cashbackCompanyTypeName || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Организация</div>
+            <div class="separator">:</div>
+            <div class="value">{{ cashCompany.companyName || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Пользователь</div>
+            <div class="separator">:</div>
+            <div class="value">{{ cashCompany.userShortName || '-' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  @if ((!cashCompanies || !cashCompanies.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && cashCompanies.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

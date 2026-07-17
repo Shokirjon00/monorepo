@@ -1,0 +1,26 @@
+<em-header2
+  [filterFields]="columns"
+  [filterStorageKey]="'payments-refund-applications'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Заявки на возврат</span>
+  </div>
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (link)="navigate($event)"
+  [dataSource]="applications"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [rowActions]="tableActions"
+  [loading]="loading()"
+  (confirm)="paymentUpdate($event)"
+ />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

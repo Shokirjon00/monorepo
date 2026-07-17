@@ -1,0 +1,45 @@
+<div class="position-sticky">
+  <div class="header">
+    <em-breadcrumbs class="em-d-flex-center" />
+  </div>
+  <div class="d-flex-sb form-container pt-5 pb-5 h-line">
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'PosTerminalUpdate'" class="icon ml-3" (click)="navigateToInfo()">
+      <button type="button" class="button-tooltip" (click)="navigateToInfo()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="padding-7 w-50">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование</span><span>:</span><span
+      class="data">{{ posTerminal?.name || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Касса</span><span>:</span><span
+      class="data">{{ posTerminal?.posName || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Адрес</span><span>:</span><span
+      class="data">{{ posTerminal?.address || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Номер телефона</span><span>:</span><span
+      class="data">{{ posTerminal?.phoneNumber || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Серийный номер</span><span>:</span><span
+      class="data">{{ posTerminal?.number || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Модель</span><span>:</span><span
+      class="data">{{ posTerminal?.model || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Версия приложения</span><span>:</span><span
+      class="data">{{ posTerminal?.appVersion || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Операционная система</span><span>:</span><span
+      class="data">{{ posTerminal?.os || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Код ABS</span><span>:</span><span
+      class="data">{{posTerminal?.extCodeAbs || '-'}}</span></div>
+  </div>
+</div>

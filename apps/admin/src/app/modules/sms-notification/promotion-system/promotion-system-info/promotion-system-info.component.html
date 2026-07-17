@@ -1,0 +1,68 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Информация</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="padding-6 user-admin">
+  <div class="merchant-info em-d-flex">
+    <div class="em-d-flex em-g-16 w-50 pr-6">
+      <div class="labels-data ">
+        @if (info?.botHash) {
+          <div class="em-d-flex">
+            <span class="key">Токен телеграм-бота</span>
+            <span>:</span>
+            <span class="data">{{ info?.botHash || '-' }}</span>
+          </div>
+        }
+        @if (info?.groupsId) {
+          <div class="em-d-flex">
+            <span class="key">ID Группы</span>
+            <span>:</span>
+            <span class="data">{{ info?.groupsId || '-' }}</span>
+          </div>
+        }
+        @if (info?.triggerPrice) {
+          <div class="em-d-flex">
+            <span class="key">Порог срабатывания триггера по сумме</span>
+            <span>:</span>
+            <span class="data">{{ info?.triggerPrice || '-' }}</span>
+          </div>
+        }
+        @if (info?.triggerCount) {
+          <div class="em-d-flex">
+            <span class="key">Порог срабатывания триггера по количеству</span>
+            <span>:</span>
+            <span class="data">{{ info?.triggerCount || '-' }}</span>
+          </div>
+        }
+        @if (info?.interval) {
+          <div class="em-d-flex">
+            <span class="key">Промежуток времени для неуспешных транзакций</span>
+            <span>:</span>
+            <span class="data">{{ formatTime(info?.interval) || '-' }}</span>
+          </div>
+        }
+        @if (info?.delay) {
+          <div class="em-d-flex">
+            <span class="key">Интервал между сообщениями</span>
+            <span>:</span>
+            <span class="data">{{ formatTime(info?.delay) || '-' }}</span>
+          </div>
+        }
+        <div class="em-d-flex">
+          <span class="key">Текст Сообщения</span>
+          <span>:</span>
+          <span class="data">{{ info?.message }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<em-toast />

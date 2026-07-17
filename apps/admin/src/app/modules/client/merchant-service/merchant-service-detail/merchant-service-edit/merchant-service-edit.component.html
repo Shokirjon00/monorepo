@@ -1,0 +1,100 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ posTypeName ? 'Тип кассы ' + posTypeName : 'Добавить доп.параметр' }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="submit" class="button-tooltip" [disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 admin-role">
+    <div class="em-d-flex em-fw-wrap h-100">
+      <div *ngxPermissionsOnly="'AdminUserPermissionList'" class="w-100 pl-6 h-100">
+        <div class="w-100 h-100 permissions">
+          @if (updateUrl === 'new') {
+            <div class="w-100">
+              <div class="form">
+                <div class="label">Тип кассы*</div>
+                <div class="input">
+                  <em-simple-select-list action="Выберите тип кассы" [dataSource]="posType"
+                                         formControlName="posTypeId" />
+                  <em-validator [fieldControl]="f['posTypeId']" />
+                </div>
+              </div>
+            </div>
+          }
+          <div class="em-d-flex">
+            <div class="w-15">
+              <div class="em-title pb-1">Параметры</div>
+            </div>
+            <div class="w-33">
+              <div class="em-title pb-1 pl-2 em-d-flex em-jc-c">Значения по умол.</div>
+            </div>
+            <div class="w-25">
+              <div class="em-title pb-1 pl-2 em-d-flex em-jc-c">Только для чтения</div>
+            </div>
+            <div class="w-25">
+              <div class="em-title pb-1 pl-2 em-d-flex em-jc-c">На счет</div>
+            </div>
+          </div>
+          <ng-container formArrayName="merchantServiceParams">
+            @for (paramGroup of serviceParams; track paramGroup; let i = $index) {
+              <div class="em-d-flex pt-1 pb-1"
+                   [formGroupName]="i">
+                <div class="w-15 em-d-flex em-ai-center pr-6">
+                  <label class="circle-checkbox em-d-flex em-ai-center">
+                    <input type="checkbox"
+                           [checked]="isChecked(paramGroup.id)"
+                           formControlName="isChecked">
+                    <div class="check em-d-flex-center">
+                      <svg-icon src="assets/icons/check.svg" />
+                    </div>
+                    {{ serviceParams[i]?.name }}
+                  </label>
+                </div>
+                <div class="w-33 pl-2 em-d-flex em-jc-c em-ai-center pr-2">
+                  <input formControlName="defaultValue" type="text" class="form-control"
+                         [class.is-invalid]="f['defaultValue']?.invalid && f['defaultValue']?.touched">
+                  <em-validator [fieldControl]="f['defaultValue']" />
+                </div>
+                <div class="w-25 em-d-flex em-jc-c em-ai-center pl-2 pr-2">
+                  <label class="circle-checkbox">
+                    <input type="checkbox" formControlName="isReadOnly">
+                    <div class="check em-d-flex-center">
+                      <svg-icon src="assets/icons/check.svg" />
+                    </div>
+                  </label>
+                </div>
+                <div class="w-25 em-d-flex em-jc-c em-ai-center pl-2 pr-2">
+                  <label class="circle-checkbox">
+                    <input type="checkbox" [id]="'radioToAccount' + i" formControlName="isToAccount"
+                           (change)="onCheckboxChange(i)">
+                    <div class="check em-d-flex-center">
+                      <svg-icon src="assets/icons/check.svg" />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            }
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+@if (loading) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />
+

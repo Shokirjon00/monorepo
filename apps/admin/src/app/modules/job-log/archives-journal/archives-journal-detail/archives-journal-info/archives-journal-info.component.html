@@ -1,0 +1,51 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Журнал архивов инфо</span>
+  </div>
+</em-header2>
+<div>
+  <div class="em-d-flex padding-6">
+    <div class="w-50 v-line pr-6">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">ID журнал задач </span><span>:</span><span
+          class="data">{{ jobLogInfo?.id || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">ID платежа</span><span>:</span><span
+          class="data">{{ jobLogInfo?.paymentId || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+          class="data">{{ jobLogInfo?.statusName || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Тип задачи*</span><span>:</span><span
+          class="data">{{ jobLogInfo?.jobLogTypeName || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+          class="data">{{ (jobLogInfo?.createdAt | dateTime) || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Изменено</span><span>:</span><span
+          class="data">{{ (jobLogInfo?.modifiedAt | dateTime) || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Дата завершение</span><span>:</span><span
+          class="data">{{ jobLogInfo?.finishedDateTime | dateTime }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Запрос</span><span>:</span><span
+          class="data">{{ jobLogInfo?.request || '-' }}</span></div>
+
+      </div>
+    </div>
+    <div class="w-50 pl-6">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">Количетсво попыток</span><span>:</span> <span
+          class="data">{{ jobLogInfo?.allowedTryCount || '-' }}</span></div>
+
+        <div class="em-d-flex"><span class="key">Ответ</span><span>:</span> <span
+          class="data">{{ jobLogInfo?.response || '-' }}</span>
+        </div>
+        @if (jobLogInfo?.session) {
+          <div class="em-d-flex"><span class="key">Номер сессия</span><span>:</span> <span
+            class="data">{{ jobLogInfo?.session || '-' }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

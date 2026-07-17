@@ -1,0 +1,58 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+
+.icon-item {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  @include flex_ai_center();
+  color: $palette;
+  width: 48px;
+  height: 48px;
+
+  &.tooltip {
+    border-bottom: none;
+    display: flex;
+  }
+
+  svg-icon {
+    line-height: 0;
+  }
+
+  &:hover {
+    background: $brand-hover;
+    color: $main-black;
+  }
+
+  .tooltip-content {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+      margin-top: 0.25rem;
+      white-space: pre;
+      background: $label-color;
+      border-radius: 8px;
+      visibility: hidden;
+      color: $white-color;
+      text-align: center;
+      padding: 0.25rem 1rem;
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      line-height: 24px;
+      text-wrap: balance;
+    }
+  }
+
+  &:hover .tooltip-content .tooltiptext {
+    visibility: visible;
+  }
+
+}
+

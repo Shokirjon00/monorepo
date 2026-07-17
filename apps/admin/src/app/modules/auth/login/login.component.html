@@ -1,0 +1,39 @@
+<div class="login">
+  <div class="logo">
+    <svg-icon src="assets/icons/em-logo.svg" />
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+      <div class="mb-5">
+        <div class="form-label">Логин*</div>
+        <input emPreventSpace class="form-control" type="text" formControlName="username"
+          (keydown)="trackCaps($event)"
+          placeholder="Введите логин"
+          [class.is-invalid]="f['username']?.invalid && f['username']?.touched">
+          <em-validator [fieldControl]="f['username']" />
+        </div>
+        <div class="mb-5">
+          <div class="form-label">Пароль*</div>
+          <input emPreventSpace class="form-control" [type]="showPassword ? 'text' : 'password'"
+            (keydown)="trackCaps($event)"
+            formControlName="password"
+            placeholder="Введите пароль">
+            <div class="passShow" (click)="changePassShow()">
+              <svg-icon [src]="showPassword ? 'assets/icons/eye.svg' : 'assets/icons/eyeslash.svg'" />
+            </div>
+          </div>
+          @if (capsOn) {
+            <div class="check-label">CapsLock включен</div>
+          }
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary w-100 footer__btn" [disabled]="form.invalid">
+            {{!loading ? "Вход" : ""}}
+            @if (loading) {
+              <span class="loader-spinner xs white"></span>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+    <em-toast />

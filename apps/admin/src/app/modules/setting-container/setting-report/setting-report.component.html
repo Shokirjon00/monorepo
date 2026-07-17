@@ -1,0 +1,28 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'reportFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb gap-2 em-jc-c">
+      @for (action of actions; track action.code) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="settingReports"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [fileStorageUrl]="fileStorageUrl"
+  [fileStorageToken]="fileStorageToken"
+  [loading]="loading()" />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

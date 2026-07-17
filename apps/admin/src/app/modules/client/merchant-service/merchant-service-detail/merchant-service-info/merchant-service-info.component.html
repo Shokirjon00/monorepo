@@ -1,0 +1,28 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'CashbackPromotionUpdate'" class="icon ml-3" (click)="navigateToInfo()">
+      <button type="button" class="button-tooltip" (click)="navigateToInfo()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-7 mt-10">
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>Тип кассы</span><span>:</span></div>
+    </div>
+    <div class="data">
+      <span>{{ merchantServiceDetail?.posTypeName || '-' }}</span>
+    </div>
+  </div>
+</div>
+
+
+<em-table [dataSource]="merchantServiceParamsList"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />

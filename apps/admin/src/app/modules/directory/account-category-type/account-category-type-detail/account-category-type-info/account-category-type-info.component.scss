@@ -1,0 +1,9 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.account-category-type-info {
+  overflow: auto;
+  height: calc(100vh - 202px);
+}

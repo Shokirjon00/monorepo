@@ -1,0 +1,29 @@
+<div #panel
+     class="panel"
+     [class.panel-full]="isFull()"
+     [class.panel-closing]="closing()">
+  <div class="panel-head">
+    <span class="panel-accent"></span>
+    <span class="panel-title">{{ title() }}</span>
+
+    <div class="panel-actions">
+      <button type="button"
+              class="panel-btn panel-btn-expand"
+              [title]="expanded() ? 'Свернуть' : 'На весь экран'"
+              (click)="toggleExpand()">
+        <svg-icon class="panel-icon"
+                  [src]="expanded() ? './assets/icons/panel-collapse.svg' : './assets/icons/panel-expand.svg'" />
+      </button>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    @if (empty()) {
+      <div class="panel-empty">
+        <span class="panel-empty-text">{{ emptyText() }}</span>
+      </div>
+    } @else {
+      <ng-content />
+    }
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="form-group select-field" [class.open]="open">
+  <div class="select-field__container" (emClickOutside)="open = false">
+    <div class="form-control" (click)="open = !open" [class.disabled]="!disable()">
+      @if (selectedItems.size === 0) {
+        <span class="placeholde w-100">{{ placeholder() }}</span>
+      }
+      @if (selectedItemsArray?.length) {
+        <div class="value">
+          @for (item of selectedItemsArray; track item; let i = $index) {
+            <span class="selected-item">
+              <span>{{ item.name }}</span>
+              <button class="close" (click)="onItemClick($event, item);$event.stopPropagation()">
+                <svg-icon class="cancel-small-svg white" [svgStyle]="{ 'fill': 'rgb(255,255,255)' }"
+                          src="assets/icons/cancel.svg" />
+              </button>
+            </span>
+          }
+        </div>
+      }
+      <div class="arrow">
+        <svg-icon src="assets/icons/sort.svg" />
+      </div>
+    </div>
+    <div class="dropdown" [pagination]="pagination" [selector]="'dropdown'" [style.max-height]="maxHeight()"
+         (emInfiniteScroll)="onScrolled()">
+      <ul class="dropdown-list">
+        @for (item of dataSource; track item; let i = $index) {
+          <li
+            (click)="onItemClick($event, item)"
+            class="dropdown-item mb-1">
+            <div class="circle-checkbox">
+              <input type="checkbox"
+                     [checked]="isSelected(item)"
+                     [disabled]="!isSelected(item) || item?.isDisabled">
+              <div class="check em-d-flex-center">
+                <svg-icon src="assets/icons/check.svg" />
+              </div>
+              {{ item[optionLabel()] }}
+            </div>
+          </li>
+        }
+      </ul>
+      @if (!dataSource?.length) {
+        <div class="dropdown-item ">Нет данных</div>
+      }
+    </div>
+  </div>
+</div>
+
+
+

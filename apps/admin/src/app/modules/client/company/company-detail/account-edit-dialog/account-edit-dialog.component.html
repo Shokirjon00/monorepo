@@ -1,0 +1,103 @@
+<form [formGroup]="form" class="account-edit-dialog em-d-flex em-jc-sb em-dr-columm h-100" (ngSubmit)="onSubmit()">
+
+  <div>
+    <div class="mb-5 em-d-flex em-jc-sb">
+      <div class="title-h1">{{ accountDetail?.name || "Добавление счёта" }}</div>
+      <svg-icon class="close-icon"
+                src="assets/images/close.svg" [mat-dialog-close]="true" />
+    </div>
+
+    <div class="form">
+      <div class="label">Наименование счета*</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="name" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']"
+         />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Валюта*</div>
+      <div class="input">
+        <em-simple-select-list action="Выберите валюту"
+          formControlName="currencyId"
+          [dataSource]="currencies"
+         />
+        <em-validator [fieldControl]="f['currencyId']"
+         />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Номер счёта*</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="number"
+               mask="0000 0000 0000 0000 0000"
+               [class.is-invalid]="f['number']?.invalid && f['number']?.touched"
+               placeholder="Введите номер счёта">
+        <em-validator [fieldControl]="f['number']"
+         />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Банк*</div>
+      <div class="input">
+        <em-autocomplete [searchable]="true"
+          [selectWithOutSearch]="true"
+          [placeholder]="'Банк'"
+          formControlName="bankId"
+          [path]="apiBanksPath" />
+        <em-validator [fieldControl]="f['bankId']"
+         />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Тип счета*</div>
+      <div class="input">
+        <em-simple-select-list action="Выберите тип счёта"
+          formControlName="accountTypeId"
+          [dataSource]="accountTypes"
+         />
+        <em-validator [fieldControl]="f['accountTypeId']"
+         />
+      </div>
+    </div>
+  </div>
+  @if (!hideInnReceiver()) {
+    <div class="form">
+      <div class="label">ИНН</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="inn"
+               mask="000 000 000"
+               maxlength="11"
+               placeholder="Введите ИНН"
+               [class.is-invalid]="f['inn']?.invalid && f['inn']?.touched">
+        <em-validator [fieldControl]="f['inn']"
+         />
+      </div>
+    </div>
+  }
+
+
+  @if  (!hideInnReceiver()) {
+    <div class="form">
+      <div class="label">ФИО</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="receiver"
+               maxlength="100"
+               placeholder="Введите ФИО"
+               [class.is-invalid]="f['receiver']?.invalid && f['receiver']?.touched">
+        @if (form.get('accountTypeId').value === AccountTypeID.TYPE_SAVING_CARD_ID) {
+          <em-validator [fieldControl]="f['receiver']"
+           />
+        }
+      </div>
+    </div>
+  }
+
+  <div class="em-d-flex em-jc-fe">
+    <button class="btn btn-secondary btn-lg mr-2" [mat-dialog-close]="false">Отмена</button>
+    <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid || submitted">  {{ isEditMode ? 'Сохранить' : 'Добавить' }} </button>
+  </div>
+</form>
+
+<em-toast />

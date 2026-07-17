@@ -1,0 +1,27 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/variables';
+@import 'core/scss/mixins/mixin';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.withdrawal-dialog {
+  height: 200px;
+  padding: 2.5rem;
+
+  .bottom {
+    @include flex_jc_sb();
+    gap: 10px;
+
+    button {
+      width: 264px;
+      min-height: 50px;
+      padding: 0 1.25rem;
+    }
+  }
+}

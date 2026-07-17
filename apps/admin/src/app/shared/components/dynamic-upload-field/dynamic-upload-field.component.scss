@@ -1,0 +1,230 @@
+@import './core/scss/flex';
+@import './core/scss/styles';
+@import './core/scss/mixins/mixin';
+@import './core/scss/variables';
+
+.dynamic-upload-field {
+  @include flex_column();
+
+  .label {
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: $palette;
+  }
+
+  .files-container {
+    @include flex_column();
+    gap: 8px;
+    padding: 8px 0;
+
+    .no-file-message {
+      @include em-d-flex-al-center;
+      gap: 0.8rem;
+      padding: 1.5rem;
+      border: 2px dashed $primary-color;
+      border-radius: 6px;
+      color: $primary-color;
+
+      .no-file-text {
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+    }
+
+    .file-item {
+      @include flex_jc_sb();
+      padding: 1.5rem;
+      border: 2px solid$primary-color;
+      border-radius: 6px;
+      background-color: $gray-200;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: $gray-300;
+        border-color: $gray-mid;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &.success {
+        border: 2px solid $main-bg;
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      }
+
+      &.error {
+        border-color: $reject-border;
+        background: linear-gradient(135deg, #fef0f0 0%, #ffebee 100%);
+      }
+
+      &.progress {
+        opacity: 0.85;
+        background-color: $gray-300;
+      }
+
+      &.loader-item {
+        cursor: default;
+        justify-content: center;
+        padding: 1.2rem;
+      }
+
+      .file-content {
+        @include em-d-flex-al-center();
+        gap: 0.7rem;
+        flex: 1;
+        min-width: 0;
+
+        .file-name {
+          word-break: break-word;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .file-status-icon,
+      .file-actions {
+        @include em-d-flex-al-center();
+        gap: 0.7rem;
+        flex-shrink: 0;
+        margin-left: 0.7rem;
+
+        .progress-bar {
+          width: 3.6rem;
+          height: 4px;
+          background-color: $light-gray;
+          border-radius: 2px;
+          overflow: hidden;
+
+          .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2196f3 0%, #1976d2 100%);
+            transition: width 0.3s ease;
+          }
+        }
+
+        .progress-text {
+          font-size: 0.7rem;
+          color: $primary-color;
+          font-weight: 600;
+          min-width: 1.8rem;
+          text-align: right;
+        }
+
+        .download-icon {
+          width: 1.2rem;
+          height: 1.2rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          color: $primary-color;
+          flex-shrink: 0;
+
+          &:hover {
+            color: $primary-color;
+            transform: scale(1.15);
+          }
+        }
+
+        .delete-icon,
+        .error-icon {
+          width: 1.2rem;
+          height: 1.2rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          color: $primary-color;
+          flex-shrink: 0;
+
+          &:hover {
+            color: $primary-color;
+            transform: scale(1.1);
+          }
+        }
+
+        .error-icon {
+          color: $reject-border;
+
+          &:hover {
+            color: $reject-border;
+          }
+        }
+      }
+    }
+  }
+
+  .upload-input-wrapper {
+    display: flex;
+    width: 100%;
+
+    .upload-button {
+      @include flex_ai_center();
+      gap: 0.6rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+      border: 2px dashed $light-gray;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, #f0f2f5 0%, #e8eaed 100%);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &.drag-over {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        border-color: $primary-color;
+        color: $primary-color;
+        box-shadow: 0 6px 16px rgba(33, 150, 243, 0.25);
+        transform: scale(1.02);
+
+        svg-icon {
+          transform: scale(1.25);
+        }
+      }
+
+      svg-icon {
+        display: flex;
+        transition: all 0.3s ease;
+        color: currentColor;
+      }
+    }
+  }
+
+  .document-section {
+    padding: 0.75rem 0;
+  }
+
+  .section-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: $primary-color;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .additional-files {
+    padding: 0.75rem 0;
+    border-top: 1px solid $soft-silver;
+  }
+}
+
+

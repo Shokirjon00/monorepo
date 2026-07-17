@@ -1,0 +1,29 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'pos-list'">
+  <ng-container header-actions>
+      <div class="d-flex-sb pl-3">
+          @for (action of actions; track action.code) {
+              <em-actions [actionData]="action" (fileSelected)="onImportExcel($event)"/>
+          }
+      </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (link)="link($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="posTerminal"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+@if (loading()) {
+  <em-eb-loader class="loader" />
+}

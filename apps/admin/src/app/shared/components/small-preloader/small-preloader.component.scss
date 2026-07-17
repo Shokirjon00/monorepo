@@ -1,0 +1,37 @@
+@import 'core/scss/styles';
+
+.small-lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+@for $i from 1 through 12 {
+  .small-lds-spinner div:nth-child(#{$i}) {
+    transform: rotate(#{($i - 1) * 30}deg);
+    animation-delay: -#{$i * 0.1}s;
+
+    &::after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 11px;
+      width: 2px;
+      height: 7px;
+      border-radius: 20%;
+      background: $dark-blue;
+    }
+  }
+}
+
+@keyframes small-lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,92 @@
+<em-header2
+  [filterFields]="columns"
+  [filterStorageKey]="'shift'"
+  [pageTitle]="header.title">
+  <ng-container header-actions>
+    <div class="action-line pl-3">
+      <button type="button" class="button-tooltip" (click)="back()">
+        <svg-icon src="assets/icons/cancel.svg" />
+        <span class="tooltip-text">Отмена</span>
+      </button>
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<div class="shift-history em-d-flex em-g-16 v-line padding-6">
+  <div class="shift-info em-d-flex em-g-16 w-50 v-line pr-6" >
+    <div class="labels-data ">
+      <div class="em-d-flex">
+        <span class="key">Организация</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.companyName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Торговая точка</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.merchantName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Касса</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">ID смены</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.shiftNumber || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Номер PosTerminal</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posTerminalNumber || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Дата открытия смены</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.startDate | dateTime }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Дата закрытия смены</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.endDate | dateTime }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">ФИО кассира</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posTerminalUserFullName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Статус</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.statusName || '-' }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="em-d-flex em-g-16 w-50 pl-6">
+    <ng-container *ngxPermissionsOnly="'PaymentStatusGroupList'">
+      @if (paymentStatusAmounts) {
+        <div class="labels-data">
+          @for (paymentStatusAmount of paymentStatusAmounts; track paymentStatusAmount.statusName) {
+            <div class="">
+              <div [ngClass]="paymentStatusAmount.statusType.toLowerCase()" class="em-d-flex">
+                <span [ngClass]="paymentStatusAmount.statusType.toLowerCase()" class="key">{{paymentStatusAmount.statusName}}</span>
+                <span>:</span>
+                <span class="data">{{paymentStatusAmount.amount | mask:  'separator'}} смн / {{paymentStatusAmount.count}}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </ng-container>
+  </div>
+</div>
+
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="shiftInfo"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()" />
+<em-toast />

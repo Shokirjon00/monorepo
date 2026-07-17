@@ -1,0 +1,33 @@
+<div class="acq">
+  <div class="acq-chart">
+    <apx-chart
+      [series]="options().series!"
+      [labels]="options().labels!"
+      [chart]="options().chart!"
+      [colors]="options().colors!"
+      [fill]="options().fill!"
+      [legend]="options().legend!"
+      [dataLabels]="options().dataLabels!"
+      [stroke]="options().stroke!"
+      [plotOptions]="options().plotOptions!"
+      [tooltip]="options().tooltip!" />
+  </div>
+
+  <div class="acq-metrics">
+    @for (item of structure()?.items ?? []; track item.key) {
+      <div class="metric" [ngClass]="'metric-c-' + item.key">
+        <div class="metric-head">
+          <span class="metric-dot"></span>
+          <span class="metric-label" [title]="item.label">{{ item.label }}</span>
+          <span class="metric-percent">{{ item.percent | number: '1.0-1' }}%</span>
+        </div>
+        <div class="metric-bottom">
+          <span class="metric-track">
+            <span class="metric-fill" [style.width.%]="item.percent"></span>
+          </span>
+          <span class="metric-value">{{ item.value | emNumber: '1.0-0' }} {{ structure()?.currency }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

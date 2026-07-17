@@ -1,0 +1,19 @@
+<div class="map" [class.disabled]="disabled">
+  <div class="map__left">
+    <div id="map"></div>
+  </div>
+  <div class="map__right">
+    <div class="form">
+      <div class="label">Широта</div>
+      <div class="input">
+        <input type="text" class="form-control" placeholder="Введите широту" (keypress)="allowOnlyNumbers($event)" [(ngModel)]="latitude" (change)="mapChange()">
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Долгота</div>
+      <div class="input">
+        <input type="text" class="form-control" placeholder="Введите долготу" (keypress)="allowOnlyNumbers($event)" [(ngModel)]="longitude" (change)="mapChange()">
+      </div>
+    </div>
+  </div>
+</div>

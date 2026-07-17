@@ -1,0 +1,41 @@
+<em-header2
+  [filterFields]="columns"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'orderFiltersForm'">
+<div class="d-flex-sb w-100" header-center-default>
+  <span class="title-h1">Заказы</span>
+</div>
+<ng-container header-actions>
+  @if (paginate && !isMobile) {
+    <em-pagination class="pl-3"
+                   [page]="paginate" />
+  }
+</ng-container>
+</em-header2>
+<div class="mobile-card">
+  @for (application of orders; track application.id) {
+    <em-order-mobile-card [order]="application"
+                                  (detailClicked)="showDetail($event)" />
+  }
+  @if ((!orders || !orders.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && orders.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+<em-table
+  (sortChange)="sortTable($event)"
+  (detail)="showDetail($event)"
+  [dataSource]="orders"
+  [captions]="columns"
+  [loading]="loading()"
+  [captionKey]="captionKey"
+></em-table>

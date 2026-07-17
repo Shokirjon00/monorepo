@@ -1,0 +1,27 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'ResponsibleBankEmployeeUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-7">
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>ФИО</span><span>:</span></div>
+      <div><span>Должность</span><span>:</span></div>
+      <div><span>Статус</span><span>:</span></div>
+    </div>
+    <div class="data">
+      <span>{{ resBankEmpDetail?.lastName + ' ' + resBankEmpDetail?.firstName + ' ' + resBankEmpDetail?.middleName }}</span>
+      <span>{{ resBankEmpDetail?.positionName || '-' }}</span>
+      <span>{{ resBankEmpDetail?.statusName || '-' }}</span>
+    </div>
+  </div>
+</div>

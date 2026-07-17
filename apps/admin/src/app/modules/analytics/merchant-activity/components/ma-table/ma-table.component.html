@@ -1,0 +1,27 @@
+<div class="ma-table" [style.--ma-grid]="gridTemplate()">
+  <div class="ma-row ma-row-head ma-table-head-row">
+    @for (col of columns(); track trackCol($index, col)) {
+      <span [class.is-right]="col.align === 'right'">{{ col.label }}</span>
+    }
+  </div>
+
+  @for (row of rows(); track $index) {
+    <div class="ma-row">
+      @for (col of columns(); track trackCol($index, col)) {
+        @switch (col.type) {
+          @case ('rank') {
+            <span class="ma-cell"><span class="ma-rank">{{ row[col.key] }}</span></span>
+          }
+          @case ('number') {
+            <span class="ma-cell is-right ma-num">{{ $any(row[col.key]) | emNumber: '1.0-0' }}</span>
+          }
+          @default {
+            <span class="ma-cell" [class.is-right]="col.align === 'right'">{{ row[col.key] }}</span>
+          }
+        }
+      }
+    </div>
+  } @empty {
+    <div class="ma-row-empty">Нет данных</div>
+  }
+</div>

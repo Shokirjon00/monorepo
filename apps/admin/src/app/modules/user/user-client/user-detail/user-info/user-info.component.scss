@@ -1,0 +1,18 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.user-info{
+  height: calc(100vh - 202px);
+  overflow-y: auto;
+}
+
+.value {
+
+  span {
+    font-size: 14px;
+    font-weight: bold;
+    color: $palette;
+  }
+}

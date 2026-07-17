@@ -1,0 +1,33 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+
+}
+
+.title {
+  font-size: 18px;
+}
+
+.subtitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+@include media-breakpoint-down(sm) {
+  ::ng-deep .cdk-overlay-pane.mat-mdc-dialog-panel {
+    max-width: var(--mat-dialog-container-small-max-width, 80vw) !important;
+  }
+}

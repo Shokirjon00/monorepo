@@ -1,0 +1,111 @@
+<div class="dynamic-upload-field">
+    @if (label) {
+        <div class="label mb-2">{{ label }}</div>
+    }
+
+    <div class="files-container">
+        @if (loading()) {
+            <div class="file-item loader-item">
+                <div class="file-content">
+                    <span class="loader-spinner s brand"></span>
+                    <span>Загрузка..</span>
+                </div>
+            </div>
+        }
+
+        @if (!loading() && files.length === 0 && (mode === 'isSingleMode' || mode === 'isViewMode')) {
+            <div class="no-file-message">
+                <svg-icon src="./assets/images/refresh-cw-alert.svg" class="em-d-flex" />
+                <span class="no-file-text">Файл отсутствует</span>
+            </div>
+        }
+
+        @for (file of files; track file.id; let i = $index) {
+            @if (file.showStatus) {
+                <div [ngClass]="file.status" class="file-item {{file.status}}">
+                    <div class="file-content" (click)="downloadFile($event, file)">
+                        @if (isPdf(file.fileType)) {
+                            <svg-icon class="em-d-flex" src="./assets/icons/pdf-document.svg" />
+                        }
+                        @if (isImage(file.fileType)) {
+                            <svg-icon class="em-d-flex" src="./assets/icons/png-icon.svg" />
+                        }
+                        <span class="file-name">{{ file.fileName }}</span>
+                    </div>
+
+                    <div class="file-actions">
+                        @if (file.status === 'success') {
+                            <svg-icon class="action-icon download-icon"
+                                    src="assets/icons/export.svg"
+                                    (click)="downloadFile($event, file)"
+                                    title="Скачать" />
+
+                            @if (!readOnly && mode !== 'isViewMode') {
+                                <svg-icon class="action-icon delete-icon"
+                                        src="assets/icons/cancel.svg"
+                                        (click)="deleteFile($event, file, i)"
+                                        title="Удалить" />
+                            }
+                        }
+
+                        @if (!readOnly && mode !== 'isViewMode') {
+                            @if (file.status === 'progress') {
+                                <div class="progress-bar">
+                                    <div class="progress-fill" [style.width.%]="file.progressPercent || 0"></div>
+                                </div>
+                                <span class="progress-text">{{ file.progressPercent || 0 }}%</span>
+                            }
+                            @if (file.status === 'error') {
+                                <svg-icon class="action-icon error-icon"
+                                        src="assets/icons/cancel.svg"
+                                        (click)="deleteFile($event, file, i)"
+                                        title="Удалить" />
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    @if (!readOnly && mode === 'isSingleMode' && files.length === 0) {
+        <div class="upload-input-wrapper">
+            <input
+                    type="file"
+                    #fileInput
+                    (change)="onChangeFiles($event)"
+                    [accept]="fileTypes().length > 0 ? fileTypes().join(',') : ''"
+                    (click)="fileInput.value = ''"
+                    style="display: none;">
+            <button
+                    type="button"
+                    class="upload-button"
+                    (click)="fileInput.click()"
+                    (drop)="onDrop($event)"
+                    (dragover)="onDragOver($event)"
+                    (dragleave)="onDragLeave($event)">
+                <svg-icon src="assets/icons/plus.svg" />
+                <span>{{ placeholder() }}</span>
+            </button>
+        </div>
+    }
+
+    @if (!readOnly && mode === 'dynamic') {
+        <div class="upload-input-wrapper">
+            <input
+                    type="file"
+                    class="d-none"
+                    #fileInput
+                    (change)="onChangeFiles($event)"
+                    [accept]="fileTypes().join(',')"
+                    (click)="fileInput.value = ''">
+            <button
+                    type="button"
+                    class="upload-button"
+                    (click)="fileInput.click()">
+                <svg-icon src="assets/icons/plus.svg" />
+                <span>{{ placeholder() }}</span>
+            </button>
+        </div>
+    }
+</div>

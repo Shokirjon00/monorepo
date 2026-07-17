@@ -1,0 +1,112 @@
+<em-header2
+  [filterFields]="captions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'shiftInfoFiltersForm'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Детали смены</span>
+  </div>
+  <ng-container header-actions>
+    @if (paginate && !isMobile) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+@if (loading() && !isMobile) {
+  <em-eskhata-bank-loader class="form-loader" />
+}
+<div class="shift-history em-d-flex em-g-16 padding-6">
+  <div class="shift-info em-d-flex em-g-16 w-50 v-line pr-6">
+    <div class="labels-data ">
+      <div class="em-d-flex">
+        <span class="key">Торговая точка</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.merchantName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Касса</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">ID смены</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.shiftNumber || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Номер PosTerminal</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posTerminalNumber || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Дата открытия</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.startDate ? (shiftDetail.startDate | dateTime) : '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Дата закрытия</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.endDate ? (shiftDetail.endDate | dateTime) : '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">ФИО кассира</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.posTerminalUserFullName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Статус</span>
+        <span>:</span>
+        <span class="data">{{ shiftDetail?.statusName || '-' }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="shift-info em-d-flex em-g-16 w-50 pl-6">
+    <ng-container *ngxPermissionsOnly="'PaymentStatusGroupList'">
+      @if (paymentStatusAmounts) {
+        <div class="labels-data">
+          @for (paymentStatusAmount of paymentStatusAmounts; track paymentStatusAmount) {
+            <div>
+              <div [ngClass]="paymentStatusAmount.statusType.toLowerCase()" class="em-d-flex">
+                <span [ngClass]="paymentStatusAmount.statusType.toLowerCase()"
+                      class="key">{{ paymentStatusAmount.statusName }}</span>
+                <span>:</span>
+                <span [ngClass]="paymentStatusAmount.statusType.toLowerCase()"
+                      class="data">{{ paymentStatusAmount.amount | mask:  'separator' }}
+                  смн / {{ paymentStatusAmount.count }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </ng-container>
+  </div>
+</div>
+<div class="mobile-card">
+  @for (payment of shiftInfo; track payment.id) {
+    <em-shift-info-mobile-card [payment]="payment"
+      [paymentProperties]="paymentProperties"
+      [expandedPaymentProperties]="expandedPaymentProperties"
+      [loading]="loading"
+      [statusLabel]="statusIndicator(payment.paymentStatusGroupId)"
+      (toggleClicked)="toggleExpand($event)" />
+  }
+  @if ((!shiftInfo || !shiftInfo.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && shiftInfo.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="shiftInfo"
+  [captions]="captions"
+  [captionKey]="captionKey"
+  [loading]="loading()" />
+<em-toast />

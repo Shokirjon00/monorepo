@@ -1,0 +1,38 @@
+<div class="d-flex-sb em-g-64 padding-6">
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>Дата создания</span><span>:</span></div>
+      <div><span>Дата завершения</span><span>:</span></div>
+      <div><span>Тип</span><span>:</span></div>
+      <div><span>Плательщик</span><span>:</span></div>
+      <div><span>Сумма</span><span>:</span></div>
+    </div>
+    <div class="data">
+      <span>{{paymentDetail?.createdAt || '-'}}</span>
+      <span>{{paymentDetail?.finishedAt || '-'}}</span>
+      <span>{{paymentDetail?.posTypeName || '-'}}</span>
+      <span>-</span>
+      <span>{{paymentDetail?.amount || '-'}}</span>
+    </div>
+  </div>
+
+  <div class="hr hr-height"></div>
+
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>Комиссия</span><span>:</span></div>
+      <div><span>Торговая</span><span>:</span></div>
+      <div><span>Касса</span><span>:</span></div>
+      <div><span>Статус</span><span>:</span></div>
+      <div><span>Дочерние транзакций</span><span>:</span></div>
+    </div>
+    <div class="data">
+      <span>{{paymentDetail?.commission || '-'}}</span>
+      <span>{{paymentDetail?.merchantName || '-'}}</span>
+      <span>{{paymentDetail?.posName || '-'}}</span>
+      <span>{{paymentDetail?.paymentStatusGroupName || '-'}}</span>
+      <span>-</span>
+    </div>
+  </div>
+</div>
+<em-toast />

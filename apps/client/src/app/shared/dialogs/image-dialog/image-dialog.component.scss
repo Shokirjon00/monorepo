@@ -1,0 +1,11 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/paddings' as *;
+
+.preview-image {
+  max-width: 95%;
+  max-height: 80vh;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

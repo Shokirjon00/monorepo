@@ -1,0 +1,53 @@
+<div class="padding-6">
+  <div class="mb-6">
+  <span class="title-h1 fs-24">{{!!integrationDetail?.id ? 'Изменить настройки интеграции' : 'Новая настройка интеграции'}}</span>
+  </div>
+  <form class="integration-dialog em-d-flex em-dr-columm em-jc-sb" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <div class="form">
+        <div class="label">Тип*</div>
+        <div class="input">
+          <em-simple-select-list formControlName="integrationTypeId"
+            action="Выберите тип"
+            [dataSource]="integrationTypes"
+            (changed)="selectedIntegration($event)"
+           />
+          <em-validator [fieldControl]="f['integrationTypeId']" />
+        </div>
+      </div>
+      <div class="form" *ngIf="jsonFormData">
+        <div class="label">Параметры</div>
+        <br>
+        <form [formGroup]="params">
+          <ng-container *ngFor="let control of jsonFormData; let i=index" [ngSwitch]="control.type">
+              <div *ngSwitchCase="'dictionary'">
+                <div class="label">{{ control.label }}</div>
+                <em-autocomplete [formControlName]="control.name"
+                  (changed)="onDictionaryChange(i, $event)"
+                  [searchable]="true"
+                  [placeholder]="control.placeholder"
+                  [selectWithOutSearch]="true"
+                  [path]="orderTypes" />
+              </div>
+              <div *ngSwitchDefault>
+                <div class="label">{{ control.label }}</div>
+                <input class="integrationJson"
+                       [type]="control.type"
+                       [value]="control.value"
+                       [disabled]="control.disable"
+                       [formControlName]="control.name"
+                       [placeholder]="control.placeholder">
+              </div>
+              <em-validator [fieldControl]="p[control.name]" />
+          </ng-container>
+        </form>
+      </div>
+    </div>
+    <div class="em-d-flex em-jc-fe">
+      <button class="btn btn-secondary btn-lg mr-2" [mat-dialog-close]="false">Отмена</button>
+      <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Сохранить</button>
+    </div>
+  </form>
+</div>
+<em-eb-loader class="form-loader" *ngIf="submitted" />
+<em-toast />

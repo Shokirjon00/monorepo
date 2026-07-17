@@ -1,0 +1,46 @@
+@use "core/scss/form" as *;
+@use "core/scss/variables" as *;
+@use "core/scss/styles" as *;
+
+.select-field {
+  cursor: pointer;
+  width: 100%;
+
+  .arrow {
+    display: flex;
+    background-color: $white-color;
+    transition: 200ms;
+
+    eb-small-preloader {
+      margin-right: 4px;
+    }
+
+    .arrow-icon {
+      position: relative;
+      right: 8px;
+    }
+  }
+
+  .form-control {
+    @include flex_jc_sb();
+
+    .cancel-icons {
+      display: flex;
+      margin-left: 10px;
+    }
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+      max-height: 500px;
+      width: max-content;
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: 200ms;
+      transform-origin: center;
+    }
+  }
+}

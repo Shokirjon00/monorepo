@@ -1,0 +1,50 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [pageTitle]="header.title">
+
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<div class="padding-7 h-line">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Шлюз списания</span><span>:</span><span
+      class="data">{{ continueDetail?.fromGatewayName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Шлюз зачисление</span><span>:</span><span
+      class="data">{{ continueDetail?.toGatewayName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Текущий статус платежа</span><span>:</span><span
+      class="data">{{ continueDetail?.paymentStatusName }}</span></div>
+    <div class="em-d-flex"><span class="key">Счетчик</span><span>:</span><span
+      class="data">{{ continueDetail?.usageCount || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+      class="data">{{ continueDetail?.createdAt | dateTime }}</span></div>
+    <div class="em-d-flex"><span class="key">Изменен</span><span>:</span><span
+      class="data">{{ continueDetail?.modifiedAt | dateTime }}</span></div>
+    <div class="em-d-flex"><span class="key">Создал</span><span>:</span><span
+      class="data">{{ continueDetail?.createdByName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Изменил</span><span>:</span><span
+      class="data">{{ continueDetail?.modifiedByName || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ continueDetail?.statusName || '-' }}</span></div>
+  </div>
+</div>
+
+<em-table (sortChange)="sortTable($event)"
+  (edit)="accordanceEdit($event)"
+  [dataSource]="accordance"
+  [captions]="captions"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+
+<em-toast />

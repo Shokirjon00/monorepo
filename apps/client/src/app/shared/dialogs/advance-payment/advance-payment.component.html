@@ -1,0 +1,21 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-16">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center">{{ content.title }}</div>
+  </div>
+  <div class="modal-body">
+    <p class="advance-text">{{ content.paragraphs[0] }}</p>
+    <p class="em-d-flex em-dr-columm advance-text">
+      <span class="advance-text-bold">{{ content.highlights[0] }}</span>
+      {{ cleanedParagraph1 }}
+    </p>
+    <p class="em-d-flex em-dr-columm advance-text">
+      <span class="advance-text-bold">{{ content.highlights[1] }}</span>
+      {{ cleanedParagraph2 }}
+    </p>
+  </div>
+  <div class="text-center">
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary btn-lg" (click)="onCancel()">Закрыть</button>
+    </div>
+  </div>
+</div>

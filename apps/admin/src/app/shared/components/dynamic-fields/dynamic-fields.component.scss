@@ -1,0 +1,16 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.field-error {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+
+  &.error {
+    color: $danger-color;
+    display: block;
+    font-size: 0.8rem;
+  }
+}

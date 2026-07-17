@@ -1,0 +1,36 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ deviceTypeDetail?.name || "Добавить тип устройства" }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'PosTypeActiveStatus'" class="checkbox-toggle ml-1">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 device-type">
+    <div class="form">
+      <div class="label">Наименование*</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

@@ -1,0 +1,234 @@
+@import 'core/scss/variables';
+@import 'core/scss/mixins/breakpoints';
+
+@mixin card-accent($accent) {
+  &::before {
+    background: radial-gradient(circle, $accent, transparent 70%);
+  }
+
+  .card-icon {
+    color: $accent;
+    background: color-mix(in srgb, $accent 14%, transparent);
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+
+  @include media-breakpoint-down(lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  @include flex_column();;
+  gap: clamp(0.5rem, 0.5vw, 0.85rem);
+  padding: clamp(1rem, 0.9vw, 1.5rem) clamp(1.1rem, 1vw, 1.7rem) clamp(0.85rem, 0.8vw, 1.3rem);
+  text-align: left;
+  background: $white;
+  border: 1px solid $brand-line;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+  @include card-accent($primary-color);
+
+  &-c-blue {
+    @include card-accent($accent-blue);
+  }
+
+  &-c-purple {
+    @include card-accent($accent-purple);
+  }
+
+  &-c-green {
+    @include card-accent($accent-green);
+  }
+
+  &-c-teal {
+    @include card-accent($accent-teal);
+  }
+
+  &-c-orange {
+    @include card-accent($accent-orange);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: -1;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: transparent;
+    box-shadow: 0 18px 38px rgba(16, 24, 34, 0.1);
+
+    &::before {
+      opacity: 0.2;
+      transform: scale(1.25);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+
+  &-head {
+    @include em-d-flex-al-center();
+    gap: 0.5rem;
+  }
+
+  &-icon {
+    display: inline-flex;
+    width: clamp(30px, 2vw, 46px);
+    height: clamp(30px, 2vw, 46px);
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+  }
+
+  &-icon-svg {
+    display: block;
+    width: clamp(16px, 1.1vw, 24px);
+    height: clamp(16px, 1.1vw, 24px);
+  }
+
+  &-title {
+    font-size: clamp(0.8rem, 0.7vw, 1.15rem);
+    font-weight: 500;
+    color: $light-slate;
+  }
+
+  &-value {
+    font-size: clamp(1.15rem, 1.1vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: $gunmetal-blue;
+    line-height: 1.15;
+  }
+
+  &-unit {
+    margin-left: 0.2rem;
+    font-size: clamp(0.85rem, 0.75vw, 1.2rem);
+    font-weight: 500;
+    color: $light-slate;
+  }
+
+  &-foot {
+    @include flex_jc_sb();
+    gap: 0.5rem;
+  }
+
+  &-info {
+    @include em-d-flex-al-center();
+    min-width: 0;
+  }
+
+  &-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: clamp(0.85rem, 0.75vw, 1.2rem);
+    font-weight: 500;
+    white-space: nowrap;
+
+    &.is-good {
+      color: $success-color;
+    }
+
+    &.is-bad {
+      color: $danger-color;
+    }
+  }
+
+  &-arrow {
+    width: clamp(0.7rem, 0.7vw, 0.8rem);
+    height: clamp(0.7rem, 0.7vw, 0.8rem);
+    flex: 0 0 auto;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat center;
+    mask: url("/assets/icons/chevron-down.svg") no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: inherit;
+
+    &.is-up {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-compare {
+    margin-top: auto;
+    padding-top: 0.25rem;
+    font-size: clamp(0.7rem, 0.6vw, 1rem);
+    color: $palette;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-spark {
+    width: clamp(80px, 6vw, 150px);
+    flex-shrink: 0;
+    opacity: 0.95;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover &-spark {
+    transform: scale(1.06);
+  }
+
+  &-gauge {
+    position: relative;
+    flex-shrink: 0;
+    width: clamp(48px, 3.4vw, 78px);
+    height: clamp(48px, 3.4vw, 78px);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: transform 0.25s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: clamp(34px, 2.4vw, 56px);
+      height: clamp(34px, 2.4vw, 56px);
+      border-radius: 50%;
+      background: $white;
+    }
+  }
+
+  &:hover &-gauge {
+    transform: scale(1.06);
+  }
+
+  &-gauge-val {
+    position: relative;
+    font-size: clamp(0.72rem, 0.6vw, 1.05rem);
+    font-weight: 700;
+    color: $gunmetal-blue;
+  }
+}
+
+.cards-empty {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  text-align: center;
+  color: $light-slate;
+}

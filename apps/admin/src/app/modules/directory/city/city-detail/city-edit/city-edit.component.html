@@ -1,0 +1,74 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ cityDetail?.name || "Добавить город" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'CityActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 balance-limit">
+    <div class="form">
+      <div class="label">Код</div>
+      <div class="input">
+        <input formControlName="code" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['code']?.invalid && f['code']?.touched">
+        <em-validator [fieldControl]="f['code']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Наименование*</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Код ABS*</div>
+      <div class="input">
+        <input formControlName="extCodeAbs" type="text" class="form-control" placeholder="Введите ABS код"
+               [class.is-invalid]="f['extCodeAbs']?.invalid && f['extCodeAbs']?.touched">
+        <em-validator [fieldControl]="f['extCodeAbs']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Район*</div>
+      <div class="input">
+        <em-autocomplete [searchable]="true"
+          [selectWithOutSearch]="true"
+          [placeholder]="'Район'"
+          formControlName="areaId"
+          [path]="api.areas" />
+        <em-validator [fieldControl]="f['areaId']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Позиция</div>
+      <div class="input">
+        <input formControlName="position" type="number" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['position']?.invalid && f['position']?.touched">
+        <em-validator [fieldControl]="f['position']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

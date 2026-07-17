@@ -1,0 +1,108 @@
+@use "core/scss/flex" as *;
+@use "core/scss/margins" as *;
+@use "core/scss/variables" as *;
+@use "core/scss/button" as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/mixins/mixin' as *;
+
+.period-dropdown {
+  min-width: 250px;
+}
+
+.main-filter {
+  @include flex_column();
+  width: 100vw;
+
+  &-top {
+    @include flex_align_center_justify_between();
+    padding: 1rem 1rem 0.75rem 1rem;
+    border-bottom: 1px solid $color-grey-500;
+
+    svg-icon {
+      line-height: 0;
+    }
+  }
+
+  &-body {
+    @include flex_column();
+    padding: 1.5rem 1rem 0 1rem;
+    gap: 0.5rem;
+
+    .form-body {
+      @include flex_column();
+      gap: 8px;
+
+      .form-item {
+        background-color: transparent;
+        border-bottom: 1px solid $color-grey-400;
+        border-radius: 0;
+        padding: 0.5rem 0 0 0;
+        margin-bottom: 0.5rem;
+        @include flex_align_center();
+        gap: 10px;
+
+        input {
+          border: none;
+          outline: none;
+          width: 100%;
+          height: 40px;
+        }
+      }
+
+      .form-remove {
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    .date-filter {
+      background-color: transparent;
+      border-bottom: 1px solid #C8CBD0;
+      border-radius: 0;
+      padding: 0.5rem 0 0 0;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .em-d-flex-center {
+        justify-content: flex-start;
+
+        svg-icon {
+          display: none;
+        }
+
+        span {
+          margin-bottom: 0.5rem;
+          color: #525B6C;
+        }
+      }
+    }
+
+    .custom-filter {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-bottom {
+    @include flex_column();
+    position: absolute;
+    width: 100%;
+    bottom: 1.5rem;
+    padding: 0 1rem;
+    gap: 0.5rem;
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5rem;
+
+      &.btn-secondary {
+        padding: 0.625rem 0;
+      }
+    }
+  }
+}

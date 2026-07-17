@@ -1,0 +1,40 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'PosTerminalUpdate'" class="icon ml-3">
+      <button type="button" class="button-tooltip" (click)="navigateToInfo()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-7">
+  <div class=" w-50">
+    <div class="labels-data">
+      <div class="em-d-flex"><span class="key">Наименование</span><span>:</span><span
+        class="data">{{posTerminal?.name || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Касса</span><span>:</span><span
+        class="data">{{posTerminal?.posName || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Адрес</span><span>:</span><span
+        class="data">{{posTerminal?.address || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Номер телефона</span><span>:</span><span
+        class="data">{{posTerminal?.phoneNumber || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Серийный номер</span><span>:</span><span
+        class="data">{{posTerminal?.number || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Модель</span><span>:</span><span
+        class="data">{{posTerminal?.model || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Версия приложения</span><span>:</span><span
+        class="data">{{posTerminal?.appVersion || '-'}}</span></div>
+
+      <div class="em-d-flex"><span class="key">Операционная система</span><span>:</span><span
+        class="data">{{posTerminal?.os || '-'}}</span></div>
+    </div>
+  </div>
+</div>

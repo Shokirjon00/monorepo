@@ -1,0 +1,123 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'ClientUserResetPassword'" class="v-line mr-1 pr-1">
+        <button type="button" class="button-tooltip" (click)="showKey()">
+          <svg-icon src="assets/icons/login-send.svg" />
+          <span class="tooltip-text">Сбросить пароль</span>
+        </button>
+      </div>
+      <div *ngxPermissionsOnly="'ClientUserUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+
+<div class="padding-6 mt-6 user-admin">
+  @if (userDetail) {
+    <div class="merchant-info em-d-flex">
+      <div class="em-d-flex em-g-16 w-50 pr-6 v-line">
+        <div class="labels-data ">
+          <div class="em-d-flex">
+            <span class="key">Организация</span>
+            <span>:</span>
+            <span class="data">{{ userDetail.companyName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Фамилия</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.lastName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Имя</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.firstName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Отчество</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.middleName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Логин</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.userName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Номер телефона</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.phoneNumber || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Электронная почта</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.email || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Роль</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.roleName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Статус</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.statusName || '-'}}</span>
+          </div>
+          <div class="em-d-flex em-ai-start">
+            <span class="key">Торговые точки</span>
+            <span>:</span>
+            <span class="value">
+              @for (permission of userDetail.merchants; track permission) {
+                <span>{{permission || '-'}}{{'; '}}</span>
+              }
+            </span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Количество неудачных попыток входа</span>
+            <span>:</span>
+            <span class="data">{{ userDetail?.loginFailedAttempts ?? '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Дата последнего входа</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.lastLoginDateTime | dateTime}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="labels-data">
+          <div class="em-d-flex em-ai-start">
+            <span class="key">Кассы</span>
+            <span>:</span>
+            <span class="value">
+              @for (permission of userDetail.poses; track permission) {
+                <span>{{permission || '-'}}{{'; '}}</span>
+              }
+            </span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Время блокировки</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.lockoutDateTime | dateTime}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Время разблокировки</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.lockoutEndDateTime | dateTime}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Дата последней смены пароля</span>
+            <span>:</span>
+            <span class="data">{{userDetail?.lastPasswordChangeDateTime | dateTime}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<em-toast />

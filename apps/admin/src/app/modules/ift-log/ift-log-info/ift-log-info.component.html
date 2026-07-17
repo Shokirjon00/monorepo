@@ -1,0 +1,33 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Журнал задач инфо</div>
+  </div>
+</em-header2>
+<div>
+  <div class="em-d-flex padding-6">
+    <div class="pr-6">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">ID IFT задач </span><span>:</span><span
+          class="data">{{iftLogInfo?.id || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Название сообщения</span><span>:</span><span
+          class="data">{{iftLogInfo?.messageName || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Тип сообщения</span><span>:</span><span
+          class="data">{{iftLogInfo?.messageType || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Дата запроса</span><span>:</span><span
+          class="data">{{(iftLogInfo?.requestDateTime | dateTime) || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Тип лога</span><span>:</span><span
+          class="data">{{iftLogInfo?.logType || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Описание ошибки</span><span>:</span><span
+          class="data">{{iftLogInfo?.errorDescription || '-'}}</span></div>
+
+        <div class="em-d-flex"><span class="key">Сообщение</span><span>:</span><span
+          class="data">{{iftLogInfo?.data || '-'}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

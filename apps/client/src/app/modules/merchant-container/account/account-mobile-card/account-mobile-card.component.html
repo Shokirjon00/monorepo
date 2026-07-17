@@ -1,0 +1,33 @@
+<div class="item-card">
+  <div class="top">
+    <div class="title">{{account.name}}</div>
+    <div class="actions">
+      <div class="status">
+        <span class="indicator" [class]="account.isActive ? 'completed' : 'rejected'"></span>
+        <span class="text">{{account.statusName}}</span>
+      </div>
+    </div>
+    <div class="info small">
+      <div class="info-item">
+        <div class="label">Счет</div>
+        <div class="separator">:</div>
+        <div class="value">{{account.number || '-'}}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Тип счета</div>
+        <div class="separator">:</div>
+        <div class="value">{{account.accountTypeName || '-'}}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Валюта</div>
+        <div class="separator">:</div>
+        <div class="value">{{account.currencyName || '-'}}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Банк</div>
+        <div class="separator">:</div>
+        <div class="value">{{account.bankName || '-'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

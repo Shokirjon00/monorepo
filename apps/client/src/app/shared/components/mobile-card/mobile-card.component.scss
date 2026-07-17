@@ -1,0 +1,34 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/card' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+.no-data {
+  height: 100px;
+}
+
+.mobile-card {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  em-table {
+    display: none;
+  }
+
+  .mobile-card {
+    display: block;
+
+    .label {
+      flex: 0 0 110px;
+    }
+  }
+
+  .title-h1 {
+    display: none;
+  }
+}

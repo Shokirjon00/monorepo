@@ -1,0 +1,50 @@
+<div class="login">
+  <div class="logo mb-5">
+    <svg-icon src="assets/icons/em-logo.svg" />
+  </div>
+  <div class="h1">Это Ваш первый вход в систему,<br> необходимо изменить пароль</div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+      <div class="mb-5">
+        <div class="form-label">Новый пароль</div>
+        <input class="form-control" [type]="showPassword ? 'text' : 'password'"
+          emPreventSpace
+          formControlName="password"
+          placeholder="Введите пароль"
+          (keydown)="trackCaps($event)"
+          [class.is-invalid]="f['password']?.invalid && f['password']?.touched">
+          <div class="pass-show" (click)="changePassShow()">
+            <svg-icon [src]="showPassword ? 'assets/icons/eye.svg' : 'assets/icons/eyeslash.svg'" />
+          </div>
+        </div>
+        <div class="mb-5">
+          <div class="form-label">Подтвердить новый пароль </div>
+          <input class="form-control" [type]="showConfirmPassword ? 'text' : 'password'"
+            emPreventSpace
+            formControlName="confirmPassword"
+            placeholder="Введите пароль"
+            (keydown)="trackCaps($event)"
+            [class.is-invalid]="f['confirmPassword']?.invalid && f['confirmPassword']?.touched">
+            <div class="pass-show" (click)="changeConfirmPassShow()">
+              <svg-icon [src]="showConfirmPassword ? 'assets/icons/eye.svg' : 'assets/icons/eyeslash.svg'" />
+            </div>
+          </div>
+
+          <em-password-input-rules [passwordControl]="form.get('password')"
+            [confirmPasswordControl]="form.get('confirmPassword')" />
+
+          @if (capsOn) {
+            <div class="check-label">CapsLock включен</div>
+          }
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary w-100 footer__btn" [disabled]="form.invalid">
+            {{!loading ? "Вход" : ""}}
+            @if (loading) {
+              <span class="loader-spinner xs white"></span>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+    <em-toast />

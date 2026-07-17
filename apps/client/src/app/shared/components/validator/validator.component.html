@@ -1,0 +1,160 @@
+<div class="form-group">
+  @if (fieldControl?.hasError('password') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат пароля
+      <ul>
+        @if (fieldControl?.hasError('passMinLength')  && fieldControl?.touched) {
+          <li class="field-error">Поле не может
+            содержать менее 8 символов
+          </li>
+        }
+        @if (fieldControl?.hasError('uppercaseLetter')  && fieldControl?.touched) {
+          <li class="field-error">Минимум 1
+            заглавная буква
+          </li>
+        }
+        @if (fieldControl?.hasError('lowercaseLetter')  && fieldControl?.touched) {
+          <li class="field-error">Минимум 1
+            строчная буква
+          </li>
+        }
+        @if (fieldControl?.hasError('specSymbols')  && fieldControl?.touched) {
+          <li class="field-error">Минимум 1
+            спец-символ(_.:;-+=*?&!%&#64;#$^()'"/)
+          </li>
+        }
+        @if (fieldControl?.hasError('numbers')  && fieldControl?.touched) {
+          <li class="field-error">Минимум 1 число</li>
+        }
+      </ul>
+    </li>
+  }
+
+  @if (fieldControl?.hasError('email') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат эл.почты
+    </li>
+  }
+
+  @if (fieldControl?.hasError('settingValidator') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Заполните пустые поля
+    </li>
+  }
+
+  @if (fieldControl?.hasError('string') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат строки
+    </li>
+  }
+
+  @if (fieldControl?.hasError('noUniquePhoneNumber') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Номер телефона повторяеться
+    </li>
+  }
+
+  @if (fieldControl?.hasError('similarNumbers') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Имеются похожие номера
+    </li>
+  }
+
+  @if (fieldControl?.hasError('eskhataEmail') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат эл.почты (&#64;eskhata.tj)
+    </li>
+  }
+
+  @if (fieldControl?.hasError('phoneNumber') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат телефонного номера
+    </li>
+  }
+
+  @if (fieldControl?.hasError('confirmPassword') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Пароль для подтверждения не совпадает
+    </li>
+  }
+
+  @if (fieldControl?.touched
+    && fieldControl?.hasError('required')
+    || fieldControl?.hasError('matDatepickerParse')
+    || fieldControl?.hasError('whiteSpace')) {
+    <li class="field-error"
+      >
+      Поле обязательное для заполнения
+    </li>
+  }
+
+  @if (fieldControl?.hasError('minlength')) {
+    <li class="field-error"
+      >
+      Поле должно содержать не менее {{fieldControl.getError('minlength').requiredLength}} символов
+    </li>
+  }
+
+  @if (fieldControl?.hasError('maxlength')) {
+    <li class="field-error"
+      >
+      Поле не может содержать более {{fieldControl?.getError('maxlength')?.requiredLength}} символов
+    </li>
+  }
+
+    @if (fieldControl?.hasError('min')) {
+        <li class="field-error">
+            Значение должно быть больше {{fieldControl.getError('min').min}}
+        </li>
+    }
+
+    @if (fieldControl?.hasError('max')) {
+        <li class="field-error"
+        >
+            Значение должно быть меньше {{fieldControl.getError('min').min}}
+        </li>
+    }
+
+  @if (fieldControl?.touched && fieldControl?.hasError('typeNotSupported')) {
+    <li class="field-error"
+      >
+      Неподдерживаемый тип файла
+    </li>
+  }
+
+  @if (fieldControl?.hasError('invalidDateBefore') || fieldControl?.hasError('invalidDateAfter')) {
+    <li class="field-error"
+      >
+      Выбрана неверная дата
+    </li>
+  }
+
+  @if (fieldControl?.hasError('pattern') && fieldControl?.touched) {
+    <li class="field-error"
+      >
+      Неверный формат
+    </li>
+  }
+  @if (fieldControl?.hasError('notPermission')) {
+    <li class="field-error">
+      Доступ запрещен!
+    </li>
+  }
+  @if (fieldControl?.hasError('serverErrors')) {
+    @for (error of fieldControl.getError('serverErrors'); track error) {
+      <li class="field-error">
+        {{error}}
+      </li>
+    }
+  }
+
+</div>

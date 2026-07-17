@@ -1,0 +1,314 @@
+<form class="w-100 p-relative" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ companyRegistration?.companyName || 'Редактировать' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="generatingApplication()" [class.disabled]="submitted()">
+            <svg-icon src="assets/icons/wand-sparkles.svg" />
+            <span class="tooltip-text">Сгенерировать заявление</span>
+          </button>
+        </div>
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted()">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted()">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="list-registration-edit" [class.blur]="submitted()">
+    <div class="padding-6 h-line">
+      <div class="em-d-flex em-fw-wrap">
+        <div class="w-60 v-line pr-6">
+          <div class="form-left">
+            <div class="label">Статус*</div>
+            <div class="input">
+              <em-simple-select-list formControlName="companyRegistrationApplicationStatusId"
+                [action]="'Выберите статус заявки'"
+                [dataSource]="statusApplication" />
+              <em-validator [fieldControl]="f['companyRegistrationApplicationStatusId']" />
+            </div>
+          </div>
+          <div class="form-left">
+            <div class="label">Название организации*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="companyName"
+                     placeholder="Введите название организации"
+                     [class.is-invalid]="f['companyName']?.invalid && f['companyName']?.touched">
+              <em-validator [fieldControl]="f['companyName']" />
+            </div>
+          </div>
+
+          <div class="form-left">
+            <div class="label">Тип клиента</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                placeholder="Тип клиента"
+                formControlName="companyLegalFormId"
+                [selectWithOutSearch]="true"
+                [path]="clientType" />
+              <em-validator [fieldControl]="f['companyLegalFormId']" />
+            </div>
+          </div>
+
+          <div class="form-left">
+            <div class="label">Род деятельности*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="activitySphere"
+                     placeholder="Введите род деятельности"
+                     [class.is-invalid]="f['activitySphere']?.invalid && f['activitySphere']?.touched">
+              <em-validator [fieldControl]="f['activitySphere']" />
+            </div>
+          </div>
+
+          <div class="form-left">
+            <div class="label">Адрес*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="address" placeholder="Введите адрес"
+                     [class.is-invalid]="f['address']?.invalid && f['address']?.touched">
+              <em-validator [fieldControl]="f['address']" />
+            </div>
+          </div>
+          <div class="form-left">
+            <div class="label">ИНН*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="inn"
+                     placeholder="Введите ИНН"
+                     mask="000 000 000"
+                     maxlength="9"
+                     minlength="9"
+                     [class.is-invalid]="f['inn']?.invalid && f['inn']?.touched">
+              <em-validator [fieldControl]="f['inn']" />
+            </div>
+          </div>
+          <div class="form-left">
+            <div class="label">ЕИН*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="ein"
+                     placeholder="Введите еин"
+                     maxlength="10"
+                     [class.is-invalid]="f['ein']?.invalid && f['ein']?.touched">
+              <em-validator [fieldControl]="f['ein']" />
+            </div>
+          </div>
+
+          <div formArrayName="branches" class="em-d-flex  em-g-16 em-dr-columm">
+            <div class="em-d-flex em-ai-centerr">
+              <div class="label">Торговые точки</div>
+              <button type="button"
+                      class="btn-none-style"
+                      (click)="addBranch()">
+                <svg-icon class="em-d-flex-center"
+                          src="assets/icons/plus.svg" />
+              </button>
+            </div>
+            @for (_branch of branches.controls; track _branch; let i = $index) {
+              <div [formGroupName]="i"
+                   [attr.data-branch]="_branch?.value?.address"
+                   class="em-d-flex em-g-8">
+
+                <div class="em-d-flex em-g-16 align-items-end w-100">
+
+                  <div class="w-50">
+                    <input type="text"
+                           class="form-control"
+                           formControlName="address"
+                           placeholder="Введите адрес">
+                  </div>
+
+                  <div class="w-25">
+                    <input type="text"
+                           class="form-control"
+                           formControlName="name"
+                           placeholder="Введите название">
+                  </div>
+
+                  <div class="w-25">
+                    <input type="number"
+                           [min]="0"
+                           class="form-control"
+                           formControlName="quantity"
+                           placeholder="Введите кол-во касс">
+                  </div>
+
+                </div>
+
+                <div class="em-d-flex em-jc-end">
+                  <button type="button"
+                          class="btn-none-style"
+                          (click)="removeBranch(i)">
+
+                    <svg-icon class="em-d-flex-center"
+                              src="assets/icons/cancel.svg" />
+
+                  </button>
+                </div>
+
+              </div>
+            }
+          </div>
+        </div>
+        <div class="w-40 pl-6">
+          <div class="form">
+            <div class="label">ФИО заявителя*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="applicantFullName"
+                     placeholder="ФИО заявителя"
+                     [class.is-invalid]="f['applicantFullName']?.invalid && f['applicantFullName']?.touched">
+              <em-validator [fieldControl]="f['applicantFullName']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Название организации на латинском*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="companyNameLatin"
+                     placeholder="Название организации на латинском"
+                     [class.is-invalid]="f['companyNameLatin']?.invalid && f['companyNameLatin']?.touched">
+              <em-validator [fieldControl]="f['companyNameLatin']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Номер телефона*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="applicantPhoneNumber"
+                     placeholder="+992 (ХХ) ХХХ ХХ ХХ"
+                     mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                     [class.is-invalid]="f['applicantPhoneNumber']?.invalid && f['applicantPhoneNumber']?.touched">
+              <em-validator [fieldControl]="f['applicantPhoneNumber']" />
+            </div>
+          </div>
+
+          <div class="form">
+            <div class="label">Email</div>
+            <div class="input">
+              <input type="email"
+                     class="form-control"
+                     formControlName="email"
+                     placeholder="Введите email"
+                     [class.is-invalid]="f['email']?.invalid && f['email']?.touched">
+              <em-validator [fieldControl]="f['email']" />
+            </div>
+          </div>
+
+          <div class="form">
+            <div class="label">Филиал*</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                placeholder="Филиал"
+                formControlName="branchId"
+                [selectWithOutSearch]="true"
+                [path]="branchApi" />
+              <em-validator [fieldControl]="f['branchId']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Менеджер продвижение*</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                placeholder="'Выберите менеджера продвижения'"
+                formControlName="managerId"
+                searchField="'fullName'"
+                [selectWithOutSearch]="true"
+                [path]="resBankEmpApi" />
+              <em-validator [fieldControl]="f['managerId']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Тип эквайринга*</div>
+            <div class="circle-check">
+              <div class="input">
+                <em-multi-select placeholder="Выберите тип эквайринга"
+                  formControlName="posTypeIds"
+                  [dataSource]="posTypes" />
+                <em-validator [fieldControl]="f['posTypeIds']" />
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Комментарии к заявке</div>
+            <input type="text" class="form-control" formControlName="comment"
+                   placeholder="Введите комментарии к заявке"
+                   [class.is-invalid]="f['comment']?.invalid && f['comment']?.touched">
+            <em-validator [fieldControl]="f['comment']" />
+          </div>
+
+          <div class="form comments-list">
+            <div class="label">История комментариев</div>
+            <div class="em-d-flex em-dr-columm em-g-8">
+              @if (companyRegistration?.comments?.length) {
+                @for (c of companyRegistration.comments; track c.id) {
+                  <div class="comment-item">
+                    <div class="comment-meta">
+                      {{ c.createdBy }}
+                      <span class="date-time">{{ c.createdAt | dateTime }}</span>
+                    </div>
+                    <div class="comment-text">
+                      {{ c.text }}
+                    </div>
+                  </div>
+                }
+              } @else {
+                <span class="no-comments">-</span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-6">
+      <div class="w-60">
+        <div class="title-h1 mb-6">Документы</div>
+        <div class="input em-d-flex em-g-8 em-dr-columm">
+          <div class="document-section">
+            <span class="section-title">Заявка на создании</span>
+            <em-dynamic-upload-field formControlName="statementFileId"
+              mode="isViewMode"
+              [fileStorageUrl]="fileStorageUrl"
+              [fileStorageToken]="fileStorageToken"
+              [memType]="uploadFile.memType"
+              [uploadPath]="uploadFile.uploadPath"
+              [fileLimit]="1"
+              [placeholder]="'Загрузить Заявку'" />
+          </div>
+
+          <div class="document-section">
+            <span class="section-title">Оферта</span>
+            <em-dynamic-upload-field formControlName="offerFileId"
+              mode="isViewMode"
+              [fileStorageUrl]="fileStorageUrl"
+              [fileStorageToken]="fileStorageToken"
+              [memType]="uploadFile.memType"
+              [uploadPath]="uploadFile.uploadPath"
+              [fileLimit]="1"
+              [placeholder]="'Загрузить Оферту'" />
+          </div>
+          <div class="document-section">
+            <div class="additional-files">
+              <em-dynamic-upload-field formControlName="fileIds"
+                mode="dynamic"
+                label="Дополнительные файлы"
+                [fileStorageUrl]="fileStorageUrl"
+                [fileStorageToken]="fileStorageToken"
+                [memType]="uploadFile.memType"
+                [uploadPath]="uploadFile.uploadPath"
+                [fileLimit]="10"
+                [placeholder]="'Добавить файл'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (submitted()) {
+    <em-eb-loader class="form-loader" />
+  }
+</form>
+<em-toast />

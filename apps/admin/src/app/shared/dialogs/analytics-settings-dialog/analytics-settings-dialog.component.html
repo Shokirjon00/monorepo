@@ -1,0 +1,49 @@
+<form class="dlg" [formGroup]="form" (ngSubmit)="save()">
+  <div class="dlg-head">
+    <span class="dlg-title">Настройки аналитики</span>
+  </div>
+
+  <div class="dlg-body" [class.is-loading]="loading()">
+    <div class="dlg-row">
+      <label class="dlg-label">Дней без транзакций (X)</label>
+      <input class="dlg-input" type="number" min="0" max="365"
+             formControlName="inactivityDays">
+    </div>
+
+    <div class="dlg-section">
+      <div class="dlg-section-head">
+        <span class="dlg-section-title">Планы по кварталам</span>
+        <button type="button" class="dlg-add" (click)="addPlan()">+ Добавить</button>
+      </div>
+
+      <div class="dlg-plans" formArrayName="plans">
+        @if (plans.length) {
+          <div class="dlg-plan dlg-plan-head">
+            @for (header of planHeaders; track $index) {
+              <span>{{ header }}</span>
+            }
+          </div>
+        }
+
+        @for (group of plans.controls; track $index) {
+          <div class="dlg-plan" [formGroupName]="$index">
+            <input class="dlg-input" type="number" min="2000" max="2100" formControlName="year">
+            <input class="dlg-input" type="number" min="1" max="4" formControlName="quarter">
+            <input class="dlg-input" type="number" min="0" formControlName="planAmount">
+            <input class="dlg-input" type="number" min="0" formControlName="activeMerchantsPlan">
+            <button type="button" class="dlg-remove" (click)="removePlan($index)" title="Удалить">
+              <img class="dlg-remove-icon" src="assets/icons/remove.svg" alt="Удалить">
+            </button>
+          </div>
+        } @empty {
+          <div class="dlg-empty">Планы не добавлены. Нажмите "+ Добавить", чтобы создать план по кварталу.</div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="dlg-actions">
+    <button type="button" class="dlg-btn dlg-btn-ghost" (click)="cancel()">Отмена</button>
+    <button type="submit" class="dlg-btn dlg-btn-primary" [disabled]="saving() || loading()">Сохранить</button>
+  </div>
+</form>

@@ -1,0 +1,37 @@
+<div class="user-profile">
+  <div class="em-d-flex em-jc-sb user-profile-logo">
+    <div class="avatar">
+      <img alt="profile-image" class="profile-image" [src]="avatarImg ||'assets/no-image.png'"/>
+      <div *ngxPermissionsOnly="'AdminUserUploadAvatar'" class="change-avatar" (click)="fileAvatar.click()">
+        <svg-icon src="assets/icons/camera.svg" />
+      </div>
+      <input #fileAvatar
+             type="file"
+             multiple
+             class="upload-file"
+             [accept]="memType"
+             (change)="onChangeFiles($event)">
+    </div>
+    <div class="close-dialog">
+      <svg-icon class="close-icon"
+                src="assets/images/close.svg" [mat-dialog-close]="true" />
+    </div>
+  </div>
+  <div class="user-profile-info">
+    <div class="mb-3">
+      <div class="info-title mb-1">ФИО</div>
+      <div class="info-subtitle">{{userProfile.fullName}}</div>
+    </div>
+    <div class="mb-3">
+      <div class="info-title mb-1">Логин</div>
+      <div class="info-subtitle">{{userProfile.userName}}</div>
+    </div>
+    <div class="">
+      <div class="info-title mb-1">Email</div>
+      <div class="info-subtitle">{{userProfile.email}}</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary w-100 footer__btn" [mat-dialog-close]="true">Закрыть</button>
+</div>
+<em-toast />

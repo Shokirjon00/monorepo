@@ -1,0 +1,418 @@
+@import 'core/scss/variables';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import "core/scss/form";
+@import 'core/scss/styles';
+@import "core/scss/mixins/mixin";
+@import "core/scss/mixins/breakpoints";
+
+.analytics-header {
+
+  .reset-filter {
+
+    button {
+      border: none;
+      background-color: transparent;
+      font-size: 16px;
+      cursor: pointer;
+      color: $main-black;
+      height: 42px;
+    }
+  }
+
+  .company-dropdown {
+    min-width: 300px;
+  }
+
+  .period-dropdown {
+    min-width: 250px;
+  }
+
+  .merchant-dropdown {
+    min-width: 350px;
+  }
+
+  .pos-dropdown {
+    min-width: 250px;
+  }
+
+  .pos-type-dropdown {
+    min-width: 200px;
+  }
+}
+
+.analytics {
+  display: grid;
+  row-gap: 2.5rem;
+  column-gap: 1.5rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+        "ai ai ai ai st st"
+        "ch ch ch ch ch ch"
+        "st2 st2 tr tr ck ck";
+
+  .chart-container {
+    border-radius: 20px;
+    background-color: $white-color;
+    box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .analytics-info {
+    grid-area: ai;
+    height: 324px;
+
+    .percent {
+      color: $green;
+    }
+
+  }
+
+  .statistics {
+    grid-area: st;
+    height: 324px;
+    color: $palette;
+
+    .progressbar {
+      .progress-bg {
+        width: 100%;
+        height: 8px;
+        background-color: $main-bg;
+        border-radius: 4px;
+
+        .progress-val {
+          height: 100%;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .transactions {
+    grid-area: ch;
+    height: 388px;
+
+    .left-side {
+      flex: 1;
+      margin-right: 1rem;
+    }
+
+    .right-side {
+      flex: 1;
+    }
+  }
+
+  .transactions-sum {
+    grid-area: ch2;
+    height: 388px;
+  }
+
+  .statistics2 {
+    grid-area: st2;
+    height: 425px;
+
+    .card {
+      border-radius: 12px;
+      border: 1px solid $border-line;
+      width: calc(50% - 0.5rem);
+      height: calc(50% - 0.5rem);
+
+      .refunded {
+        color: $refunded;
+
+        svg {
+          fill: $refunded;
+        }
+      }
+
+      .rejected {
+        color: $danger-color;
+
+        svg {
+          fill: $danger-color;
+        }
+      }
+
+      .canceled {
+        color: $canceled-color;
+
+        svg {
+          stroke: $canceled-color;
+        }
+      }
+
+      .info {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+        color: $palette;
+      }
+
+    }
+  }
+
+  .transactions-type {
+    grid-area: tr;
+    height: 425px;
+  }
+
+  .check {
+    grid-area: ck;
+    height: 425px;
+
+    .info {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background-color: $main-bg;
+
+      div {
+        color: $green;
+        font-size: 40px;
+      }
+
+      span {
+        width: 100%;
+        color: $palette;
+        text-align: center;
+      }
+
+    }
+  }
+
+  .card-label {
+    font-weight: 500;
+    line-height: 28px;
+    color: $palette;
+  }
+
+  .tabs {
+    height: 320px;
+
+    .tab {
+      font-weight: 500;
+      line-height: 20px;
+      color: $palette;
+
+      &.active {
+        font-weight: 700;
+        color: $black;
+        padding-bottom: 0.625rem;
+        box-sizing: border-box;
+        border-bottom: 1px solid $black;
+      }
+    }
+  }
+
+  .custom-dropdown {
+    display: none;
+  }
+
+  .label-big {
+    font-size: 18px;
+  }
+
+  .label-small {
+    font-size: 14px;
+  }
+
+  .card-title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 28px;
+  }
+
+  .title-small {
+    font-size: 24px;
+  }
+
+  .cent {
+    color: $text-color;
+    font-weight: 300;
+    line-height: 28px;
+  }
+}
+
+
+@include media-breakpoint-down(md) {
+  .analytics-header {
+    padding: .5rem 1.5rem;
+
+    .merchant-dropdown {
+      min-width: auto;
+    }
+  }
+
+  .analytics {
+    display: block;
+
+    &-info {
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+      height: auto !important;
+
+      .pl-5 {
+        padding-left: 0;
+      }
+    }
+
+    .analytics-card {
+      border-right: none;
+      border-bottom: 1px solid $brand-line;
+    }
+
+    .statistics,
+    .transactions,
+    .transactions-sum,
+    .statistics2,
+    .transactions-type,
+    .check {
+      margin-bottom: 0.5rem;
+    }
+
+    .scroll-apex {
+      overflow-y: hidden;
+    }
+
+    .apex-w {
+      width: 1000px;
+    }
+
+    .statistics2 {
+      height: auto;
+
+      .em-g-8 {
+        gap: 0;
+      }
+
+      .card {
+        padding: 1rem 0;
+        @include flex_align_center();
+        gap: 0.5rem;
+        width: 100%;
+        height: 100%;
+        border: none;
+
+        .icon {
+          margin-bottom: 0;
+          width: auto;
+          height: auto;
+          justify-content: space-between;
+        }
+
+        .info {
+          @include flex_row_justify_between();
+        }
+      }
+    }
+
+    .transactions-type {
+      display: none;
+    }
+
+    .em-fw-no-wrap {
+      flex-wrap: wrap;
+    }
+
+    .transactions {
+      @include flex_column();
+      height: auto;
+      margin-bottom: 1rem;
+
+      .left-side,
+      .right-side {
+        margin-right: 0;
+        width: 100%;
+      }
+
+      .v-line {
+        border-right: none;
+      }
+
+      .tab {
+        display: none;
+      }
+
+      .mt-8 {
+        margin-top: 5rem;
+      }
+
+      .custom-dropdown {
+        display: block;
+        position: relative;
+        width: 100%;
+        background: $white-color;
+        border: 1px solid $border-color;
+        border-radius: 0.563rem;
+        cursor: pointer;
+        padding: 0 0.75rem;
+        color: $gray-800;
+        user-select: none;
+        outline: none;
+      }
+
+      .selected-option {
+        padding: 0.25rem 0;
+        @include flex_align_center_justify_between();
+        gap: 0.5rem;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: $white-color;
+        border-radius: 0.5rem;
+        margin-top: 0.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .dropdown-item {
+        padding: 0.625rem 0.75rem;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover,
+        &:active {
+          background: $gray-100;
+          color: $gray-900;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+  .analytics-header {
+    display: none;
+  }
+}
+
+.analytics-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.85rem 0 0;
+  background: rgba($white, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid color-mix(in srgb, $brand-line 60%, transparent);
+  box-shadow: 0 6px 22px rgba(16, 24, 34, 0.05);
+
+  .analytics-tabs {
+    padding: 0 1.5rem;
+  }
+}
+
+.analytics-header-wrap .analytics-header {
+  position: static !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,82 @@
+<div class="filters">
+  <div class="filters-field">
+    <span class="filters-label">Период</span>
+    <em-dropdown maxHeight="500px" [path]="dateApi"
+                 [images]="$any(dateTypeImage)"
+                 [selectedId]="$any(isPeriod() ? '' : filter().dateFilterTypeId)"
+                 [selected]="dateLabel()"
+                 [showClear]="isPeriod()"
+                 [flag]="isPeriod()"
+                 (changed)="date($event)" (clearInput)="clearPeriod()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Организация</span>
+    <em-dropdown searchPlaceholder="Название организации" [path]="companyApi"
+                 [canSearch]="true" [showClear]="true"
+                 [selectedId]="$any(filter().companyId)"
+                 [selected]="selectedCompany()"
+                 (changed)="company($event)" (clearInput)="clearCompany()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Торговая точка</span>
+    <em-dropdown searchPlaceholder="Название точки" [path]="merchantApi"
+                 [canSearch]="true" [showClear]="true"
+                 [show]="!!filter().companyId"
+                 [customFilter]="companyFilter()"
+                 [selectedId]="$any(filter().merchantId)"
+                 [selected]="selectedMerchant()"
+                 (changed)="merchant($event)" (clearInput)="clearMerchant()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Касса</span>
+    <em-dropdown searchPlaceholder="Название кассы" [path]="posApi"
+                 [canSearch]="true" [showClear]="true"
+                 [show]="!!filter().merchantId"
+                 [customFilter]="merchantFilter()"
+                 [selectedId]="$any(filter().posId)"
+                 [selected]="selectedPos()"
+                 (changed)="pos($event)" (clearInput)="clearPos()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Тип оплаты</span>
+    <em-dropdown [dataSource]="channelOptions"
+                 [showClear]="filter().channel !== QrPosChannel.All"
+                 [selectedId]="$any(filter().channel)"
+                 [selected]="selectedChannel()"
+                 (changed)="channel($event)" (clearInput)="clearChannel()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Статус транзакции</span>
+    <em-dropdown [dataSource]="statusOptions"
+                 [showClear]="!!filter().statusId"
+                 [selectedId]="$any(filter().statusId)"
+                 [selected]="selectedStatus()"
+                 (changed)="status($event)" (clearInput)="clearStatus()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Регион</span>
+    <em-dropdown [path]="regionApi" [showClear]="true"
+                 [selectedId]="$any(filter().regionId)"
+                 [selected]="selectedRegion()"
+                 (changed)="region($event)" (clearInput)="clearRegion()" />
+  </div>
+
+  <div class="filters-field">
+    <span class="filters-label">Валюта</span>
+    <em-dropdown [path]="currencyApi" [showClear]="true"
+                 [selectedId]="$any(filter().currencyId)"
+                 [selected]="selectedCurrency()"
+                 (changed)="currency($event)" (clearInput)="clearCurrency()" />
+  </div>
+
+  <button type="button" class="filters-reset" (click)="reset()"
+          [disabled]="!canReset()" title="Сбросить все фильтры">
+    <span>Сбросить</span>
+  </button>
+</div>

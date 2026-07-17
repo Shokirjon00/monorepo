@@ -1,0 +1,54 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+:host {
+  position: relative;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.loader-form {
+  position: absolute;
+  z-index: 99;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.subtitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+@include media-breakpoint-down(sm) {
+  .confirm-dialog {
+    padding: 1.5rem;
+    gap: 1rem;
+
+    .btn {
+      width: 100%;
+      min-height: 40px;
+    }
+  }
+}
+

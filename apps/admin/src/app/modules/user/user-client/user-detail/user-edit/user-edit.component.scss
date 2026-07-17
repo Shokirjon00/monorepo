@@ -1,0 +1,33 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import 'core/scss/mixins/breakpoints';
+
+.user-client-edit{
+    overflow: auto;
+    height: calc(100vh - 202px);
+
+  .user-client_item {
+    width: 50%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .user-client_item {
+    width: 100% !important;
+  }
+
+  .pl-7, .pr-7 {
+    padding: 0 !important;
+  }
+  .v-line {
+    border-right: 0;
+  }
+  .title-h1 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+  }
+}

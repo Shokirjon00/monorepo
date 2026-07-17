@@ -1,0 +1,62 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+
+
+.cashback-company-edit{
+    display: block;
+    overflow: auto;
+    height: calc(100vh - 195px);
+}
+
+.custom-checkbox {
+  @include flex_align_center();
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid $border-color;
+
+  input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+
+  .checkbox-text {
+    font-weight: 700;
+    line-height: 26px;
+  }
+}
+
+.bank-commission-card {
+  position: relative;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 0.75rem;
+
+  .card-body {
+    @include em-d-flex-al-start();
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .remove-button {
+    @include flex_align_center();
+  }
+
+  .btn-icon {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .remove-top {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    padding: 4px;
+  }
+}

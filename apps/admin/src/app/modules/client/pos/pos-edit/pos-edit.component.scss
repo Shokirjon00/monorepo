@@ -1,0 +1,27 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+
+.add-number {
+  width: 100%;
+  background-color: $main-bg;
+  border-radius: 8px;
+  padding: 1rem;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.add-number-pos {
+  position: relative;
+}
+
+.add-phone {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}

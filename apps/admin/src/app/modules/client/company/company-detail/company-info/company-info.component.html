@@ -1,0 +1,77 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true"
+  [showBreadcrumb]="true"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" (companyIftSync)="syncWithIft()"/>
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="company-info">
+  @if (companyDetail) {
+    <div class="em-d-flex padding-6">
+      <div class="w-50 v-line pr-6">
+        <div class="labels-data">
+          <div class="em-d-flex"><span class="key">ID компании</span><span>:</span><span
+            class="data">{{ companyDetail.id || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">ID в АБС</span><span>:</span><span
+            class="data">{{ companyDetail.extCodeAbs || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">ID в EQMS</span><span>:</span><span
+            class="data">{{ companyDetail.extCodeEqms || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">ИНН</span><span>:</span><span
+            class="data">{{ companyDetail.inn || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Наименование*</span><span>:</span><span
+            class="data">{{ companyDetail.name || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Форма собственности</span><span>:</span><span
+            class="data">{{ companyDetail.companyLegalFormName || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Сегмент</span><span>:</span><span
+            class="data">{{ companyDetail.companySegmentName || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Филиал</span><span>:</span><span
+            class="data">{{ companyDetail.branchName || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Email</span><span>:</span><span
+            class="data">{{ companyDetail.email || '-' }}</span></div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="labels-data">
+          <div class="em-d-flex"><span class="key">Регион</span><span>:</span> <span
+            class="data">{{ companyDetail.regionName || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Район</span><span>:</span> <span
+            class="data">{{ companyDetail.areaName || '-' }}</span>
+          </div>
+          <div class="em-d-flex"><span class="key">Город</span><span>:</span> <span
+            class="data">{{ companyDetail.cityName || '-' }}</span>
+          </div>
+          <div class="em-d-flex"><span class="key">Адрес</span><span>:</span> <span
+            class="data">{{ companyDetail.address || '-' }}</span>
+          </div>
+          <div class="em-d-flex"><span class="key">Реферал</span><span>:</span> <span
+            class="data">{{ companyDetail.referName || '-' }}</span>
+          </div>
+          <div class="em-d-flex "><span class="key">Отвественный сотрудник</span><span>:</span> <span
+            class="data">{{ companyDetail.responsibleBankEmployeeName || '-' }}</span>
+          </div>
+          <div class="em-d-flex"><span class="key">Дата последней синхронизации</span><span>:</span><span
+            class="data">{{ companyDetail.lastSyncEqms | dateTime }}</span></div>
+        </div>
+      </div>
+    </div>
+  }
+  <div class="padding-6 form form-container mb-7">
+    <div class="title-h1 mb-6">Документы</div>
+    <div class="input em-d-flex" [formGroup]="form">
+      <em-upload-field [readOnly]="true"
+        [memType]="uploadFile.memType"
+        [uploadPath]="uploadFile.uploadPath"
+        formControlName="contractFiles"
+        [fileStorageUrl]="fileStorageUrl"
+        [fileStorageToken]="fileStorageToken"
+       />
+    </div>
+  </div>
+</div>
+<em-toast />

@@ -1,0 +1,100 @@
+<form class="setting-edit" [formGroup]="form">
+  <div class="setting-edit-header container d-flex-sb h-line">
+    <div class="title-h1">Редактировать настройку вывода средств</div>
+    <div class="em-d-flex">
+      <div class="v-line">
+        <div class="mr-2 icon-item tooltip" (click)="back()">
+          <svg-icon src="assets/icons/cancel.svg" />
+          <span class="tooltiptext">Отменить</span>
+        </div>
+      </div>
+      <div class="ml-2 icon-item tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+        <svg-icon src="assets/icons/save.svg" />
+        <span class="tooltiptext">Сохранить</span>
+      </div>
+      <div *ngxPermissionsOnly="'IssueMoneySettingActiveStatus'" class="checkbox-toggle v-line-left pl-3">
+        <div class="toggle-title">Активировать</div>
+        <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch"></label>
+      </div>
+    </div>
+  </div>
+  <div class="setting-edit-body">
+    <div class="body-switches">
+      <div class="select-all">
+        <div class="checkbox-toggle pr-3 mr-3">
+          <div class="toggle-title">Выбрать все торговые точки</div>
+          <input type="checkbox"
+            [checked]="isMerchantSame"
+            [(ngModel)]="isMerchantSame"
+            [ngModelOptions]="{standalone: true}"
+            (change)="changeSameMerchant()"
+            id="switchFist"/><label for="switchFist">Toggle</label>
+          </div>
+        </div>
+        <div class="select-all">
+          <div class="checkbox-toggle pr-3 mr-3">
+            <div class="toggle-title">Одинаковое время для всех точек</div>
+            <input type="checkbox"
+              [disabled]="!permissionService.getPermission('IssueMoneyPeriodTypeList')"
+              [(ngModel)]="isTimeSame"
+              [checked]="isTimeSame"
+              [ngModelOptions]="{standalone: true}"
+              (change)="changeSameTime()"
+              id="switchSecond"/><label for="switchSecond">Toggle</label>
+            </div>
+          </div>
+          <div class="select-all">
+            <div class="checkbox-toggle pr-3 mr-3">
+              <div class="toggle-title">Одинаковые условия для всех точек</div>
+              <input type="checkbox"
+                [disabled]="!permissionService.getPermission('IssueMoneySettingDetail')"
+                [(ngModel)]="isTermsSame"
+                [checked]="isTermsSame"
+                [ngModelOptions]="{standalone: true}"
+                (change)="changeSameTerms()"
+                id="switchThird"/><label for="switchThird">Toggle</label>
+              </div>
+            </div>
+          </div>
+          <ng-container formArrayName="merchants">
+            @for (merchant of merchantsFormArray.controls; track merchant; let i = $index) {
+              <div class="em-d-flex em-dr-columm mb-3">
+                <div class="d-flex-sb em-g-30 w-100 md-fd-column" [formGroupName]="i">
+                  <div class="form mb-0">
+                    <label class="circle-checkbox">
+                      <input type="checkbox" formControlName="isActive" (change)="changeMerchant(merchant)">
+                      <div class="check em-d-flex-center">
+                        <svg-icon src="assets/icons/check.svg" />
+                      </div>
+                      {{merchant.get('merchantName')?.value}}
+                    </label>
+                  </div>
+                  <div class="form mb-0">
+                    <input class="form-control input-time"
+                      type="time"
+                      placeholder="00:00"
+                      (change)="changeTime(merchant)"
+                      formControlName="runAt">
+                    </div>
+                    <div class="form mb-0">
+                      <div class="input">
+                        <em-simple-select-list formControlName="issueMoneyPeriodTypeId"
+                          action="Выберите условия"
+                          [dataSource]="periodTypes"
+                          [isBottomSheet]="true"
+                          (changed)="changeTerm($event, merchant)"
+                         />
+                      </div>
+                    </div>
+                  </div>
+                  <em-validator [fieldControl]="merchant" />
+                </div>
+              }
+            </ng-container>
+            <em-validator [fieldControl]="f['merchants']" />
+          </div>
+          <div class="save-button">
+            <button type="button" class="btn btn-primary" (click)="onSubmit()" [class.disabled]="submitted">Сохранить</button>
+          </div>
+        </form>
+        <em-toast />

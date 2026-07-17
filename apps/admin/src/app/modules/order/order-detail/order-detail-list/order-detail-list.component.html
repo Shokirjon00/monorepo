@@ -1,0 +1,31 @@
+<em-header2
+  [filterFields]="columns"
+  [filterStorageKey]="'orderDetailsFiltersForm'"
+  [tabMenuItems]="tabMenuItems">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions
+          [actionData]="action"
+          [disabled]="loading()"
+          (orderWebhook)="resendWebhook()"
+        ></em-actions>
+      }
+
+    @if (paginate) {
+      <em-pagination
+        class="pl-3"
+        [page]="paginate"></em-pagination>
+    }
+    </div>
+  </ng-container>
+</em-header2>
+
+<em-table
+  (sortChange)="sortTable($event)"
+  [dataSource]="orderHistory"
+  [captions]="columns"
+  [loading]="loading()"
+  [captionKey]="captionKey"
+></em-table>
+<em-toast></em-toast>

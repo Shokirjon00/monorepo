@@ -1,0 +1,83 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Информация</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="padding-7">
+  <div class=" w-50">
+    <div class="labels-data">
+      <div class="em-d-flex"><span class="key">Процент</span><span>:</span><span
+        class="data">{{ promotionDetail?.bankCashbackName || '-' }}</span></div>
+
+      <div class="em-d-flex"><span class="key">Период</span><span>:</span><span
+        class="data">
+        с {{ (promotionDetail?.bankStartDate | date:'dd.MM.yyyy') || '-' }}
+        по {{ (promotionDetail?.bankEndDate | date:'dd.MM.yyyy') || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Тип</span><span>:</span><span
+        class="data">{{ promotionDetail?.cashbackAccrualTypeName || '-' }}</span></div>
+
+      <div class="em-d-flex"><span class="key">Как начислять кэшбэк</span><span>:</span><span
+        class="data">{{ promotionDetail?.purposeCashbackTypeName || '-' }}</span></div>
+
+      <div class="em-d-flex">
+        <span class="key">Понедельник</span><span>:</span>
+        <span class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.monday.isActive}">
+          с {{ promotionDetail?.cashbackParamJson.monday.from || '-' }}
+          по {{ promotionDetail?.cashbackParamJson.monday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Вторник</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.tuesday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.tuesday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.tuesday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Среда</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.wednesday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.wednesday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.wednesday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Четверг</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.thursday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.thursday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.thursday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Пятница</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.friday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.friday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.friday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Суббота</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.saturday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.saturday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.saturday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Воскресенье</span><span>:</span><span
+        class="data" [ngClass]="{'inactive-time': !promotionDetail?.cashbackParamJson.sunday.isActive}">
+        с {{ promotionDetail?.cashbackParamJson.sunday.from || '-' }}
+        по {{ promotionDetail?.cashbackParamJson.sunday.to || '-' }} </span></div>
+
+      <div class="em-d-flex"><span class="key">Примечание</span><span>:</span><span
+        class="data">{{ promotionDetail?.description || '-' }}</span></div>
+
+      <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+        class="data">{{ (promotionDetail?.createdAt | dateTime) || '-' }}</span></div>
+
+      <div class="em-d-flex"><span class="key">Изменено</span><span>:</span><span
+        class="data">{{ (promotionDetail?.modifiedAt |dateTime) || '-' }}</span></div>
+
+      <div class="em-d-flex"><span class="key">Начислить кэшбэк не более</span><span>:</span><span
+        class="data">{{ promotionDetail?.cashabackLimitName || '-' }}</span>
+      </div>
+
+      <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+        class="data">{{ promotionDetail?.statusName || '-' }}</span></div>
+    </div>
+  </div>
+</div>

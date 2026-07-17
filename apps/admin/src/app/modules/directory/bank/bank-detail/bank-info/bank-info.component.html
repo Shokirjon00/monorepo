@@ -1,0 +1,123 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'BankUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToBankUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+@if (bankDetail) {
+  <div class="em-d-flex em-g-64 padding-6">
+    <div class="em-d-flex em-g-16 w-50 v-line">
+      <div class="labels-data">
+        <div class="em-d-flex">
+          <span class="key">Наименование</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.name || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Тип банка</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.bankTypeName || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">ИНН</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.inn || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">EИН</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.ein || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">БИК</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.bic || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">БИК EQMS</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.bicEqms || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Код ABS</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.extCodeAbs || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Код EQMS</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.extCodeEqms || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Возможность возврата</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.canRefundName || '-' }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="em-d-flex em-g-16 w-50">
+      <div class="labels-data">
+        <div class="em-d-flex">
+          <span class="key">Счет к получению</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.debitAccountAbsCode || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Счет к оплате</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.creditAccountAbsCode || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Кор. счет</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.correspondentAccountNumber || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Кор. счет EQMS</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.correspondentAccountNumberEqms || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Приоритет</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.priority }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Позиция</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.position }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Адрес</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.address || '-' }}</span>
+        </div>
+        <div class="em-d-flex">
+          <span class="key">Статус</span>
+          <span>:</span>
+          <span class="data">{{ bankDetail.statusName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding-6 form form-container mb-7">
+    <div class="images">
+      @if (iconFileStorageId) {
+        <div class="title-h1">Логотип банка</div>
+        <img [src]="iconFileStorageId" alt="" class="bank-icon">
+      }
+    </div>
+    @if ((!iconFileStorageId)) {
+      <div class="no-data">
+        Изображения отсутствуют
+      </div>
+    }
+  </div>
+}

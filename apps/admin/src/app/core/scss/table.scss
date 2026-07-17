@@ -1,0 +1,335 @@
+@import "core/scss/variables";
+@import "core/scss/mixins/mixin";
+@import 'core/scss/mixins/breakpoints';
+
+
+.table {
+  overflow: auto;
+  height: calc(100vh - 195px);
+
+  .setting-btn:hover {
+    background: #E1E4E7;
+    border-radius: 8px;
+  }
+
+  .setting-btn:active {
+    background: #C7CDD7;
+    border-radius: 8px;
+  }
+
+  &__status-indicator {
+    div {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .indicator {
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+
+      &.completed {
+        background-color: $success-color;
+      }
+
+      &.process-completed {
+        background-color: #2c8491;
+      }
+
+      &.rejected {
+        background-color: $danger-color;
+      }
+
+      &.no-verified {
+        background-color: $not_verified-border;
+      }
+
+      &.in-process {
+        background-color: $gray-300;
+      }
+
+      &.returned {
+        background-color: $refunded-border;
+      }
+
+      &.unknown {
+        background-color: $primary-color;
+      }
+
+      &.canceled {
+        background-color: $danger-border;
+      }
+    }
+  }
+
+  .setting-info {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+    z-index: 99;
+    position: absolute;
+    padding: 1rem;
+    right: 1rem;
+    max-height: 500px;
+    overflow: auto;
+    background-color: $white-color;
+    min-width: 200px;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  .row-btn-info {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+    z-index: 99;
+    position: absolute;
+    padding: 1rem;
+    right: 1rem;
+    max-height: 500px;
+    overflow: auto;
+    background-color: $white-color;
+    min-width: 200px;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+
+    .info-text {
+      padding: 5px 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-spacing: 0 0.25rem;
+    border-collapse: collapse;
+
+    thead {
+      background-color: $white-color;
+      border-bottom: 1px solid $border-line;
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      height: 56px;
+
+      .thead-tr > th {
+        padding: 1rem;
+        border-right: 2px solid $border-line;
+      }
+
+      > tr > th {
+        position: relative;
+
+        &:not(:last-child) {
+          .resize-holder {
+            cursor: col-resize;
+            width: 20px;
+            height: 100%;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            z-index: 1;
+          }
+        }
+      }
+
+      th {
+        .caption-arrow {
+          display: flex;
+          align-items: center;
+          margin-left: 0.25rem;
+          cursor: pointer;
+          transition: all 400ms ease;
+          width: 20px;
+          height: 20px;
+
+          &.sort-icon {
+            transform: rotate(180deg);
+            transition: all 400ms ease;
+          }
+
+          &:hover {
+            border-radius: 100%;
+            background: #E1E4E7;
+          }
+        }
+
+        .title {
+          font-size: 14px;
+          font-weight: bold;
+          color: $main-black;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-transform: uppercase;
+        }
+
+        &.edit {
+          background-color: $white-color;
+          padding: 0 0.25rem;
+          position: sticky !important;
+          right: -1px;
+
+          .setting-btn {
+            margin: auto;
+            cursor: pointer;
+            width: 40px;
+            height: 24px;
+
+            > img {
+              transform: rotate(90deg);
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        height: 48px;
+
+        &.completed {
+          background-color: $success-status;
+        }
+
+        &.process-completed {
+          background-color: $process-completed;
+        }
+
+        &.rejected {
+          background-color: $rejected;
+        }
+
+        &.no-verified {
+          background-color: $not_verified-bg;
+        }
+
+        &.in-process {
+          background-color: $process;
+        }
+
+        &.returned {
+          background-color: $returned;
+        }
+
+        &.unknown {
+          background-color: $unknown;
+        }
+
+        &.unknown-status {
+          background-color: $unknown-status;
+        }
+
+        &.canceled {
+          background-color: $canceled;
+        }
+
+        .row-btn {
+          @include em-d-flex-al-center();
+          height: 56px;
+          background-color: $white-color;
+          border: none;
+          position: sticky;
+          right: -1px;
+          justify-content: space-between;
+
+          &.center {
+            justify-content: center;
+          }
+
+        }
+
+        td {
+          position: relative;
+          color: $black-700-color;
+          font-size: 14px;
+          font-weight: 500;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: 1rem;
+          max-width: 300px;
+          border-right: 2px solid $border-line;
+
+          .copy-button {
+            display: none;
+          }
+
+          .multiple-value {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          &.number {
+            text-align: center;
+          }
+
+          &.cash {
+            color: $primary-color;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+
+          &:hover {
+            .copy-button {
+              display: block;
+            }
+          }
+        }
+
+        &:hover {
+          transition: 150ms ease-in-out;
+          background-color: $main-bg;
+          border-right: 2px solid $border-line;
+
+          .row-btn {
+            background-color: $main-bg;
+
+            .icon:hover {
+              border-radius: 50%;
+              background: #E1E4E7;
+            }
+          }
+        }
+      }
+    }
+
+    &.skeleton {
+      .skeleton-loader {
+        height: 30px;
+        width: 70%;
+        border-radius: 8px;
+
+        background: $gray-300 linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0) 60%
+        );
+        background-size: 200% 100%;
+        background-position-x: 180%;
+        animation: 1s loading ease-in-out infinite;
+      }
+
+      @keyframes loading {
+        to {
+          background-position-x: -20%;
+        }
+      }
+    }
+  }
+}
+
+.link {
+  color: $primary-color;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 1rem;
+
+  &:hover {
+    text-decoration: underline;
+    color: $primary-color-hover;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .row-btn {
+    position: static !important;
+  }
+}

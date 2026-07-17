@@ -1,0 +1,19 @@
+<div class="w-100 em-d-flex em-jc-sb p-16">
+  <div class="title-h1">Просмотр документа</div>
+  <div class="icon w-100" (click)="close()">
+    <svg-icon src="assets/icons/cancel.svg" />
+  </div>
+</div>
+
+@if (data) {
+  <ngx-extended-pdf-viewer [src]="data"
+    [textLayer]="true"
+    [zoom]="0.8"
+    height="70vh"
+    [showToolbar]="false"
+   />
+} @else {
+  <div class="loader-wrapper">
+    <em-eskhata-bank-loader class="loader-form" />
+  </div>
+}

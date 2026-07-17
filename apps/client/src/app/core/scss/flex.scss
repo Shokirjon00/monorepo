@@ -1,0 +1,143 @@
+@use "core/scss/mixins/breakpoints" as *;
+
+.em-d-flex {
+  display: flex;
+}
+
+.em-d-none {
+  display: none;
+}
+
+.em-ai-center {
+  align-items: center;
+}
+
+.em-jc-sa {
+  justify-content: space-around;
+}
+
+.em-jc-sb {
+  justify-content: space-between;
+}
+
+.em-jc-fe {
+  justify-content: flex-end;
+}
+
+.em-jc-c {
+  justify-content: center;
+}
+
+.em-jc-st {
+  justify-content: flex-start;
+}
+
+
+.em-ta-c {
+  text-align: center;
+}
+
+.em-fw-wrap {
+  flex-wrap: wrap
+}
+
+.em-ai-start {
+  align-items: flex-start;
+}
+
+.em-ai-end {
+  align-items: flex-end;
+}
+
+.em-dr-columm {
+  flex-direction: column;
+}
+
+.em-dr-row {
+  flex-direction: row;
+}
+
+.em-g-8 {
+  gap: 0.5rem;
+}
+
+.em-g-16 {
+  gap: 1rem;
+}
+
+.em-g-24 {
+  gap: 1.5rem;
+}
+
+.em-g-30 {
+  gap: 30px;
+}
+
+.em-g-40 {
+  gap: 2.5rem;
+}
+
+.em-g-64 {
+  gap: 4rem;
+}
+
+.em-g-96 {
+  gap: 6rem;
+}
+
+.em-d-contents {
+  display: contents;
+}
+
+.em-d-block {
+  display: block;
+}
+
+.em-d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex-col-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@include media-breakpoint-down(xlg) {
+  .xlg-fw-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+@include media-breakpoint-down(md) {
+
+  .md-d-flex {
+    display: flex!important;
+  }
+
+  .md-ai-center {
+    align-items: center;
+  }
+
+  .md-fw-wrap {
+    flex-wrap: wrap;
+  }
+
+  .md-fd-column {
+    flex-direction: column;
+  }
+
+  .em-g-40 {
+    gap: 2rem;
+
+  }
+}

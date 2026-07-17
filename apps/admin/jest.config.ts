@@ -1,8 +1,8 @@
 export default {
   displayName: 'admin',
-  preset: '../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../coverage/admin',
+  preset: '../../jest.preset.js',
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
+  coverageDirectory: '../../coverage/apps/admin',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -12,7 +12,13 @@ export default {
       },
     ],
   },
-  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+  moduleNameMapper: {
+    '^@core/(.*)$': '<rootDir>/src/app/core/$1',
+    '^@shared/(.*)$': '<rootDir>/src/app/shared/$1',
+    '^@modules/(.*)$': '<rootDir>/src/app/modules/$1',
+    '^@environments/(.*)$': '<rootDir>/src/environments/$1',
+  },
+  transformIgnorePatterns: ['node_modules/(?!(?:uuid|.*\\.mjs$))'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

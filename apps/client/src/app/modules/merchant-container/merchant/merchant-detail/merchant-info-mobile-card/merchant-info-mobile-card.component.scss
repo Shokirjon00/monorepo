@@ -1,0 +1,60 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use "core/scss/paddings" as *;
+@use 'core/scss/card' as *;
+@use 'core/scss/mixins/mixin' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+.merchant-info {
+  display: flex;
+
+  .left-block {
+    display: flex;
+    gap: 1rem;
+    width: 50%;
+    border-right: 1px solid $brand-line;
+    padding-right: 2.5rem;
+  }
+
+  .right-block {
+    display: flex;
+    gap: 1rem;
+    width: 50%;
+    padding-left: 2.5rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .merchant-info {
+    @include flex_column();
+
+    .left-block {
+      border-right: none;
+      width: 100%;
+      padding-right: 0;
+    }
+
+    .right-block {
+      padding-left: 0;
+      width: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+    .merchant-info {
+      padding: 0 0 0.625rem 0!important;
+
+      .labels-data .key {
+        width: 150px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+

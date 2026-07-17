@@ -1,0 +1,15 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+
+.images{
+  .bank-icon{
+    border: 1px solid $border-line;
+    border-radius: 12px;
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+  }
+}

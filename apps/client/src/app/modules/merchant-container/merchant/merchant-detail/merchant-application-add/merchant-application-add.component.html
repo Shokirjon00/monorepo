@@ -1,0 +1,146 @@
+<form class="merchant-edit w-100" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">Заявка на добавление точки</div>
+
+      <div class="em-d-flex">
+        <div class="v-line">
+          <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltiptext">Отменить</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="ml-2 mr-2 icon-item tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltiptext">Сохранить</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+
+  <div class="merchant-edit-body" [class.blur]="submitted">
+
+    <div class="body-container em-d-flex em-fw-wrap">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Название точки*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="name"
+                   placeholder="Введите название точки"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Адрес*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="address"
+                   placeholder="Введите адрес точки"
+                   [class.is-invalid]="f['address']?.invalid && f['address']?.touched">
+            <em-validator [fieldControl]="f['address']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Количество POS-терминалов*</div>
+          <div class="input">
+            <input formControlName="posCount"
+                   type="number"
+                   class="form-control"
+                   placeholder="Введите pos-терминалов"
+                   [class.is-invalid]="f['posCount']?.invalid && f['posCount']?.touched">
+            <em-validator [fieldControl]="f['posCount']" />
+
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Количество QR касс*</div>
+          <div class="input">
+            <input formControlName="qrCount"
+                   type="number"
+                   class="form-control"
+                   placeholder="Введите количество qr касс"
+                   [class.is-invalid]="f['qrCount']?.invalid && f['qrCount']?.touched">
+            <em-validator [fieldControl]="f['qrCount']" />
+
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Счёт*</div>
+          <div class="input">
+            <em-autocomplete [searchable]="true"
+              [selectWithOutSearch]="true"
+              placeholder="Выберите расчётный счёт"
+              formControlName="paymentAccountId"
+              [path]="requisitesApi" />
+            <em-validator [fieldControl]="f['paymentAccountId']" />
+          </div>
+        </div>
+      </div>
+
+      <div class="right-block">
+        <div class="form">
+          <div class="label">Владелец*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="managerFullName"
+                   placeholder="Введите имя менеджера"
+                   [class.is-invalid]="f['managerFullName']?.invalid && f['managerFullName']?.touched">
+            <em-validator [fieldControl]="f['managerFullName']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">E-mail</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="email" placeholder="Введите почту"
+                   [class.is-invalid]="f['email']?.invalid && f['email']?.touched">
+            <em-validator [fieldControl]="f['email']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Телефон владельца*</div>
+          <div class="input">
+            <input type="text"
+                   class="form-control"
+                   formControlName="managerPhoneNumber"
+                   placeholder="+992 (XX) XXX XX XX"
+                   mask="+000 (00) 000 00 00"
+                   [dropSpecialCharacters]="true"
+                   (focus)="onPhoneFocus()"
+                   [class.is-invalid]="f['managerPhoneNumber']?.invalid && f['managerPhoneNumber']?.touched">
+
+            <em-validator [fieldControl]="f['managerPhoneNumber']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Примечание</div>
+          <div class="input">
+            <input formControlName="description"
+                   type="text"
+                   class="form-control"
+                   placeholder="Введите примечание">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button"
+            class="btn btn-primary"
+            (click)="onSubmit()">
+      Создать заявку
+    </button>
+  </div>
+
+  @if (submitted) {
+    <em-eskhata-bank-loader class="form-loader" />
+  }
+</form>
+
+<em-toast />

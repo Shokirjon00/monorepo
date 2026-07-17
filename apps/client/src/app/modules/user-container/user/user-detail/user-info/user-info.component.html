@@ -1,0 +1,79 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" (click)="back()" />
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div class="v-line pr-1">
+        <div *ngxPermissionsOnly="'UserResetPassword'" class="ml-4 icon-item tooltip" (click)="showKey()">
+          <svg-icon src="assets/icons/login-send.svg" />
+          <span class="tooltiptext">Сброс пароля</span>
+        </div>
+      </div>
+      <div *ngxPermissionsOnly="'UserUpdate'" class="ml-3 icon-item tooltip" (click)="navigate()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltiptext">Редактирования </span>
+      </div>
+    </div>
+  </div>
+</em-header2>
+
+@if (userDetail) {
+  <div class="user-admin">
+    <div class="labels-data em-g-8">
+      <div class="em-d-flex">
+        <span class="key">Фамилия</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.lastName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Имя</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.firstName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Отчество</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.middleName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Логин</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.userName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Номер телефона</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.phoneNumber || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Электронная почта</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.email || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Роль</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.roleName || '-' }}</span>
+      </div>
+      <div class="em-d-flex">
+        <span class="key">Статус</span>
+        <span>:</span>
+        <span class="data">{{ userDetail?.statusName || '-' }}</span>
+      </div>
+      <div class="em-d-flex paragraph-wrap">
+        <span class="key" style="flex-shrink: 0;">Торговые точки</span>
+        <span>:</span>
+        <span class="data">@for (item of userDetail.merchants; track item) {
+          {{ item }},
+        }</span>
+      </div>
+      <div class="em-d-flex paragraph-wrap">
+        <span class="key" style="flex-shrink: 0;">Кассы</span>
+        <span>:</span>
+        <span class="data">@for (item of userDetail.poses; track item) {
+          {{ item }},
+        }</span></div>
+    </div>
+  </div>
+}
+<em-toast />

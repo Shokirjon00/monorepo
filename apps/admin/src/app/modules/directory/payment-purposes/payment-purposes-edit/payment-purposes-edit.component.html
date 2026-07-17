@@ -1,0 +1,73 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ areaId ? 'Редактировать шаблон назначения' : 'Добавить шаблон назначения' }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'AreaActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 balance-limit">
+    <div class="form">
+      <div class="label">Наименование*</div>
+      <div class="input">
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          placeholder="Введите наименование">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Текст*</div>
+      <div class="input">
+          <textarea
+            formControlName="templateText"
+            class="text-area form-control"
+            placeholder="Введите текст"
+            (dragover)="onDragOver($event)"
+            (drop)="onDropIntoInput($event, 'templateText')">
+          </textarea>
+        <em-validator [fieldControl]="f['templateText']" />
+      </div>
+    </div>
+  </div>
+  <div class="padding-6 em-d-flex em-dr-columm em-g-20">
+    <div class="em-d-flex em-dr-columm em-g-8">
+      <div class="title-h1">Подсказка</div>
+      <div>Можно перетащить назначение платежа в поле 'Текст'.</div>
+    </div>
+    <div class="em-d-flex em-fw-wrap em-ai-center em-g-16">
+      @for (placeholder of parameters; track placeholder) {
+        <div
+          class="placeholder"
+          draggable="true"
+          [class.dragging]="draggedKey === placeholder.key"
+          (dragstart)="onDragStart(placeholder.key, $event)"
+          (dragend)="onDragEnd()">
+          {{ placeholder.description }}
+        </div>
+      }
+    </div>
+  </div>
+</form>
+<em-toast />

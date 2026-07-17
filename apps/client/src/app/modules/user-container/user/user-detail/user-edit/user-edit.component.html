@@ -1,0 +1,146 @@
+<form class="user-edit" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ userId ? 'Редактировать' : 'Новый клиент' }}</div>
+      <div class="em-d-flex">
+        <div class="v-line">
+          <div class="mr-2 icon-item tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltiptext">Отменить</span>
+          </div>
+        </div>
+        <div [class.v-line]="this.updateUrl !== 'new'">
+          <div class="ml-2 mr-2 icon-item tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltiptext">Сохранить</span>
+          </div>
+        </div>
+        <div *ngxPermissionsOnly="'UserUpdate'" class="ml-2 mr-2 checkbox-toggle">
+          @if (!isMobile) {
+            <div class="toggle-title">Активировать</div>
+          }
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="user-edit-body mt-7">
+    <div class="body-container h-line em-d-flex em-fw-wrap">
+      <div class="left-block">
+        <div class="form">
+          <div class="label">Фамилия*</div>
+          <div class="input">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Введите фамилию"
+              [class.is-invalid]="f['lastName']?.invalid && f['lastName']?.touched">
+              <em-validator [fieldControl]="f['lastName']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Имя*</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="firstName" placeholder="Введите имя"
+                [class.is-invalid]="f['firstName']?.invalid && f['firstName']?.touched">
+                <em-validator [fieldControl]="f['firstName']" />
+              </div>
+            </div>
+            <div class="form">
+              <div class="label">Отчество</div>
+              <div class="input">
+                <input type="text" class="form-control" formControlName="middleName" placeholder="Введите отчество"
+                  [class.is-invalid]="f['middleName']?.invalid && f['middleName']?.touched">
+                  <em-validator [fieldControl]="f['middleName']" />
+                </div>
+              </div>
+              <div class="form">
+                <div class="label">Логин*</div>
+                <div class="input">
+                  <input type="text" class="form-control" formControlName="userName" placeholder="Введите логин"
+                    [class.is-invalid]="f['userName']?.invalid && f['userName']?.touched">
+                    <em-validator [fieldControl]="f['userName']" />
+                  </div>
+                </div>
+              </div>
+              <div class="right-block">
+                <div class="form">
+                  <div class="label">Номер телефона*</div>
+                  <div class="input">
+                    <input type="text" class="form-control" formControlName="phoneNumber" placeholder="+992 (XX) XXX XX XX"
+                      mask="+000 (00) 000 00 00" [dropSpecialCharacters]=true
+                      [class.is-invalid]="f['phoneNumber']?.invalid && f['phoneNumber']?.touched">
+                      <em-validator [fieldControl]="f['phoneNumber']" />
+                    </div>
+                  </div>
+                  <div class="form">
+                    <div class="label">Email</div>
+                    <div class="input">
+                      <input type="text" class="form-control" formControlName="email" placeholder="Введите эл.почту"
+                        [class.is-invalid]="f['email']?.invalid && f['email']?.touched">
+                        <em-validator [fieldControl]="f['email']" />
+                      </div>
+                    </div>
+                    <div class="form" formArrayName="roles">
+                      @for (adminRole of clientRoles.controls; track adminRole; let i = $index) {
+                        <div>
+                          <div class="label">Роль*</div>
+                          <div class="input">
+                            <em-simple-select-list action="Выберите роль"
+                              [formControlName]="i"
+                              [isBottomSheet]="true"
+                              [dataSource]="clientRoleValues" />
+                          </div>
+                          <em-validator [fieldControl]="adminRole" />
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-container">
+                  <div class="form">
+                    <div class="label">Торговая точка*</div>
+                    <div class="circle-check">
+                      <div class="input">
+                        <em-multi-select formControlName="merchants"
+                          placeholder="Выберите торговые точки"
+                          [dataSource]="merchantsDictionary"
+                          [isBottomSheet]="true"
+                          (changed)="changeMerchant($event)" />
+                        <em-validator [fieldControl]="f['merchants']" />
+                      </div>
+                      <label class="circle-checkbox" >
+                        <input type="checkbox"
+                          [checked]="allMerchantsSelected()"
+                          (change)="toggleAllMerchants($event)">
+                          <div class="check em-d-flex-center">
+                            <svg-icon src="assets/icons/check.svg" />
+                          </div>Выбрать все
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form">
+                      <div class="label">Кассы*</div>
+                      <div class="circle-check">
+                        <div class="input">
+                          <em-multi-select placeholder="Выберите кассы"
+                            formControlName="poses"
+                            [disable]="posesDisabled"
+                            [dataSource]="posesDictionary"
+                            [isBottomSheet]="true" />
+                          <em-validator [fieldControl]="f['poses']" />
+                        </div>
+                        <label class="circle-checkbox">
+                          <input type="checkbox"
+                            [disabled]="!isMerchantSelected()"
+                            [checked]="allPosesSelected()"
+                            (change)="toggleAllPoses($event)">
+                            <div class="check em-d-flex-center">
+                              <svg-icon src="assets/icons/check.svg" />
+                            </div>Выбрать все
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="onSubmit()">{{userId ? 'Сохранить' : 'Добавить'}}</button>
+                  </div>
+                </form>
+
+                <em-toast />

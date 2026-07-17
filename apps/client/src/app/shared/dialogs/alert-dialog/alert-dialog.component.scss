@@ -1,0 +1,32 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.alert-dialog {
+  max-width: 700px;
+  padding: 2.5rem;
+  &-btn {
+    max-width: 300px;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  word-break: break-word;
+}
+
+::ng-deep.mat-dialog-container {
+  border-radius: 20px;
+  padding: 2.5rem;
+  height: auto !important;
+}

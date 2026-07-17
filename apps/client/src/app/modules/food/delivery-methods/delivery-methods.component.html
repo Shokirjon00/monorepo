@@ -1,0 +1,61 @@
+@if (form) {
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <em-header2>
+      <div class="d-flex-sb w-100" header-right-actions>
+        <div class="title-h1 w-50">Способ доставки Ресторана</div>
+        <div class="em-d-flex">
+          <div class="v-line pr-1">
+            <button type="submit" class="button-tooltip">
+              <svg-icon src="assets/icons/save.svg" />
+              <span class="tooltip-text">Сохранить</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </em-header2>
+    @if (deliveryMethods.length) {
+      <div class="delivery-methods" [class.blur]="submitted()">
+        <p class="subtitle">Тип Обслуживания</p>
+        @for (method of deliveryMethods; track method) {
+          <div class="switch-row">
+            <label class="switch-label">
+              {{ method.name }}
+              <div class="switch-control">
+                <input
+                  type="checkbox"
+                  [id]="method.deliveryTypeId"
+                  [formControlName]="method.deliveryTypeId"
+                  (change)="onDeliveryChange(method.deliveryTypeId)"
+                />
+                <label [for]="method.deliveryTypeId" class="slider"></label>
+              </div>
+            </label>
+            @if (form.get(method.deliveryTypeId)?.value &&
+            method.deliveryTypeId === restaurantDeliveryId) {
+              <div class="form mb-0 width-max">
+                <div class="input-with-currency">
+                  <input
+                    type="number"
+                    class="form-control"
+                    [formControlName]="getPriceControlName(method.deliveryTypeId)"
+                    placeholder="Стоимость Доставки"
+                    min="0"
+                    [class.is-invalid]="
+                      f[getPriceControlName(method.deliveryTypeId)]?.invalid &&
+                      f[getPriceControlName(method.deliveryTypeId)]?.touched"
+                  />
+                  <span class="currency">{{ method.price?.currencyCode || 'TJS' }}</span>
+                  <em-validator [fieldControl]="f[getPriceControlName(method.deliveryTypeId)]" />
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </form>
+  @if (submitted()) {
+    <em-eskhata-bank-loader class="form-loader" />
+  }
+}
+<em-toast />

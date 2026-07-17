@@ -1,0 +1,143 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+
+.form {
+
+  .setting-input {
+    max-width: 72px;
+    width: 100%;
+  }
+}
+
+.setting-edit {
+
+  .save-button {
+    display: none;
+  }
+
+  &-body {
+    margin: 5rem;
+
+    .body-switches {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      margin-bottom: 3rem;
+
+      .select-all {
+        max-width: 652px;
+        width: 100%;
+      }
+    }
+
+    .body-container {
+      padding-bottom: 3rem;
+
+      .left-block {
+        width: 50%;
+        border-right: 1px solid $brand-line;
+        padding-right: 5rem;
+      }
+
+      .right-block {
+        width: 50%;
+        padding-left: 5rem;
+      }
+    }
+
+    .footer-container {
+      margin-top: 3rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .setting-edit {
+
+    &-header {
+      flex-direction: column;
+    }
+
+    &-body {
+      margin: 2rem;
+      flex-direction: column;
+
+      .body-switches {
+        flex-direction: column;
+      }
+
+      .body-container {
+        padding-bottom: 1.5rem;
+
+        .left-block {
+          width: 100%;
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .right-block {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      .footer-container {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .custom-modalbox {
+    height: 200px;
+  }
+
+  .setting-edit {
+    position: relative;
+    margin-bottom: 9rem;
+
+    &-header {
+      display: none;
+    }
+
+    &-body {
+      margin: 0 1rem 1rem 1rem;
+
+      .body-switches {
+        margin: 1rem 0 1.5rem 0;
+        gap: 1.5rem;
+      }
+
+      .em-dr-columm {
+        padding: 1rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+        .md-fd-column {
+          gap: 1.5rem;
+        }
+      }
+    }
+
+    .save-button {
+      display: block;
+      position: fixed;
+      bottom: 1rem;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      padding: 0 1rem;
+
+      .btn {
+        padding: 0.75rem 0.625rem;
+        width: 100%;
+      }
+    }
+  }
+}

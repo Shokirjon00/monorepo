@@ -1,0 +1,19 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="columns"
+  [filterStorageKey]="'balanceLimitListFiltersForm'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="balanceLimits"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [loading]="loading"
+  [captionKey]="captionKey" />

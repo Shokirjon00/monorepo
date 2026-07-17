@@ -1,0 +1,32 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="actions"
+  [filterStorageKey]="'withdrawalAmountSettingFiltersForm'">
+  <ng-container header-actions>
+    <div class="action-line pl-3">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  (link)="link($event)"
+  [dataSource]="withdrawSet"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+  [page]="paginate"
+ />
+@if (loading) {
+  <em-eb-loader class="loader" />
+}

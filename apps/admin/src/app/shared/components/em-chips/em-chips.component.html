@@ -1,0 +1,19 @@
+<div class="em-chips">
+  <div class="chips-list">
+    @for (it of items(); track it.length; let i = $index) {
+      <div class="chip">
+        <span class="chip-text">{{ it }}</span>
+        <button type="button" class="chip-remove" (click)="remove(i)">
+          <span class="icon-close">×</span>
+        </button>
+      </div>
+    }
+
+    <div class="chip chip-input" role="group">
+      <input class="chip-input-field" type="text" [(ngModel)]="newItem" (keydown)="onKeydown($event)" placeholder="Дополнительные почты для копии" />
+      <button type="button" class="chip-add" placeholder="Добавить почту для копии" (click)="addFromInput()"><svg-icon class="em-d-flex-center" src="assets/icons/plus.svg" />
+      </button>
+    </div>
+  </div>
+
+</div>

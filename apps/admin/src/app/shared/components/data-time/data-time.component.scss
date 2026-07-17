@@ -1,0 +1,35 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/button';
+@import 'core/scss/form';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.data-time-container {
+  padding: 2.5rem;
+
+  .data-time-title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: $text-color;
+  }
+
+  .data-time-header {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $main-black;
+  }
+
+  .data-row {
+    width: 767px;
+  }
+
+
+}

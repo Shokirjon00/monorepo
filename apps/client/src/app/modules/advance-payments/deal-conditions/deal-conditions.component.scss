@@ -1,0 +1,108 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+
+.agreement {
+
+  &-head {
+    padding: 1.5rem 2.5rem;
+  }
+
+  &-body {
+    padding: 1.5rem 2.5rem;
+
+    .agreement-container {
+
+      .agreement-text {
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        color: $near-black;
+      }
+
+      .link {
+        font-weight: 400;
+        font-size: 0.8rem;
+        line-height: 1.125rem;
+        text-decoration-line: underline;
+        color: $primary-color;
+        cursor: pointer;
+      }
+
+      .checkbox-group {
+        margin: 1.2rem 0;
+
+        .agreement-checkbox {
+          font-weight: 400;
+          font-size: 0.8rem;
+          line-height: 1.125rem;
+          color: $near-black;
+          @include em-d-flex-al-center();
+          gap: 0.5rem;
+
+          input[type="checkbox"] {
+            width: 1.125rem;
+            height: 1.125rem;
+          }
+        }
+      }
+
+      .button-group {
+        display: flex;
+        gap: 0.625rem;
+        margin-top: 1.2rem;
+      }
+    }
+
+    .agreement-list {
+      line-height: 1.6;
+      margin: 0;
+
+      .agreement-item {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        color: $near-black;
+      }
+    }
+
+    .agreement-info {
+      margin: 1rem 0;
+    }
+
+  }
+}
+
+@include media-breakpoint-down(md) {
+
+  .agreement-head {
+    padding: 1rem;
+  }
+
+  .agreement-body {
+    padding: 1rem 1rem 1.5rem 1rem;
+
+    .agreement-container {
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+      .agreement-text {
+        font-size: 1.125rem;
+        margin: 0;
+      }
+
+      .agreement-item {
+        font-size: 0.8rem;
+      }
+
+      .more-info {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div class="withdrawal-dialog em-d-flex em-dr-columm em-jc-sb h-100">
+  <div class="top">
+    @if (!periodTypes.length) {
+      <div class="form">
+        <input class="form-control input-time"
+               type="time"
+               [(ngModel)]="time"
+               placeholder="00:00"
+               step="5">
+      </div>
+    }
+    @if (periodTypes.length) {
+      <div class="form">
+        <div class="input">
+          <em-simple-select-list [dataSource]="periodTypes"
+            action="Выберите период"
+            (changed)="selectPeriod($event)"
+           />
+        </div>
+      </div>
+    }
+  </div>
+  <div class="bottom">
+    <button class="btn btn-secondary" (click)="closeDialog()">Отмена</button>
+    <button class="btn btn-primary" (click)="confirmDialog()">Применить</button>
+  </div>
+</div>

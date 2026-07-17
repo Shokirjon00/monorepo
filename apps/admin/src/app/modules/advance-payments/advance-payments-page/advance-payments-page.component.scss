@@ -1,0 +1,60 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import 'core/scss/card';
+
+.status-scroll {
+  overflow: hidden;
+  overflow-x: scroll;
+
+  .status-card {
+
+    > .issued {
+      background: $success-bg;
+      border: 1px solid $success-border;
+    }
+
+    > .settled {
+      background: $refunded-bg;
+      border: 1px solid $refunded-border;
+    }
+
+    > .expired {
+      background: $danger-bg;
+      border: 1px solid $reject-border;
+    }
+
+    .amount {
+      width: max-content;
+      padding: 0.25rem 1rem;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 24px;
+
+      &-status {
+        font-size: 14px;
+        margin-right: 0.5rem;
+      }
+
+      .issued {
+        color: $success-color;
+      }
+
+      .settled {
+        color: $refunded-color;
+      }
+
+      .expired {
+        color: $danger-color;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

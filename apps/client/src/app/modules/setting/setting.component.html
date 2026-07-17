@@ -1,0 +1,55 @@
+<div class="setting">
+  <div class="setting-head position-sticky h-line d-flex-sb">
+    <div class="title-h1 w-100">Настройки FAST QR</div>
+    <div class="v-line-left pl-3" *ngxPermissionsOnly="'CompanyIntegrationConfigurationUpdate'">
+      <div class="icon-item tooltip em-d-flex" (click)="onSubmit()" [class.disabled]="submitted">
+        <svg-icon src="assets/icons/save.svg" />
+        <span class="tooltiptext">Сохранить</span>
+      </div>
+    </div>
+  </div>
+  <div class="setting-body">
+    <form class="content p-relatives" [formGroup]="form">
+      <div class="form-body em-d-flex md-fw-wrap md-mb-5 mb-3">
+        <div class="form md-mr-0">
+          <div class="label">Идентификатор организации</div>
+          <div class="input" [class.blur]="!isOpen">{{form.get('companyId').value}}</div>
+        </div>
+        <div class="icon-item tooltip em-d-flex" (click)="isOpen = !isOpen">
+          <svg-icon [src]="'assets/icons/' + (isOpen ? 'eye-black-open.svg' : 'eye-black-close.svg')" />
+          <span class="tooltiptext">{{isOpen ? 'Скрыть' : 'Показать'}}</span>
+        </div>
+        <div class="icon-item tooltip em-d-flex" (click)="copyHashKey()">
+          <svg-icon src="assets/icons/copy.svg" />
+          <span class="tooltiptext">Копировать</span>
+        </div>
+      </div>
+      <div class="form-body em-d-flex md-fw-wrap md-mb-5 em-ai-center">
+        <div class="form md-mr-0" style="border-bottom: none;">
+          <div class="label">URL-адрес для обратной связи</div>
+          <div class="input callback">
+            <input type="text" class="form-control" placeholder="URL-адрес для обратной связи" formControlName="webhookUrl">
+            <em-validator [fieldControl]="f['webhookUrl']" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="warning-text">
+      <h3 class="title">Предупреждение!</h3>
+      <p class="description">
+        Информация, размещенная на данной странице, является строго конфиденциальной. Запрещается делиться ею с какими-либо лицами, не относящимися к разработке/доработке
+        кассового программного обеспечения. В случае намеренной передачи данных банк не гарантирует безопасность платежей и обеспечение бесперебойной работы системы. Будьте бдительны!
+      </p>
+      <p class="description">
+        Для справки: Ключ API - это уникальный идентификатор, который используется для аутентификации запросов, связанных с банковской системой. Он нужен для учета использования
+        API и оплаты.
+      </p>
+      <p class="description">Для осуществления полноценной интеграции с банком необходимо передать данный ключ разработчику программного обеспечения по защищенным каналам передачи данных.</p>
+      <p class="description">URL-адрес для обратной связи - это HTTPS URL на вашем бэкенде, доступный из сети Интернет. Этот пункт опционален, если вы планируете использовать Webhook.</p>
+    </div>
+  </div>
+</div>
+@if (submitted) {
+  <em-eskhata-bank-loader class="form-loader" />
+}
+<em-toast />

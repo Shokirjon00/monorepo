@@ -1,0 +1,12 @@
+@import '../../../../../../core/scss/variables';
+@import '../../../../../../core/scss/styles';
+@import '../../../../../../core/scss/flex';
+@import '../../../../../../core/scss/margins';
+@import '../../../../../../core/scss/paddings';
+
+.link {
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration-line: underline;
+  color: $primary-color;
+}

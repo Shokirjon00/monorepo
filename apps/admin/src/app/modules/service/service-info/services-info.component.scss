@@ -1,0 +1,16 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.images{
+  .service-icon{
+    border: 1px solid $border-line;
+    border-radius: 12px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}
+

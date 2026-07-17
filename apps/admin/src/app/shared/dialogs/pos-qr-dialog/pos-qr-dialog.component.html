@@ -1,0 +1,31 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center">QR для прикрепления POS-терминала</div>
+    <div>
+      <div
+        [ngStyle]="{ 'background-image': 'url(&quot;assets/images/'+ selectedQrSize +'.png&quot;)', 'background-position': 'center','background-repeat': 'no-repeat' }"
+        class="qr" [className]="'qr-' + selectedQrSize ">
+        <div class="qr-code">
+          <div class="qr-code-body" [className]="'qr-code-body-' + selectedQrSize ">
+            <qrcode class="qr-svg"
+              [qrdata]="connectionQr"
+              [allowEmptyString]="true"
+              [elementType]="'svg'"
+              [width]="qrBody"
+              [imageWidth]="50"
+              [imageHeight]="50"
+              [colorDark]="'#293241'"
+              [colorLight]="'#EBEBEB'"
+             />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="em-d-flex em-jc-c">
+    <button class="btn btn-primary btn-lg mr-2" (click)="onCancel()">Закрыть</button>
+  </div>
+  @if (loading) {
+    <em-preloader />
+  }
+</div>

@@ -1,0 +1,145 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+
+.user-edit {
+  height: calc(100% + 200px);
+
+  &-header .back {
+    display: none;
+  }
+
+  &-body {
+    margin: 2rem 3rem;
+
+    .body-container {
+      padding-bottom: 3rem;
+
+      .left-block {
+        width: 50%;
+        border-right: 1px solid $brand-line;
+        padding-right: 5rem;
+      }
+
+      .right-block {
+        width: 50%;
+        padding-left: 5rem;
+      }
+    }
+
+    .footer-container {
+      margin-top: 3rem;
+    }
+
+    .btn {
+      display: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .user-edit {
+
+    .position-sticky {
+      position: absolute;
+      top: 57px;
+      width: 100%;
+    }
+
+    &-header {
+      flex-direction: column;
+    }
+
+    &-body {
+      margin: 2rem;
+      flex-direction: column;
+
+      .body-container {
+        padding-bottom: 1.5rem;
+
+        .left-block {
+          width: 100%;
+          padding-right: 0;
+          border-right: none;
+        }
+
+        .right-block {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      .footer-container {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .user-edit {
+
+    .position-fixed {
+      position: absolute;
+      top: 57px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    &-header {
+      padding: 1.25rem 1rem;
+      flex-direction: row;
+      align-items: center;
+
+      .icon {
+        display: none;
+      }
+
+      .back {
+        display: block;
+        line-height: 0;
+      }
+
+      .title-h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+
+      .mobile-header {
+        width: 100%;
+        @include flex_align_center();
+      }
+
+      .checkbox-toggle .toggle-title {
+        display: none;
+      }
+    }
+
+    &-body {
+      margin: 3rem 1rem 1rem 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+
+      .body-container {
+        padding-bottom: 0;
+        border: none;
+      }
+
+      .footer-container {
+        margin-top: 0;
+      }
+
+      .btn {
+        padding: 0.75rem 0.625rem;
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}

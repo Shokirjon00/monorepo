@@ -1,0 +1,41 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="captions"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'accountFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="accounts"
+  [captionKey]="captionKey"
+  [captions]="captions"
+  [loading]="loading" />
+
+<div class="mobile-card">
+  @for (account of accounts; track account) {
+   <em-account-mobile-card [account]="account" />
+  }
+  @if ((!accounts || !accounts.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && accounts.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

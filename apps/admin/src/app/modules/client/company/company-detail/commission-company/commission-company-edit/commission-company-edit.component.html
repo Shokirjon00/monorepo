@@ -1,0 +1,144 @@
+<form class="w-100" [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">Комиссия</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'CashbackCompanyActiveStatus'" class="ml-2 checkbox-toggle">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class='cashback-company-edit'>
+    <div class="h-line">
+      <div class="em-d-flex pt-5 pb-7">
+        <div class="w-50 v-line form-container p-relative">
+          <div class="position-sticky">
+          <div class="form">
+            <div class="label">Процент</div>
+            <div class="input">
+              <em-autocomplete [searchable]="true"
+                [selectWithOutSearch]="true"
+                [placeholder]="'Выберите процент'"
+                formControlName="commissionId"
+                [path]="companyCommission" />
+              <em-validator [fieldControl]="f['commissionId']" />
+            </div>
+          </div>
+          <div class="form">
+            <label class="em-checkbox custom-checkbox">
+              <input type="checkbox" formControlName="isEWalletCommissionCancelled">
+              <span class="checkbox-text">Отмена комиссии для платежей с кошельков Эсхата Онлайн</span>
+            </label>
+          </div>
+          <div class="form">
+            <div class="label">Период комиссии</div>
+            <div class="input">
+              <div class="em-d-flex">
+                <input type="date" class="form-control" formControlName="startDate" placeholder="00.00.0000">
+                <input type="date" class="form-control" formControlName="endDate" placeholder="00.00.0000">
+                <div class="arrow"
+                     [class.disabled]="isPeriodDisabled"
+                     (click)="!isPeriodDisabled && getPeriodTime('startDate', 'endDate')">
+                  <svg-icon src="assets/images/arrow.svg" />
+                </div>
+              </div>
+            </div>
+
+            <em-validator [fieldControl]="f['startDate']" />
+            <em-validator [fieldControl]="f['endDate']" />
+          </div>
+          <div class="form">
+            <div class="label">Тип</div>
+            <div class="input">
+              <em-simple-select-list formControlName="commissionTypeId"
+                action="Выберите процент"
+                [dataSource]="companyCommissionType" />
+              <em-validator [fieldControl]="f['commissionTypeId']" />
+            </div>
+          </div>
+          <div class="w-100 mb-0">
+            <div class="label">Примечание</div>
+            <div class="input">
+              <input type="text" class="form-control" formControlName="description" placeholder="Введите примечание"
+                     [class.is-invalid]="f['description']?.invalid && f['description']?.touched">
+              <em-validator [fieldControl]="f['description']" />
+            </div>
+          </div>
+          </div>
+          </div>
+        <div class="w-50 form-container">
+          <div formArrayName="bankCommissions">
+            @for (bc of bankCommissionsFormArray.controls; track $index; let i = $index) {
+              <div [formGroupName]="i" class="card bank-commission-card">
+               <div class="card-body">
+                 <button type="button" class="btn-icon remove-top" (click)="removeBankCommission(i)">
+                   <svg-icon src="assets/icons/cancel-small.svg" />
+                 </button>
+                 <div class="form ">
+                   <div class="label">Процент*</div>
+                   <div class="input">
+                     <em-autocomplete [searchable]="true"
+                       [selectWithOutSearch]="true"
+                       [placeholder]="'Выберите процент'"
+                       formControlName="commissionId"
+                       [path]="companyCommission" />
+                     <em-validator [fieldControl]="bc.get('commissionId')" />
+                   </div>
+                 </div>
+                 <div class="w-100 mb-0">
+                   <div class="label">Банк*</div>
+                   <div class="input">
+                     <em-autocomplete [searchable]="true"
+                       [selectWithOutSearch]="true"
+                       [placeholder]="'Банк'"
+                       formControlName="bankId"
+                       [path]="apiBanksPath" />
+                     <em-validator [fieldControl]="bc.get('bankId')" />
+                   </div>
+                 </div>
+               </div>
+              </div>
+            }
+           </div>
+          <div class="mt-3">
+            <button type="button" class="btn btn-secondary padding-1 w-100" (click)="addBankCommission()">Добавить банковскую комиссию</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-7 h-line">
+      <div class="title-h1">Выберите торговые точки*</div>
+      @for (merchant of merchants; track merchant) {
+        <div [class.is-invalid]="f['merchants']?.invalid && f['merchants']?.touched"
+             class="v-line padding-3">
+          <label class="circle-checkbox">
+            <input type="checkbox"
+                   (change)="merchantSelect(merchant.id)"
+                   [checked]="commissionDetail?.merchants.includes(merchant.id)"
+                   [disabled]="isMerchantsReadOnly()">
+            <div class="check em-d-flex-center">
+              <svg-icon src="assets/icons/check.svg" />
+            </div>
+            {{ merchant.name }}
+          </label>
+        </div>
+      }
+      <em-validator [fieldControl]="f['merchants']" />
+    </div>
+  </div>
+</form>
+<em-toast />

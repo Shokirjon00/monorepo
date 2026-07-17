@@ -1,0 +1,63 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/paddings' as *;
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+
+  .success-message {
+    font-weight: 500;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2rem;
+    text-align: center;
+  }
+
+  .modal-body {
+    .advance-text {
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+
+      &-bold {
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .confirm-dialog {
+    padding: 1.5rem;
+
+    .title {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+    .modal-body {
+      .advance-text {
+        font-size: 1rem;
+        line-height: 1.5rem;
+
+        &-bold {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import "core/scss/form";
+
+.form-group {
+  display: block;
+
+  > li {
+    display: list-item;
+  }
+}

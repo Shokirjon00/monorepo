@@ -1,0 +1,5 @@
+export  enum AccountTypeID {
+  TYPE_SAVING_CARD_ID = '91b43fc2-33bc-417d-bb3d-a4d7d70e7048',
+  POSTE_RESTANTE = '34746626-6e12-44e4-809b-539c0bda26e3',
+  TRANSIT_ACCOUNT = 'bea9682d-fe39-4e96-9b97-0279f95ca96a'
+}

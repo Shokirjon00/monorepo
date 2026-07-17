@@ -1,0 +1,21 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+
+.merchant-edit {
+  display: block;
+  overflow: auto;
+  height: calc(100vh - 202px);
+
+  textarea {
+    height: 150px;
+
+    .disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

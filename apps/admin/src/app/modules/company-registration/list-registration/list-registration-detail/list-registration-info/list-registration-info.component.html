@@ -1,0 +1,133 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [tabMenuItems]="tabMenuItems">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+          (generatingApplication)="generatingApplication()"
+          (dorDispatch)="dorDispatch()" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+<div class="container padding-6 h-line">
+  @if (companyRegistrationDetail) {
+    <div class="em-d-flex">
+      <div class="w-50 v-line pr-6">
+        <div class="labels-data">
+          <div class="em-d-flex"><span class="key">ID</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.id }}</span></div>
+          <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.companyRegistrationApplicationStatusName }}</span></div>
+          <div class="em-d-flex"><span class="key">Название организации</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.companyName }}</span></div>
+          <div class="em-d-flex"><span class="key">Название организации на латинском</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.companyNameLatin }}</span></div>
+          <div class="em-d-flex"><span class="key">Адрес торговой точки</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.address }}</span></div>
+          <div class="em-d-flex"><span class="key">ИНН</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.inn || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">ЕИН</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.ein || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">ФИО заявителя</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.applicantFullName || '-' }}</span></div>
+          <div class="em-d-flex"><span class="key">Номер телефона</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.applicantPhoneNumber }}</span></div>
+          <div class="em-d-flex"><span class="key">Номер заявки</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.number }}</span></div>
+          <div class="em-d-flex"><span class="key">Тип Эквайринга</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.posTypeNames }}</span></div>
+          <div class="em-d-flex"><span class="key">Род деятельности</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.activitySphere }}</span></div>
+          <div class="em-d-flex">
+            <span class="key">Список торговых точек</span>
+            <span>:</span>
+            <span class="data">
+              @if (companyRegistrationDetail?.merchants?.length) {
+                @for (m of companyRegistrationDetail.merchants; track $index) {
+                  <div class="merchant-item">
+                    {{ m.name }} — {{ m.address }} (кол-во касс: {{ m.quantity }})
+                  </div>
+                }
+              } @else {
+                <span>-</span>
+              }
+            </span>
+          </div>
+          <div class="em-d-flex"><span class="key">Менеджер продвижение</span><span>:</span><span
+            class="data">{{ companyRegistrationDetail.managerName }}</span></div>
+          <div class="em-d-flex">
+            <span class="key">Комментарии</span>
+            <span>:</span>
+            <span class="data">
+              @if (companyRegistrationDetail?.comments?.length) {
+                @for (c of companyRegistrationDetail.comments; track $index) {
+                  <div class="comment-item">
+                    <div class="comment-meta">
+                      {{ c.createdAt | dateTime }}
+                    </div>
+                    <div class="comment-text">
+                      {{ c.text }}
+                    </div>
+                  </div>
+                }
+              } @else {
+                <span>-</span>
+              }
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<div class="padding-6 form form-container mb-6">
+  <div class="title-h1 mb-6">Документы</div>
+  <div class="w-50 input em-d-flex em-g-8 em-dr-columm" [formGroup]="form">
+    <div class="document-section">
+      <span class="section-title">Заявка на создании</span>
+      <em-dynamic-upload-field formControlName="statementFileId"
+        mode="isViewMode"
+        [fileStorageUrl]="fileStorageUrl"
+        [fileStorageToken]="fileStorageToken"
+        [fileTypes]="[]"
+        [memType]="uploadFile.memType"
+        [uploadPath]="uploadFile.uploadPath"
+        [fileLimit]="1"
+        [placeholder]="'Загрузить Заявку'" />
+    </div>
+
+    <div class="document-section">
+      <span class="section-title">Оферта</span>
+      <em-dynamic-upload-field formControlName="offerFileId"
+        mode="isViewMode"
+        [fileStorageUrl]="fileStorageUrl"
+        [fileStorageToken]="fileStorageToken"
+        [fileTypes]="[]"
+        [memType]="uploadFile.memType"
+        [uploadPath]="uploadFile.uploadPath"
+        [fileLimit]="1"
+        [placeholder]="'Загрузить Оферту'" />
+    </div>
+    <div class="document-section">
+      <div class="additional-files">
+        <em-dynamic-upload-field formControlName="fileIds"
+          mode="isViewMode"
+          label="Дополнительные файлы"
+          [readOnly]="true"
+          [fileStorageUrl]="fileStorageUrl"
+          [fileStorageToken]="fileStorageToken"
+          [fileTypes]="[]"
+          [memType]="uploadFile.memType"
+          [uploadPath]="uploadFile.uploadPath"
+          [fileLimit]="10"
+          [placeholder]="'Файлы'" />
+      </div>
+    </div>
+  </div>
+  @if (loading()) {
+    <em-eb-loader class="form-loader" />
+  }
+</div>
+<em-toast />

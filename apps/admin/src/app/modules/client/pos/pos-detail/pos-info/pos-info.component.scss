@@ -1,0 +1,280 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import 'core/scss/mixins/mixin';
+
+
+.qr {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+
+  &-code {
+    @include flex_ai_center();
+    width: 100%;
+    height: 100%;
+
+    &-body {
+      padding: 1rem;
+      border-radius: 1.5rem 1.5rem 1.5rem 0;
+      background: #EBEBEB;
+      display: flex;
+      position: relative;
+    }
+
+  }
+
+  &-template {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.qr-A4 {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+  width: 42.1875rem;
+  height: 59.6875rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .qr-code-body-A4 {
+    padding: 1rem;
+    border-radius: 1.5rem 1.5rem 1.5rem 0;
+    background: #EBEBEB;
+    display: flex;
+    position: relative;
+  }
+
+  .qr-code-title-A4 {
+    font-size: 1.125rem;
+    color: #4f4f4f;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 3.125rem;
+    left: 1rem;
+    position: absolute;
+  }
+}
+
+.qr-A5 {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+  width: 148mm;
+  height: 210mm;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .qr-code-body-A5 {
+    padding: .8rem;
+    border-radius: 1.4rem 1.4rem 1.4rem 0;
+    background: #EBEBEB;
+    display: flex;
+    position: relative;
+  }
+
+
+  .qr-code-title-A5 {
+    font-size: 0.875rem;
+    color: #4f4f4f;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 2.8125rem;
+    left: 0.9375rem;
+    position: absolute;
+  }
+}
+
+.qr-A6 {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+  width: 105mm;
+  height: 148mm;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .qr-code-body-A6 {
+    padding: .6rem;
+    border-radius: 1.3rem 1.3rem 1.3rem 0;
+    background: #EBEBEB;
+    display: flex;
+    position: relative;
+  }
+
+  .qr-code-title-A6 {
+    font-size: 0.75rem;
+    color: #4f4f4f;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 2.0625rem;
+    left: 0.1875rem;
+    position: absolute;
+  }
+}
+
+.qr-A7 {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+  width: 74mm;
+  height: 105mm;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .qr-code-body-A7 {
+    padding: .4rem;
+    border-radius: 1.2rem 1.2rem 1.2rem 0;
+    background: #EBEBEB;
+    display: flex;
+    position: relative;
+  }
+
+  .qr-code-title-A7 {
+    font-size: 0.5rem;
+    color: #4f4f4f;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 1.5rem;
+    left: -0.0625rem;
+    position: absolute;
+  }
+}
+
+.qr-A8 {
+  position: relative;
+  border: 0.0625rem solid rgb(137, 131, 131);
+  width: 52mm;
+  height: 75mm;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .qr-code-body-A8 {
+    padding: .3rem;
+    border-radius: 1rem 1rem 1rem 0;
+    background: #EBEBEB;
+    display: flex;
+    position: relative;
+  }
+
+  .qr-code-title-A8 {
+    font-size: 0.3125rem;
+    color: #4f4f4f;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    bottom: 1.3125rem;
+    left: -0.1875rem;
+    position: absolute;
+  }
+}
+
+.qr-margin-left {
+  margin-left: 1.25rem;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  .qr-root {
+    display: block;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    page-break-after: avoid;
+    page-break-before: avoid;
+  }
+
+  .qr-A4 {
+    height: 100%;
+    width: 100%;
+  }
+
+  .qr-root .qr, .qr-root .qr-A4, .qr-root .qr-A5, .qr-root .qr-A6, .qr-root .qr-A7, .qr-root .qr-A8 {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .qr-root .qr {
+    background-size: 100% 100%;
+  }
+
+  .qr-root .qr-code, .qr-root .qr-code-body, .qr-root .qr-code-body-A4, .qr-root .qr-code-body-A5, .qr-root .qr-code-body-A6, .qr-root .qr-code-body-A7, .qr-root .qr-code-body-A8 {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    background: transparent;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-root .qr-svg, .qr-root .qr-svg svg {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    display: block;
+  }
+
+  .qr-root .qr-A5 {
+    width: 148mm;
+    height: 210mm;
+  }
+  .qr-root .qr-A6 {
+    width: 105mm;
+    height: 148mm;
+  }
+  .qr-root .qr-A7 {
+    width: 74mm;
+    height: 105mm;
+  }
+  .qr-root .qr-A8 {
+    width: 52mm;
+    height: 75mm;
+  }
+
+  .qr-root .qr-code-title-A4, .qr-root .qr-code-title-A5, .qr-root .qr-code-title-A6, .qr-root .qr-code-title-A7, .qr-root .qr-code-title-A8 {
+    position: absolute;
+  }
+
+  body *:not(.qr-root):not(.qr-root *) {
+    display: none;
+  }
+}

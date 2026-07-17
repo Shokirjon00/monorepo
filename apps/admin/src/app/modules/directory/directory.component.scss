@@ -1,0 +1,71 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+
+.setting-info {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
+  z-index: 99;
+  position: absolute;
+  padding: 1rem;
+  background-color: $white-color;
+  min-width: 200px;
+  left: 0;
+  top: 45px;
+  max-height: 500px;
+  overflow-y: scroll;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.arrow{
+  display: block;
+  height: 26px;
+}
+
+.dropdown-list{
+  width: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: table;
+}
+
+.tab-item-dropdown{
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 26px;
+  color: $palette;
+
+  &:hover {
+    background: $brand-hover;
+    color: $palette;
+
+    .dropdown-icon, svg {
+      fill: $palette;
+    }
+  }
+
+  &_active {
+    font-weight: 500;
+    border: 1px solid $primary-color;
+    color: $white-color;
+    background: $primary-color;
+
+    &:hover {
+      color: $white-color;
+      background: $primary-color;
+    }
+
+    .dropdown-icon, svg {
+      fill: $white-color;
+    }
+  }
+}

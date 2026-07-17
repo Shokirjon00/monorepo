@@ -1,0 +1,36 @@
+@if (forecast(); as f) {
+  <div class="fc em-d-flex em-dr-columm">
+    <div class="fc-top em-d-flex em-ai-center em-jc-sb em-fw-wrap">
+      <span class="fc-label">За выбранный период</span>
+      @if (completion() !== null) {
+        <span class="fc-badge">{{ completion() }}% выполнено</span>
+      }
+    </div>
+
+    <div class="fc-value">
+      {{ f.forecastTotal | emNumber: '1.0-0' }}<span class="fc-unit">{{ f.unit }}</span>
+    </div>
+
+    <div class="fc-bars em-d-flex em-dr-columm">
+      <div class="fc-bar-row em-d-flex em-dr-columm">
+        <div class="fc-bar-head em-d-flex em-jc-sb">
+          <span class="fc-bar-label">Прогноз</span>
+          <span class="fc-bar-val">{{ f.forecastTotal | emNumber: '1.0-0' }} {{ f.unit }}</span>
+        </div>
+        <span class="fc-bar">
+          <span class="fc-bar-fill fc-bar-fill-forecast" [style.width.%]="forecastWidth(f)"></span>
+        </span>
+      </div>
+
+      <div class="fc-bar-row em-d-flex em-dr-columm">
+        <div class="fc-bar-head em-d-flex em-jc-sb">
+          <span class="fc-bar-label">Факт</span>
+          <span class="fc-bar-val">{{ f.actualTotal | emNumber: '1.0-0' }} {{ f.unit }}</span>
+        </div>
+        <span class="fc-bar">
+          <span class="fc-bar-fill fc-bar-fill-actual" [style.width.%]="actualWidth(f)"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,18 @@
+@use "core/scss/flex" as *;
+@use "core/scss/margins" as *;
+@use "core/scss/mixins/mixin" as *;
+
+.auth {
+  //width: 100%;
+  @include flex_ai_center();
+  padding: 2rem;
+  background: url("/assets/images/auth-bg2.webp") no-repeat center center;
+
+  background-size: cover;
+  height: 100vh;
+
+}
+.select-image {
+  background: url("/assets/images/auth-bg.webp") no-repeat center center!important;
+
+}

@@ -1,0 +1,50 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+
+  <div back-button  class="back-content" (click)="back()">
+    <svg-icon class="back" [src]="'/assets/icons/chevron-left.svg'" />
+    <div class="title">Назад</div>
+  </div>
+</em-header2>
+
+<div class="merchant-group">
+  @if (merchantDetail) {
+    <em-merchant-info-mobile-card [merchantDetail]="merchantDetail" />
+  }
+  <div class="container h-line">
+    <div class="title-h1 mb-3 md-mb-2">Изображения</div>
+    <div class="images em-d-flex em-fw-wrap em-g-16">
+      @if (imgLoginMain) {
+        <img [src]="imgLoginMain" alt="">
+      }
+      @if (imgLogoDetail) {
+        <img [src]="imgLogoDetail" alt="">
+      }
+      @if (imgLogoList) {
+        <img [src]="imgLogoList" alt="">
+      }
+    </div>
+    @if ((!imgLoginMain && !imgLogoDetail && !imgLogoList) && !loading) {
+      <div class="no-data">Изображений не найдено</div>
+    }
+  </div>
+  @if (merchantDetail) {
+    <div class="container">
+      <div class="title-h1 mb-3 ">На карте</div>
+      <em-map [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude" [disabled]="true" />
+    </div>
+  }
+</div>
+@if (loading) {
+  <em-eskhata-bank-loader class="loader" />
+}
+<em-toast />

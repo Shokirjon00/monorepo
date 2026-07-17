@@ -1,0 +1,42 @@
+<div class="item-card" (click)="showDetail(order.id)">
+  <div class="top">
+    <div class="actions">
+      <div class="status">
+        <span class="text">{{ order.orderStatusName}}</span>
+      </div>
+    </div>
+    <div class="title">{{ order.merchantName }}</div>
+    <div class="info">
+      <div class="info-item">
+        <div class="label">Касса</div>
+        <div class="separator">:</div>
+        <div class="value">{{ order.posName || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Сумма заказа</div>
+        <div class="separator">:</div>
+        <div class="value">{{ order.orderAmount || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Создано</div>
+        <div class="separator">:</div>
+        <div class="value">{{ (order.createdAt | dateTime) || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Тип заказа</div>
+        <div class="separator">:</div>
+        <div class="value">{{ order.orderTypeName || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Внешний номер заказа</div>
+        <div class="separator">:</div>
+        <div class="value">{{ order.invoiceId || '-' }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Описание</div>
+        <div class="separator">:</div>
+        <div class="value">{{ order.description || '-' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

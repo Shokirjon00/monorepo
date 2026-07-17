@@ -1,0 +1,123 @@
+@for (field of fields(); track field.name; let i = $index) {
+  <div class="form"
+       [attr.data-field-index]="i"
+       [attr.data-field-name]="field.name"
+       [attr.data-field-id]="'field_' + field.name + '_' + i">
+
+    @switch (field.type) {
+      @case ('boolean') {
+        @if (showNameAbove()) {
+          <div class="label mb-1">{{ field.name }}</div>
+          <input class="form-control"
+                 type="text"
+                 [formControl]="getLabelControl(field.id)"
+                 placeholder="Введите наименование">
+        } @else {
+          <div class="em-d-flex align-center em-g-8">
+            <label class="circle-checkbox">
+              <input type="checkbox" [formControl]="getFormControl(field.name)">
+              <div class="check em-d-flex-center">
+                <svg-icon src="assets/icons/check.svg" />
+              </div>
+            </label>
+            <div class="label">{{ field.label }}</div>
+          </div>
+        }
+      }
+
+      @case ('cron') {
+        @if (showNameAbove()) {
+          <div class="label mb-1">{{ field.name }}</div>
+          <input class="form-control"
+                 type="text"
+                 [formControl]="getLabelControl(field.id)"
+                 placeholder="Введите наименование">
+        } @else {
+          <div class="label mb-1">{{ field.label }}</div>
+          <div class="input d-flex align-center gap-2">
+            <input class="form-control" type="text" [formControl]="getFormControl(field.name)">
+            <p class="field-error"
+               [class.error]="(form().get(field.name)?.value | cronDescription) === 'Неверно указано значение'">
+              {{ form().get(field.name)?.value | cronDescription }}
+            </p>
+          </div>
+        }
+      }
+
+      @case ('number') {
+        @if (showNameAbove()) {
+          <div class="label mb-1">{{ field.name }}</div>
+          <input class="form-control"
+                 type="text"
+                 [formControl]="getLabelControl(field.id)"
+                 placeholder="Введите наименование">
+        } @else {
+          <div class="label mb-1">{{ field.label }}</div>
+          <div class="input">
+            <input class="form-control"
+                   type="number"
+                   step="any"
+                   (input)="onNumberInput(field, $event)"
+                   [value]="getFormControl(field.name)?.value ?? ''">
+          </div>
+        }
+      }
+
+      @case ('file') {
+        @if (showNameAbove()) {
+          <div class="label mb-1">{{ field.name }}</div>
+          <input class="form-control"
+                 type="text"
+                 [formControl]="getLabelControl(field.id)"
+                 placeholder="Введите наименование">
+        } @else {
+          <div class="label mb-1">{{ field.label }} *</div>
+          <div class="input">
+            <em-upload-field [id]="'upload_' + field.name + '_' + i"
+              [instanceId]="'upload_' + field.name + '_' + i"
+              [fieldName]="field.name"
+              [fieldIndex]="i"
+              [fileStorageUrl]="fileStorageUrl()"
+              [fileStorageToken]="fileStorageToken()"
+              [uploadPath]="uploadPath()"
+              [fileTypes]="fileTypes()"
+              [fileLimit]="fileLimit()"
+              [canPrint]="false"
+              [readOnly]="false"
+              [placeHolder]="'Загрузить документ PDF не более 5 МБ'"
+              [formStyle]="'item'"
+              [showOnlyUploadButton]="true"
+              [useFileValidation]="true"
+              [fieldType]="field.type"
+              [formControl]="getFormControl(field.name)"
+              (onFileUploaded)="onFileUploaded($event)"
+              (deactivateFileIds)="onFileDeactivated(field, $event, i)" />
+          </div>
+        }
+      }
+
+      @default {
+        @if (showNameAbove()) {
+          <div class="label mb-1">{{ field.name }}</div>
+          <input class="form-control"
+                 type="text"
+                 [formControl]="getLabelControl(field.id)"
+                 placeholder="Введите наименование">
+        } @else {
+          @if (isListString(field)) {
+            <div class="label mb-1">{{ field.label }}</div>
+            <em-chips [items]="getArrayItems(field.name)"
+              (itemsChange)="onChipsChange(field.name, $event)" />
+          } @else {
+           <div class="label mb-1">{{ field.label }}*</div>
+           <div class="input">
+             <input class="form-control"
+                    type="text"
+                    [formControl]="getFormControl(field.name)">
+           </div>
+          }
+         }
+       }
+     }
+   </div>
+ }

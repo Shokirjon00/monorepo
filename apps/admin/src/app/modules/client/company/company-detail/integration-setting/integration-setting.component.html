@@ -1,0 +1,233 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [enableDropdown]="true"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (pagination) {
+      <em-pagination class="pl-3"
+      [page]="pagination" />
+    }
+  </ng-container>
+</em-header2>
+<div class="integration-setting" [class.blur]="loading">
+  <form [formGroup]="form" class="integration-setting-top">
+    <div class="em-d-flex gap-2">
+      <div class="item">
+        <h3 class="title">Типы обратной связи</h3>
+        @for (method of callBackMethods; track method; let i = $index) {
+          <div>
+            <div class="em-d-flex em-g-40 mt-3 mb-3">
+              <label class="l-radio">
+                <input type="radio"
+                  (click)="selectCallBack(method.id)"
+                  [checked]="method.id === form.controls['connectionTypeId'].value">
+                  <span> {{ method.name }}</span>
+                </label>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="item">
+          <h3 class="title">Ограничение суммы</h3>
+          <div class="group">
+            <label>Меньше</label>
+            <div class="form">
+              <div class="input">
+                <input type="number" class="form-control" placeholder="Введите сумму" formControlName="minVariation">
+                <em-validator [fieldControl]="f['minVariation']" />
+              </div>
+            </div>
+          </div>
+          <div class="group">
+            <label>Больше</label>
+            <div class="form">
+              <div class="input">
+                <input type="number" class="form-control" placeholder="Введите сумму" formControlName="maxVariation">
+                <em-validator [fieldControl]="f['maxVariation']" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="title">CallbackUrl</h3>
+          <div class="form">
+            <div class="input">
+              <input type="text" class="form-control" placeholder="CallbackUrl" formControlName="webhookUrl">
+              <em-validator [fieldControl]="f['webhookUrl']" />
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="title">Ограничения</h3>
+          <div class="form">
+            <div class="input">
+              <input type="number" class="form-control" placeholder="Ограничения" formControlName="pollingAttempts">
+              @if (f['pollingAttempts'].invalid) {
+                <div>
+                  @if (f['pollingAttempts'].errors?.['required']) {
+                    <div class="error-message">
+                      <p>Поле обязательное для заполнения</p>
+                    </div>
+                  }
+                  @if (f['pollingAttempts'].errors?.['range']) {
+                    <div class="error-message">
+                      <p>Значение должно быть в диапазоне от 1 до 100</p>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="title">Срок жизни (в секундах)</h3>
+          <div class="form">
+            <div class="input">
+              <input type="number" class="form-control" placeholder="Срок жизни (в секундах)"
+                formControlName="orderTimeLimitSeconds">
+                @if (f['orderTimeLimitSeconds'].invalid) {
+                  <div class="error-message">
+                    <p>Поле обязательное для заполнения</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+      <div class="item">
+        <h3 class="title">Доступы к API</h3>
+        <div class="form">
+          <div class="input">
+            <em-autocomplete [searchable]="true"
+              [selectWithOutSearch]="true"
+              [placeholder]="'Выберите доступ к API'"
+              formControlName="fastQrApiAccessTypeId"
+              [path]="apiBanksPath" />
+            <em-validator [fieldControl]="f['fastQrApiAccessTypeId']"
+             />
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="em-d-flex gap-2">
+          <div class="group-address">
+            <h3 class="title">Сетевые адреса</h3>
+            <div class="form">
+              <div class="input">
+                <mat-form-field appearance="fill">
+                  <mat-chip-grid #chipList aria-label="Group IDs">
+                    @for (groupId of groupsId.controls; track groupId; let i = $index) {
+                      <mat-chip-row
+                        [removable]="removable"
+                        (removed)="removeGroupById(groupId.value)">
+                        {{ groupId.value }}
+                        @if (removable) {
+                          <mat-icon matChipRemove>
+                            <img ngSrc="assets/icons/cancel.svg" alt="" height="19" width="19">
+                          </mat-icon>
+                        }
+                      </mat-chip-row>
+                    }
+                  </mat-chip-grid>
+                  <div class="chips-input">
+                    <input
+                      #chipInput
+                      class="form-control"
+                      type="text"
+                      placeholder="Введите значение"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="addOnBlur"
+                      (keydown.enter)="addApiAddress($event)"
+                      (input)="onInputChange($event)"
+                      (blur)="validatePendingInput()"
+                      [attr.disabled]="groupsId.length >= 5"
+                      />
+                    </div>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        @if (permissionService.getPermission('MerchantIntegrationConfigurationList')) {
+          <div class="integration-setting-bottom">
+            <h1 class="title">Торговые точки</h1>
+            <div class="accordion">
+              <div class="accordion-head">
+                <div class="title">Наименование</div>
+                <div class="title">К-во типов интеграций</div>
+              </div>
+              <div class="accordion-body">
+                @for (integration of integrationSettings; track integration; let i = $index) {
+                  <div class="accordion-body-item">
+                    <div class="head" [class.active]="integration.isActive" (click)="openSettingDetail(integration)">
+                      <div class="head-left">{{ integration.merchantName }}</div>
+                      <div class="head-right">
+                        <div>{{ integration.integrationCount }}</div>
+                        <div class="actions">
+                          <svg-icon src="assets/icons/plus.svg" *ngxPermissionsOnly="'MerchantIntegrationConfigurationCreate'"
+                          (click)="addIntegration($event, integration)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="body" [class.active]="integration.isActive"
+                      [@detailExpand]="integration.isActive ? 'expanded' : 'collapsed'">
+                      @if (integration?.integrations?.length) {
+                        <div class="content">
+                          <div class="body-top">
+                            <div class="title">Тип интеграции</div>
+                            <div class="title">Параметры</div>
+                            <div class="title">К-во касс</div>
+                          </div>
+                          @for (item of integration?.integrations; track item) {
+                            <div class="body-bottom">
+                              <div class="value">
+                                <em-simple-select-list *ngxPermissionsOnly="'MerchantIntegrationConfigurationReplace'"
+                                  action="Выберите тип"
+                                  [showClear]="false"
+                                  [selected]="{id: item.integrationTypeId, name: item.integrationTypeName}"
+                                  [dataSource]="integrationType"
+                                  (selectedItem)="selectIntegrationType(integration, item, $event)" />
+                                @if (!permissionService.getPermission('MerchantIntegrationConfigurationReplace'); ) {
+                                  <div
+                                    >{{ item.integrationTypeName }}
+                                  </div>
+                                }
+                              </div>
+                              <div class="value param-json">{{ item.integrationJson }}</div>
+                              <div class="value">
+                                <span>{{ item.posCount }}</span>
+                                <div class="actions">
+                                  <svg-icon src="assets/icons/edit.svg"
+                                    *ngxPermissionsOnly="'MerchantIntegrationConfigurationUpdate'"
+                                  (click)="editIntegration(item, integration)" />
+                                  <svg-icon src="assets/icons/delete.svg"
+                                    *ngxPermissionsOnly="'MerchantIntegrationConfigurationDelete'"
+                                  (click)="deleteIntegration(item, integration)" />
+                                </div>
+                              </div>
+                            </div>
+                          }
+                        </div>
+                      }
+                      @if (!integration?.integrations?.length) {
+                        <div class="empty-integration">Нет данных для показа</div>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      @if (loading) {
+        <em-eb-loader class="form-loader" />
+      }
+      <em-toast />

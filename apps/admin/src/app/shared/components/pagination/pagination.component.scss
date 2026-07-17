@@ -1,0 +1,130 @@
+@import "core/scss/flex";
+@import "core/scss/styles";
+@import "core/scss/variables";
+@import "core/scss/margins";
+@import "core/scss/paddings";
+@import "core/scss/form";
+@import "core/scss/mixins/mixin";
+
+.paginator {
+
+  &-num {
+    border: none;
+    color: $palette;
+    font-size: 14px;
+    line-height: 24px;
+    //padding: 0 17px;
+    cursor: pointer;
+    //min-width: 20px;
+    //height: 40px;
+
+    //&.active {
+    //  background: $primary-color;
+    //  color: $white-color;
+    //  border-radius: 24px;
+    //}
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  &-input {
+
+    input {
+      width: 48px;
+      height: 40px;
+      background: $main-bg;
+      border-radius: 8px;
+      text-align: center;
+      border: none;
+      outline: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+
+  }
+
+  .arrow-right {
+    cursor: pointer;
+    transform: rotate(180deg);
+  }
+}
+
+$height: 30px;
+
+:host {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-selection {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  height: $height;
+}
+
+.pages {
+  display: flex;
+}
+
+.page-entry {
+  height: $height;
+  @include flex_ai_center();
+  border: none;
+  background-color: $soft-silver;
+  margin: 0 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 14px;
+  width: auto;
+  padding: 0 8px;
+
+  &.active {
+    color: white;
+    background-color: rgb(182, 182, 182);
+    cursor: default;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.page-size {
+  color: $palette;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  cursor: pointer;
+
+  &-label {
+    height: 48px;
+
+    div{
+      white-space: nowrap;
+    }
+  }
+  .dropdown{
+    min-width: 120px;
+  }
+
+  .open {
+    + .dropdown {
+      display: block;
+    }
+  }
+}
+

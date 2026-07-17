@@ -1,0 +1,26 @@
+import {IInfoRow} from '../interfaces/change-pos-terminal.interface';
+
+export const INFO_ROWS_CONFIG: ReadonlyArray<IInfoRow> = [
+  { key: 'Организация', field: 'companyName' },
+  { key: 'Торговая точка', field: 'merchantName' },
+  { key: 'Адрес', field: 'merchantAddress' },
+  { key: 'Касса', field: 'posName' },
+  { key: 'Тип кассы', field: 'posTypeName' },
+  { key: 'Сегмент', field: 'segmentName' },
+  { key: 'Инвентарный номер', field: 'inventoryNumber' },
+  { key: 'SN Терминала', field: 'terminalSerialNumber' },
+  { key: 'Модель терминала', field: 'terminalModelName' },
+  { key: 'ID терминала', field: 'terminalId' },
+  { key: 'Статус терминала', field: 'terminalStatusName' },
+  { key: 'SIM POS', field: 'simPos' },
+  { key: 'Владелец', field: 'ownerName' },
+  { key: 'Менеджер', field: 'managerName' },
+  { key: 'Бизнес менеджер', field: 'businessManagerName' },
+  { key: 'Дата письма', field: 'letterDate', isDate: true },
+  { key: 'Дата предложения', field: 'offerDate', isDate: true },
+  { key: 'Дата акта установки', field: 'installationActDate', isDate: true },
+  { key: 'Дата акта снятия', field: 'removalActDate', isDate: true },
+  { key: 'Номер акта установки', field: 'installationActNumber' },
+  { key: 'Номер акта снятия', field: 'removalActNumber' },
+  { key: 'Создано', field: 'createdAt', isDate: true },
+];

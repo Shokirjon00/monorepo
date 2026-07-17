@@ -1,0 +1,286 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ workingDayDetail?.name || "Добавить рабочие дни" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        @if (workingDayDetail?.canUpdate) {
+          <div class="v-line pr-1">
+            <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+              <svg-icon src="assets/icons/save.svg" />
+              <span class="tooltip-text">Сохранить</span>
+            </button>
+          </div>
+          <div *ngxPermissionsOnly="'MerchantWorkDayActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+            <div class="toggle-title">Активировать</div>
+            <label class="toggle-checkbox">
+              <input type="checkbox" formControlName="isActive">
+              <span></span>
+            </label>
+          </div>
+        }
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 working-day" [ngClass]="{ 'disabled': !workingDayDetail?.canUpdate }">
+    <div class="em-d-flex em-jc-sb em-g-96 mb-6">
+      <div class="form">
+        <div class="label">Наименование*</div>
+        <div class="input">
+          <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+                 [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+          <em-validator [fieldControl]="f['name']" />
+        </div>
+      </div>
+      <div class="w-100">
+        <div class="form">
+          <div class="label">Перерыв с*</div>
+          <input class="form-control input-time"
+                 type="time"
+                 placeholder="00:00"
+                 [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="workingDaysModel.launchBreak.start">
+        </div>
+        <div class="form">
+          <div class="label">Перерыв до*</div>
+          <input class="form-control input-time"
+                 type="time"
+                 placeholder="00:00"
+                 [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="workingDaysModel.launchBreak.end">
+        </div>
+      </div>
+    </div>
+
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.monday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Понедельник*" class="form-control" disabled="true" placeholder="Введите значение">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.monday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.monday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.monday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.monday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.tuesday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Вторник*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.tuesday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.tuesday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.tuesday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.tuesday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.wednesday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Среда*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.wednesday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.wednesday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.wednesday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.wednesday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.thursday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Четверг*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.thursday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.thursday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.thursday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.thursday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.friday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Пятница*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.friday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.friday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.friday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.friday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.saturday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Суббота*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.saturday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.saturday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.saturday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.saturday.end">
+      </div>
+    </div>
+    <div class="em-d-flex em-ai-center em-g-40">
+      <label class="toggle-checkbox mb-6">
+        <input type="checkbox"
+               [(ngModel)]="workingDaysModel.sunday.enabled"
+               [ngModelOptions]="{standalone: true}">
+        <span></span>
+      </label>
+      <div class="form">
+        <div class="label">День недели</div>
+        <div class="detail-input">
+          <input type="text" value="Воскресенье*" class="form-control" disabled="true">
+        </div>
+      </div>
+      <div class="form w-50">
+        <div class="label">Начало</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.sunday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.sunday.start">
+      </div>
+      <div class="form w-50">
+        <div class="label">Конец</div>
+        <input class="form-control input-time"
+               type="time"
+               placeholder="00:00"
+               [disabled]="!workingDaysModel.sunday.enabled"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="workingDaysModel.sunday.end">
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

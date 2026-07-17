@@ -1,0 +1,12 @@
+<div class="tab" [class.mobile-display]="tabs()?.length <= 1">
+  @for (tab of tabs(); track tab) {
+    @if (tabs()?.length > 1) {
+      <a class="tab-item"
+        routerLinkActive="tab-item-active"
+        [routerLink]="tab.path"><span>{{tab.label}}</span></a>
+      }
+      @if (tabs()?.length <= 1) {
+        <div class="title-h1">{{tab.label}}</div>
+      }
+    }
+  </div>

@@ -1,0 +1,57 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+
+<div class="container em-d-flex v-line-bottom">
+  <div class="w-50 v-line">
+    <div class="em-d-flex em-ai-center em-jc-sb gap-2">
+      <div class="title-small">Главный экран</div>
+      <button type="button" class="button-tooltip" (click)="saveSelectedMerchantComponent()">
+        <svg-icon src="assets/icons/save.svg" />
+        <span class="tooltip-text">Сохранить</span>
+      </button>
+    </div>
+    <div class="em-d-flex pt-4 gap-2">
+      @for (item of terminalSettings; track item) {
+        <div class="select-all">
+          <div class="checkbox-toggle pr-3 pl-3">
+            <div class="setting-title">{{ item.componentName }}</div>
+            <input
+              type="checkbox"
+              [id]="item.componentId"
+              [checked]="item.isSelected"
+              (change)="onToggle(item.componentId)"
+              />
+              <label [for]="item.componentId">Toggle</label>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="w-50 pl-5" *ngxPermissionsOnly="'MerchantHasShift'">
+      <div class="em-d-flex em-ai-center em-jc-sb gap-2">
+        <div class="title-small">Смена</div>
+        <button type="button" class="button-tooltip" (click)="sendActive()">
+          <svg-icon src="assets/icons/save.svg" />
+          <span class="tooltip-text">Сохранить</span>
+        </button>
+      </div>
+      <div class="select-all mt-3">
+        <div class="checkbox-toggle pr-3 pl-3">
+          <div class="setting-title">{{ hasShift.value ? 'Деактивировать' : 'Активировать' }}</div>
+          <input type="checkbox" id="switch" [formControl]="hasShift"/>
+          <label for="switch"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <em-toast />

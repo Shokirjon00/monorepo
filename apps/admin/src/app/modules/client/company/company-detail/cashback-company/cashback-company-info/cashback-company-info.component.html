@@ -1,0 +1,79 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'CashbackCompanyUpdate'" class="icon ml-3">
+      <button type="button" class="button-tooltip" (click)="navigate()">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</em-header2>
+
+
+@if (cashbackDetail) {
+  <div class="padding-7">
+    <div class=" w-50">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">Кэшбэк мерчанта</span>
+          <span>:</span>
+          <span class="value">
+          @for (merchant of cashbackDetail.merchants; track merchant) {
+            <span>{{ merchant.name || '-' }}</span>
+          }
+        </span>
+        </div>
+        <div class="em-d-flex"><span class="key">Кэшбэк от банка</span><span>:</span><span
+          class="data">{{ cashbackDetail.bankCashbackName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Период</span><span>:</span><span
+          class="data">
+    с {{ (cashbackDetail.bankStartDate | dateTime) || '-' }}
+          по {{ (cashbackDetail.bankEndDate | dateTime) || '-' }} </span></div>
+        <div class="em-d-flex"><span class="key">Кэшбэк от мерчанта</span><span>:</span><span
+          class="data">{{ cashbackDetail.companyCashbackName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Период</span><span>:</span><span
+          class="data">
+с {{ (cashbackDetail.companyStartDate | dateTime) || '-'}}
+          по {{ (cashbackDetail.companyEndDate | dateTime) || '-'}} </span></div>
+        <div class="em-d-flex"><span class="key">Тип</span><span>:</span><span
+          class="data">{{ cashbackDetail?.cashbackAccrualTypeName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Понедельник</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.monday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail?.cashbackParamJson.monday.from || '-' }}
+          по {{ cashbackDetail?.cashbackParamJson.monday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Вторник</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.tuesday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.tuesday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.tuesday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Среда</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.wednesday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.wednesday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.wednesday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Четверг</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.thursday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.thursday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.thursday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Пятница</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.friday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.friday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.friday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Суббота</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.saturday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.saturday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.saturday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Воскресенье</span><span>:</span><span
+          class="data" [ngClass]="cashbackDetail.cashbackParamJson.sunday.isActive ? 'completed' : 'rejected'">
+с {{ cashbackDetail.cashbackParamJson.sunday.from || '-' }}
+          по {{ cashbackDetail.cashbackParamJson.sunday.to || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Примечание</span><span>:</span><span
+          class="data">{{ cashbackDetail.description || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+          class="data">{{ cashbackDetail.createdAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Изменено</span><span>:</span><span
+          class="data">{{ cashbackDetail.modifiedAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+          class="data">{{ cashbackDetail.statusName || '-' }}</span></div>
+      </div>
+    </div>
+  </div>
+}

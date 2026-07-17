@@ -1,0 +1,49 @@
+$base-font-size: 16;
+
+@function rem($px) {
+  @return ($px / $base-font-size) * 1rem;
+}
+
+// Размеры шрифта
+$font-size-xs: rem(12);
+$font-size-sm: rem(14);
+$font-size-md: rem(16);
+$font-size-lg: rem(18);
+$font-size-xl: rem(20);
+$font-size-2xl: rem(24);
+$font-size-3xl: rem(30);
+$font-size-4xl: rem(36);
+
+// Отступы
+$space-0: 0;
+$space-1: rem(4);
+$space-2: rem(8);
+$space-3: rem(12);
+$space-4: rem(16);
+$space-5: rem(20);
+$space-6: rem(24);
+$space-7: rem(28);
+$space-8: rem(32);
+$space-9: rem(36);
+$space-10: rem(40);
+$space-12: rem(48);
+$space-14: rem(56);
+$space-16: rem(64);
+
+// Радиус скругления
+$radius-none: 0;
+$radius-xs: rem(2);
+$radius-sm: rem(4);
+$radius-md: rem(8);
+$radius-lg: rem(12);
+$radius-xl: rem(16);
+$radius-2xl: rem(24);
+$radius-3xl: rem(32);
+$radius-full: 9999px;
+
+// Жирность шрифта
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;

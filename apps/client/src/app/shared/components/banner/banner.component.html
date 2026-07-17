@@ -1,0 +1,17 @@
+<div class="banner">
+  <picture class="currency-bg">
+    <source media="(max-width: 768px)" srcset="assets/images/mobile-currency.svg" />
+    <source srcset="assets/images/currency.svg" />
+    <img src="assets/images/currency.svg" class="card-pictures" alt="currency background" />
+  </picture>
+  <div class="w-50 md-w-70">
+    <p class="banner-title">Получите авансовый платеж для развития бизнеса</p>
+    <button class="btn-primary btn btn-lg md-btn-primary" (click)="onAccept()">Получить</button>
+  </div>
+  <div class="w-50 md-w-30 pl-9 md-pl-0 md-d-flex md-ai-center">
+    <div class="banner-group w-max">
+      <p class="banner-price">{{ formattedAmount }}</p>
+      <p class="banner-currency">сомони</p>
+    </div>
+  </div>
+</div>

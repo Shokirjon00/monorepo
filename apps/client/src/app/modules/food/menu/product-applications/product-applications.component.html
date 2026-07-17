@@ -1,0 +1,75 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="captions"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'menu'">
+  <ng-container header-actions>
+    <div class="d-flex-sb mr-2">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (edit)="onEdit($event)"
+  [dataSource]="menus"
+  [captions]="captions"
+  [optionActions]="options"
+  [page]="paginate"
+  [loading]="loading"
+  [captionKey]="captionKey" />
+
+<div class="mobile-card">
+  @for (menu of menus; track menu.id) {
+    <div class="item-card">
+      <div class="top">
+        <div class="title">{{ menu.productName }}</div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">ID</div>
+            <div class="separator">:</div>
+            <div class="value">{{ menu.id || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Категория</div>
+            <div class="separator">:</div>
+            <div class="value">{{ menu.categoryName || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Тип заявки</div>
+            <div class="separator">:</div>
+            <div class="value">{{ menu.productApplicationType.value || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Создано</div>
+            <div class="separator">:</div>
+            <div class="value">{{ menu.createdDateTime | date:'dd.MM.yyyy HH:mm' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-primary" [routerLink]="['/food','food-menu','edit', menu.id]">
+          Редактировать
+        </button>
+      </div>
+    </div>
+  }
+  @if ((!menus || !menus.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (isMobile && loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && menus.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

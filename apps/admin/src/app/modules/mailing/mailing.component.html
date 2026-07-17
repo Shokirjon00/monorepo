@@ -1,0 +1,30 @@
+<em-header2
+  [actions]="actions"
+  [filterFields]="columns"
+  [filterStorageKey]="'mailingFiltersForm'">
+  <div class="d-flex-sb w-100" header-center-default>
+    <span class="title-h1">Рассылки</span>
+  </div>
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (link)="link($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="mailings"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />
+<em-toast />

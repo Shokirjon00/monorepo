@@ -1,0 +1,41 @@
+<form [formGroup]="form" class="company-acquirer-create-dialog em-d-flex em-jc-sb em-dr-columm h-100" (ngSubmit)="onSubmit()">
+
+  <div>
+    <div class="mb-5 em-d-flex em-jc-sb">
+      <div class="title-h1">Добавление эквайера</div>
+      <svg-icon class="close-icon"
+                src="assets/images/close.svg" [mat-dialog-close]="true" />
+    </div>
+    <div class="form">
+      <div class="label">Банк*</div>
+      <div class="input">
+        <em-autocomplete [searchable]="true"
+          [placeholder]="'Банк'"
+          formControlName="bankId"
+          [path]="apiBanksPath" />
+        <em-validator [fieldControl]="f['bankId']"
+         />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Шлюз*</div>
+      <div class="input">
+        <em-autocomplete [searchable]="true"
+          [placeholder]="'Шлюз'"
+          formControlName="gatewayId"
+          [path]="apiGatewaysPath" />
+        <em-validator [fieldControl]="f['gatewayId']"
+         />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="em-d-flex em-jc-fe">
+    <button class="btn btn-secondary btn-lg mr-2" [mat-dialog-close]="false">Отмена</button>
+    <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid || submitted">Добавить</button>
+  </div>
+
+</form>
+
+<em-toast />

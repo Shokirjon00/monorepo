@@ -1,0 +1,38 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-40">
+  <div class="em-d-flex-center em-dr-columm em-g-16">
+    <div class="title text-center" [innerHTML]="data?.title"></div>
+    <form class="w-100" [formGroup]="form">
+      <div class="form disabled">
+        <div class="label">Сумма</div>
+        <div class="input">
+          <input type="text" class="form-control disabled" formControlName="amount" placeholder="Выберете расчётный счёт" readonly>
+        </div>
+      </div>
+      <div class="form">
+        <div class="label">Причина*</div>
+        <div class="input">
+          <em-simple-select-list formControlName="paymentRefundReasonId"
+            action="Выберите причину"
+            [dataSource]="paymentRefundReasons"
+            (ngModelChange)="onPaymentRefundReasonChange($event)" />
+          <em-validator [fieldControl]="f['paymentRefundReasonId']" />
+        </div>
+      </div>
+      <div class="form">
+        <div class="label">Примечание</div>
+        <div class="input">
+          <input type="text" class="form-control" formControlName="description" placeholder="Введите примечание"
+            [class.is-invalid]="f['description']?.invalid && f['description']?.touched">
+            <em-validator [fieldControl]="f['description']" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="em-d-flex em-jc-c">
+      <button class="btn btn-secondary btn-lg mr-2" (click)="cancel()">{{data?.cancelButtonText || 'Нет'}}</button>
+      <button class="btn btn-primary btn-lg" [disabled]="form.invalid" (click)="confirm()">{{data?.successButtonText || 'Да'}}</button>
+    </div>
+  </div>
+  @if (loading) {
+    <em-eb-loader class="form-loader" />
+  }

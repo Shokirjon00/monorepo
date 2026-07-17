@@ -1,0 +1,44 @@
+<div class="dialog">
+  <div class="dialog-close" (click)="close()"></div>
+  <div class="dialog-left">
+    <h1 class="features-title">Новые возможности в Эсхата Мерчанте</h1>
+    <img class="image" src="assets/images/update.png" alt=""/>
+  </div>
+  <div class="dialog-right">
+    <h3 class="dialog-right-title">Что нового:</h3>
+    <div class="dialog-right-items scroll eb-jc-center">
+      @for (item of features; track item) {
+        <div class="item">
+          @if (item.title) {
+            <h4 class="item-title">
+              {{ item.title }}
+            </h4>
+          }
+          <p class="item-description" [innerHTML]="item.description"></p>
+        </div>
+      }
+    </div>
+    <div class="dialog-right-action">
+      <button type="submit" class="btn btn-primary" (click)="close()">
+        @if (loading) {
+          <span class="btn-loader"></span>
+        }
+        @if (!loading) {
+          <span>Обновить</span>
+        }
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-background mt-5">
+    <img class="mobile-background-image" src="assets/images/update-mobile.webp" alt=""/>
+    <button type="submit" class="btn btn-primary" (click)="close()">
+      @if (loading) {
+        <span class="btn-loader"></span>
+      }
+      @if (!loading) {
+        <span>Обновить</span>
+      }
+    </button>
+  </div>
+</div>

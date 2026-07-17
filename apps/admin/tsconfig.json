@@ -1,32 +1,43 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "./src",
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "noImplicitReturns": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "target": "es2022",
+    "useDefineForClassFields": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
     "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "emitDecoratorMetadata": false,
-    "module": "preserve"
+    "target": "ES2022",
+    "module": "preserve",
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"],
+      "@modules/*": ["app/modules/*"],
+      "@environments/*": ["environments/*"],
+      "@eskhata/util": ["../../../libs/shared/util/src/index.ts"],
+      "@eskhata/environment": ["../../../libs/shared/environment/src/index.ts"],
+      "@eskhata/session": ["../../../libs/entities/session/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
     "strictTemplates": true
   },
   "files": [],
   "include": [],
   "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.spec.json" }
   ]
 }

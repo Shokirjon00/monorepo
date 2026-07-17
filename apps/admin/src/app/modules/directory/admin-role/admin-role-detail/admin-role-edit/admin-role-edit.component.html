@@ -1,0 +1,121 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ adminRolesDetail?.name || "Добавить роль администратора" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'AdminUserRoleActiveStatus'" class="em-d-flex-center em-g-8 ml-2">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 admin-role">
+    <div class="em-d-flex em-fw-wrap h-100">
+      <div class="w-50 pr-6">
+        <div class="form">
+          <div class="label">Наименование*</div>
+          <div class="input">
+            <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование роли"
+              [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+              <em-validator [fieldControl]="f['name']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Описание</div>
+            <div class="input">
+              <input formControlName="description" type="text" class="form-control" placeholder="Введите описание">
+            </div>
+          </div>
+        </div>
+        <div *ngxPermissionsOnly="'AdminUserPermissionList'" class="w-50 pl-6 h-100">
+          <div class="w-100 h-100 permissions">
+            <div class="position-sticky mb-3 pt-5 pr-6 pl-6">
+              <div class="em-title ">Настройки доступа</div>
+              <div class="form">
+                <div class="input em-d-flex em-ai-center">
+                  <input (keyup)="search($event)" type="text"
+                    class="form-control" placeholder="Поиск">
+                    <svg-icon class="icon" src="assets/icons/search.svg" />
+                    <label class="circle-checkbox">
+                      <input type="checkbox"
+                        [checked]="isAllChecked()"
+                        (change)="toggleAllPermission($event)">
+                        <div class="check em-d-flex-center">
+                          <svg-icon src="assets/icons/check.svg" />
+                        </div>
+                        Все
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="permissions-childs">
+                  <ng-container *ngTemplateOutlet="treeTemplate; context: { $implicit: visibleItems }" />
+                </div>
+              </div>
+              <ng-template #treeTemplate let-items>
+                @for (item of items; track item.id) {
+                  <div class="em-d-flex pt-1 pb-1 p-relative">
+                    @if (item.childs?.length || item.permissions?.length) {
+                      <div (click)="item.expanded = !item.expanded" class="child mr-2 c-pointer">
+                        <svg-icon src="assets/icons/{{ item.expanded ? 'chevron-down.svg' : 'chevron-right.svg' }}" />
+                      </div>
+                    }
+                    <div class="em-d-flex em-dr-columm em-g-8">
+                      <label class="circle-checkbox">
+                        <input type="checkbox"
+                          [checked]="item.checked"
+                          (change)="permissionSelect(item, $event)">
+                          <div class="check em-d-flex-center">
+                            <svg-icon src="assets/icons/check.svg" />
+                          </div>
+                          <span>{{ item.name }}</span>
+                        </label>
+                        @if (item.expanded) {
+                          <div class="child-nodes pl-4">
+                            @if (item.permissions?.length) {
+                              <div class="permissions-list">
+                                @for (perm of item.permissions; track perm.name) {
+                                  <div class="em-d-flex pt-1 pb-1">
+                                    <label class="circle-checkbox">
+                                      <input type="checkbox"
+                                        [checked]="perm.checked"
+                                        (change)="permissionSelect(perm, $event)">
+                                        <div class="check em-d-flex-center">
+                                          <svg-icon src="assets/icons/check.svg" />
+                                        </div>
+                                        <span class="em-title">{{ perm.name }}</span>
+                                      </label>
+                                    </div>
+                                  }
+                                </div>
+                              }
+                              <ng-container *ngTemplateOutlet="treeTemplate; context: { $implicit: item.childs }" />
+                            </div>
+                          }
+                        </div>
+                      </div>
+                    }
+                  </ng-template>
+
+                  <em-validator [fieldControl]="f['permissions']" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <em-toast />

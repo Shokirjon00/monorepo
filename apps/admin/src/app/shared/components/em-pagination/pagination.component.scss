@@ -1,0 +1,162 @@
+@import "../../../core/scss/flex";
+@import "../../../core/scss/styles";
+@import "../../../core/scss/variables";
+@import "../../../core/scss/margins";
+@import "../../../core/scss/paddings";
+@import "../../../core/scss/form";
+@import "../../../core/scss/mixins/mixin";
+$height: 30px;
+
+
+:host {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-selection {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  height: $height;
+}
+
+.pages {
+  display: flex;
+}
+
+.page-entry {
+  height: $height;
+  @include flex_ai_center();
+  border: none;
+  background-color: $soft-silver;
+  margin: 0 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 14px;
+  width: auto;
+  padding: 0 8px;
+
+  &.active {
+    color: white;
+    background-color: rgb(182, 182, 182);
+    cursor: default;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.page-size {
+  color: $palette;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  cursor: pointer;
+
+  &-label {
+    height: 48px;
+
+    div{
+      white-space: nowrap;
+    }
+  }
+  .dropdown{
+    min-width: 120px;
+  }
+
+  .open {
+    + .dropdown {
+      display: block;
+    }
+  }
+}
+
+.paginator-ellipsis {
+  margin: 0 10px;
+  font-size: 18px;
+  line-height: 40px;
+
+  &.active {
+    background-color: $deep-blue;
+    color: white;
+  }
+}
+
+.paginator {
+
+  &-button {
+    background: $vivid-blue;
+    padding: 2px 8px;
+    border-radius: 4px;
+
+    &.active {
+      background: $pale-gray;
+    }
+  }
+
+  &-dots {
+    border: none;
+    color: $jet-black;
+    background-color: $light-gray;
+    font-size: 12px;
+    width: 26px;
+    height: 26px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+
+    &.active {
+      background-color: $deep-blue;
+      color: $white;
+    }
+  }
+
+  &-num {
+    border: none;
+    color: $palette;
+    font-size: 14px;
+    line-height: 24px;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  &-input {
+
+    input {
+      width: 48px;
+      height: 40px;
+      background: $main-bg;
+      border-radius: 8px;
+      text-align: center;
+      border: none;
+      outline: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+
+  }
+
+  .arrow-right {
+    cursor: pointer;
+    transform: rotate(180deg);
+  }
+}
+
+

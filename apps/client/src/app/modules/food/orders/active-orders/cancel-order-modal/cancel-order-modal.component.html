@@ -1,0 +1,66 @@
+<div class="cancel-order-modal">
+  <div class="modal-head">
+    <div class="head-icon">
+      <svg-icon [src]="'/assets/icons/error.svg'"></svg-icon>
+    </div>
+    <div>
+      <div class="title">Отмена заказа</div>
+      <div class="subtitle">Заказ №{{ data?.orderSequence || '-' }}</div>
+    </div>
+  </div>
+
+  <div class="reason-title">Причина отмены <span>*</span></div>
+
+  @if (data?.reasons?.length) {
+    <div class="reason-list">
+      @for (reason of data.reasons; track reason.id) {
+        <button
+          type="button"
+          class="reason-item"
+          [class.reason-item--active]="selectedReason()?.id === reason.id"
+          (click)="onSelectReason(reason)">
+          {{ reason.name }}
+        </button>
+      }
+    </div>
+  }
+  @if (isNoPositionReason()) {
+    <div class="reason-title mt-2">
+      Выберите отсутствующие позиции <span>*</span>
+    </div>
+    <div class="reason-list">
+      @for (item of data.items; track item.productVariantId) {
+        <button
+          type="button"
+          class="reason-item"
+          [class.reason-item--active]="isItemSelected(item)"
+          (click)="onToggleItem(item)">
+
+          {{ item.productName }}
+          <div class="subtitle">
+            {{ item.dimensionValue }} {{ item.dimensionUnitName }} × {{ item.quantity }}
+          </div>
+        </button>
+      }
+    </div>
+
+    @if (isNoPositionReason() && !selectedItems().length) {
+      <div class="error">
+        Выберите хотя бы одну позицию
+      </div>
+    }
+  }
+
+  <div class="modal-actions">
+    <button type="button" class="btn btn-cancel" (click)="onClose()">
+      Отмена
+    </button>
+    <button
+      type="button"
+      class="btn btn-confirm"
+      [disabled]="isConfirmDisabled()"
+      (click)="onConfirm()">
+      Подтвердить отмену
+    </button>
+  </div>
+</div>

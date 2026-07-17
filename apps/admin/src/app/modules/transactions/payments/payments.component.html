@@ -1,0 +1,243 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterParams]="filterParams"
+  [field]="field"
+  [filterStorageKey]="'payments-filters'"
+  defaultFilterField="createdAt">
+  @if (paymentStatusAmounts) {
+    <div class="em-d-flex em-g-8 status-scroll"
+         header-center-actions
+         [ngClass]="{'hidden': !isVisible()}">
+      @for (status of paymentStatusAmounts; track status.statusType) {
+        <div class="em-d-flex status-card">
+          <div [ngClass]="status.statusType.toLowerCase()" class="em-d-flex amount">
+            <div [ngClass]="status.statusType.toLowerCase()" class="amount-status">
+              {{ status.statusName }}:
+            </div>
+            <div [ngClass]="status.statusType.toLowerCase()" class="text-wrap">
+              {{ formatCurrencies(status.currencies) }}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+  <ng-container header-actions>
+    @if (!isMobile) {
+      <div class="d-flex-sb pl-3 v-line-left">
+        @for (action of actions; track action.code) {
+          <em-actions [actionData]="action"
+            (refreshTable)="reloadTable()"
+            (statusHide)="toggleVisibility()" />
+        }
+      </div>
+    }
+    @if (isMobile) {
+      <div class="d-flex-sb gap-2 em-jc-c">
+        @for (action of actions; track action) {
+          <em-actions [actionData]="action"
+            (refreshTable)="reloadTable()"
+            (statusHide)="toggleVisibility()" />
+        }
+      </div>
+    }
+    @if (!isMobile && paginate) {
+      <em-pagination class="pl-3" [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+
+<div class="mobile-card" [scrollTopHeight]="700"  (emScrollEvent)="showScrollButton.set($event)">
+  @for (payment of payments; track payment; let i = $index) {
+    <div class="item-card">
+      <div class="top">
+        <div class="actions" (click)="payment.isActive = !payment.isActive">
+          <div class="status">
+            <span class="indicator" [class]="statusIndicator(payment['paymentStatusGroupId'])"></span>
+            <span class="text">{{ payment.paymentStatusGroupName }}</span>
+          </div>
+          <div class="toggle">
+            <svg-icon [src]="'/assets/icons/toggle.svg'" [class.open]="payment.isActive" />
+          </div>
+        </div>
+        <div class="title">{{ payment.merchantName }}</div>
+        <div class="info">
+          <div class="info-item">
+            <div class="label">ИНН</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.inn }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Организация</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.companyName }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Точка</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.merchantName || '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Касса</div>
+            <div class="separator">:</div>
+            <div class="value">{{ payment.posName || '-' }}</div>
+          </div>
+          <div [@detailExpand]="payment.isActive ? 'expanded' : 'collapsed'">
+            <div class="info-item">
+              <div class="label">EQMS Кассы</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.posExtCodeEqms || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Сумма оплаты</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.fromAmount || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Сумма пополнения</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.toAmount || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Создан</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.createdAt | dateTime }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Создал</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.createdByName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Завершен</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.finishedAt | dateTime }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Плательщик</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.fromAccountNumber || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Банк эмитент</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.bankEmitentName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Банк Эквайер</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.bankAcquirerName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">ID</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.id || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Номер документа</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.number || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Информация</div>
+              <div class="separator">:</div>
+              <ng-container>
+                @if (payment.params && payment.params.length > 0; ) {
+                  <div>
+                    @for (param of payment.params; track param) {
+                      <div class="value">{{ param || '-' }}</div>
+                    }
+                  </div>
+                }
+              </ng-container>
+            </div>
+            <div class="info-item">
+              <div class="label">Внешный ID</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.sessionNumber || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Номер кошелька</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.userMsisdn || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Получатель</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.toAccountNumber || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Шлюз плательщика</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.fromGatewayName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Шлюз получателя</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.toGatewayName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Подробный статус</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.paymentStatusName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Статус синхранизации</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.paymentSyncStatusName || '-' }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Изменено</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.modifiedAt | dateTime }}</div>
+            </div>
+            <div class="info-item">
+              <div class="label">Изменил</div>
+              <div class="separator">:</div>
+              <div class="value">{{ payment.modifiedByName || '-' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-secondary" (click)="showDetail(payment.id)">Подробнее</button>
+        <button type="button" class="btn btn-primary" (click)="openDropdown(payment)">Опции</button>
+      </div>
+    </div>
+  }
+  @if ((!payments || !payments.length)) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (showScrollButton()) {
+    <em-top-button />
+  }
+  @if (paginate && payments.length) {
+    <em-pagination class="pl-3"
+      [page]="paginate" />
+  }
+</div>
+
+@if (!isMobile) {
+  <em-table [loading]="loading()"
+    [class.blur]="loading()"
+    (detail)="showDetail($event)"
+    (refund)="checkPaymentRefundStatus($event)"
+    (checkStatus)="checkStatus($event)"
+    (sortChange)="sortTable($event)"
+    (edit)="paymentUpdate($event)"
+    (link)="link($event)"
+    [optionActions]="optionActions"
+    [dataSource]="payments"
+    [captions]="columns"
+    [rowActions]="tableActions"
+    [captionKey]="captionKey" />
+}
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

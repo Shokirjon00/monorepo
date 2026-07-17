@@ -1,0 +1,185 @@
+<div class="form-group filter">
+  <div class="filter-container">
+    <div class="form-default em-fw-wrap">
+      @if (showFilterTitle()) {
+        <h1
+          class="form-title"
+          [style.color]="isAdvancePayments ? '#fff' : '#525B6C'">
+          Фильтры
+        </h1>
+      }
+      @for (filterItem of filterItems; track filterItem.field; let idx = $index) {
+        <div
+          class="form-input-group"
+          (emClickOutside)="isOpen[idx] = false">
+
+          <div class="d-flex-sb filtered-value">
+            <div class="em-d-flex w-100">
+
+              <div class="em-d-flex em-ai-center">
+                <div class="arrow mr-1" (click)="openList(idx)">
+                  <svg-icon class="em-d-flex-center"
+                    src="assets/images/arrow.svg" />
+                </div>
+                <div class="mr-1 max-content-width">
+                  {{ filterItem.key }}:
+                </div>
+              </div>
+              @switch (filterItem.filterType) {
+                @case ('list') {
+                  <em-simple-select-list [id]="'filter-list-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    (changed)="selectStatus($event)"
+                    [dataSource]="activeStatus"
+                    optionValue="value"
+                    optionLabel="key"
+                    action="Выберите статус" />
+                }
+                @case ('payment_refund_application_statuses') {
+                  <em-simple-select-list [id]="'filter-refund-application-status-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    (changed)="selectRefundApplicationStatus($event)"
+                    [dataSource]="refundApplicationStatus"
+                    optionValue="value"
+                    optionLabel="key"
+                    action="выберите статус" />
+                }
+                @case ('send_type') {
+                  <em-simple-select-list [id]="'filter-send-type-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    (changed)="selectSendType($event)"
+                    [dataSource]="sendType"
+                    optionValue="value"
+                    optionLabel="key"
+                    action="выберите тип" />
+                }
+                @case ('refund_type') {
+                  <em-simple-select-list [id]="'filter-refund_type-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    (changed)="selectRefundType($event)"
+                    [dataSource]="refundType"
+                    optionValue="value"
+                    optionLabel="key"
+                    action="выберите тип" />
+                }
+                @case ('action_type') {
+                  <em-simple-select-list [id]="'filter-action_type-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    (changed)="selectActionType($event)"
+                    [dataSource]="actionType"
+                    optionValue="value"
+                    optionLabel="key"
+                    action="Выберите тип" />
+                }
+                @case ('search-dropdown') {
+                  <em-select-field-search [id]="'filter-search-dropdown-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    [apiUrl]="filterItem.apiUrl"
+                    optionValue="id"
+                    optionLabel="name"
+                    (changed)="searchDropdown($event, filterItem.filterParams, filterItem.placeholder)"
+                    [placeholder]="filterItem.placeholder"
+                    [sendRequestImmediately]="true" />
+                }
+                @case ('dropdown') {
+                  <em-custom-select-list [id]="'filter-dropdown-' + idx"
+                    [(ngModel)]="filterItem.value"
+                    [apiUrl]="filterItem.apiUrl"
+                    optionValue="id"
+                    [filterKey]="filterItem.field"
+                    optionLabel="name"
+                    (changed)="selectStatusType($event)"
+                    (dropdownToggle)="dropdownOpened(idx, $event)"
+                    action="Выберите статус" />
+                }
+                @case ('date') {
+                  <input
+                    [id]="'startDate-' + idx"
+                    [(ngModel)]="filterItem.startDate"
+                    type="datetime-local"
+                    class="filter-value hidden-calendar-icon"
+                    (keydown.enter)="applyFilterOnEnter(filterItem)">
+
+                  <span class="date-filter"> -- </span>
+
+                  <input
+                    class="filter-value hidden-calendar-icon"
+                    [id]="'endDate-' + idx"
+                    [(ngModel)]="filterItem.endDate"
+                    type="datetime-local"
+                    max="2030-01-01T23:59"
+                    (keydown.enter)="applyFilterOnEnter(filterItem)">
+
+                  @if (filterItem.startDate || filterItem.endDate) {
+                    <div class="arrow mr-1" (click)="clearInput(filterItem)">
+                      <svg-icon src="assets/icons/cancel.svg" />
+                    </div>
+                  }
+                }
+
+                @case ('text') {
+                  <input
+                    [(ngModel)]="filterItem.value"
+                    [attr.id]="filterItem.field"
+                    type="text"
+                    class="filter-value no-spinner"
+                    (keydown.enter)="applyFilterOnEnter(filterItem)">
+
+                  @if (filterItem.value) {
+                    <div class="arrow mr-1" (click)="clearInput(filterItem)">
+                      <svg-icon src="assets/icons/cancel.svg" />
+                    </div>
+                  }
+                }
+                @case ('number') {
+                  <input
+                    [(ngModel)]="filterItem.value"
+                    [attr.id]="filterItem.field"
+                    type="number"
+                    class="filter-value no-spinner"
+                    (keydown.enter)="applyFilterOnEnter(filterItem)">
+
+                  @if (filterItem.value) {
+                    <div class="arrow mr-1" (click)="clearInput(filterItem)">
+                      <svg-icon src="assets/icons/cancel.svg" />
+                    </div>
+                  }
+                }
+              }
+            </div>
+          </div>
+          @if (filterItems.length > 1) {
+            <div class="tooltip" (click)="removeField(idx, filterItem.field)">
+              <svg-icon class="em-d-flex-center ml-2"
+                src="assets/icons/delete.svg"
+                [ngClass]="{ 'white-icon': isAdvancePayments }" />
+              <span class="tooltiptext">Удалить</span>
+            </div>
+          }
+
+          <em-field-list [maxHeight]="maxHeight"
+            [isOpen]="isOpen[idx] && selectedIndex === idx"
+            (selected)="selectedChanged($event, filterItem, idx)"
+            [items]="fields" />
+
+        </div>
+      }
+
+      @if (showAddFilterButton && addFilter) {
+        <div class="form-add">
+          <button
+            class="ml-3 action-item tooltip"
+            id="add-filter"
+            (click)="addFilterLabel()">
+
+            <svg-icon class="em-d-flex-center"
+              src="./assets/icons/plus.svg"
+              [ngClass]="{ 'white-icon': isAdvancePayments }" />
+
+            <span class="tooltiptext">Добавить фильтр</span>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [actions]="actions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'merchant'">
+  <ng-container header-actions>
+    <div class="d-flex-sb v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="showDetail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="merchants"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [page]="paginate"
+  [loading]="loading"
+  [captionKey]="captionKey" />
+
+<div class="mobile-card">
+  @for (merchant of merchants; track merchant.id) {
+    <div class="item-card" (click)="showDetail(merchant.id)">
+      <div class="top">
+        <div class="title">{{merchant.name}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [class]="merchant.isActive ? 'completed' : 'rejected'"></span>
+            <span class="text">{{merchant.statusName}}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">Счет</div>
+            <div class="separator">:</div>
+            <div class="value">{{merchant.accountNumber || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Город</div>
+            <div class="separator">:</div>
+            <div class="value">{{merchant.cityName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Филиал</div>
+            <div class="separator">:</div>
+            <div class="value">{{merchant.branchName || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Создано</div>
+            <div class="separator">:</div>
+            <div class="value">{{ merchant?.createdAt ? (merchant.createdAt | dateTime) : '-' }}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Кол-во касс</div>
+            <div class="separator">:</div>
+            <div class="value">{{merchant.posCount || '-'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button type="button" class="btn btn-primary" *ngxPermissionsOnly="'MerchantUpdate'" (click)="edit(merchant.id)">Редактировать</button>
+      </div>
+    </div>
+  }
+  @if ((!merchants || !merchants.length) && !loading) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && merchants.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

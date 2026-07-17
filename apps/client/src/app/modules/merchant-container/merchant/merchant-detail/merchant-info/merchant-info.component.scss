@@ -1,0 +1,39 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/table' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+@use 'modules/merchant-container/pos/pos.component.scss' as *;
+
+
+.images img {
+  border: 1px solid $border-line;
+  border-radius: 0.75rem;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+@include media-breakpoint-down(sm) {
+  .merchant-group {
+    padding: 1rem;
+    border-radius: 0.75rem;
+
+    .container {
+      padding: 0;
+
+      .title-h1 {
+        margin-bottom: 0.625rem;
+        margin-top: 0.625rem;
+      }
+
+      .no-data {
+        text-align: center;
+      }
+    }
+  }
+}

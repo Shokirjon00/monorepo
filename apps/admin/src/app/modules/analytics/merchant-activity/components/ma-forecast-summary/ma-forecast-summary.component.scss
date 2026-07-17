@@ -1,0 +1,112 @@
+@import 'core/scss/variables';
+@import 'core/scss/flex';
+@import 'core/scss/mixins/mixin';
+
+:host {
+  @include em-d-flex-al-center();
+  height: 100%;
+  align-self: stretch;
+}
+
+.fc {
+  gap: 0.65rem;
+  width: 100%;
+  height: auto;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, $accent-purple 20%, $brand-line);
+  background: radial-gradient(130% 120% at 100% 0%, color-mix(in srgb, $accent-purple 14%, transparent), transparent 55%),
+  linear-gradient(160deg, color-mix(in srgb, $primary-color 6%, transparent), transparent 50%),
+  $white;
+
+  &-top {
+    gap: 0.5rem;
+  }
+
+  &-label {
+    font-size: 0.8rem;
+    color: $secondary-text-color;
+    font-weight: 500;
+  }
+
+  &-badge {
+    @include em-d-flex-al-center();
+    gap: 0.25rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: $success-color;
+    background: color-mix(in srgb, $success-color 15%, transparent);
+  }
+
+  &-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    background: linear-gradient(90deg, $accent-purple, $primary-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &-unit {
+    margin-left: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    -webkit-text-fill-color: $light-slate;
+    color: $light-slate;
+  }
+
+  &-bars {
+    gap: 0.5rem;
+    margin-top: 0.15rem;
+  }
+
+  &-bar-row {
+    gap: 0.35rem;
+  }
+
+  &-bar-head {
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  &-bar-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $secondary-text-color;
+  }
+
+  &-bar {
+    display: block;
+    height: 9px;
+    border-radius: 6px;
+    background: $main-bg;
+    overflow: hidden;
+  }
+
+  &-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &-forecast {
+      background: linear-gradient(90deg, $accent-purple, $primary-color);
+    }
+
+    &-actual {
+      background: $gray-400;
+    }
+  }
+
+  &-bar-val {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: $gunmetal-blue;
+    white-space: nowrap;
+  }
+}

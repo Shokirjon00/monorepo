@@ -1,0 +1,78 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ countryDetail?.name || "Добавить страну" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'CountryActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 country">
+    <div class="form">
+      <div class="label">Наименование*</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Код*</div>
+      <div class="input">
+        <input formControlName="code" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['code']?.invalid && f['code']?.touched">
+        <em-validator [fieldControl]="f['code']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Код ABS*</div>
+      <div class="input">
+        <input formControlName="extCodeAbs" type="text" class="form-control" placeholder="Введите ABS код"
+               [class.is-invalid]="f['extCodeAbs']?.invalid && f['extCodeAbs']?.touched">
+        <em-validator [fieldControl]="f['extCodeAbs']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Описание</div>
+      <div class="input">
+        <input formControlName="description" type="text" class="form-control"
+               placeholder="Введите примичание (необязательно)">
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">ISO2*</div>
+      <div class="input">
+        <input formControlName="iso2" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['iso2']?.invalid && f['iso2']?.touched">
+        <em-validator [fieldControl]="f['iso2']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">ISO3*</div>
+      <div class="input">
+        <input formControlName="iso3" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['iso3']?.invalid && f['iso3']?.touched">
+        <em-validator [fieldControl]="f['iso3']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

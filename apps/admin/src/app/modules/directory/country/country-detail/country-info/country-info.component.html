@@ -1,0 +1,35 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'CountryUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-7">
+  <div class="em-d-flex em-g-16 w-50">
+    <div class="labels">
+      <div><span>Код</span><span>:</span></div>
+      <div><span>Наименование*</span><span>:</span></div>
+      <div><span>iso2</span><span>:</span></div>
+      <div><span>iso3</span><span>:</span></div>
+      <div><span>Код ABS*</span><span>:</span></div>
+      <div><span>Статус</span><span>:</span></div>
+      <div><span>Примечание</span><span>:</span></div>
+    </div>
+    <div class="data">
+      <span>{{ countryDetail?.code || '-' }}</span>
+      <span>{{ countryDetail?.name || '-' }}</span>
+      <span>{{ countryDetail?.iso2 || '-' }}</span>
+      <span>{{ countryDetail?.iso3 || '-' }}</span>
+      <span>{{ countryDetail?.extCodeAbs || '-' }}</span>
+      <span>{{ countryDetail?.statusName || '-' }}</span>
+      <span>{{ countryDetail?.description || '-' }}</span>
+    </div>
+  </div>
+</div>

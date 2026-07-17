@@ -1,0 +1,27 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+    <div class="em-d-flex em-ai-center">
+      <div *ngxPermissionsOnly="'PaymentRefundReasonUpdate'">
+        <button type="button" class="button-tooltip" (click)="navigateToUpdate()">
+          <svg-icon src="assets/icons/pen.svg" />
+          <span class="tooltip-text">Редактировать</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div class="padding-7">
+  <div class="labels-data">
+    <div class="em-d-flex"><span class="key">Наименование</span><span>:</span><span
+      class="data">{{ paymentRefundReasonDetail?.name || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+      class="data">{{ (paymentRefundReasonDetail?.createdAt | dateTime) || '-' }}</span></div>
+
+    <div class="em-d-flex"><span class="key">Изменено</span><span>:</span><span
+      class="data">{{ (paymentRefundReasonDetail?.modifiedAt | dateTime) || '-' }}</span></div>
+    <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+      class="data">{{ paymentRefundReasonDetail?.statusName || '-' }}</span></div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@import "core/scss/mixins/mixin";
+@import 'core/scss/variables';
+
+.services {
+  @include flex_row();
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1.5rem 2.5rem;
+
+  .item {
+    @include flex_ai_center();
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid $brand-line;
+    transition: 300ms ease-out;
+
+    &:hover {
+      box-shadow: rgb(34 34 34 / 20%) 0 0 14px;
+    }
+  }
+}

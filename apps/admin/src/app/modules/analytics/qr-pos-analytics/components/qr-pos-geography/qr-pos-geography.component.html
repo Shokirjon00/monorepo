@@ -1,0 +1,31 @@
+<div class="geo">
+  <div class="geo-map">
+    <img class="geo-map-img" ngSrc="./assets/images/map1.svg" alt="Карта регионов" height="1022" width="1598"/>
+    @for (marker of markers(); track marker.regionId) {
+      <span class="geo-marker"
+            [style.left.%]="marker.x"
+            [style.top.%]="marker.y"
+            [style.width.px]="marker.size"
+            [style.height.px]="marker.size"
+            [title]="marker.name"></span>
+    }
+  </div>
+
+  <div class="geo-table">
+    <div class="geo-row geo-row-head">
+      <span>Регион</span>
+      <span class="geo-row-num">Оборот ({{ geography()?.currency }})</span>
+      <span class="geo-row-num">Доля</span>
+    </div>
+
+    @for (region of regions(); track trackRegion($index, region)) {
+      <div class="geo-row">
+        <span class="geo-row-name">{{ region.name }}</span>
+        <span class="geo-row-num">{{ region.turnover | emNumber: '1.0-0' }}</span>
+        <span class="geo-row-num geo-row-share">{{ region.share }}%</span>
+      </div>
+    } @empty {
+      <div class="geo-row geo-row-empty">Нет данных по регионам</div>
+    }
+  </div>
+</div>

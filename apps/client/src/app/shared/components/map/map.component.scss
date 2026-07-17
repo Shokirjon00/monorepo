@@ -1,0 +1,49 @@
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/variables' as *;
+
+.map {
+  display: flex;
+  gap: 2rem;
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &__left {
+    width: 50%;
+
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 1rem;
+      z-index: 1;
+    }
+  }
+
+  &__right {
+    width: 50%;
+  }
+}
+
+::ng-deep.leaflet-container a {
+  display: none;
+}
+
+@include media-breakpoint-down(md) {
+  .map {
+    flex-direction: column;
+
+    &__left {
+      width: 100%;
+    }
+
+    &__right {
+      width: 100%;
+    }
+  }
+}

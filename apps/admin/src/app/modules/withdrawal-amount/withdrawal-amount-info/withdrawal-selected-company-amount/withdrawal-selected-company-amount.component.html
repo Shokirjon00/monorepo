@@ -1,0 +1,87 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Выборочный вывод</div>
+    <div class="em-d-flex">
+      <div class="icon button-tooltip" (click)="back()" [class.disabled]="submitted">
+        <svg-icon src="assets/icons/cancel.svg" />
+        <span class="tooltip-text">Отмена</span>
+      </div>
+      <div class="v-line"></div>
+      <div class="icon button-tooltip" (click)="onSubmit()"
+           [class.disabled]="selectedCompany.length === 0 || submitted">
+        <svg-icon src="assets/icons/save.svg" />
+        <span class="tooltip-text">Сохранить</span>
+      </div>
+    </div>
+  </div>
+</em-header2>
+<div [class.blur]="submitted">
+  <div class="withdrawal-search-company">
+    <div class="form">
+      <div class="label">Организации</div>
+      <div class="input">
+        <input type="text" class="form-control" placeholder="Название организации" [formControl]="searchCompanyControl">
+        @if (searchCompanyControl.value) {
+          <svg-icon src="assets/icons/cancel-small.svg" class="clear" (click)="clearDate()" />
+        }
+      </div>
+    </div>
+  </div>
+  <div class="withdrawal-selected">
+    <div class="withdrawal-selected-left v-line">
+      <div class="top">
+        <div class="top-status">Статус</div>
+        <div class="top-company">Организация</div>
+      </div>
+      <div class="body" [pagination]="paginate" [selector]="'.body'" (emInfiniteScroll)="onScrolled()">
+        @for (company of companies; track company) {
+          <div class="body-item" (click)="selectCompany(company)" [class.active]="companyId === company.id">
+            <div class="body-item-checkbox">
+              <span class="circle-checkbox" (click)="selectedAllMerchant(company, $event)">
+                <input type="checkbox" [checked]="isSelectedCompany(company)">
+                <div class="em-d-flex-center" [class]="company.isManuallySelected ? 'select' : 'check'">
+                  <svg-icon src="assets/icons/check.svg" />
+                </div>
+              </span>
+            </div>
+            <div class="body-item-company">{{ company.name }}</div>
+          </div>
+        }
+        @if (!companies?.length) {
+          <div class="no-data em-ta-c">Нет данных для показа</div>
+        }
+      </div>
+    </div>
+    <div class="withdrawal-selected-right">
+      @if (loading) {
+        <em-eb-loader class="form-loader" />
+      }
+      <div class="top">
+        <div class="top-status">Статус</div>
+        <div class="top-company">Торговая точка</div>
+      </div>
+      <div class="body merchant-body">
+        @for (merchant of merchants; track merchant) {
+          <div class="body-item" (click)="selectMerchant(merchant, $event)">
+            <div class="body-item-checkbox">
+              <span class="circle-checkbox" (click)="selectMerchant(merchant, $event)">
+                <input type="checkbox" [checked]="isSelectedMerchant(merchant)">
+                <div class="check em-d-flex-center">
+                  <svg-icon src="assets/icons/check.svg" />
+                </div>
+              </span>
+            </div>
+            <div class="body-item-company">{{ merchant.name }}</div>
+          </div>
+        }
+        @if (!merchants?.length) {
+          <div class="no-data em-ta-c">Нет данных для показа</div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+@if (submitted) {
+  <em-eb-loader class="form-loader" />
+}
+<em-toast />

@@ -1,0 +1,328 @@
+<em-header2>
+  <div class="d-flex-sb w-100" header-right-actions>
+    <div class="title-h1">Мой рейтинг</div>
+  </div>
+</em-header2>
+
+@if (dashboardData(); as d) {
+  <div class="dashboard">
+
+    <div class="dashboard-filters position-sticky">
+      <em-multi-dropdown
+                         [isMultiSelect]="true"
+                         [canSearch]="true"
+                         [showClear]="true"
+                         [path]="merchantApi"
+                         [selected]="selectedMerchant"
+                         [selectedId]="selectedMerchantIds.length ? selectedMerchantIds : null"
+                         [searchPlaceholder]="'Название точки'"
+                         (changed)="merchantChange($event)"
+                         (clearInput)="clearMerchant()"
+                         (allIds)="onAllMerchantsLoaded($event)"/>
+    </div>
+    <div class="dashboard-top">
+      @if (d.overallRatings) {
+        <div class="dashboard-summary">
+          <div class="dashboard-main-rating">
+            <img src="./assets/icons/star.svg" alt="">
+            <div class="dashboard-rating-value">{{ d.overallRatings.overallRating }}</div>
+
+            @if (overallRatingVm(); as rating) {
+              <div class="dashboard-rating-diff"
+                   [class]="rating.deltaClass">
+
+                <img [src]="rating.trendIcon" alt="" />
+
+                {{ rating.deltaText }}
+              </div>
+            }
+          </div>
+          <span class="dashboard-subtitle">Общий рейтинг ресторана</span>
+
+          <div class="dashboard-card">
+            <span class="dashboard-subtitle">Оценка пользователей</span>
+            @if (d.orderReviews) {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">{{ d.orderReviews.rating }}</span>
+                @if (overallRatingVm(); as rating) {
+                  <div class="dashboard-rating-diff"
+                       [class]="rating.deltaClass">
+
+                    <img [src]="rating.trendIcon" alt="" />
+
+                    {{ rating.deltaText }}
+                  </div>
+                }
+              </div>
+            } @else {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">—</span>
+              </div>
+            }
+          </div>
+
+          <div class="dashboard-card">
+            <span class="dashboard-subtitle">Рейтинг отмен</span>
+            @if (d.cancellationRating) {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">{{ d.cancellationRating.rating }}</span>
+                @if (overallRatingVm(); as rating) {
+                  <div class="dashboard-rating-diff"
+                       [class]="rating.deltaClass">
+
+                    <img [src]="rating.trendIcon" alt="" />
+
+                    {{ rating.deltaText }}
+                  </div>
+                }
+              </div>
+            } @else {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">—</span>
+              </div>
+            }
+          </div>
+
+          <div class="dashboard-card">
+            <span class="dashboard-subtitle">Рейтинг реагирования</span>
+            @if (d.reactionTimeRating) {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">{{ d.reactionTimeRating.rating }}</span>
+                @if (overallRatingVm(); as rating) {
+                  <div class="dashboard-rating-diff"
+                       [class]="rating.deltaClass">
+
+                    <img [src]="rating.trendIcon" alt="" />
+
+                    {{ rating.deltaText }}
+                  </div>
+                }
+              </div>
+            } @else {
+              <div class="em-d-flex em-al-center em-g-8">
+                <span class="em-title em-fw-700">—</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="dashboard-chart">
+          <div class="dashboard-chart-title">Динамика рейтинга</div>
+
+          @if (chartOptions()) {
+              <div class="apex-w">
+                <apx-chart
+                  [series]="chartOptions()?.series || []"
+                  [chart]="chartOptions()?.chart!"
+                  [xaxis]="chartOptions()?.xaxis!"
+                  [stroke]="chartOptions()?.stroke!"
+                ></apx-chart>
+              </div>
+          }
+        </div>
+      } @else {
+        <ng-container *ngTemplateOutlet="noDataPlaceholder"></ng-container>
+      }
+
+    </div>
+
+    <div class="dashboard-bottom">
+      <div class="dashboard-ratings-block">
+        @if (!d.orderReviews) {
+          <div class="dashboard-title">
+            Оценка пользователей: —
+          </div>
+          <div class="dashboard-subtitle">
+            Нет заказов с оценками
+          </div>
+          <ng-container *ngTemplateOutlet="noDataPlaceholder"></ng-container>
+        } @else {
+          <div class="dashboard-title">Оценка пользователей: {{ d.orderReviews.rating || '-' }}</div>
+          <span class="dashboard-subtitle">
+        Средняя оценка за последние {{ d.orderReviews.quantity }} заказов
+      </span>
+          <div class="dashboard-title">Распределение оценок</div>
+          <div class="em-d-flex em-g-30">
+            <div class="dashboard-bars">
+              @for (r of ratings(); track r?.label) {
+                <div class="dashboard-bar-row">
+
+                  <div class="dashboard-label">
+                    <span>{{ r?.label }}</span>
+                    <img src="assets/icons/star-small.svg" alt="" />
+                  </div>
+
+                  <div class="dashboard-bar">
+                    <div
+                      class="dashboard-fill dashboard-fill--{{ r?.color }}"
+                      [style.width.%]="r?.value"
+                    ></div>
+                  </div>
+
+                  <div class="dashboard-count">({{ r?.count }})</div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+      </div>
+    </div>
+
+    <div class="dashboard-cancel-rating">
+      @if (!d.cancellationRating) {
+
+        <div class="dashboard-title">
+          Рейтинг отмен: —
+        </div>
+        <div class="dashboard-subtitle">
+          Для расчёта необходимо минимум 20 заказов
+        </div>
+        <ng-container *ngTemplateOutlet="noDataPlaceholder"></ng-container>
+      } @else {
+        <div class="dashboard-title">Рейтинг отмен: {{ d.cancellationRating.rating || '-' }}</div>
+        <div class="dashboard-subtitle">
+          Формула: 5 × (1 - {{ d.cancellationRating.canceledOrdersQuantity }}
+          / {{ d.cancellationRating.ordersQuantity }})
+        </div>
+        <div class="dashboard-scale-wrapper">
+          <div class="dashboard-scale dashboard-scale--cancel">
+            <div class="dashboard-segment dashboard-segment--excellent"></div>
+            <div class="dashboard-segment dashboard-segment--good"></div>
+            <div class="dashboard-segment dashboard-segment--satisfactory"></div>
+            <div class="dashboard-segment dashboard-segment--needsattention"></div>
+            <div class="dashboard-segment dashboard-segment--critical"></div>
+          </div>
+          <div class="dashboard-pointer" [style.left.%]="cancellationPointerPos"></div>
+          <div class="dashboard-scale-labels">
+            <span>0%</span><span>>0-5%</span><span>>5-10%</span><span>>10-20%</span><span>>20%</span>
+          </div>
+        </div>
+        <div class="dashboard-status dashboard-status--{{ d.cancellationRating.label?.type?.toLowerCase() }}">
+          <div class="dashboard-dot mt-1"></div>
+          <div>
+            <div class="dashboard-title dashboard-colors">{{ d.cancellationRating.label?.text }}</div>
+            <div class="dashboard-subtitle dashboard-colors">
+              Из последних {{ d.cancellationRating.ordersQuantity }} заказов отменено
+              <span class="em-fw-500">
+              {{ d.cancellationRating.canceledOrdersQuantity }}
+                заказов ({{ d.cancellationRating.canceledOrdersPercentage }}%)
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-cancel-bottom">
+          <div class="dashboard-levels">
+            <div class="dashboard-title mb-2">Уровни отмен</div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--excellent"></span>
+              0% — отличный показатель
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--good"></span>
+              >0-5% — хороший показатель
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--satisfactory"></span>
+              >5-10% — удовлетворительно
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--needsattention"></span>
+              >10-20% — требует внимания
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--critical"></span>
+              >20% — критический уровень
+            </div>
+          </div>
+          <div class="dashboard-reason-box">
+            <div class="dashboard-subtitle mb-2">
+              Чаще всего вы отменяете заказ из-за того, что:
+            </div>
+            <div class="dashboard-text">{{ d.cancellationRating.cancelReason }}</div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="dashboard-response-rating">
+
+      @if (d.reactionTimeRating) {
+        <div class="dashboard-title">
+          Рейтинг реагирования: {{ d.reactionTimeRating.rating }}
+        </div>
+        <div class="dashboard-subtitle">
+          Среднее время реагирования: {{ d.reactionTimeRating.averageReactionTime }} мин
+        </div>
+
+        <div class="dashboard-scale-wrapper">
+          <div class="dashboard-scale dashboard-scale--response">
+            <div class="dashboard-segment dashboard-segment--critical"></div>
+            <div class="dashboard-segment dashboard-segment--needsattention"></div>
+            <div class="dashboard-segment dashboard-segment--satisfactory"></div>
+            <div class="dashboard-segment dashboard-segment--good"></div>
+            <div class="dashboard-segment dashboard-segment--excellent"></div>
+          </div>
+          <div class="dashboard-pointer" [style.left.%]="reactionPointerPos"></div>
+          <div class="dashboard-scale-labels">
+            <span>1.0</span><span>2.0</span><span>3.0</span><span>4.0</span><span>5.0</span>
+          </div>
+        </div>
+
+        <div class="dashboard-status dashboard-status--{{ d.reactionTimeRating.label?.type?.toLowerCase() }}">
+          <div class="dashboard-dot mt-1"></div>
+          <div>
+            <div class="dashboard-title dashboard-colors">{{ d.reactionTimeRating.label?.text }}</div>
+            <div class="dashboard-subtitle">
+              Среднее время: <span class="em-fw-500">{{ d.reactionTimeRating.averageReactionTime }} мин</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-response-bottom">
+          <div class="dashboard-levels">
+            <div class="dashboard-title mb-2">Временные рамки рейтинга</div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--excellent"></span> 5.0 — ≤ 3 мин (отлично)
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--good"></span> 4.0 — 3–5 мин (хорошо)
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--satisfactory"></span> 3.0 — 5–10 мин (удовлетворительно)
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--needsattention"></span> 2.0 — 10–12 мин (низкая)
+            </div>
+            <div class="dashboard-level">
+              <span class="dashboard-dot dashboard-dot--critical"></span> 1.0 — ≥ 12 мин (критично)
+            </div>
+          </div>
+
+          <div class="dashboard-tips">
+            <div class="dashboard-title mb-2">Как достичь 5.0</div>
+            <ul class="dashboard-tips__list">
+              <li class="dashboard-subtitle item">Принимайте заказы в течение 3 минут</li>
+              <li class="dashboard-subtitle">Включите звуковые уведомления</li>
+              <li class="dashboard-subtitle">Держите устройство под рукой</li>
+            </ul>
+          </div>
+        </div>
+
+      } @else {
+        <div class="dashboard-title">Рейтинг реагирования: —</div>
+        <div class="dashboard-subtitle">Для расчёта необходимо минимум 20 заказов</div>
+        <ng-container *ngTemplateOutlet="noDataPlaceholder"></ng-container>
+      }
+
+    </div>
+  </div>
+
+  <ng-template #noDataPlaceholder>
+    <div class="dashboard-no-data">
+      <img src="./assets/icons/warning.svg" alt="warning">
+      <span>Недостаточно данных для расчёта</span>
+    </div>
+  </ng-template>
+}
+

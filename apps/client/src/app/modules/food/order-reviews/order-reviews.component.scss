@@ -1,0 +1,181 @@
+@use "core/scss/variables" as *;
+@use "core/scss/mixins/mixin" as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/paddings' as *;
+
+.reviews {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 1.25rem;
+  @include flex_column();
+  gap: 1.5rem;
+
+  &__chart {
+    border: 0.0625rem solid $border-light;
+    border-radius: 1rem;
+    padding: 1.5625rem;
+  }
+
+    &-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: $white-color;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid $light-gray;
+      margin-bottom: 1.25rem;
+
+      &__item {
+        min-width: 15rem;
+        flex: 1;
+      }
+    }
+}
+
+.chart-card {
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  &__list {
+    @include flex_column();
+    gap: 0.75rem;
+  }
+}
+
+.rating-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 5rem;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+
+  &__progress-container {
+    height: 0.5rem;
+    background: $gray-bg;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  &__progress-bar {
+    height: 100%;
+    background: $orange;
+    transition: width 0.3s ease;
+
+    &--high { background: $green-50; }
+    &--low { background: $red-50; }
+  }
+
+  &__value {
+    color: $color-text-muted;
+    text-align: right;
+  }
+}
+
+.review-card {
+  background: $white-color;
+  border-radius: 0.75rem;
+  border: 1px solid $light-gray;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  &__header {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid $border-light;
+    color: $blue-800;
+  }
+
+  &_stars {
+    display: flex;
+    gap: 2px;
+
+    img {
+      width: 14px;
+      opacity: 0.3;
+
+      &.filled {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__restaurant {
+    @include flex_align_center();
+    gap: 0.5rem;
+    font-weight: 600;
+  }
+
+  &__body {
+    padding: 1.25rem;
+  }
+
+  &__user-info {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__user-name {
+    font-weight: 600;
+  }
+
+  &__order-number {
+    font-size: 0.875rem;
+    color: $color-text-muted;
+  }
+
+  &__rating {
+    @include flex_align_center();
+    gap: 0.5rem;
+    color: $green-50;
+    margin-bottom: 0.25rem;
+  }
+
+  &__date {
+    font-size: 0.75rem;
+    color: $color-text-muted;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__tag {
+    background: $gray-bg;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    color: $slate-700;
+  }
+
+  &__comment {
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+    color: $slate-700;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+.rating--red {
+  color: $red-50;
+}
+
+.rating--yellow {
+  color: $orange;
+}
+
+.rating--green {
+  color: $green-50;
+}

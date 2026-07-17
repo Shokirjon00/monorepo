@@ -1,0 +1,46 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100">Информация</div>
+  </div>
+</em-header2>
+<div class="padding-6 user-admin">
+  @if (userDetail) {
+    <div class="merchant-info em-d-flex">
+      <div class="em-d-flex em-g-16 w-50 pr-6">
+        <div class="labels-data ">
+          <div class="em-d-flex">
+            <span class="key">ID</span>
+            <span>:</span>
+            <span class="data">{{userDetail.id || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">IP</span>
+            <span>:</span>
+            <span class="data">{{userDetail.ip || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Браузер</span>
+            <span>:</span>
+            <span class="data">{{userDetail.userAgent || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">ФИО</span>
+            <span>:</span>
+            <span class="data">{{userDetail.fullname || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Путь запроса</span>
+            <span>:</span>
+            <span class="data">{{userDetail.userActivityTypeName || '-'}}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Дата и время</span>
+            <span>:</span>
+            <span class="data">{{userDetail.createdAt | dateTime}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<em-toast />

@@ -1,0 +1,59 @@
+<div class="cards">
+  @for (card of cards(); track card.key) {
+    <div class="card" [ngClass]="card.colorKey ? 'card-c-' + card.colorKey : ''">
+      <div class="card-head">
+        @if (card.icon) {
+          <span class="card-icon">
+            <img class="card-icon-svg" [src]="'assets/icons/' + card.icon" [alt]="card.title">
+          </span>
+        }
+        <span class="card-title">{{ card.title }}</span>
+      </div>
+
+      <div class="card-value">
+        {{ card.value | emNumber: '1.0-2' }}
+        @if (card.unit) {
+          <span class="card-unit">{{ card.unit }}</span>
+        }
+      </div>
+
+      <div class="card-foot">
+        <div class="card-info">
+          @if (card.deltaPercent !== undefined && card.deltaPercent !== null) {
+            <div class="card-delta" [class.is-good]="isDeltaGood(card)" [class.is-bad]="!isDeltaGood(card)">
+              <span class="card-arrow" [class.is-up]="card.deltaPercent >= 0"></span>
+              {{ card.deltaPercent >= 0 ? '+' : '' }}{{ card.deltaPercent }}%
+            </div>
+          }
+        </div>
+
+        @if (card.gauge) {
+          <div class="card-gauge" [style.background]="gaugeBackground(card)">
+            <span class="card-gauge-val">{{ card.gauge.percent }}%</span>
+          </div>
+        } @else if (card.trend?.length) {
+          @let spark = sparkline(card);
+          <div class="card-spark">
+            <apx-chart
+              [series]="spark.series"
+              [chart]="spark.chart"
+              [stroke]="spark.stroke"
+              [fill]="spark.fill"
+              [colors]="spark.colors"
+              [tooltip]="spark.tooltip" />
+          </div>
+        }
+      </div>
+
+      @if (card.comparisonValue !== undefined && card.comparisonValue !== null) {
+        <div class="card-compare">
+          в сравнении с {{ card.comparisonValue | emNumber: '1.0-2' }} {{ card.comparisonUnit }}
+        </div>
+      }
+    </div>
+  } @empty {
+    @if (!loading()) {
+      <div class="cards-empty">Нет данных</div>
+    }
+  }
+</div>

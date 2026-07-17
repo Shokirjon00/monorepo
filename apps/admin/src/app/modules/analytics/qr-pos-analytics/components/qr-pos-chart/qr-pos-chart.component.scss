@@ -1,0 +1,33 @@
+@import 'core/scss/mixins/breakpoints';
+
+$qp-chart-h: 280px;
+
+:host {
+  display: block;
+  width: 100%;
+  height: $qp-chart-h;
+}
+
+:host-context(.panel-full) {
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+apx-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@include media-breakpoint-up(xxxl) {
+  :host {
+    height: $qp-chart-h * 1.3;
+  }
+}
+
+@include media-breakpoint-up(xxxxl) {
+  :host {
+    height: $qp-chart-h * 1.6;
+  }
+}

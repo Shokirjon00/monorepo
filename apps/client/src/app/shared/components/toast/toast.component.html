@@ -1,0 +1,13 @@
+<div #container [ngClass]="'p-toast p-component p-toast-' + position()" [ngStyle]="style()" [class]="styleClass()">
+  @for (msg of messages; track msg; let i = $index) {
+    <em-toast-item [message]="msg" [index]="i"
+      (clos)="onMessageClose($event)"
+      [template]="template"
+      @toastAnimation
+      (@toastAnimation.start)="onAnimationStart($event)"
+      (@toastAnimation.done)="onAnimationEnd($event)"
+      [showTransformOptions]="showTransformOptions()" [hideTransformOptions]="hideTransformOptions()"
+      [showTransitionOptions]="showTransitionOptions()"
+    [hideTransitionOptions]="hideTransitionOptions()" />
+  }
+</div>

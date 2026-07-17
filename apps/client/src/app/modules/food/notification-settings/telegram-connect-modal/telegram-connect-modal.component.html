@@ -1,0 +1,30 @@
+<div class="telegram-connect-modal">
+  <div class="close-icon" (click)="close()">
+    <svg-icon src="assets/images/close.svg" />
+  </div>
+
+  <div class="modal-content">
+    <h2 class="modal-title">Подключить Telegram</h2>
+      @if (qrCode()) {
+        <div class="qr-code-container">
+          <qrcode [qrdata]="qrCode()"
+            [width]="256"
+            [colorDark]="'#293241'"
+            [colorLight]="'#F5F9FC'"
+            [allowEmptyString]="true"
+           />
+        </div>
+        <p class="instruction-text">
+          Отсканируйте QR-код или нажмите на кнопку для подключения бота
+        </p>
+        <button class="btn btn-primary btn-lg" (click)="openInTelegram()">
+          Открыть в Telegram
+        </button>
+      } @else {
+        <div class="error-container">
+          <p>Ошибка при загрузке QR-кода</p>
+        </div>
+      }
+  </div>
+</div>
+

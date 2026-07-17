@@ -1,0 +1,162 @@
+@import "core/scss/form";
+@import "core/scss/variables";
+@import "core/scss/styles";
+
+:host {
+  width: 100%;
+
+  &.is-invalid {
+    .form-control {
+      border-color: $danger-color;
+    }
+  }
+
+  &.small {
+    .form-control {
+      padding: 11px 16px !important;
+      height: 40px !important;
+    }
+
+    .select-field .arrow img {
+      width: 9px;
+      height: 9px;
+      right: -2px;
+    }
+
+    .value, .placeholder {
+      font-size: 16px !important;
+      white-space: nowrap;
+    }
+  }
+}
+
+.select-field {
+  cursor: pointer;
+  width: 100%;
+  //max-width: 216px;
+
+  &__container {
+    width: 100%;
+    position: relative;
+
+    .form-control {
+      background-color: $white-color;
+      tab-index: 0;
+    }
+  }
+
+  ::ng-deep .value {
+    @include ellipsis-text(1);
+    width: 100%;
+    margin-right: 16px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+
+    & > * {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .placeholder {
+    color: #8E9AAF;
+    opacity: 1;
+  }
+
+  .clear {
+    display: flex;
+    background-color: #fff;
+    transition: 200ms;
+    >svg-icon{
+      line-height: 0;
+    }
+  }
+
+  .arrow {
+    display: flex;
+    background-color: #fff;
+    transition: 200ms;
+    >svg-icon{
+      line-height: 0;
+    }
+
+    eb-small-preloader {
+      margin-right: 4px;
+    }
+
+    .arrow-icon {
+      position: relative;
+      right: 8px;
+    }
+  }
+
+  .form-control {
+    @include flex_jc_sb();
+
+    &.focused {
+      //border-color: $primary-color;
+    }
+  }
+
+  &__autocomplete {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: inherit;
+    tab-index: 0;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #8E9AAF;
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #8E9AAF;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: #8E9AAF;
+    }
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+      max-height: 500px;
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: 200ms;
+      transform-origin: center;
+    }
+  }
+
+  &__sm {
+    .form-control {
+      padding: 10px 4px 10px 16px;
+      height: 40px;
+    }
+
+    .placeholder {
+      font-size: 16px;
+    }
+
+    .value {
+      font-size: 16px;
+
+      p {
+        font-size: inherit;
+      }
+    }
+  }
+
+  .search-list-icon {
+    @include flex_ai_center();
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+}

@@ -1,0 +1,131 @@
+<div class="commission">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <em-header2 [showBreadcrumb]="true">
+      <div class="d-flex-sb w-100" header-center-default>
+        <div class="title-h1 w-50">{{ commissionDetail?.name || 'Новая комиссия' }}</div>
+        <div class="em-d-flex">
+          <div class="v-line mr-1 pr-1">
+            <button type="button" class="button-tooltip" (click)="addCommission()">
+              <svg-icon src="assets/icons/plus.svg" />
+              <span class="tooltip-text">Добавить</span>
+            </button>
+          </div>
+          <div class="v-line mr-1 pr-1">
+            <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+              <svg-icon src="assets/icons/cancel.svg" />
+              <span class="tooltip-text">Отмена</span>
+            </button>
+          </div>
+          <div class="v-line pr-1">
+            <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+              <svg-icon src="assets/icons/save.svg" />
+              <span class="tooltip-text">Сохранить</span>
+            </button>
+          </div>
+          <div class="checkbox-toggle ml-1">
+            <div class="toggle-title">По умолчанию</div>
+            <input type="checkbox" id="isDefault" formControlName="isDefault"/><label for="isDefault">Toggle</label>
+          </div>
+          <div *ngxPermissionsOnly="'CommissionActiveStatus'" class="checkbox-toggle ml-1">
+            <div class="toggle-title">Активировать</div>
+            <input type="checkbox" id="switch" formControlName="isActive"/><label for="switch">Toggle</label>
+          </div>
+        </div>
+      </div>
+    </em-header2>
+    <div [class.blur]="submitted">
+      <div class="h-line padding-6">
+        <em-validator class="d-block mb-6" [fieldControl]="f['isDefault']" />
+        <div class="form">
+          <div class="label">Наименование*</div>
+          <div class="input">
+            <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+                   [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Период комиссии*</div>
+          <div class="input">
+            <div class="em-d-flex">
+              <div class="w-100">
+                <input type="date" class="form-control" formControlName="startDate"
+                       placeholder="00.00.0000">
+                <em-validator [fieldControl]="f['startDate']" />
+              </div>
+              <div class="w-100">
+                <input type="date" class="form-control" formControlName="endDate"
+                       placeholder="00.00.0000">
+                <em-validator [fieldControl]="f['endDate']" />
+              </div>
+              <div class="arrow" (click)="getPeriodTime()">
+                <svg-icon src="assets/images/arrow.svg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      @if (commissionArray.controls) {
+        <div class="padding-6" formArrayName="commissionGradations">
+          <div class="title-h1 w-100 mb-6">Условия комиссии</div>
+          @for (gradation of commissionArray.controls; track gradation; let i = $index) {
+            <div class="em-d-flex em-dr-row em-g-40 mb-4"
+                 [formGroupName]="i">
+              <div class="form mb-0">
+                <div class="label">Наименование условия</div>
+                <div class="input">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Введите наименование"
+                         [class.is-invalid]="gradation.get('name')?.invalid && gradation.get('name')?.touched">
+                  <em-validator [fieldControl]="gradation.get('name')" />
+                </div>
+              </div>
+              <div class="form mb-0">
+                <div class="label">Интервал от</div>
+                <div class="input">
+                  <input type="number" class="form-control" formControlName="minValue" placeholder="Введите значение"
+                         [class.is-invalid]="gradation.get('minValue')?.invalid && gradation.get('minValue')?.touched">
+                  <em-validator [fieldControl]="gradation.get('minValue')" />
+                </div>
+              </div>
+              <div class="form mb-0">
+                <div class="label">Интервал до</div>
+                <div class="input">
+                  <input type="number" class="form-control" formControlName="maxValue" placeholder="Введите значение"
+                         [class.is-invalid]="gradation.get('maxValue')?.invalid && gradation.get('maxValue')?.touched">
+                  <em-validator [fieldControl]="gradation.get('maxValue')" />
+                </div>
+              </div>
+              <div class="form mb-0">
+                <div class="label">Размер комиссии</div>
+                <div class="input">
+                  <input type="text" class="form-control" placeholder="Введите значение"
+                         mask="separator.2" formControlName="value"
+                         [class.is-invalid]="gradation.get('value')?.invalid && gradation.get('value')?.touched">
+                  <em-validator [fieldControl]="gradation.get('value')" />
+                </div>
+              </div>
+              <div class="form em-d-flex-center mb-0">
+                <label class="circle-checkbox">
+                  <input type="checkbox" formControlName="isPercentage">
+                  <div class="check em-d-flex-center ">
+                    <svg-icon src="assets/icons/check.svg" />
+                  </div>
+                  Процент от суммы
+                </label>
+                <em-validator [fieldControl]="gradation.get('isPercentage')" />
+              </div>
+              <div class="em-d-flex-center c-pointer" (click)="deleteCashBack(i)">
+                <svg-icon src="assets/icons/delete.svg" />
+              </div>
+            </div>
+          }
+          <em-validator [fieldControl]="f['commissionGradations']" />
+        </div>
+      }
+    </div>
+    @if (submitted) {
+      <em-eb-loader class="form-loader" />
+    }
+  </form>
+</div>
+<em-toast />

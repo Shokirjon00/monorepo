@@ -1,0 +1,60 @@
+<div class="qr-pos">
+  <div class="qr-pos-header">
+    <em-analytics-tabs-bar class="qr-pos-tabs" [tabs]="tabs" [showStatus]="true"
+                            (settingsChange)="onSettingsChange()" />
+
+    <div class="qr-pos-filters">
+      <em-qr-pos-filters
+        [filter]="filter()"
+        (filterChange)="onFilterChange($event)"
+        (resetFilters)="onResetFilters()" />
+    </div>
+  </div>
+
+  <div class="qr-pos-body" [class.is-loading]="loading()">
+    @if (ready()) {
+    <em-qr-pos-cards
+      [cards]="cards()"
+      [loading]="loading()"
+      (cardClick)="onCardClick($event)" />
+
+    <h3 class="qr-pos-title">Оборот</h3>
+
+    <div class="qr-pos-grid">
+      <em-qr-pos-panel class="qr-pos-panel acc-green"
+                       title="Динамика оборота"
+                       chartId="dynamics"
+                       [empty]="noDynamics()">
+        @if (dynamicsChart(); as chart) {
+          <em-qr-pos-chart [data]="chart" [height]="240" chartId="dynamics" />
+        }
+      </em-qr-pos-panel>
+
+      <em-qr-pos-panel class="qr-pos-panel acc-blue"
+                       [title]="planFactTitle()"
+                       [empty]="noPlanFact()"
+                       >
+        <em-qr-pos-plan-fact [data]="planFact()" />
+      </em-qr-pos-panel>
+    </div>
+    <div class="qr-pos-grid">
+      <em-qr-pos-panel class="qr-pos-panel acc-purple"
+                       title="Структура оборота по эквайрингу"
+                       [empty]="noAcquiring()"
+                       >
+        <em-qr-pos-acquiring [structure]="acquiring()" />
+      </em-qr-pos-panel>
+
+      <em-qr-pos-panel class="qr-pos-panel acc-orange"
+                       title="География оборота (по регионам)"
+                       [empty]="noGeography()"
+                       >
+        <em-qr-pos-geography [geography]="geography()" />
+      </em-qr-pos-panel>
+    </div>
+    <em-merchant-activity [embedded]="true" [externalParams]="apiParams()" />
+    }
+  </div>
+</div>
+
+<em-toast />

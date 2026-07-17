@@ -1,0 +1,24 @@
+<em-header2
+  [filterFields]="columns"
+  [filterStorageKey]="'InfoDetailsFiltersForm'"
+  [pageTitle]="header.title">
+  <ng-container header-actions>
+    <div class="action-line pl-3">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (link)="link($event)"
+  [dataSource]="withdrawalAmountInfoDetail"
+  [page]="paginate"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />

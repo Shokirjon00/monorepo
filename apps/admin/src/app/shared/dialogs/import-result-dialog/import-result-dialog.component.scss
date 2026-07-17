@@ -1,0 +1,164 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1rem;
+}
+
+::ng-deep.mdc-dialog--open .mat-mdc-dialog-inner-container {
+  opacity: 1;
+  width: 520px;
+}
+
+.confirm-dialog {
+  border-radius: 1rem;
+  padding: 2.5rem;
+  gap: 2rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: $gunmetal-blue;
+  margin: 0;
+}
+
+.form {
+  margin-bottom: 0;
+}
+
+.counters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.counter {
+  flex: 1;
+  padding: 1.25rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.counter-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.counter-label {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $gray-500;
+}
+
+.counter-success {
+  background: $success-soft-bg;
+  border-color: $success-soft-border;
+
+  .counter-value {
+    color: $success-emerald;
+  }
+}
+
+.counter-closed {
+  background: $danger-soft-bg;
+  border-color: $danger-soft-border;
+
+  .counter-value {
+    color: $danger-color;
+  }
+}
+
+.not-found-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: $gunmetal-blue;
+  margin-bottom: 0.75rem;
+}
+
+.not-found-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  padding: 0 0.4rem;
+  border-radius: 8px;
+  background: $danger-soft-border;
+  color: $danger-color;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.grid-table {
+  border: 1px solid $gray-400;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grid-table-head {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  background: $main-bg;
+  border-bottom: 1px solid $gray-400;
+
+  .grid-table-cell {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: $light-slate;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+}
+
+.grid-table-body {
+  max-height: 280px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $light-color;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.grid-table-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border-bottom: 1px solid $gray-400;
+  transition: background 0.1s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $main-bg;
+  }
+}
+
+.grid-table-cell {
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  color: $gunmetal-blue;
+
+  &:not(:last-child) {
+    border-right: 1px solid $gray-400;
+  }
+}

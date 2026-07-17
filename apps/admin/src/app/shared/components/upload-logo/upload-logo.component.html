@@ -1,0 +1,41 @@
+<div class="upload-field">
+  <div class="em-d-flex">
+    @if (preview) {
+      <div class="img-content">
+        <div class="d-flex-sb img-header">
+          @if (preview) {
+            <div class="img-label">{{ imgLabel() }}</div>
+          }
+          @if (preview && !loading && !readOnly() && cancel()) {
+            <div class="delete-logo" (click)="deleteLogo()">
+              <svg-icon src="assets/icons/cancel.svg" />
+            </div>
+          }
+        </div>
+        @if (loading) {
+          <em-preloader class="em-d-flex-center" />
+        }
+        @if (preview) {
+          <img class="image-item" (click)="!readOnly() && fileInput.click()" [src]="preview" alt="">
+        }
+      </div>
+    }
+    @if (!preview && !readOnly()) {
+      <button class="btn upload-btn img-content"
+              type="button"
+              (click)="fileInput.click()">
+        <svg-icon src="./assets/images/cloud-arrow-up.svg" />
+        Загрузить {{ action() }}<br>
+        png, jpg не более 2 МБ
+      </button>
+    }
+  </div>
+  <input #fileInput
+         type="file"
+         multiple
+         class="upload-field__file"
+         [accept]="memType"
+         (change)="onChangeFiles($event)">
+</div>
+<em-toast />
+

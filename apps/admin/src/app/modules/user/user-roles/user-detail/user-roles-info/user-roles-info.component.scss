@@ -1,0 +1,19 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/variables';
+
+.user-roles-info {
+  overflow: auto;
+  height: calc(100vh - 202px);
+}
+
+.value {
+
+  span {
+    font-size: 14px;
+    font-weight: bold;
+    color: $palette;
+  }
+}

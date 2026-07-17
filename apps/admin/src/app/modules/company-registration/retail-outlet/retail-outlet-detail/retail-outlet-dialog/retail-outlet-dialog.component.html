@@ -1,0 +1,47 @@
+<div class="confirm-dialog em-d-flex em-dr-columm em-g-8">
+  <div class="em-d-flex-center em-dr-columm em-g-16 mb-1">
+    <div class="title text-center">Изменить статус заявки</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form">
+      <div class="label">Статус</div>
+      <div class="input">
+        <em-simple-select-list formControlName="merchantApplicationStatusId"
+          action="Выберите статус"
+          [dataSource]="status" />
+
+        <em-validator [fieldControl]="form.controls['merchantApplicationStatusId']" />
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="label">Примечание</div>
+      <div class="input">
+        <input
+          formControlName="comment"
+          type="text"
+          class="form-control"
+          placeholder="Введите примечание">
+      </div>
+    </div>
+
+    <div class="em-d-flex em-jc-c mt-2">
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg mr-2"
+        mat-dialog-close="true">
+        Отмена
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        [disabled]="form.invalid || submitted()">
+        Сохранить
+      </button>
+    </div>
+  </form>
+</div>
+
+<em-toast />

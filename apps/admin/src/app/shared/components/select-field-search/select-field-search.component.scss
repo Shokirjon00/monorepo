@@ -1,0 +1,147 @@
+@import "core/scss/form";
+@import "core/scss/variables";
+@import 'core/scss/styles';
+@import 'core/scss/paddings';
+@import 'core/scss/flex';
+
+:host {
+  width: 100%;
+  min-width: 45%;
+
+  &.is-invalid {
+    .form-control {
+      border-color: $danger-color;
+    }
+  }
+
+  &.small {
+    .form-control {
+      padding: 11px 16px !important;
+      height: 40px !important;
+    }
+
+    .select-field .arrow img {
+      width: 9px;
+      height: 9px;
+      right: -2px;
+    }
+
+    .value, .placeholder {
+      font-size: 1rem !important;
+      white-space: nowrap;
+    }
+  }
+}
+
+.select-field {
+  cursor: pointer;
+  max-width: 100%;
+  width: auto;
+
+  &-container {
+    max-width: 100%;
+    width: -webkit-fill-available;
+    position: relative;
+
+    .form-control {
+      background-color: $white-color;
+      tab-index: 0;
+    }
+  }
+
+  ::ng-deep .value {
+    @include ellipsis-text(1);
+    width: 100%;
+    margin-right: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 26px;
+
+    & > * {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .placeholder {
+    @include ellipsis-text(1);
+    color: $palette;
+    opacity: 1;
+  }
+
+  .arrow {
+    display: flex;
+    background-color: $white;
+    transition: 200ms;
+
+    eb-small-preloader {
+      margin-right: 4px;
+    }
+
+    .arrow-icon {
+      position: relative;
+      right: 8px;
+    }
+  }
+
+  .form-control {
+    @include flex_jc_sb();
+    border-bottom: none;
+  }
+
+  &__autocomplete {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: inherit;
+    tab-index: 0;
+
+    @include placeholder($palette);
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+      max-height: 500px;
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      transition: 200ms;
+      transform-origin: center;
+    }
+  }
+
+  &__sm {
+    .form-control {
+      padding: 10px 4px 10px 16px;
+      height: 40px;
+    }
+
+    .placeholder {
+      font-size: 1rem;
+    }
+
+    .value {
+      font-size: 1rem;
+
+      p {
+        font-size: inherit;
+      }
+    }
+  }
+
+  .search-list-icon {
+    @include flex_ai_center();
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .value {
+    font-size: 0.8rem;
+  }
+}

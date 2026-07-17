@@ -1,0 +1,200 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+@import "core/scss/mixins/mixin";
+
+:host {
+  &.is-invalid {
+    .upload-field {
+      border-color: $danger-color;
+    }
+  }
+}
+
+.upload-field {
+  min-height: 56px;
+  @include flex_ai_center;
+
+  .img-content {
+    width: 280px;
+    height: 204px;
+    position: relative;
+
+    .img-header {
+      border-radius: 8px;
+      padding: 1rem;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+      position: absolute;
+
+      .status-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+
+        .file-status {
+          display: contents;
+        }
+
+        &.error {
+          background-color: #fde1e1;
+
+          .file-status {
+            cursor: pointer;
+          }
+        }
+
+        &.success .file-status {
+          cursor: pointer;
+        }
+
+        &.progress {
+          eb-small-preloader {
+            transform: scale(0.8);
+            height: 19px;
+          }
+        }
+      }
+
+    }
+
+    .img-label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+      color: #FFFFFF;
+
+    }
+
+    .image-item {
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .delete-logo {
+      cursor: pointer;
+      > svg-icon {
+        > svg {
+          fill: $white-color;
+        }
+      }
+    }
+  }
+
+
+  &__file {
+    display: none;
+  }
+
+  &__placeholder, .add-file {
+    color: $primary-color;
+    margin-left: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .add-file {
+    margin-bottom: 12px;
+    margin-left: 8px;
+  }
+
+  .files {
+
+    &__item {
+      @include flex_jc_sb();
+      width: 600px;
+      padding: 1rem;
+      background-color: $white-color;
+      border-radius: 8px;
+
+      svg-icon {
+        cursor: pointer;
+      }
+
+      .filename {
+        word-break: break-word;
+      }
+
+      .upload-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $primary-color;
+        opacity: 0.7;
+        width: 0;
+        height: 3px;
+      }
+
+      &.error {
+        background-color: #fde1e1;
+
+        .file-status {
+          cursor: pointer;
+        }
+      }
+
+      &.success .file-status {
+        cursor: pointer;
+      }
+
+      &.progress {
+        eb-small-preloader {
+          transform: scale(0.8);
+          height: 19px;
+        }
+      }
+    }
+  }
+
+  .files__item {
+    margin-bottom: 1rem;
+  }
+}
+
+
+.upload-confirm-dialog {
+  padding: 1.5rem 2rem 2rem;
+
+  &__title {
+    font-size: 1.125rem;
+    color: $text-color;
+    margin: 0 0 1.625rem;
+    text-align: center;
+  }
+
+  &__content2 {
+    margin: 0 0 2.438rem;
+    text-align: center;
+    color: $gray-500;
+    font-size: 1rem;
+  }
+
+  &__actions {
+    margin-top: 1.625rem;
+    @include flex_jc_sb();
+
+
+    .btn {
+      width: 100%;
+      height: 40px;
+      justify-content: center;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    .file-input {
+      display: none;
+    }
+  }
+}
+
+

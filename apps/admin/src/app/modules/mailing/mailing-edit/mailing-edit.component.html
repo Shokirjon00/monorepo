@@ -1,0 +1,144 @@
+<form [formGroup]="form">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">Рассылки</div>
+      <div class="em-d-flex">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'MailingActiveStatus'" class="checkbox-toggle ml-1">
+          <div class="toggle-title">Активировать</div>
+          <input type="checkbox" id="switch" formControlName="isActive"/>
+          <label for="switch">Toggle</label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6">
+    <div class="em-d-flex em-fw-wrap">
+      <div class="w-50 v-line pr-6">
+        <div class="form">
+          <div class="label">Наименование*</div>
+          <div class="input">
+            <div class="em-d-flex-center">
+              <input type="text" class="form-control" formControlName="name" placeholder="Введите наименование">
+            </div>
+            <em-validator [fieldControl]="f['name']" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Вид отчета*</div>
+          <div class="input">
+            <em-simple-select-list action="Выберите вид отчёта"
+              formControlName="actionTypeId"
+              [dataSource]="actionType" />
+            <em-validator [fieldControl]="f['actionTypeId']" />
+          </div>
+        </div>
+        <div class="em-d-flex">
+          <div class="form mr-3">
+            <div class="label">Расписание*</div>
+            <div class="input">
+              <em-simple-select-list action="Выберите расписание"
+                formControlName="periodTypeId"
+                [dataSource]="periodTypes" />
+              <em-validator [fieldControl]="f['periodTypeId']" />
+            </div>
+          </div>
+          <div class="form">
+            <div class="label">Время начало*</div>
+            <div class="input">
+              <div class="em-d-flex-center">
+                <input type="time" class="form-control" step="5" formControlName="runAt">
+              </div>
+              <em-validator [fieldControl]="f['runAt']" />
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Статус транзакции*</div>
+          <div class="input">
+            <em-multi-select-list placeholder="Выберите статус транзакции"
+              formControlName="paymentStatusesId"
+              [path]="paymentStatusesDictionaryApi" />
+            <em-validator [fieldControl]="f['paymentStatusesId']" />
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6" [formGroup]="mailingRecipientGroup">
+        <div class="form">
+          <div class="label">Компания*</div>
+          <div class="em-d-flex">
+            <div class="input mr-2">
+              <em-autocomplete [searchable]="true"
+                formControlName="companyId"
+                [placeholder]="'Выберите компанию'"
+                [selectWithOutSearch]="true"
+                (changed)="selectedCompany($event)"
+                [path]="companyDictionaryApi" />
+              <em-validator [fieldControl]="mailingRecipientControls['companyId']" />
+            </div>
+            <label [class.disabled]="!mailingRecipientGroup.get('companyId').value"
+                   class="checkbox em-d-flex em-ai-center label c-pointer">
+              <input class="mr-1" type="checkbox" formControlName="isSendCompany">
+              Отправить
+            </label>
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Торговая точка</div>
+          <div class="em-d-flex">
+            <div class="input mr-2">
+              <em-multi-select formControlName="merchantsId"
+                placeholder="Выберите торговые точки"
+                [pagination]="merchantPaginate"
+                [disable]="merchantDisabled"
+                [dataSource]="merchantsDictionary"
+                (changed)="changeMerchant($event)"
+                (pageScrolled)="nextPageMerchant($event)" />
+              <em-validator [fieldControl]="mailingRecipientControls['merchantsId']" />
+            </div>
+            <label [class.disabled]="!mailingRecipientGroup.get('merchantsId').value?.length"
+                   class="checkbox em-d-flex em-ai-center label c-pointer">
+              <input class="mr-1" type="checkbox" formControlName="isSendMerchant">
+              Отправить
+            </label>
+          </div>
+        </div>
+        <div class="form">
+          <div class="label">Кассы</div>
+          <div class="em-d-flex">
+            <div class="input mr-2">
+              <em-multi-select formControlName="posesId"
+                placeholder="Выберите кассы"
+                [pagination]="posPaginate"
+                [disable]="posesDisabled"
+                [dataSource]="posesDictionary"
+                (changed)="changePos($event)"
+                (pageScrolled)="nextPagePos($event)" />
+              <em-validator [fieldControl]="mailingRecipientControls['posesId']" />
+            </div>
+            <label [class.disabled]="!mailingRecipientGroup.get('posesId').value?.length"
+                   class="checkbox em-d-flex em-ai-center label c-pointer">
+              <input class="mr-1" type="checkbox" formControlName="isSendPos">
+              Отправить
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+@if (loading) {
+  <em-eb-loader class="loader" />
+}
+<em-toast />

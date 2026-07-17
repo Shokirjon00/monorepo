@@ -1,0 +1,22 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="columns"
+  [filterStorageKey]="'main-journal'">
+
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  (detail)="showDetail($event)"
+  [dataSource]="jobLogData"
+  [captions]="columns"
+  [captionKey]="captionKey"
+  [loading]="loading()"
+ />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

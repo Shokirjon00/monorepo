@@ -1,0 +1,27 @@
+@use 'core/scss/variables' as *;
+@use 'core/scss/styles' as *;
+@use 'core/scss/flex' as *;
+@use 'core/scss/button' as *;
+@use 'core/scss/margins' as *;
+@use 'core/scss/paddings' as *;
+@use 'core/scss/form' as *;
+@use 'core/scss/card' as *;
+@use 'core/scss/mixins/breakpoints' as *;
+
+.mobile-card, .scroll-top {
+  display: none;
+}
+
+@include media-breakpoint-down(sm) {
+  .desktop-filter, em-table, .desktop-pagination, .form-add  {
+    display: none;
+  }
+
+  .title-h1 {
+    display: none;
+  }
+
+  .mobile-card, .scroll-top {
+    display: block;
+  }
+}

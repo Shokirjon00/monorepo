@@ -1,0 +1,27 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/form';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+
+.title-small {
+  color: $n-black-900;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.select-all {
+  @include em-d-flex-al-center();
+  height: 50px;
+  width: max-content;
+  border-radius: 1rem;
+  background: $color-black-50;
+
+  .setting-title {
+    color: $black;
+    font-size: 1.25rem;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+  }
+}

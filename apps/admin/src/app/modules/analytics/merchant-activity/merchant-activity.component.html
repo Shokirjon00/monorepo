@@ -1,0 +1,150 @@
+<div class="ma">
+  @if (!embedded()) {
+    <div class="ma-filters">
+      <div class="ma-field">
+        <span class="ma-label">Период</span>
+        <em-dropdown maxHeight="500px" [path]="dateApi"
+                     [selected]="{ name: 'Сегодня', icon: 'day.svg' }"
+                     (changed)="onDateChange($event)" />
+      </div>
+    </div>
+  }
+
+  @if (ready()) {
+    <div class="ma-body" [class.is-loading]="loading()">
+
+      <h3 class="qr-pos-title">Активность</h3>
+      <em-qr-pos-panel class="ma-block acc-green" title="Активность торговых точек"
+                       chartId="merchants-dynamics"
+                       [empty]="noMerchantCards()">
+        <div class="ma-activity">
+          <em-qr-pos-cards [cards]="merchantCards()" />
+          <div class="ma-charts">
+            <div class="ma-subchart ma-subchart-dynamics">
+              <span class="ma-subtitle">Динамика активности торговых точек</span>
+              @if (merchantsDynamicsChart(); as chart) {
+                <em-qr-pos-chart [data]="chart" [height]="200" chartId="merchants-dynamics" />
+              } @else {
+                <div class="ma-empty">Нет данных</div>
+              }
+            </div>
+            <div class="ma-subchart ma-subchart-plan">
+              <span class="ma-subtitle">План / Факт / Прогноз — активность торговых точек (квартал)</span>
+              @if (merchantsPlanFact()) {
+                <em-qr-pos-plan-fact [data]="merchantsPlanFact()" />
+              } @else {
+                <div class="ma-empty">Нет данных</div>
+              }
+            </div>
+          </div>
+        </div>
+      </em-qr-pos-panel>
+
+      <div class="ma-grid ma-grid-lists">
+        <em-qr-pos-panel class="acc-blue" title="Топ-10 торговых точек по обороту"
+                         [empty]="noMerchantsTop()"
+                         >
+          <em-ma-table [columns]="merchantsTopColumns" [rows]="merchantsTopRows()" />
+        </em-qr-pos-panel>
+
+        <em-qr-pos-panel class="acc-orange" title="Торговые точки без транзакций > 30 дней"
+                         [empty]="noNoTx()"
+                         >
+          <em-ma-table [columns]="noTxColumns" [rows]="noTxRows()" />
+        </em-qr-pos-panel>
+      </div>
+
+      <h3 class="qr-pos-title">Парк</h3>
+      <div class="ma-grid ma-parks">
+        <em-qr-pos-panel class="ma-park-panel acc-indigo" title="POS - терминал" [empty]="noPosCards()">
+          <div class="ma-park-inner">
+            <em-qr-pos-cards [cards]="posCards()" />
+            <div class="ma-grid ma-park-bottom">
+              <div class="ma-panel acc-indigo">
+                <div class="ma-panel-head">
+                  <span class="ma-panel-accent"></span>
+                  <span class="ma-panel-title">Топ-10 торговых точек по обороту (POS)</span>
+                </div>
+                @if (!noPosTop()) {
+                  <em-ma-table [columns]="topColumns" [rows]="posTopRows()" />
+                } @else {
+                  <div class="ma-empty">Нет данных</div>
+                }
+              </div>
+
+              <div class="ma-panel acc-red">
+                <div class="ma-panel-head">
+                  <span class="ma-panel-accent"></span>
+                  <span class="ma-panel-title">Основные ошибки (POS)</span>
+                </div>
+                @if (!noPosErrors()) {
+                  <em-ma-table [columns]="errorColumns" [rows]="posErrorRows()" />
+                } @else {
+                  <div class="ma-empty">Нет данных</div>
+                }
+              </div>
+            </div>
+          </div>
+        </em-qr-pos-panel>
+
+        <em-qr-pos-panel class="ma-park-panel acc-teal" title="QR" [empty]="noQrCards()">
+          <div class="ma-park-inner">
+            <em-qr-pos-cards [cards]="qrCards()" />
+            <div class="ma-grid ma-park-bottom">
+              <div class="ma-panel acc-teal">
+                <div class="ma-panel-head">
+                  <span class="ma-panel-accent"></span>
+                  <span class="ma-panel-title">Топ-10 торговых точек по обороту (QR)</span>
+                </div>
+                @if (!noQrTop()) {
+                  <em-ma-table [columns]="topColumns" [rows]="qrTopRows()" />
+                } @else {
+                  <div class="ma-empty">Нет данных</div>
+                }
+              </div>
+
+              <div class="ma-panel acc-red">
+                <div class="ma-panel-head">
+                  <span class="ma-panel-accent"></span>
+                  <span class="ma-panel-title">Основные ошибки (QR)</span>
+                </div>
+                @if (!noQrErrors()) {
+                  <em-ma-table [columns]="errorColumns" [rows]="qrErrorRows()" />
+                } @else {
+                  <div class="ma-empty">Нет данных</div>
+                }
+              </div>
+            </div>
+          </div>
+        </em-qr-pos-panel>
+      </div>
+
+      <div class="ma-grid ma-grid-forecast">
+        <em-qr-pos-panel class="acc-purple" title="За выбранный период"
+                         chartId="forecast"
+                         [empty]="noForecast()">
+          <div class="ma-forecast">
+            <div class="ma-forecast-chart">
+              @if (forecastChart(); as chart) {
+                <em-qr-pos-chart [data]="chart" [height]="240" chartId="forecast" />
+              }
+            </div>
+            <em-ma-forecast-summary class="ma-forecast-sum" [forecast]="forecast()" />
+          </div>
+        </em-qr-pos-panel>
+
+        <div class="ma-panel acc-blue">
+          <div class="ma-panel-head">
+            <span class="ma-panel-accent"></span>
+            <span class="ma-panel-title">Быстрые действия</span>
+          </div>
+          <em-ma-quick-actions [actions]="quickActions" (actionClick)="onQuickAction($event)" />
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+@if (!embedded()) {
+  <em-toast />
+}

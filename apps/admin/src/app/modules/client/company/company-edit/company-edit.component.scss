@@ -1,0 +1,40 @@
+@import 'core/scss/variables';
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/button';
+@import 'core/scss/margins';
+@import 'core/scss/paddings';
+@import 'core/scss/form';
+
+.company-edit {
+  display: block;
+  overflow: auto;
+  height: calc(100vh - 202px);
+
+  .hr{
+    height: 48px;
+    display: flex;
+    padding-right: 1.5rem;
+    border-right: 1px solid $brand-line;
+  }
+  .form {
+    .inn-btn{
+      width: 191px;
+      height: 53px;
+    }
+    .search-client{
+      cursor: pointer;
+    }
+  }
+
+  .disable-form{
+    .form{
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      .input{
+        pointer-events: none;
+      }
+    }
+  }
+}

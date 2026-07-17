@@ -1,0 +1,28 @@
+<div class="dropdown"
+  [style.max-height]="maxHeight()"
+  [class.active]="isOpen()">
+  <ul class="dropdown-list">
+    @if (canSearch()) {
+      <div class="position-sticky padding-05">
+        <div class="dropdown__search">
+          <input type="text"
+            [formControl]="searchField$"
+            [placeholder]="'Поиск фильтра'">
+            <img class="dropdown-icon" src="./assets/icons/search.svg" alt="">
+          </div>
+        </div>
+      }
+      @for (item of items; track item) {
+        <li
+          [id]="item.field"
+          class="dropdown-item"
+          (click)="select(item)">
+          <div class="value">{{ item.key }}</div>
+          <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" />
+        </li>
+      }
+      @if (!items?.length) {
+        <div class="em-ta-c em-lS-color padding-1">Фильтр не найден</div>
+      }
+    </ul>
+  </div>

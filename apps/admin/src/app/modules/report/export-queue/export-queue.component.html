@@ -1,0 +1,21 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="captions"
+  [filterStorageKey]="'exportQueueFiltersForm'">
+  <ng-container header-actions>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="exportQueueData"
+  [captions]="captions"
+  [loading]="loading()"
+  [captionKey]="captionKey"
+  [fileStorageUrl]="fileStorageUrl"
+  [fileStorageToken]="fileStorageToken" />
+@if (loading()) {
+  <em-eb-loader class="form-loader" />
+}

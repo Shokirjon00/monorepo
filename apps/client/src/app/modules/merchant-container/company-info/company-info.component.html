@@ -1,0 +1,38 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [showBreadcrumb]="true"
+  [actions]="actions">
+  <ng-container header-actions>
+    <div class="d-flex-sb">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action" />
+      }
+    </div>
+  </ng-container>
+</em-header2>
+
+<div class="company-info">
+  <div class="company-info-container v-line pr-6">
+    <div class="labels-data">
+      @for (item of leftProperties; track item.key) {
+        <div class="em-d-flex">
+          <span class="key">{{item.label}}</span>
+          <span>:</span>
+          <span class="data">{{companyInfo?.[item.key] || '-'}}</span>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="company-info-container pl-6">
+    <div class="labels-data">
+      @for (item of rightProperties; track item.key) {
+        <div class="em-d-flex">
+          <span class="key">{{item.label}}</span>
+          <span>:</span>
+          <span class="data">{{companyInfo?.[item.key] || '-'}}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+<em-toast />

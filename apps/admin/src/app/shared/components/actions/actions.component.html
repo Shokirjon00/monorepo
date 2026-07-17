@@ -1,0 +1,301 @@
+<div *ngxPermissionsOnly="actionData().permissionName" class="action">
+  @switch (actionData().code) {
+    @case (action.ADD) {
+      <div>
+        <button class="action-item tooltip" (click)="navigate(actionData())">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || './assets/icons/plus.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.UNLOCK_PAYMENT) {
+      <div>
+        <button class="action-item tooltip" (click)="unlockPayment.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/lock.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.OPEN_DIALOG) {
+      <div>
+        <button class="action-item tooltip" (click)="openDialog(actionData().dialogName)">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || './assets/icons/plus.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.EDIT) {
+      <div>
+        <button class="action-item tooltip" (click)="navigate(actionData())">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/edit.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.STAMP) {
+      <div>
+        <button class="action-item tooltip" (click)="openDialog(actionData().dialogName)">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/stamp.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.STATUS_APPLICATION) {
+      <div>
+        <button class="action-item tooltip" (click)="openDialog(actionData().dialogName)">
+          <svg-icon class="em-d-flex-center" src="/assets/icons/edit.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.STATUS) {
+      <div>
+        <button class="action-item tooltip" (click)="changeStatus.emit()">
+          <svg-icon class="em-d-flex-center" [src]="actionData().icon || '/assets/icons/edit.svg'" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.WITHDRAWAL) {
+      <div>
+        <button class="action-item tooltip" (click)="withdraw.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/revert.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.REFRESH) {
+      <div>
+        <button class="action-item tooltip" (click)="refresh()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/rotate-ccw.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.EXPORT) {
+      <div>
+        <button class="action-item tooltip" (click)="getReport(actionData().path, actionData())">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/export.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.FILL_APPLICATION_FORM) {
+      <div>
+        <button class="action-item tooltip" (click)="getCompanyRegistrationReports(actionData().path)">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/printer.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.EXPORT_QUEUE) {
+      <div>
+        <button class="action-item tooltip" (click)="queueExport(actionData().path)">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/export.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.IMPORT_EXCEL) {
+      <div>
+        <button type="button" class="action-item tooltip" (click)="fileInput.click()">
+          <svg-icon class="em-d-flex-center import" src="./assets/icons/import.svg"/>
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+        </button>
+        <input #fileInput
+               type="file"
+               hidden
+               accept=".xlsx"
+               (change)="onFileSelected($event, actionData())">
+      </div>
+    }
+    @case (action.STATUS_HIDE) {
+      <div>
+        <button class="action-item tooltip" (click)="toggleStatus()">
+          <svg-icon class="em-d-flex-center"
+            [src]="isVisible() ? './assets/icons/is-visible.svg' : './assets/icons/show.svg'" />
+          @if (actionData().code === action.STATUS_HIDE) {
+            <span class="tooltiptext">{{ tooltipText() }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.CONTINUE_PAYMENT) {
+      <div>
+        <button class="action-item tooltip" (click)="continuePayment.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/payment-continue.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.ISSUE_MONEY) {
+      <div>
+        <button class="action-item tooltip" (click)="issueMoney.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/withdrawal-amount.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.GENERATING_AN_APPLICATION) {
+      <div>
+        <button class="action-item tooltip" (click)="generatingApplication.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/wand-sparkles.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.DOR_DISPATCH) {
+      <div>
+        <button class="action-item tooltip" (click)="dorDispatch.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/withdrawal-amount.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.SYNC_PAYMENT) {
+      <div>
+        <button class="action-item tooltip" [disabled]="disabled()" (click)="syncStatus.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/reload.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.ORDER_WEBHOOK) {
+      <div>
+        <button class="action-item tooltip" [disabled]="disabled()" (click)="orderWebhook.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/withdrawal-amount.svg"></svg-icon>
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.SYNC_PAYMENT_INFO) {
+      <div>
+        <button class="action-item tooltip" (click)="syncPaymentInfo.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/reload.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.COMPANY_IFT_SYNC) {
+      <div>
+        <button class="action-item tooltip" (click)="companyIftSync.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/reload.svg"></svg-icon>
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.ORDER_STATUS) {
+      <div>
+        <button class="action-item tooltip" [disabled]="!actionStatus()" (click)="orderStatus.emit()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/arrow-swap-rec.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.REFUND_PAYMENT) {
+      <div>
+        <button class="action-item tooltip" (click)="paymentRefund.emit()" [disabled]="disabled()">
+          <svg-icon class="em-d-flex-center" src="./assets/icons/revert.svg" />
+          @if (actionData().tooltipName) {
+            <span class="tooltiptext">{{ actionData().tooltipName }}</span>
+          }
+          <span class="name">{{ actionData().name }}</span>
+        </button>
+      </div>
+    }
+    @case (action.SELECT) {
+      <div class="action-item tooltip" (click)="toggle()" (emClickOutside)="showAction = null">
+        <div class="em-d-flex-center"
+             [class.open]="showAction">
+          <div>
+            <svg-icon class="em-d-flex-center mr-1" [src]="'./assets/icons/'+ actionData().icon" />
+          </div>
+          <span class="name">{{ actionData().name }}</span>
+        </div>
+        <div class="dropdown">
+          @for (actionItem of actionData().select; track actionItem) {
+            <ul class="dropdown-list" (click)="navigate(actionItem)">
+              <li class="dropdown-item mb-1" [class.active]="actionItem.selected">
+                <div class="em-d-flex">
+                  <svg-icon class="em-d-flex-center mr-1 dropdown__logo"
+                            [src]="'./assets/icons/'+ actionItem.icon" />
+                  <span class="name">{{ actionData().name }}</span>
+                </div>
+                <div>
+                  <svg-icon class="dropdown-icon" src="./assets/images/succes.svg" />
+                </div>
+              </li>
+            </ul>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>
+<em-toast />

@@ -1,0 +1,63 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{ resBankEmpDetail?.positionName || "Добавить ответственного сотрудника" }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'ResponsibleBankEmployeeActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 category-edit">
+    <div class="form">
+      <div class="label">Фамилия</div>
+      <div class="input">
+        <input formControlName="lastName" type="text" class="form-control" placeholder="Введите фамилию"
+               [class.is-invalid]="f['lastName']?.invalid && f['lastName']?.touched">
+        <em-validator [fieldControl]="f['lastName']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Имя</div>
+      <div class="input">
+        <input formControlName="firstName" type="text" class="form-control" placeholder="Введите имя"
+               [class.is-invalid]="f['firstName']?.invalid && f['firstName']?.touched">
+        <em-validator [fieldControl]="f['firstName']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Отчество</div>
+      <div class="input">
+        <input formControlName="middleName" type="text" class="form-control" placeholder="Введите отчество"
+               [class.is-invalid]="f['middleName']?.invalid && f['middleName']?.touched">
+        <em-validator [fieldControl]="f['middleName']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Должность</div>
+      <div class="input">
+        <input formControlName="positionName" type="text" class="form-control" placeholder="Введите должность"
+               [class.is-invalid]="f['positionName']?.invalid && f['positionName']?.touched">
+        <em-validator [fieldControl]="f['positionName']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

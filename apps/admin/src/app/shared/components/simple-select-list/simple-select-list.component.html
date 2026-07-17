@@ -1,0 +1,49 @@
+<div class="form-group  select-field"
+     [class.open]="isOpenDropdown">
+  <div class="select-field__container" (emClickOutside)="isOpenDropdown = false">
+    <div (click)="!disabled && toggle()" class="form-control" [class.disabled]="disabled">
+      @if (!selected) {
+        <span class="placeholder">{{ action }}</span>
+      }
+      @if (selected) {
+        <div class="value">{{ selected[optionLabel] }}</div>
+      }
+      @if (showClear && selected) {
+        <img (click)="clearValue($event)" src="assets/icons/cancel-drops.svg" class="close-icon cancel-small-svg" alt="">
+      }
+      <img src="assets/icons/sort.svg" alt="">
+    </div>
+    <div class="dropdown"  [pagination]="pagination" [selector]="'dropdown'"
+         (emInfiniteScroll)="onScrolled()">
+      @if (dataSource) {
+        <ul emSelectTrigger
+            class="dropdown-list"
+            role="listbox"
+            [itemLength]="dataSource.length"
+            [(isOpen)]="isOpenDropdown"
+            (valueChange)="valueChange($event)">
+          @for (actionItem of dataSource; track actionItem) {
+            <li class="dropdown-item mb-1"
+                [class.selected]="selected && (selected[optionValue] === actionItem.id)"
+                [class.active]="actionItem.selected && !(selected[optionValue] === actionItem.id)"
+                (click)="onSelect(actionItem)"
+                role="option">
+              <div class="em-d-flex">
+                @if (actionItem.icon) {
+                  <img [src]="'./assets/icons/'+ actionItem.icon" class="em-d-flex-center mr-1 dropdown__logo" alt="">
+                }
+                <div class="dropdown-item-value">{{ actionItem[optionLabel] }}</div>
+              </div>
+              <div>
+                <img class="dropdown-icon" src="./assets/images/succes.svg" alt="">
+              </div>
+            </li>
+          }
+        </ul>
+      }
+      @if (!dataSource?.length) {
+        <div class="dropdown-item ">Нет данных</div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [enableDropdown]="true"
+  [filterFields]="columns"
+  [actions]="actions"
+  [filterStorageKey]="'companySegmentFiltersForm'">
+  <ng-container header-actions>
+    <div class="d-flex-sb pl-3 v-line-left">
+      @for (action of actions; track action) {
+        <em-actions [actionData]="action"
+                    [columns]="columns"/>
+      }
+    </div>
+    @if (paginate) {
+      <em-pagination class="pl-3"
+        [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (detail)="detail($event)"
+  (edit)="edit($event)"
+  (sortChange)="sortTable($event)"
+  [dataSource]="companySegments"
+  [captions]="columns"
+  [rowActions]="tableActions"
+  [captionKey]="captionKey"
+  [loading]="loading"
+ />

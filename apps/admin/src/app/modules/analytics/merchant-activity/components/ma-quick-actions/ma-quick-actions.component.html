@@ -1,0 +1,13 @@
+<div class="actions">
+  @for (action of actions(); track action.key) {
+    <button type="button"
+            class="action"
+            [ngClass]="'action-c-' + (action.colorKey || 'indigo')"
+            (click)="actionClick.emit(action)">
+      <span class="action-icon">
+        <img class="action-icon-svg" [src]="'assets/icons/analytics/' + action.icon" [alt]="action.label">
+      </span>
+      <span class="action-label">{{ action.label }}</span>
+    </button>
+  }
+</div>

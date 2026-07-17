@@ -1,0 +1,64 @@
+<em-header2
+  [tabMenuItems]="tabMenuItems"
+  [filterFields]="captions"
+  [showMobileFilter]="true"
+  [filterStorageKey]="'history'">
+  <ng-container header-actions>
+    @if (paginate && !isMobile) {
+      <em-pagination [page]="paginate" />
+    }
+  </ng-container>
+</em-header2>
+<em-table (sortChange)="sortTable($event)"
+  [dataSource]="orders"
+  (detail)="showDetail($event)"
+  [captions]="captions"
+  [page]="paginate"
+  [loading]="loading()"
+  [captionKey]="captionKey" />
+
+<div class="mobile-card">
+  @for (orders of orders; track orders) {
+    <div class="item-card"  (click)="showDetail(orders.id)">
+      <div class="top">
+        <div class="title">{{orders.restaurantPointName}}</div>
+        <div class="actions">
+          <div class="status">
+            <span class="indicator" [ngClass]="getStatusClass(orders.orderStatus.name)"></span>
+            <span class="text">{{ orders.orderStatus.value }}</span>
+          </div>
+        </div>
+        <div class="info small">
+          <div class="info-item">
+            <div class="label">Сумма</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.totalPrice.amount || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Валюта</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.totalPrice.currencyCode || '-'}}</div>
+          </div>
+          <div class="info-item">
+            <div class="label">Дата</div>
+            <div class="separator">:</div>
+            <div class="value">{{orders.createdDateTime | date:'dd.MM.yyyy HH:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  @if ((!orders || !orders.length) && !loading()) {
+    <div class="no-data">
+      <div class="em-ta-c">Нет данных для показа</div>
+    </div>
+  }
+  @if (loading()) {
+    <div class="loading">
+      <em-eskhata-bank-loader />
+    </div>
+  }
+  @if (isMobile && paginate && orders.length) {
+    <em-pagination [page]="paginate" />
+  }
+</div>

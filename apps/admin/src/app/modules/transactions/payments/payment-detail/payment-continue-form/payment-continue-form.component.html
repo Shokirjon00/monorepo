@@ -1,0 +1,161 @@
+<em-header2
+  [showBreadcrumb]="true"
+  [actions]="actions"
+  [pageTitle]="header.title"
+>
+  <div class="em-d-flex" header-actions>
+    <div class="v-line mr-1 pr-1">
+      <button type="button" class="button-tooltip" (click)="back()">
+        <svg-icon src="assets/icons/cancel.svg" />
+        <span class="tooltip-text">Отмена</span>
+      </button>
+    </div>
+    <button type="button" class="button-tooltip" (click)="onSubmit()">
+      <svg-icon src="assets/icons/save.svg" />
+      <span class="tooltip-text">Сохранить</span>
+    </button>
+  </div>
+</em-header2>
+
+<form [formGroup]="form">
+  @if (paymentDetail) {
+    <div class="em-d-flex padding-6">
+      <div class="w-50 v-line pr-6">
+        <div class="labels-data">
+          <div class="em-d-flex">
+            <span class="key">ID</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.id }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Статус</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.paymentStatusGroupName }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Создан</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.createdAt | dateTime }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Завершен</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.finishedAt | dateTime }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Сервис</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.serviceName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Номер кашелька</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.userMsisdn }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Плательщик</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.fromAccountNumber }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Сумма оплаты</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.fromAmount }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Сумма пополнения</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.toAmount }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Номер документа</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.number }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-50 pl-6">
+        <div class="labels-data">
+          <div class="em-d-flex">
+            <span class="key">Точка</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.merchantName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Касса</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.posName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Тип кассы</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.posTypeName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Шлюз плательщика</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.fromGatewayName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Шлюз получателя</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.toGatewayName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Подробный статус</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.paymentStatusName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Статус синхронизации</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.paymentSyncStatusName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Статус ошибки</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.paymentStatusDetailName || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">Сессия</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.sessionNumber || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">ID платежа в ЭО</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.transactionIdEO || '-' }}</span>
+          </div>
+          <div class="em-d-flex">
+            <span class="key">ID проводки в АБС</span>
+            <span>:</span>
+            <span class="data">{{ paymentDetail.documentNumberAbs || '-' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  <div class="padding-6 em-d-flex">
+    <div class="form w-50 v-line pr-7">
+      <div class="label">Статус платежа*</div>
+      <div class="input">
+        <em-simple-select-list formControlName="paymentStatusId"
+          action="Выберите статус платежа"
+          [dataSource]="paymentStatus" />
+        <em-validator [fieldControl]="f['paymentStatusId']" />
+      </div>
+    </div>
+    <div class="form w-50 pl-7">
+      <div class="label">Описание*</div>
+      <div class="input">
+        <input type="text" class="form-control" formControlName="description" placeholder="Введите описание"
+               [class.is-invalid]="f['description']?.invalid && f['description']?.touched">
+        <em-validator [fieldControl]="f['description']" />
+      </div>
+    </div>
+  </div>
+</form>
+@if (loading()) {
+  <em-eb-loader class="loader" />
+}
+<em-toast />

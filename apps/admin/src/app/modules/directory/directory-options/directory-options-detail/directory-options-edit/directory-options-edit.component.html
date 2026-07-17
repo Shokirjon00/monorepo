@@ -1,0 +1,58 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1"> {{ directoryOptionsDetail?.name || 'Добавить доп.параметры' }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div *ngxPermissionsOnly="'ServiceParamActiveStatus'" class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 balance-limit">
+    <div class="form">
+      <div class="label">Ключ*</div>
+      <div class="input">
+        <input formControlName="key" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['key']?.invalid && f['key']?.touched">
+        <em-validator [fieldControl]="f['key']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Наименование*</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите наименование"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Тип*</div>
+      <div class="input">
+        <em-simple-select-list action="Выберите тип"
+          formControlName="typeId"
+          [dataSource]="type"
+         />
+        <em-validator [fieldControl]="f['typeId']"
+         />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

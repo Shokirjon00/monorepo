@@ -1,0 +1,65 @@
+<em-header2 [showBreadcrumb]="true">
+  <div class="d-flex-sb w-100" header-center-default>
+    <div class="title-h1 w-100 v-line">Информация</div>
+    <div *ngxPermissionsOnly="'CashbackCompanyUpdate'" class="icon ml-3">
+      <button type="button" class="button-tooltip" (click)="navigate(commissionDetail.id)">
+        <svg-icon src="assets/icons/pen.svg" />
+        <span class="tooltip-text">Редактировать</span>
+      </button>
+    </div>
+  </div>
+</em-header2>
+
+
+@if (commissionDetail) {
+  <div class="padding-6">
+    <div class="w-50">
+      <div class="labels-data">
+        <div class="em-d-flex"><span class="key">ID</span><span>:</span><span
+          class="data">{{ commissionDetail.id || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Организация</span><span>:</span><span
+          class="data">{{ commissionDetail.companyName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Название комиссии</span><span>:</span><span
+          class="data">{{ commissionDetail.commissionName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Дата начала комиссии</span><span>:</span><span
+          class="data">{{ commissionDetail.startDate | dateTime}}</span></div>
+        <div class="em-d-flex"><span class="key">Дата окончания комиссии</span><span>:</span><span
+          class="data">{{ commissionDetail.endDate | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Тип комиссии</span><span>:</span><span
+          class="data">{{ commissionDetail.commissionTypeName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Описание</span><span>:</span><span
+          class="data">{{ commissionDetail.description || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Создано</span><span>:</span><span
+          class="data">{{ commissionDetail.createdAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Изменено</span><span>:</span><span
+          class="data">{{ commissionDetail.modifiedAt | dateTime }}</span></div>
+        <div class="em-d-flex"><span class="key">Создал</span><span>:</span><span
+          class="data">{{ commissionDetail.createdByName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Изменил</span><span>:</span><span
+          class="data">{{ commissionDetail.modifiedByName || '-' }}</span></div>
+        <div class="em-d-flex"><span class="key">Статус</span><span>:</span><span
+          class="data">{{ commissionDetail.statusName || '-' }}</span></div>
+        @if (commissionDetail.bankCommissionNames && commissionDetail.bankCommissionNames.length) {
+          <div class="bank-commissions-block">
+            <div class="em-d-flex"><span class="key">Банковские комиссии</span><span>:</span><span class="data">{{ bankCommissionPairs }}</span></div>
+          </div>
+        }
+        <div class="em-d-flex"><span class="key">Отмена комиссии для ЭО</span><span>:</span><span
+          class="data">{{ commissionDetail.eWalletCommissionCancelled || '-' }}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="w-100 mt-4">
+    <div class="d-flex-sb w-100">
+      <div class="container title-h1 w-100 v-line-bottom">Торговые точки</div>
+    </div>
+    <div class="padding-6 labels-data">
+          <span class="value em-d-flex em-dr-columm em-g-16">
+          @for (merchant of commissionDetail.merchants; track merchant) {
+            <span class="item">{{ merchant.name || '-' }}</span>
+          }
+        </span>
+    </div>
+  </div>
+}
+<em-toast />

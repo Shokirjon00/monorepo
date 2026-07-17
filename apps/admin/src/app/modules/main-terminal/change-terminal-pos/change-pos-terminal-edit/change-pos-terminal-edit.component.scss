@@ -1,0 +1,25 @@
+@import 'core/scss/styles';
+@import 'core/scss/flex';
+@import 'core/scss/margins';
+@import 'core/scss/form';
+@import 'core/scss/paddings';
+
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"] {
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+}

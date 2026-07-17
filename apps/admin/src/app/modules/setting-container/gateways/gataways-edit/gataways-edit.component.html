@@ -1,0 +1,47 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <em-header2 [showBreadcrumb]="true">
+    <div class="d-flex-sb w-100" header-center-default>
+      <div class="title-h1">{{gatewaysDetail?.name || 'Добавить шлюзы' }}</div>
+      <div class="em-d-flex em-ai-center">
+        <div class="v-line mr-1 pr-1">
+          <button type="button" class="button-tooltip" (click)="back()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/cancel.svg" />
+            <span class="tooltip-text">Отмена</span>
+          </button>
+        </div>
+        <div class="v-line pr-1">
+          <button type="button" class="button-tooltip" (click)="onSubmit()" [class.disabled]="submitted">
+            <svg-icon src="assets/icons/save.svg" />
+            <span class="tooltip-text">Сохранить</span>
+          </button>
+        </div>
+        <div class="em-d-flex-center em-g-8 ml-1">
+          <div class="toggle-title">Активировать</div>
+          <label class="toggle-checkbox">
+            <input type="checkbox" formControlName="isActive">
+            <span></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </em-header2>
+  <div class="padding-6 country">
+    <div class="form">
+      <div class="label">Название*</div>
+      <div class="input">
+        <input formControlName="name" type="text" class="form-control" placeholder="Введите название"
+               [class.is-invalid]="f['name']?.invalid && f['name']?.touched">
+        <em-validator [fieldControl]="f['name']" />
+      </div>
+    </div>
+    <div class="form">
+      <div class="label">Код*</div>
+      <div class="input">
+        <input formControlName="code" type="text" class="form-control" placeholder="Введите значение"
+               [class.is-invalid]="f['code']?.invalid && f['code']?.touched">
+        <em-validator [fieldControl]="f['code']" />
+      </div>
+    </div>
+  </div>
+</form>
+<em-toast />

@@ -1,0 +1,68 @@
+@use "core/scss/flex" as *;
+@use "core/scss/variables" as *;
+@use "core/scss/margins" as *;
+@use "core/scss/form" as *;
+@use "core/scss/mixins/mixin" as *;
+
+.action {
+
+  &-item {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $palette;
+    width: 48px;
+    height: 48px;
+
+    &:hover {
+      background: #E1E4E7;
+      color: #525B6C;
+    }
+
+    .name {
+      display: none;
+    }
+
+    .open {
+      + .dropdown {
+        display: block;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  :host {
+    width: 100%;
+
+    .action {
+      width: 100%;
+
+      &-item {
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        height: 42px;
+        border-radius: 0.5rem;
+        border: 1px solid $border-color-brand;
+
+        .tooltiptext {
+          display: none;
+        }
+
+        .name {
+          display: block;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
