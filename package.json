@@ -13,7 +13,12 @@
     "build:client": "nx build client --configuration=production",
     "build:all": "nx run-many --target=build --all",
     "lint": "nx run-many -t lint",
-    "test": "nx run-many -t test"
+    "test": "nx run-many -t test",
+    "affected": "nx affected -t lint test build",
+    "affected:build": "nx affected -t build",
+    "affected:lint": "nx affected -t lint",
+    "affected:test": "nx affected -t test",
+    "affected:graph": "nx affected --graph"
   },
   "private": true,
   "devDependencies": {
