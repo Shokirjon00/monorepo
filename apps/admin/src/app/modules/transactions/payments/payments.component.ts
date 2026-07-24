@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, inject, OnInit, signal, viewChild } from '@angular/core';
 import { TableComponent } from '@shared/components/table/table.component';
 import { IAction } from '@shared/components/actions/actions.interface';
 import { ICaption, IFilterParams, IOptionAction, IPaginate, IRowAction } from '@core/interfaces';
@@ -26,9 +26,8 @@ import { EMPaginationComponent } from '@shared/components/em-pagination/paginati
 import { DataSourceService } from '@core/services/data-source.service';
 import { SvgIconComponent } from "angular-svg-icon";
 import { isPhone } from "@core/helper";
-import { ScrollEventDirective } from "@core/directives/scroll-event.directive";
 import { TableStatusEnum } from "@core/enums/table-status.enum";
-import { TopButtonComponent } from "@shared/components/top-button/top-button.component";
+import { TopButtonComponent } from "@eskhata/ui";
 import { BottomSheetComponent } from "@shared/components/bottom-sheet/bottom-sheet.component";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { DateTimePipe } from "@core/pipe/date-time.pipe";
@@ -52,7 +51,6 @@ import { DateTimePipe } from "@core/pipe/date-time.pipe";
     EmHeaderComponent,
     EMPaginationComponent,
     SvgIconComponent,
-    ScrollEventDirective,
     TopButtonComponent,
     DateTimePipe,
   ]
@@ -62,7 +60,6 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
   paymentStatusAmounts: IPaymentStatusAmount[];
   payments: IPayment[];
   loading = signal(false);
-  showScrollButton = signal(false);
   isVisible = signal(true);
   showDropdown = signal(false);
   actions: IAction[] = PaymentsConstants.PAYMENTS_ACTIONS;
@@ -103,6 +100,8 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
   ];
 
   readonly statusCode = TableStatusEnum;
+  readonly mainBody = signal<HTMLElement | null>(null);
+  private readonly document = inject(DOCUMENT);
   private readonly dialog = inject(MatDialog);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
@@ -130,6 +129,7 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
       isSelected: true
     } as ICaption));
     this.table()?.render(this.columns, this.payments);
+    this.mainBody.set(this.document.querySelector('.main-body'));
   }
 
   statusIndicator(statusId: string): string {

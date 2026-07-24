@@ -50,7 +50,7 @@
   </ng-container>
 </em-header2>
 
-<div class="mobile-card" [scrollTopHeight]="700"  (emScrollEvent)="showScrollButton.set($event)">
+<div class="mobile-card">
   @for (payment of payments; track payment; let i = $index) {
     <div class="item-card">
       <div class="top">
@@ -213,8 +213,8 @@
       <div class="em-ta-c">Нет данных для показа</div>
     </div>
   }
-  @if (showScrollButton()) {
-    <em-top-button />
+  @if (mainBody(); as scrollElement) {
+    <em-top-button [scrollElement]="scrollElement" [scrollThreshold]="700" />
   }
   @if (paginate && payments.length) {
     <em-pagination class="pl-3"
