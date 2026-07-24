@@ -15,7 +15,7 @@ import { ClickOutsideModule } from '@core/directives/click-outside/click-outside
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from '@shared/shared.module';
 import { SidebarMenuComponent } from '@modules/main/sidebar-menu/sidebar-menu.component';
-import { TopButtonComponent } from '@shared/components/top-button/top-button.component';
+import { TopButtonComponent } from '@eskhata/ui';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import { environment } from '@environments/environment';
