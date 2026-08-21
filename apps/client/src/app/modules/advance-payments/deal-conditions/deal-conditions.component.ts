@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { PdfDialogComponent } from "@shared/dialogs/pdf-dialog/pdf-dialog.component";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { HelperService } from "@core/services/helper.service";
+import { HelperService } from '@eskhata/data-access';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { CodeModalComponent } from "@shared/dialogs/code-modal/code-modal.component";
 import { Router } from "@angular/router";
@@ -10,10 +10,10 @@ import { OfferService } from "@modules/advance-payments/deal-conditions/service/
 import { finalize } from "rxjs/operators";
 import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { loadFile } from "@core/utils/load-file";
 
-import { ToastModule } from "@shared/components/toast/toast.module";
+import { ToastModule } from "@eskhata/ui";
 import { IOffer } from "@modules/advance-payments/deal-conditions/interface/offer";
 import { ICondition } from "@modules/advance-payments/deal-conditions/interface/condition";
 

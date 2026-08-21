@@ -9,16 +9,16 @@ import {
   Validators
 } from '@angular/forms';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { PosService } from '@modules/client/pos/services/pos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { IPosDetail } from '@modules/client/pos/interfaces/pos-detail.interface';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { HeaderService } from '@core/services/header.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { MatDialog } from '@angular/material/dialog';
 import { PhoneValidator } from '@core/validators/phone-validator';
@@ -26,15 +26,12 @@ import { EMAIL_PATTERN, MAX_PHONE_NUMBER, PHONE_PREFIX } from '@core/helper';
 import { setNestedGroupValidationErrors, setValidationErrors } from '@core/validators/set-validation-errors';
 import { delay, mergeMap } from 'rxjs/operators';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { digitsOnlyValidator } from "@core/utils/custom-validators";
+import { digitsOnlyValidator } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from "ngx-mask";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

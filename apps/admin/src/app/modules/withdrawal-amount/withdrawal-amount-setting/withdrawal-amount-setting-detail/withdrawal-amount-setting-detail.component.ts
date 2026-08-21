@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
 import {
   IWithdrawalAmountSettingDetail
@@ -8,16 +8,14 @@ import {
 import {
   WithdrawSetService
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/services/withdrawal-amount-setting.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import {
   withdrawalAmountSettingDetailColumns
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/withdrawal-amount-setting-detail/withdrawal-amount-setting-detail.columns';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from 'ngx-permissions';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({

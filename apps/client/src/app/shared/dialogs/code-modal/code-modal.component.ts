@@ -6,13 +6,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { CodeService } from "@shared/dialogs/code-modal/code/code.service";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IResetInterface } from "@modules/auth/interfaces/reset.interface";
 import { environment } from "@environments/environment";
 import * as CryptoJS from "crypto-js";
-import { ToastModule } from "@shared/components/toast/toast.module";
+import { ToastModule } from "@eskhata/ui";
 
 @Component({
   selector: 'em-code-modal',

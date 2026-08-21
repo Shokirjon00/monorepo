@@ -1,0 +1,14 @@
+// CSS-only modules are loaded without 'as *' so their rules still reach the component
+// while their members stay namespaced, avoiding cross-module variable ambiguity.
+@use 'core/scss/styles';
+@use 'core/scss/flex';
+@use 'core/scss/paddings';
+
+
+.preview-image {
+  max-width: 95%;
+  max-height: 80vh;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

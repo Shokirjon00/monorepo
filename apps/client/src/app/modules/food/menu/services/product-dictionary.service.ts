@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { environment as env } from "@environments/environment";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 import { IAdvanceAccessCode } from "@modules/advance-payments/deal-conditions/interface/advance-access-code";
 import { IParam } from "@core/interfaces";
 

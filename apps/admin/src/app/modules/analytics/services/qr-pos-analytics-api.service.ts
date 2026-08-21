@@ -5,7 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Params } from '@angular/router';
 import { environment as env } from '@environments/environment';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import {
   IByServiceTypeInterface,
   IForecastTurnoverInterface,

@@ -3,16 +3,14 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { AuthService } from '@modules/auth/service/auth.service';
 import { finalize, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { PasswordValidator } from '@core/validators/password-validator';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { PreventSpaceDirective } from "@core/directives/space-false.directive";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { PasswordInputRulesComponent } from "@shared/components/password-input-rules/password-input-rules.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { PasswordInputRulesComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   selector: 'em-first-entry',

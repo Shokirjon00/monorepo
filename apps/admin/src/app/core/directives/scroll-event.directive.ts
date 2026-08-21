@@ -2,7 +2,7 @@ import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, DOCUMENT, i
 
 import { fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 
 @Directive({
   standalone: true,

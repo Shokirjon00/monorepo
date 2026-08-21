@@ -1,20 +1,18 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { ISMS } from "@modules/sms-notification/promotion-system/interface/sms.interface";
 import { SmsService } from "@modules/sms-notification/promotion-system/service/sms.service";
 import {
   PromotionSystemConstants
 } from "@modules/sms-notification/promotion-system/promotion-system.constants";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { isEmptyObject, setDefaultFilterValue } from "@core/utils";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 

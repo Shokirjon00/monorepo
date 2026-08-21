@@ -3,27 +3,22 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent, TableConstants } from '@eskhata/ui';
 import { WithdrawalAmountService } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
 import { WithdrawalAmountInfoConstants } from '@modules/withdrawal-amount/withdrawal-amount-info/withdrawal-amount-info.constants';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate, EXPAND_DETAIL } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { IAction } from '@shared/components/actions/action.interface';
+import { IAction } from '@eskhata/util';
 import { isPhone } from '@core/helper';
 import { SharedModule } from '@shared/shared.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ICaption } from '@eskhata/util';
 import { restoreQueryParamsIfEmpty } from '@core/utils/restore-query-params';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { WithdrawalSelectedCompanyAmountDialogComponent } from '@modules/withdrawal-amount/withdrawal-selected-company-amount-dialog/withdrawal-selected-company-amount-dialog.component';
-import { ActionEnum } from '@core/enums/action-enum';
+import { ActionEnum } from '@eskhata/util';
 import { IWithdrawalAmount } from '@modules/withdrawal-amount/interfaces/withdrawal-amount.interface';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { TableConstants } from '@shared/components/table/table.constants';
 
 @Component({
   standalone: true,

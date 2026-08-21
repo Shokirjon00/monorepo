@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
-import { IParam } from "@core/interfaces/param.interface";
+import { MessageService } from '@eskhata/data-access';
+import { IParam } from '@eskhata/util';
 import { CurrencyService } from "@modules/directory/currency/services/currency.service";
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
@@ -12,11 +12,9 @@ import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { ICurrencyDetail } from "@modules/directory/currency/interfaces/currency-detail.interfaces";
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

@@ -3,15 +3,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, Subscription } from 'rxjs';
 import { Location } from '@angular/common';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent, ToastModule } from '@eskhata/ui';
 import { IFilterParams, IPaginate } from '@core/interfaces';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { BannerComponent } from '@shared/components/banner/banner.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdvancePaymentsService } from '@modules/advance-payments/service/advance-payments.service';
-import { TableComponent } from '@shared/components/table/table.component';
 import { AdvancePaymentsInfoConstants } from '@modules/advance-payments/advance-payments-info/advance-payments-info.constants';
-import { ICaption } from '@core/interfaces/table1.interface';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
+import { ICaption } from '@eskhata/util';
 import { isPhone } from '@core/helper';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { MobileCardComponent } from '@shared/components/mobile-card/mobile-card.component';
@@ -26,6 +24,7 @@ import { provideNgxMask } from 'ngx-mask';
   imports: [
     ToastModule,
     EmHeaderComponent,
+    BannerComponent,
     EMPaginationComponent,
     TableComponent,
     NgxPermissionsModule,

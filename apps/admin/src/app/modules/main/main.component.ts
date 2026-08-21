@@ -3,7 +3,7 @@ import { AuthService } from '@modules/auth/service/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { ErrorService } from '@core/services/error.service';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { TokenService } from '@core/services/token.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';

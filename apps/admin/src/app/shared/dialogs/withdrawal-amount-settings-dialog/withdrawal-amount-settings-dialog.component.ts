@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { SimpleSelectListComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

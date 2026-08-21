@@ -1,10 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MessageService } from '@core/services/message.service';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { MessageService } from '@eskhata/data-access';
+import { DestroyableComponent } from '@eskhata/util';
+import { EskhataBankLoaderComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { SettingService } from '@modules/setting/service/setting.service';
 import { finalize, takeUntil } from 'rxjs/operators';

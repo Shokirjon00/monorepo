@@ -1,17 +1,17 @@
 import {Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import {DatePipe, Location} from '@angular/common';
 import { Observable, of, Subject, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { CashbackRatesService } from '@modules/directory/cashback-rates/services/cashback-rates.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { HeaderService } from '@core/services/header.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { DataTimeComponent } from '@shared/components/data-time/data-time.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
@@ -26,14 +26,10 @@ import { CashbackAccrualTypesServices } from '@modules/bank-promotion/services/c
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { DeepClone } from '@core/utils/deep-clone';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { UploadFieldComponent } from "@shared/components/upload-field/upload-field.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, UploadFieldComponent, ValidatorComponent } from '@eskhata/ui';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({

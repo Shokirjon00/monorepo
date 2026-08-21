@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ITurnoverForecast } from '../../interfaces/merchant-activity.interface';
 import { EmNumberPipe } from '@modules/analytics/pipes/em-number.pipe';
 
@@ -9,7 +9,7 @@ import { EmNumberPipe } from '@modules/analytics/pipes/em-number.pipe';
   templateUrl: './ma-forecast-summary.component.html',
   styleUrls: ['./ma-forecast-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, EmNumberPipe],
+  imports: [EmNumberPipe],
 })
 export class MaForecastSummaryComponent {
   readonly forecast = input<ITurnoverForecast | null>(null);

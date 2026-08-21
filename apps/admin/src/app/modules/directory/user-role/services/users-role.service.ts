@@ -2,7 +2,7 @@ import {environment as env} from '@environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import { inject, Injectable } from '@angular/core';
 import {Params} from '@angular/router';
 import {IUserRole} from "@modules/directory/user-role/interfaces/user-role.interface";

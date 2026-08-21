@@ -1,11 +1,11 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { IAccountType } from '@modules/directory/account-type/interfaces/account-type.interface';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountTypeService } from '@modules/directory/account-type/services/account-type.service';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
@@ -16,13 +16,10 @@ import {
   AccountCategoryTypeService
 } from '@modules/directory/account-category-type/services/account-category-type.service';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

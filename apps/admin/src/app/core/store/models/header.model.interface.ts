@@ -1,6 +1,6 @@
 import {IPaginate} from '@eskhata/util';
-import {IHeader} from '@core/interfaces/header.interface';
-import {IAction} from '@shared/components/actions/actions.interface';
+import {IHeader} from '@eskhata/util';
+import {IAction} from '@eskhata/util';
 
 export interface IHeaderModel{
   page: IPaginate;

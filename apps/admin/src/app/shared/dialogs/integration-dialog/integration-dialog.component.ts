@@ -2,21 +2,18 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { delay, mergeMap, takeUntil } from 'rxjs/operators';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { ISelect } from '@core/interfaces/select.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ISelect } from '@eskhata/util';
 import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of } from 'rxjs';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { IIntegration } from '@modules/client/merchant/interfaces/integration.interface';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { Params } from '@angular/router';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { ValidatorComponent } from '@shared/components/validator/validator.component';
+import { AutocompleteComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { CommonModule } from '@angular/common';
-import { ToastComponent } from '@shared/components/toast/toast.component';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
 import { IntegrationSettingService } from '@modules/client/company/company-detail/integration-setting/services/integration-setting.service';
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
 import { environment as env } from "@environments/environment";
 
 @Component({

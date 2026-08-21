@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CaptionService } from '@core/services/caption.service';
 import { HeaderService } from '@core/services/header.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { ICompany } from '@modules/client/company/interfaces/company.interface';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { finalize, mergeMap, of, takeUntil } from 'rxjs';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPaginate, ToastEnum } from '@eskhata/util';
 import { IMerchant } from '@modules/client/merchant/interfaces/merchant.interface';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
@@ -15,14 +15,13 @@ import {
   WithdrawalAmountService
 } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
 import { Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { debounceTime, delay } from 'rxjs/operators';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SvgIconComponent } from "angular-svg-icon";
 import { SharedModule } from "@shared/shared.module";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

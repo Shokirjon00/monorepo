@@ -6,11 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   AccountCategoryTypeService
 } from '@modules/directory/account-category-type/services/account-category-type.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

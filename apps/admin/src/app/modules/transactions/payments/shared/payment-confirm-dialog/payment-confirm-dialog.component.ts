@@ -1,16 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { SimpleSelectListComponent } from '@eskhata/ui';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import {
   PaymentRefundReasonService
 } from '@modules/directory/payment-refund-reason/services/payment-refund-reason.service';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 
 import { SharedModule } from '@shared/shared.module';

@@ -2,14 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommissionService } from '@modules/directory/commission/services/commission.service';
 import { takeUntil } from 'rxjs/operators';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ICommission } from '@modules/directory/commission/interfaces/commission.interface';
 import { commissionInfoColumns } from "@modules/directory/commission/commission-detail/commission-info/commission-info.columns";
-import { TableComponent } from "@shared/components/table/table.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { EmHeaderComponent, TableComponent } from '@eskhata/ui';
+import { DateTimePipe } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

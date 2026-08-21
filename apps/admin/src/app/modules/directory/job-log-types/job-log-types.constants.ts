@@ -1,5 +1,5 @@
 import { ICaption, IRowAction } from "@core/interfaces";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 
 export class JobLogTypesConstants {
 

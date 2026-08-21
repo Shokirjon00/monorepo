@@ -4,7 +4,7 @@ import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { environment as env } from 'environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IBank } from '@modules/directory/bank/interfaces/bank.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { IBankDetail } from '@modules/directory/bank/interfaces/bank-detail.intefrace';
 import { Params } from '@angular/router';
 

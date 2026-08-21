@@ -1,24 +1,20 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ReportService } from '@modules/report/service/report.service';
 import { finalize } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { AutocompleteComponent, EskhataBankLoaderComponent, SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
 import { environment as env } from '@environments/environment';
 import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { FileSaverService } from 'ngx-filesaver';
-import { MessageService } from '@core/services/message.service';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { AutocompleteComponent } from '@shared/components/autocomplete/autocomplete.component';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { MessageService } from '@eskhata/data-access';
 import { RECONCILIATION_REPORT_ID, SPECIAL_REPORT_ID } from '@core/helper';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

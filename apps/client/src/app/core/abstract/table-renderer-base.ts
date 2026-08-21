@@ -1,5 +1,5 @@
-import { ICaption } from '@core/interfaces/table.interface';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ICaption } from '@eskhata/util';
+import { TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DestroyRef } from '@angular/core';
 

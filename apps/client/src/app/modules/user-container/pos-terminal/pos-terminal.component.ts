@@ -1,23 +1,19 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { IFilterParams, IPaginate, IRowAction, ITab } from '@core/interfaces';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { HeaderService } from '@core/services/header.service';
+import { HeaderService } from '@eskhata/data-access';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { finalize, takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { IUsers } from '@modules/user-container/user/interfaces/users.interface';
-import { IAction } from '@shared/components/actions/action.interface';
+import { IAction } from '@eskhata/util';
 import { PosTerminalConstants } from '@modules/user-container/pos-terminal/pos-terminal.constants';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { SharedModule } from '@shared/shared.module';
 import { isPhone } from '@core/helper';
 import { PosTerminalService } from '@modules/user-container/pos-terminal/services/pos-terminal.service';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ICaption } from '@core/interfaces/table1.interface';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
+import { ICaption } from '@eskhata/util';
 import { restoreQueryParamsIfEmpty } from '@core/utils/restore-query-params';
 
 @Component({

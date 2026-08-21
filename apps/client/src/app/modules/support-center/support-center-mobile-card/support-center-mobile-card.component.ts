@@ -1,6 +1,6 @@
 import { Component, Input, output } from '@angular/core';
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
-import { TableStatusEnum } from "@core/enums/table-status.enum";
+import { DateTimePipe } from '@eskhata/util';
+import { TableStatusEnum } from '@eskhata/util';
 import { NgClass } from "@angular/common";
 import { ISupportCenter } from "@core/interfaces";
 

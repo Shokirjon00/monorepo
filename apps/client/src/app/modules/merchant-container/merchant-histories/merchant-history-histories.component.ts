@@ -11,12 +11,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { TableComponent } from '@shared/components/table/table.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 
 import {
   MERCHANT_ACTION,
@@ -27,7 +22,7 @@ import { MerchantApplicationService } from '@modules/merchant-container/merchant
 import { MerchantConstants } from '@modules/merchant-container/merchant/merchant.constants';
 
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces';
 

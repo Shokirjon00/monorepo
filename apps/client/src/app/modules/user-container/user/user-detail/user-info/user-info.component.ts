@@ -1,20 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, Observable, takeUntil } from 'rxjs';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { Location } from '@angular/common';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsAllowStubDirective } from 'ngx-permissions';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { EmHeaderComponent, ToastModule } from '@eskhata/ui';
 import { UsersService } from '@modules/user-container/user/services/users.service';
 import { IUsers } from '@modules/user-container/user/interfaces/users.interface';
 import { IHeader } from '@core/interfaces';
-import { HeaderService } from '@core/services/header.service';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { HeaderService } from '@eskhata/data-access';
 
 @Component({
   standalone: true,

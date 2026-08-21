@@ -1,13 +1,12 @@
 import { Component, DestroyRef, inject, signal, AfterViewInit, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { ICaption, IFilterParams, IPaginate } from '@core/interfaces';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { isPhone } from '@core/helper';
 import { restoreQueryParamsIfEmpty } from '@core/utils/restore-query-params';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { BannerComponent } from '@shared/components/banner/banner.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { finalize } from 'rxjs';
 import { AdvancePaymentsConstants } from '@modules/advance-payments/advance-payments.constants';
@@ -26,7 +25,7 @@ import { bannerAmountSignal } from '@shared/components/banner/banner-signal';
   standalone: true,
   templateUrl: './advance-payments.component.html',
   styleUrl: './advance-payments.component.scss',
-  imports: [EMPaginationComponent, TableComponent, EmHeaderComponent, NgxPermissionsModule, MobileCardComponent],
+  imports: [EMPaginationComponent, TableComponent, EmHeaderComponent, BannerComponent, NgxPermissionsModule, MobileCardComponent],
   providers: [AdvancePaymentsService, provideNgxMask()],
 })
 export class AdvancePaymentsComponent implements AfterViewInit, OnInit {

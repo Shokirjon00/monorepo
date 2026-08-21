@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ToastComponent } from "@eskhata/ui";
 
 @Component({
   standalone: true,

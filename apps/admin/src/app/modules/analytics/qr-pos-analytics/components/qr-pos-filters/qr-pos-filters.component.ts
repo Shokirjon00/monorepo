@@ -1,13 +1,13 @@
 import { Component, computed, DestroyRef, inject, input, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Params } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import moment from 'moment';
 import { environment as env } from '@environments/environment';
 import { PERIOD_ID, TODAY_ID } from '@core/helper';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
+import { DateFormatEnum } from '@eskhata/util';
+import { DropdownComponent } from '@eskhata/ui';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { IQrPosFilter } from '../../interfaces/qr-pos-analytics.interface';
 import { QrPosChannel } from '@core/enums/qr-pos-enum';
@@ -27,7 +27,7 @@ import {
   selector: 'em-qr-pos-filters',
   templateUrl: './qr-pos-filters.component.html',
   styleUrls: ['./qr-pos-filters.component.scss'],
-  imports: [CommonModule, DropdownComponent],
+  imports: [DropdownComponent],
 })
 export class QrPosFiltersComponent {
   readonly filter = input.required<IQrPosFilter>();

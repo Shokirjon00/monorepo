@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { SimpleSelectListComponent } from '@eskhata/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({

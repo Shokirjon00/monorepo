@@ -1,9 +1,6 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { TableComponent } from "@shared/components/table/table.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 import { ICaption, IFilterParams, IPaginate, IRowAction } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";

@@ -1,8 +1,8 @@
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
-import { TableRowActionEnum } from "@core/enums/table";
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
+import { TableRowActionEnum } from '@eskhata/util';
 import { ICaption, IOptionAction, IRowAction } from "@core/interfaces";
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 import { MatchMode } from '@core/enums/match-mode.enum';
 import { environment as env } from "@environments/environment";
 

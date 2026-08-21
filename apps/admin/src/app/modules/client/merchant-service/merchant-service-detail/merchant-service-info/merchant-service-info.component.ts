@@ -1,15 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { MerchantServiceService } from "@modules/client/merchant-service/services/merchant-service.service";
 import { IMerchantService } from "@modules/client/merchant-service/interfaces/merchant-service.interface";
-import { TableComponent } from "@shared/components/table/table.component";
+import { EmHeaderComponent, TableComponent } from '@eskhata/ui';
 import { IPaginate } from '@eskhata/util';
 import { MERCHANT_SERVICE_INFO_COLUMNS } from "@modules/client/merchant-service/merchant-service-detail/merchant-service-info/merchant-service-info.columns";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

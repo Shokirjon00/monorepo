@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { DatePipe, Location } from '@angular/common';
 import { CashbackService } from '@modules/merchant-container/cashback/services/cashback.service';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent } from '@eskhata/ui';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, EskhataBankLoaderComponent, SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -10,21 +10,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ProductsService } from '@modules/food/menu/services/product.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WhiteSpaceValidator, ToastEnum } from '@eskhata/util';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ToastModule } from '@shared/components/toast/toast.module';
 import { ProductApplicationsService } from '@modules/food/menu/services/product-application.service';
 import { ComparableVariant, IMenuDetail } from '@modules/food/menu/interfaces/menu-detail.interface';
 import { delay, finalize, forkJoin, Observable, of } from 'rxjs';
 import { ProductDictionariesService } from '@modules/food/menu/services/product-dictionary.service';
-import { ISelect } from '@core/interfaces/select.interface';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { ISelect } from '@eskhata/util';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -35,7 +31,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { DecimalPrecisionDirective } from '@core/directives/decimal-precision.directive';
 import { normalizeVariant } from '@modules/food/menu/utils/variant-normalizer.util';
 import { diffVariant } from '@modules/food/menu/utils/variant-diff.util';

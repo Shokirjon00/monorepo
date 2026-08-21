@@ -1,9 +1,5 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { TableComponent } from "@shared/components/table/table.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { ICommission } from "@modules/directory/commission/interfaces/commission.interface";
 import { AdvancePaymentsPageConstants } from "@modules/advance-payments/advance-payments-page/advance-payments-page.constants";
 import { AdvanceCommissionsConstants } from "@modules/advance-payments/advance-commissions/advance-commissions.constants";

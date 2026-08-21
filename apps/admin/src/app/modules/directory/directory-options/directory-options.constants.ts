@@ -1,8 +1,8 @@
 import { ICaption, IOptionAction, IRowAction } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableRowActionEnum } from "@core/enums/table";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { TableRowActionEnum } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class DirectoryOptionsConstants {
 

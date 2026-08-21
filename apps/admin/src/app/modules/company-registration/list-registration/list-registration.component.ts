@@ -1,25 +1,22 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import {
   CompanyRegistrationApplicationsService
 } from "@modules/company-registration/list-registration/services/company-registration.service";
-import { ICaption, IRowAction } from "@core/interfaces/table.interface";
+import { ICaption, IRowAction } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { IFilterParams } from "@core/interfaces/filter-params.interface";
+import { IFilterParams } from '@eskhata/util';
 import { HeaderService } from "@core/services/header.service";
 import { finalize, takeUntil } from "rxjs";
 import { parseFilterParams } from "@core/utils/filter-util";
 import {
   ICompanyRegistration
 } from "@modules/company-registration/list-registration/interfaces/company-registration.interfaces";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { setDefaultFilterValue } from "@core/utils/route-param-parse";
+import { DestroyableComponent } from '@eskhata/util';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { ListRegistrationConstants } from "@modules/company-registration/list-registration/list-registration.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { CompaniesRegistrationConstanta } from "@modules/company-registration/company-registration.constants";
 
 @Component({

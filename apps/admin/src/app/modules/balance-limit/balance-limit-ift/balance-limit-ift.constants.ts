@@ -1,5 +1,5 @@
 import { ICaption } from "@core/interfaces";
-import { TableFieldTypes } from "@core/enums/table";
+import { TableFieldTypes } from '@eskhata/util';
 
 export class BalanceLimitIftConstants {
 

@@ -1,17 +1,15 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
-import { ICaption } from "@core/interfaces/table.interface";
+import { EmHeaderComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute } from "@angular/router";
 import { CompanyRegistrationApplicationsService } from "@modules/company-registration/list-registration/services/company-registration.service";
 import { finalize, takeUntil } from "rxjs";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { lIST_REGISTRATION_HISTORIES_COLUMNS, } from "@modules/company-registration/list-registration/list-registration-detail/list-registration-histories/list-registration-histories.columns";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { ICompanyRegistrationHistory } from "@modules/company-registration/list-registration/interfaces/company-registration-history.interfaces";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { ListRegistrationDetailConstants } from "@modules/company-registration/list-registration/list-registration-detail/list-registration-info.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 
 @Component({

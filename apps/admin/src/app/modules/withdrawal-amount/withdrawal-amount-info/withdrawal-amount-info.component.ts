@@ -1,33 +1,30 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import {
   IWithdrawalAmount
 } from '@modules/withdrawal-amount/withdrawal-amount-info/interfaces/withdrawal-amount.interface';
 import {
   WithdrawalAmountService
 } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate, ToastEnum } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { HeaderService } from '@core/services/header.service';
-import { ITab } from '@core/interfaces/header.interface';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { ITab } from '@eskhata/util';
+import { setDefaultFilterValue } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import {
   WithdrawalAmountMerchantService
 } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount-merchant.service';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import {
   WithdrawalAmountInfoConstants
 } from '@modules/withdrawal-amount/withdrawal-amount-info/withdrawal-amount-info.constants';

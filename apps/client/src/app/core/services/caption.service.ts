@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ICaption } from "@core/interfaces/table.interface";
+import { ICaption } from '@eskhata/util';
 
 @Injectable({
   providedIn: 'root'

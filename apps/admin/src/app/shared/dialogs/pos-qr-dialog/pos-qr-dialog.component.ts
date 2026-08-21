@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PosService } from '@modules/client/pos/services/pos.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { CommonModule } from '@angular/common';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { PreloaderComponent } from '@shared/components/preloader/preloader.component';

@@ -1,13 +1,11 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { DestroyableComponent } from "@core/directives/destroyable.component";
-import { TableComponent } from "@shared/components/table/table.component";
-import { ICaption } from "@core/interfaces/table.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { EskhataBankLoaderComponent, TableComponent, ToastModule } from '@eskhata/ui';
+import { ICaption } from '@eskhata/util';
 import { IPaymentHistory } from "@modules/payment/interfaces/payment-history.interface";
 import { ActivatedRoute } from "@angular/router";
 import { PaymentService } from "@modules/payment/services/payment.service";
 import { finalize, takeUntil } from "rxjs";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
-import { ToastModule } from "@shared/components/toast/toast.module";
 import { PaymentHistoryConstants } from '@modules/payment/payment-detail/payment-history/payment-history.constants';
 
 

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BreadcrumbsComponent } from "@shared/components/breadcrumbs/breadcrumbs.component";
+import { BreadcrumbsComponent } from '@eskhata/ui';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";

@@ -1,14 +1,13 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, ToastModule } from '@eskhata/ui';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationSettingsService } from './services/notification-settings.service';
 import { TelegramConnectModalComponent } from './telegram-connect-modal/telegram-connect-modal.component';
 import { TelegramSubscriptionStatus } from './interfaces/notification-settings.interface';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
-import { ToastModule } from '@shared/components/toast/toast.module';
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { finalize } from 'rxjs/operators';

@@ -6,25 +6,21 @@ import { ICompanyDetail } from '@modules/client/company/interfaces/company-detai
 import { environment as env, environment } from '@environments/environment';
 import { Location } from '@angular/common';
 import { CompanyService } from '@modules/client/company/services/company.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { delay } from 'rxjs/operators';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
-import { ValidatorComponent } from '@shared/components/validator/validator.component';
+import { AutocompleteComponent, EmHeaderComponent, ToastComponent, UploadFieldComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from 'ngx-mask';
-import { AutocompleteComponent } from '@shared/components/autocomplete/autocomplete.component';
-import { UploadFieldComponent } from '@shared/components/upload-field/upload-field.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
-import { digitsOnlyValidator } from "@core/utils/custom-validators";
+import { digitsOnlyValidator } from '@eskhata/util';
 import { JobLogService } from "@modules/job-log/services/job-log.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

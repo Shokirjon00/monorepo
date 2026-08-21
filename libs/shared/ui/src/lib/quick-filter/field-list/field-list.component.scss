@@ -1,0 +1,17 @@
+@use 'core/scss/form';
+@use 'core/scss/variables' as *;
+@use 'core/scss/button';
+@use 'core/scss/flex';
+@use 'core/scss/styles';
+@use 'core/scss/margins';
+@use 'core/scss/paddings';
+
+:host {
+  width: 100%;
+  position: absolute;
+  top: calc(100% + 1px);
+
+  .dropdown {
+    position: relative;
+  }
+}

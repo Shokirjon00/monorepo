@@ -5,20 +5,18 @@ import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { BalanceLimitService } from '@modules/balance-limit/services/balance-limit.service';
 import { IBalanceLimit } from '@modules/balance-limit/Interfaces/balance-limit.interface';
 import { Location } from '@angular/common'
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IParam } from '@eskhata/util';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from "ngx-mask";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { NgxPermissionsModule } from "ngx-permissions";
 
 @Component({

@@ -1,16 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ActivatedRoute } from '@angular/router';
 import { BankPromotionService } from '@modules/bank-promotion/services/bank-promotion.service';
 import { IBankPromotion } from '@modules/bank-promotion/interfaces/bank-promotion.interface';
 import { CommonModule } from "@angular/common";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { DateTimePipe } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
+import { IAction } from '@eskhata/util';
 import { BankPromotionInfoConstants } from "@modules/bank-promotion/bank-promotion-detail/bank-promotion-info/bank-promotion-info.constants";
 
 @Component({

@@ -1,21 +1,19 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { CaptionService } from '@core/services';
 import { Params, Router } from '@angular/router';
 import { ICaption, IFilterParams, IPaginate, IRowAction } from '@core/interfaces';
-import { IParam } from '@core/interfaces/param.interface';
-import { TableRowActionEnum } from '@core/enums/table';
+import { IParam } from '@eskhata/util';
+import { TableRowActionEnum } from '@eskhata/util';
 import { PAYMENTCHILD_COLUMNS } from './payment-child.columns';
 import { IPaymentChild } from '@modules/transactions/payments/interfaces';
-import { ToastComponent } from '@shared/components/toast/toast.component';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { IAction } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { finalize } from 'rxjs/operators';
 import { ToastEnum } from '@eskhata/util';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 import { PaymentsDetailConstants } from '../payment-detail.constants';
 import { PaymentsChildConstants } from './payment-child.constants';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
@@ -25,8 +23,6 @@ import {
   PaymentChildService
 } from '@modules/transactions/payments/payment-detail/payment-child/services/payment-child.service';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 
 @Component({

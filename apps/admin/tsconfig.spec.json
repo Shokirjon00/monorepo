@@ -4,10 +4,15 @@
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "target": "es2016",
-    "types": ["jest", "node"],
-    "moduleResolution": "node10"
+    "types": [
+      "jest",
+      "node"
+    ],
+    "moduleResolution": "bundler"
   },
-  "files": ["src/setup-jest.ts"],
+  "files": [
+    "src/setup-jest.ts"
+  ],
   "include": [
     "jest.config.ts",
     "src/**/*.test.ts",

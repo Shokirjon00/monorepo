@@ -6,15 +6,14 @@ import { Location } from '@angular/common';
 import { IHeader } from '@core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { MessageService } from '@core/services/message.service';
-import { HeaderService } from '@core/services/header.service';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { MessageService } from '@eskhata/data-access';
+import { HeaderService } from '@eskhata/data-access';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, Observable, takeUntil } from 'rxjs';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { ToastEnum } from '@eskhata/util';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { EmHeaderComponent, ToastModule } from '@eskhata/ui';
 import { PosTerminalService } from '@modules/user-container/pos-terminal/services/pos-terminal.service';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 
 @Component({
   selector: 'em-pos-terminal-info',

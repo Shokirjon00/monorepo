@@ -1,8 +1,8 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { PaymentStatusDetailService } from "@modules/directory/payment-status/services/payment-status.service";

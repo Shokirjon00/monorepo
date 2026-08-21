@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 import { ICaption, IFilterParams, IPaginate, IRowAction } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";
@@ -8,9 +8,6 @@ import { finalize } from "rxjs";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { DepartmentCodeConstants } from "@modules/directory/departament-code/department-code.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
 import { IDepartmentCode } from "@modules/directory/departament-code/interfaces/department-code";
 import { DepartmentCode } from "@modules/directory/departament-code/services/department-code";
 

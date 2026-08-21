@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {environment as env} from 'environments/environment';
 import {ICommission} from '@modules/directory/commission/interfaces/commission.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {Params} from '@angular/router';
 
 @Injectable({

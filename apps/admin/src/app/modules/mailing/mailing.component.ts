@@ -1,22 +1,18 @@
 import { finalize, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IAction } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { MailingService } from '@modules/mailing/services/mailing.service';
 import { IMailing } from '@modules/mailing/interfaces/mailing.interface';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { MailingConstants } from "@modules/mailing/mailing.constants";
 import { isEmptyObject } from "@core/utils";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
 
 @Component({
   standalone: true,

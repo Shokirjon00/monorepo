@@ -2,14 +2,14 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { IUserProfile } from '@core/interfaces/user.interface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '@core/services/user.service';
-import { HelperService } from '@core/services/helper.service';
+import { HelperService } from '@eskhata/data-access';
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { HttpResponse } from '@angular/common/http';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { ToastModule } from '@eskhata/ui';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface IUploadField {

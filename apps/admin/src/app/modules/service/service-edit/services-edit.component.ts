@@ -11,22 +11,19 @@ import {
   Validators
 } from '@angular/forms';
 import { Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { ServiceService } from "@modules/service/services/service.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { IServiceDetail } from "@modules/service/interfaces/service-detail.interface";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { GatewaysService } from "@core/services/gateways.service";
 import { ISelect } from "@core/interfaces";
 import { MerchantService } from "@modules/client/merchant/services/merchant.service";

@@ -1,4 +1,4 @@
-import {ICaption} from "@core/interfaces/table.interface";
+import {ICaption} from '@eskhata/util';
 import { MatchMode } from '@core/enums/match-mode.enum';
 
 export const COMMISSION_COLUMNS : ICaption[] = [

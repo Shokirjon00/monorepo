@@ -1,6 +1,6 @@
-import { ICaption } from "@core/interfaces/table1.interface";
-import { IAction } from "@shared/components/actions/action.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { ICaption } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class CashbackConstants {
 

@@ -1,4 +1,4 @@
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ICaption } from '@eskhata/util';
 
 export class PaymentHistoryConstants {
   static readonly PAYMENT_HISTORY_COLUMNS: ICaption[] = [

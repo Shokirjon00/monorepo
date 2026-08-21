@@ -1,7 +1,0 @@
-@import 'core/scss/mixins/mixin';
-@import 'core/scss/variables';
-
-.rating {
-  @include em-d-flex-al-center();
-  gap: 2px;
-}

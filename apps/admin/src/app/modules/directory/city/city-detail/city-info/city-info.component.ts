@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ICityDetail } from '@modules/directory/city/interfaces/city-detail.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { CityService } from '@modules/directory/city/services/city.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

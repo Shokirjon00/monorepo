@@ -1,9 +1,8 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { DateTimePipe } from '@eskhata/util';
+import { EmHeaderComponent, TableComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { TableComponent } from "@shared/components/table/table.component";
 import { ICommission } from "@modules/directory/commission/interfaces/commission.interface";
 import { ActivatedRoute, Router } from "@angular/router";
 import { advanceCommissionsInfoColumns } from "@modules/advance-payments/advance-commissions/advance-commissions-info/advance-commissions-info.columns";

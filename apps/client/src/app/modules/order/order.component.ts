@@ -1,20 +1,17 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { TableComponent } from '@shared/components/table/table.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IFilterParams, IPaginate } from '@core/interfaces';
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ICaption } from '@eskhata/util';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { finalize } from 'rxjs';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IOrder } from '@modules/order/interfaces/order';
 import { OrderConstants } from '@modules/order/order.constants';
 import { OrderService } from '@modules/order/services/order.service';
 import { isPhone } from '@core/helper';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { OrderMobileCardComponent } from '@modules/order/order-mobile-card/order-mobile-card.component';
 
 @Component({

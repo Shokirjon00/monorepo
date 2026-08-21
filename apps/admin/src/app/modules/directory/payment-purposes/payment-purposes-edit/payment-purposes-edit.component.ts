@@ -2,26 +2,24 @@ import { Location } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IHeader } from '@core/interfaces/header.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { IHeader } from '@eskhata/util';
+import { ISelect } from '@eskhata/util';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { environment } from '@environments/environment';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { PaymentPurposesService } from "@modules/directory/payment-purposes/services/payment-purposes.service";
 import {
   IPaymentPurposesDetail
 } from "@modules/directory/payment-purposes/interfaces/payment-purposes-detail.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 interface IParameters {
   key: string;

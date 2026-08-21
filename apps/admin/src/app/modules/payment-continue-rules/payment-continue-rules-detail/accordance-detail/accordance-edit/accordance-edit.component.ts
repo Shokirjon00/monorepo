@@ -3,8 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { environment as env, environment } from '@environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { MessageService } from '@eskhata/data-access';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPaymentContinueRuleAccordanceDetail } from '@modules/payment-continue-rules/interfaces/payment-continue-rule-accordance-detail.interface';
 import { PaymentContinueRuleAccordancesService } from '@modules/payment-continue-rules/services/payment-continue-rule-accordances.service';
 import { ToastEnum } from '@eskhata/util';
@@ -18,10 +18,7 @@ import { PaymentContinueRulesService } from '@modules/payment-continue-rules/ser
 import { IPaymentContinueRules } from '@modules/payment-continue-rules/interfaces/payment-continue-rules.interface';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { AutocompleteComponent, EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

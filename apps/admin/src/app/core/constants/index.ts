@@ -1,2 +1,1 @@
-export { StatusTypeConstants } from './status-type.constants'
-export { ErrorTextConstants } from '@eskhata/util'
+export { ErrorTextConstants, StatusTypeConstants } from '@eskhata/util';

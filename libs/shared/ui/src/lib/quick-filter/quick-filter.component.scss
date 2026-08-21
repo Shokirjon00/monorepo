@@ -1,0 +1,201 @@
+@use 'core/scss/form';
+@use 'core/scss/variables' as *;
+@use 'core/scss/button';
+@use 'core/scss/flex';
+@use 'core/scss/styles';
+@use 'core/scss/margins';
+@use 'core/scss/paddings';
+@use 'core/scss/mixins/mixin' as m;
+
+.white-icon {
+  filter: brightness(0) invert(1);
+}
+
+.demo-inline-calendar-card {
+  width: 300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+
+}
+
+.filter {
+  width: 100%;
+
+  &__container {
+    position: relative;
+    display: flex;
+
+    .filter_btn {
+      height: 42px;
+      max-width: 80px;
+      padding: 0.5rem 1rem;
+    }
+
+    .form-default {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .form-title {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-transform: uppercase;
+        color: $label-color;
+        margin: 0;
+      }
+
+      .form-input-group {
+        cursor: pointer;
+        @include m.em-d-flex-al-center();
+        position: relative;
+
+        .max-content-width {
+          width: max-content;
+        }
+
+        .dropdown {
+          width: calc(100% - 45px)
+        }
+
+        .tooltip {
+          border: none;
+        }
+      }
+    }
+
+    .form-add {
+      border-left: 1px solid $brand-line;
+      margin-left: 1.5rem;
+      cursor: pointer;
+
+      .action-item {
+        position: relative;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        padding: 0.5rem 1rem;
+        @include m.flex_ai_center();
+        color: $palette;
+        width: 48px;
+        height: 48px;
+
+        .open {
+          + .dropdown {
+            display: block;
+          }
+        }
+
+        &:hover {
+          background: $brand-hover;
+          color: $label-color;
+        }
+      }
+    }
+  }
+
+  .filtered-value {
+    background: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border: 1px solid #EAEDF0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 43px;
+    min-width: 250px;
+
+    &:hover {
+      border-color: $brand-hover;
+    }
+
+    .filter-value {
+      min-width: 40px;
+      outline: none;
+      border: none;
+      margin-right: 0.25rem;
+      caret-color: $primary-color;
+    }
+
+    .hidden-calendar-icon::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    .date-filter {
+      margin-left: -20px;
+      margin-right: 10px;
+    }
+
+    em-simple-select-list {
+      width: 180px;
+
+      ::ng-deep .form-control {
+        height: 35px;
+        border-bottom: none;
+
+        .value {
+          font-weight: 400;
+        }
+
+        .arrow {
+          display: none;
+        }
+      }
+    }
+
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+      -webkit-appearance: none;
+    }
+
+    .filter-label {
+      font-size: 14px;
+      line-height: 30px;
+      color: $palette;
+    }
+
+    .arrow {
+      transition: all 400ms ease;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+
+      &:hover {
+        background-color: $li-grey-hover;
+      }
+    }
+
+    &.invalid {
+      border: 1px solid $danger-color;
+    }
+  }
+
+  .value {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    & > * {
+      white-space: nowrap;
+    }
+  }
+
+  .placeholder {
+    color: $palette;
+    width: 100%;
+    font-size: inherit;
+  }
+
+  &.open {
+    .dropdown {
+      display: block;
+    }
+  }
+
+}

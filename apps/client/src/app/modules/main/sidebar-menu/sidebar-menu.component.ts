@@ -8,23 +8,23 @@ import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@modules/auth/service/auth.service';
 import { TokenService } from '@core/services/token.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { UserProfileDialogComponent } from '@shared/dialogs/user-profile-dialog/user-profile-dialog.component';
 import {
   UserChangePasswordDialogComponent
 } from '@shared/dialogs/user-change-password-dialog/user-change-password-dialog.component';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { environment } from '@environments/environment';
 import { IUserInfo, IUserProfile } from '@core/interfaces/user.interface';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
-import { HelperService } from '@core/services/helper.service';
+import { HelperService } from '@eskhata/data-access';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 import { Platform } from '@angular/cdk/platform';
-import { BottomSheetComponent } from '@shared/components/bottom-sheet/bottom-sheet.component';
+import { BottomSheetComponent } from '@eskhata/ui';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { FormsModule } from '@angular/forms';
-import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
+import { ClickOutsideModule } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from '@shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';

@@ -1,6 +1,6 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { finalize, map, Observable, of, Subject, timer } from 'rxjs';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,12 +8,12 @@ import { IMerchantDetail } from '@modules/merchant-container/merchant/interfaces
 import { CategoryService } from '@core/services/category.service';
 import { WorkingDayService } from '@core/services/working-day.service';
 import { SubcategoryService } from '@core/services/subcategory.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { environment as env } from '@environments/environment';
 import { Location } from '@angular/common';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { HeaderService } from '@core/services/header.service';
+import { IFilterParams } from '@eskhata/util';
+import { HeaderService } from '@eskhata/data-access';
 import { PhoneValidator } from '@core/validators/phone-validator';
 import { mergeMap } from 'rxjs/operators';
 import { setNestedGroupValidationErrors, setValidationErrors } from '@core/validators/set-validation-errors';
@@ -22,14 +22,9 @@ import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-d
 import { MatDialog } from '@angular/material/dialog';
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
+import { AutocompleteComponent, EmHeaderComponent, EskhataBankLoaderComponent, SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { SharedModule } from '@shared/shared.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
-import { AutocompleteComponent } from '@shared/components/autocomplete/autocomplete.component';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { isPhone } from '@core/helper';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

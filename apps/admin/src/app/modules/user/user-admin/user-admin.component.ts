@@ -1,23 +1,20 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
 import { UserAdminService } from '@modules/user/user-admin/services/user-admin.service';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IAction } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { IUserAdmin } from '@modules/user/user-admin/interfaces/user-admin.interface';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { ITab } from '@core/interfaces/header.interface';
+import { setDefaultFilterValue } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 import { BranchService } from "@modules/directory/branch/services/branch.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 import { UserAdminConstants } from "@modules/user/user-admin/user-admin.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
 
 @Component({
   standalone: true,

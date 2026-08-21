@@ -1,20 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { MessageService } from "@core/services/message.service";
+import { DestroyableComponent } from '@eskhata/util';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ClickOutsideModule } from "@core/directives/click-outside/click-outside.module";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent } from '@eskhata/ui';
+import { ClickOutsideModule } from '@eskhata/util';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { UsersService } from "@modules/sms-notification/users/service/users.service";
 import { ISmsNotification } from "@modules/sms-notification/users/interface/users";
-import { IMessage } from "@core/interfaces/message.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { IMessage } from '@eskhata/util';
 import { UserConstants } from "@modules/sms-notification/users/user.constants";
 
 @Component({

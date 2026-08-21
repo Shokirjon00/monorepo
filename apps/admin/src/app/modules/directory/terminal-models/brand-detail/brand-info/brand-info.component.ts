@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { BrandService } from '../../services/brand.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent } from '@eskhata/ui';
 import { takeUntil } from 'rxjs';
 import {NgxPermissionsModule} from "ngx-permissions";
 import {SvgIconComponent} from "angular-svg-icon";

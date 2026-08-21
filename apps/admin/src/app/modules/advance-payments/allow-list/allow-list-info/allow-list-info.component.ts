@@ -1,14 +1,12 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
+import { ActionsComponent, EmHeaderComponent, UploadFieldComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { AllowListConstants } from "@modules/advance-payments/allow-list/allow-list-info/allow-list.constants";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { UploadFieldComponent } from "@shared/components/upload-field/upload-field.component";
 import { CompanyService } from "@modules/client/company/services/company.service";
 import { AllowListService } from "@modules/advance-payments/allow-list/service/allow-list.service";
 

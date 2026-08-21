@@ -3,7 +3,7 @@ import { environment as env } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { IReportForm } from '@modules/report/interface/report-form.interface';
 
 @Injectable()

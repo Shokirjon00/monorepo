@@ -1,13 +1,13 @@
 import { Component, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 
 import { FormArray, FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { takeUntil } from 'rxjs';
 import { ToastEnum } from '@eskhata/util';
 import { PosService } from '@modules/merchant-container/pos/services/pos.service';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { DestroyableComponent } from '@eskhata/util';
+import { ToastModule } from '@eskhata/ui';
 import { CompanyInfoService } from '@modules/merchant-container/company-info/services/company-info.service';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 

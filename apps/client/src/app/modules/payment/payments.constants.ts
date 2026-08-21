@@ -1,8 +1,8 @@
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableFieldTypes, TableRowActionEnum } from "@core/enums/table";
-import { ActionEnum } from "@core/enums/action-enum";
-import { TableStatusEnum } from "@core/enums/table-status.enum";
-import { ICaption } from '@core/interfaces/table1.interface';
+import { TableFieldTypes, TableRowActionEnum } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
+import { TableStatusEnum } from '@eskhata/util';
+import { ICaption } from '@eskhata/util';
 
 export class PaymentsConstants {
   static readonly PAYMENTS_COLUMNS: ICaption[] = [

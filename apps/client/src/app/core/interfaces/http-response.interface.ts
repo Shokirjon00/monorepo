@@ -1,5 +1,4 @@
-import {ICaption} from "./table.interface";
-import {IParam} from "@core/interfaces/param.interface";
+import {ICaption, IParam} from '@eskhata/util';
 
 export interface IHttpResponse<T> {
   status?: boolean;

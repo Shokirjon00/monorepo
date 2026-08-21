@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Location } from "@angular/common";
@@ -13,8 +13,6 @@ import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { AppealCategoryService } from "@modules/directory/appeal-category/services/appeal-category.service";
 import { IAppealCategoryDetail } from "@modules/directory/appeal-category/interfaces/appeal-category-detail.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";

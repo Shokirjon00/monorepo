@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { RatingComponent } from '@shared/components/rating/rating.component';
+import { RatingComponent } from '@eskhata/ui';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IRatingDialog } from '@shared/dialogs/rating-dialog/interfaces/rating-dialog.interface';
 

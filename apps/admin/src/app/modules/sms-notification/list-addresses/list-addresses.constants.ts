@@ -1,7 +1,7 @@
-import { ICaption, IOptionAction } from "@core/interfaces/table.interface";
+import { ICaption, IOptionAction } from '@eskhata/util';
 import {MatchMode} from "@core/enums/match-mode.enum";
-import { ITab } from "@core/interfaces/header.interface";
-import { TableRowActionEnum } from "@core/enums/table";
+import { ITab } from '@eskhata/util';
+import { TableRowActionEnum } from '@eskhata/util';
 
 export class ListAddressesConstants {
 

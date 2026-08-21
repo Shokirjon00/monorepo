@@ -1,15 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ICashbackCompany } from '@modules/client/company/company-detail/cashback-company/interfaces/cashback-company.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { CashbackCompanyService } from '@modules/client/company/company-detail/cashback-company/services/cashback-company.service';
 import { HeaderService } from '@core/services/header.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { NgClass } from "@angular/common";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

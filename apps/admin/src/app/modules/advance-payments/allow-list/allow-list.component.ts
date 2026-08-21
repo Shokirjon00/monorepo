@@ -1,11 +1,8 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { AdvancePaymentsPageConstants } from "@modules/advance-payments/advance-payments-page/advance-payments-page.constants";
 import { AllowListConstant } from "@modules/advance-payments/allow-list/allow-list.constant";
 import { ICaption, IFilterParams, IPaginate, IRowAction } from "@core/interfaces";
-import { TableComponent } from "@shared/components/table/table.component";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { finalize } from "rxjs";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";

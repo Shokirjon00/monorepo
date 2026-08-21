@@ -1,5 +1,5 @@
-import { ActionEnum } from "@core/enums/action-enum";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { ActionEnum } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 
 export class PaymentsChildConstants {
 

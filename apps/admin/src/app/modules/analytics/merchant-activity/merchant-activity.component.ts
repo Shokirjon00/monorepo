@@ -9,11 +9,10 @@ import {
     signal,
     untracked
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Params } from '@angular/router';
 import { environment as env } from '@environments/environment';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { DropdownComponent, ToastComponent } from '@eskhata/ui';
 import { QrPosPanelComponent } from '@modules/analytics/qr-pos-analytics/components/qr-pos-panel/qr-pos-panel.component';
 import { QrPosChartComponent } from '@modules/analytics/qr-pos-analytics/components/qr-pos-chart/qr-pos-chart.component';
 import { QrPosCardsComponent } from '@modules/analytics/qr-pos-analytics/components/qr-pos-cards/qr-pos-cards.component';
@@ -56,17 +55,16 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [MerchantActivityFilterService, MerchantActivityService, DashboardLoaderService],
     imports: [
-        CommonModule,
-        DropdownComponent,
-        ToastComponent,
-        QrPosPanelComponent,
-        QrPosChartComponent,
-        QrPosCardsComponent,
-        QrPosPlanFactComponent,
-        MaTableComponent,
-        MaQuickActionsComponent,
-        MaForecastSummaryComponent,
-    ],
+    DropdownComponent,
+    ToastComponent,
+    QrPosPanelComponent,
+    QrPosChartComponent,
+    QrPosCardsComponent,
+    QrPosPlanFactComponent,
+    MaTableComponent,
+    MaQuickActionsComponent,
+    MaForecastSummaryComponent
+],
 })
 export class MerchantActivityComponent {
     readonly embedded = input<boolean>(false);

@@ -1,15 +1,12 @@
 import { Component, Inject, signal } from '@angular/core';
-import { NgForOf, NgIf } from "@angular/common";
+
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ChangeStatusModalData } from "@shared/dialogs/change-status-modal/interfaces/change-status-modal";
 
 @Component({
   selector: 'em-change-status-modal',
   standalone: true,
-  imports: [
-    NgIf,
-    NgForOf
-  ],
+  imports: [],
   templateUrl: './change-status-modal.component.html',
   styleUrl: './change-status-modal.component.scss'
 })

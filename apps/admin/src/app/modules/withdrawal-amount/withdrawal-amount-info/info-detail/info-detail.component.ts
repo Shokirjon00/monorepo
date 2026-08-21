@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption } from '@core/interfaces/table.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
@@ -10,20 +10,17 @@ import {
 import {
   IWithdrawalAmountMerchants
 } from '@modules/withdrawal-amount/withdrawal-amount-info/interfaces/withdrawal-amount-merchants.interface';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { IPaginate, ToastEnum } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { MessageService } from '@core/services/message.service';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { IFilterParams } from '@eskhata/util';
+import { MessageService } from '@eskhata/data-access';
+import { IAction } from '@eskhata/util';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import {
   InfoDetailConstants
 } from '@modules/withdrawal-amount/withdrawal-amount-info/info-detail/info-detail.constants';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
 
 @Component({
   standalone: true,

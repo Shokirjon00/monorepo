@@ -1,6 +1,6 @@
-import {ICaption} from "@core/interfaces/table.interface";
+import {ICaption} from '@eskhata/util';
 import {MatchMode} from "@core/enums/match-mode.enum";
-import {ITab} from "@core/interfaces/header.interface";
+import {ITab} from '@eskhata/util';
 
 export class JobLogArchivesConstants {
   /**

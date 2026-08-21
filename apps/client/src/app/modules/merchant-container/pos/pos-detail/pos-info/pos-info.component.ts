@@ -1,13 +1,13 @@
 import { Component, ElementRef, inject, OnInit, viewChild } from '@angular/core';
 import { IPosDetail } from '../../interfaces/pos.interface';
 import { PosService } from '../../services/pos.service';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { FileSaverService } from 'ngx-filesaver';
 import { HttpResponse } from '@angular/common/http';
-import { IHeader } from '@core/interfaces/header.interface';
-import { HeaderService } from '@core/services/header.service';
+import { IHeader } from '@eskhata/util';
+import { HeaderService } from '@eskhata/data-access';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { CommonModule, Location } from '@angular/common';
 import printJS from 'print-js';
@@ -16,7 +16,7 @@ import { toPng } from 'html-to-image';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsAllowStubDirective } from 'ngx-permissions';
 import { PrintDirective } from '@core/directives/print.directive';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

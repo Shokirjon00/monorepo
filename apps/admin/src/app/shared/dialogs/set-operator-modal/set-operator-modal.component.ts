@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject, Inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ChangeStatusModalData } from "@shared/dialogs/change-status-modal/interfaces/change-status-modal";
-import { InfiniteScrollDirective } from "@core/directives/infinite-scroll.directive";
+import { InfiniteScrollDirective } from "@eskhata/util";
 import { IPaginate } from "@core/interfaces";
 import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
 import { distinctUntilChanged, map, switchMap, tap } from "rxjs/operators";

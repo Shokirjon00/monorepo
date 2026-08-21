@@ -7,7 +7,7 @@ import {
   input,
   viewChild
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { EditorView, keymap, lineNumbers, highlightActiveLineGutter } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
@@ -20,7 +20,7 @@ import DOMPurify from 'dompurify';
 @Component({
   standalone: true,
   selector: 'em-html-viewer',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './html-viewer.component.html',
   styleUrls: ['./html-viewer.component.scss']
 })

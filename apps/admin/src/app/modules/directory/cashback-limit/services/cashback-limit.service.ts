@@ -4,7 +4,7 @@ import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {environment as env} from 'environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ICashbackLimit} from '@modules/directory/cashback-limit/interfaces/cashback-limit.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {ICashbackLimitDetail} from '@modules/directory/cashback-limit/interfaces/cashback-limit-detail.interface';
 import {Params} from '@angular/router';
 

@@ -5,7 +5,8 @@ import {Directive, HostListener} from "@angular/core";
 })
 export class PreventSpaceDirective {
   @HostListener("keydown.space", ["$event"])
-  keyDown(): boolean {
+  keyDown(event: Event): boolean {
+    event.preventDefault();
     return false;
   }
 }

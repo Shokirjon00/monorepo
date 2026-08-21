@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from "@angular/core";
-import { TableComponent } from "@shared/components/table/table.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { MessageService } from "@core/services";
@@ -13,7 +11,7 @@ import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/u
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { ToastEnum } from '@eskhata/util';
 import { finalize } from "rxjs/operators";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { PosTerminalConstants } from "@modules/main-terminal/pos-terminal/pos-terminal.constants";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";

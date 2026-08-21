@@ -1,8 +1,8 @@
 import { ICaption, IRowAction } from "@core/interfaces";
-import { TableFieldTypes, TableRowActionEnum } from "@core/enums/table";
+import { TableFieldTypes, TableRowActionEnum } from '@eskhata/util';
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class BankConstants {
 

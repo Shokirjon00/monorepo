@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -20,7 +20,7 @@ import { IAnalyticsSettings } from "@modules/analytics/interfaces/qr-pos-analyti
   templateUrl: './analytics-settings-dialog.component.html',
   styleUrls: ['./analytics-settings-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
 })
 
 export class AnalyticsSettingsDialogComponent implements OnInit {

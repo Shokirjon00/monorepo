@@ -3,17 +3,16 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { Location } from '@angular/common'
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { SettingService } from "@modules/setting-container/setting/services/setting.service";
 import { DynamicFieldsComponent } from "@shared/components/dynamic-fields/dynamic-fields.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import {
   ISettingComponents
 } from "@modules/setting-container/setting/setting-components/interface/setting-components";

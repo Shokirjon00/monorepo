@@ -2,25 +2,21 @@ import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { CommonModule } from '@angular/common';
 import { IFilterParams, IPaginate } from '@core/interfaces';
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ICaption } from '@eskhata/util';
 import { finalize } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent, ToastModule } from '@eskhata/ui';
 import { IPayment, IPaymentStatusAmount } from '@modules/payment/interfaces/payment.interface';
 import { ShiftHistoryInfoConstants } from '@modules/shift-history/shift-history-info/shift-history-info.constants';
 import { ShiftHistoryService } from '@modules/shift-history/service/shift-history.service';
 import { PaymentService } from '@modules/payment/services/payment.service';
 import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { SharedModule } from '@shared/shared.module';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { isPhone } from '@core/helper';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ShiftInfoMobileCardComponent } from '@modules/shift-history/shift-history-info/shift-info-mobile-card/shift-info-mobile-card.component';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 
 @Component({

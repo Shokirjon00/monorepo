@@ -5,7 +5,7 @@ import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IPaymentDetail } from "../interfaces/payment-detail.interface";
 import { environment as env } from "environments/environment";
 import { IPaymentHistory } from "@modules/payment/interfaces/payment-history.interface";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 import { IPayments } from "@modules/payment/interfaces/payment.interface";
 import { Params } from "@angular/router";
 import { IPaymentRefundForm } from '@modules/payment/interfaces/payment-refund-form.interface';

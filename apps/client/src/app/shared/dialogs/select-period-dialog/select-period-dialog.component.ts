@@ -4,10 +4,10 @@ import { DateRange, MatMonthView } from '@angular/material/datepicker';
 import { BehaviorSubject } from 'rxjs';
 import { DateAdapter } from '@angular/material/core';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import 'moment/locale/ru';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ToastComponent } from '@eskhata/ui';
 import { SvgIconComponent } from 'angular-svg-icon';
 
 @Component({

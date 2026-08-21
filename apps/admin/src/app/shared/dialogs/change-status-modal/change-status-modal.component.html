@@ -7,15 +7,18 @@
       <span>{{ selectedStatusName }}</span>
       <i class="modal__form-group-select-arrow"></i>
     </div>
-    <ul *ngIf="dropdownStatusOpen()" class="modal__form-group-options">
-      <li
-        *ngFor="let status of statuses"
-        class="modal__form-group-options-item"
-        (click)="selectStatus(status.id)"
-      >
-        {{ status.name }}
-      </li>
-    </ul>
+    @if (dropdownStatusOpen()) {
+      <ul class="modal__form-group-options">
+        @for (status of statuses; track status) {
+          <li
+            class="modal__form-group-options-item"
+            (click)="selectStatus(status.id)"
+            >
+            {{ status.name }}
+          </li>
+        }
+      </ul>
+    }
   </div>
 
   <div class="modal__button-group mt-6">
@@ -24,7 +27,7 @@
       class="modal__button-group-btn modal__button-group-btn--submit"
       [disabled]="isUnchanged"
       (click)="onSubmit()"
-    >
+      >
       Выбрать
     </button>
 

@@ -2,11 +2,11 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { IFilterParams, IPaginate } from '@core/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '@modules/order/services/order.service';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent } from '@eskhata/ui';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 import { IOrderDetailHistory } from '@modules/order/interfaces/order-detail-history';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   selector: 'em-order-info',

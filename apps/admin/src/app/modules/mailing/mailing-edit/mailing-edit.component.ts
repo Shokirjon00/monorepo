@@ -1,10 +1,10 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastEnum, IPaginate } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
@@ -13,21 +13,15 @@ import { MailingService } from '@modules/mailing/services/mailing.service';
 import { environment as env } from '@environments/environment';
 import { IMailingUpdate } from '@modules/mailing/interfaces/mailing.interface';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { PosService } from '@modules/client/pos/services/pos.service';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import moment from "moment/moment";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { MultiSelectListModule } from "@shared/components/multi-select-list/multi-select-list.module";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
-import { MultiSelectComponent } from "@shared/components/multi-select/multi-select.component";
+import { AutocompleteComponent, EmHeaderComponent, MultiSelectComponent, MultiSelectListComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,
@@ -45,7 +39,7 @@ import { EmHeaderComponent } from "@shared/components/em-header/em-header.compon
     NgxPermissionsModule,
     ValidatorComponent,
     SimpleSelectListComponent,
-    MultiSelectListModule,
+    MultiSelectListComponent,
     AutocompleteComponent,
     MultiSelectComponent,
     EbLoaderComponent,

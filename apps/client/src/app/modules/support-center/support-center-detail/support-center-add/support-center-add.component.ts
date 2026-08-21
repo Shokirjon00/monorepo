@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, SimpleSelectListComponent, ToastModule, UploadFieldComponent, ValidatorModule } from '@eskhata/ui';
 import {
   FormControl,
   FormGroup,
@@ -11,18 +11,14 @@ import {
 import { SvgIconComponent } from 'angular-svg-icon';
 import { ToastEnum } from '@eskhata/util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { UploadFieldComponent } from '@shared/components/upload-field/upload-field.component';
 import { PhoneValidator } from '@core/validators/phone-validator';
 import { SupportCenterCategoryService } from '@modules/support-center/services/support-center-category.service';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { SupportCenterService } from '@modules/support-center';
 import { switchMap, of } from 'rxjs';
-import { ToastModule } from '@shared/components/toast/toast.module';
 
 @Component({
   standalone: true,

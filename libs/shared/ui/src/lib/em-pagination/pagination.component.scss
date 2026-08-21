@@ -1,0 +1,162 @@
+// CSS-only modules are loaded without 'as *' so their rules still reach the
+// component, while their members stay namespaced. core/scss/styles re-imports
+// variables, so loading both with 'as *' would make every shared variable ambiguous.
+@use 'core/scss/flex';
+@use 'core/scss/styles';
+@use 'core/scss/margins';
+@use 'core/scss/paddings';
+@use 'core/scss/form';
+@use 'core/scss/variables' as *;
+@use 'ui/mixins' as *;
+
+
+$height: 1.875;
+
+:host {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-selection {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  height: $height;
+}
+
+.page-entry {
+  height: $height;
+  @include flex_ai_center();
+  border: none;
+  background-color: $soft-silver;
+  margin: 0 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 0.875rem;
+  width: auto;
+  padding: 0 0.5rem;
+
+  &.active {
+    color: white;
+    background-color: $active-entry;
+    cursor: default;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.page-size {
+  color: $palette;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  cursor: pointer;
+
+  &-label {
+    height: 48px;
+
+    div {
+      white-space: nowrap;
+    }
+  }
+
+  .dropdown {
+    min-width: 120px;
+  }
+
+  .open {
+    + .dropdown {
+      display: block;
+    }
+  }
+}
+
+.paginator-ellipsis {
+  margin: 0 10px;
+  font-size: 18px;
+  line-height: 40px;
+
+  &.active {
+    background-color: $deep-blue;
+    color: white;
+  }
+}
+
+.paginator {
+
+  &-button {
+    background: $vivid-blue;
+    padding: 2px 8px;
+    border-radius: 4px;
+
+    &.active {
+      background: $pale-gray;
+    }
+  }
+
+  &-dots {
+    @include flex_ai_center();
+    border: none;
+    color: $jet-black;
+    background-color: $light-gray;
+    font-size: 0.75rem;
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 1.25rem;
+    padding: 0.25rem;
+
+    &.active {
+      background-color: $deep-blue;
+      color: $white-color;
+    }
+  }
+
+  &-num {
+    border: none;
+    color: $palette;
+    font-size: 0.875rem;
+    line-height: 1.5px;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  &-input {
+
+    input {
+      width: 3rem;
+      height: 2.5rem;
+      background: $main-bg;
+      border-radius: 0.5rem;
+      text-align: center;
+      border: none;
+      outline: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+
+  }
+
+  .arrow-right {
+    cursor: pointer;
+    transform: rotate(180deg);
+  }
+}
+
+

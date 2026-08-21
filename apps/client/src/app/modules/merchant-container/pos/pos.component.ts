@@ -1,25 +1,21 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { ICaption } from "@core/interfaces/table.interface";
-import { TableComponent } from "@shared/components/table/table.component";
+import { ICaption } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { PosService } from "@modules/merchant-container/pos/services/pos.service";
 import { IPos } from "@modules/merchant-container/pos/interfaces/pos.interface";
 import { takeUntil } from "rxjs";
-import { DestroyableComponent } from "@core/directives/destroyable.component";
-import { IFilterParams } from "@core/interfaces/filter-params.interface";
-import { HeaderService } from "@core/services/header.service";
+import { DestroyableComponent } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
+import { HeaderService } from '@eskhata/data-access';
 import { parseFilterParams } from "@core/utils/filter-util";
 import { IPaginate } from '@eskhata/util';
 import { isPhone } from '@core/helper';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsService } from 'ngx-permissions';
 import { SharedModule } from "@shared/shared.module";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
 import { PosConstants } from "@modules/merchant-container/pos/pos.constants";
-import { IAction } from "@shared/components/actions/action.interface";
+import { IAction } from '@eskhata/util';
 import { ITab } from "@core/interfaces";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
 import { SvgIconComponent } from "angular-svg-icon";
 
 @Component({

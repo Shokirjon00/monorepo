@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { IQrPosGeography, IQrPosRegion, IRegionMarker } from '../../interfaces/qr-pos-analytics.interface';
 import { EmNumberPipe } from '@modules/analytics/pipes/em-number.pipe';
 
@@ -9,7 +9,7 @@ import { EmNumberPipe } from '@modules/analytics/pipes/em-number.pipe';
   templateUrl: './qr-pos-geography.component.html',
   styleUrls: ['./qr-pos-geography.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, NgOptimizedImage, EmNumberPipe],
+  imports: [NgOptimizedImage, EmNumberPipe],
 })
 export class QrPosGeographyComponent {
   readonly geography = input<IQrPosGeography | null>(null);

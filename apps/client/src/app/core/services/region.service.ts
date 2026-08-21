@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { environment as env } from 'environments/environment';
 import { Observable } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 
 @Injectable({
   providedIn: 'root',

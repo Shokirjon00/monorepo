@@ -9,16 +9,13 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
+import { ClickOutsideModule } from '@eskhata/util';
 import { ICaption } from '@core/interfaces';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { CustomSelectListComponent } from '@shared/components/custom-select-list/custom-select-list.component';
-import { SelectFieldSearchComponent } from "@shared/components/select-field-search/select-field-search.component";
-import { DataSourceService } from "@core/services/data-source.service";
-import { BottomSheetComponent } from "@shared/components/bottom-sheet/bottom-sheet.component";
+import { BottomSheetComponent, CustomSelectListComponent, SelectFieldSearchComponent, SimpleSelectListComponent } from '@eskhata/ui';
+import { DataSourceService } from '@eskhata/data-access';
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { BaseFilterComponent } from "@core/abstract/base-filter";
+import { BaseFilterComponent } from '@eskhata/util';
 
 @Component({
   standalone: true,

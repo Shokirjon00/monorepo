@@ -1,15 +1,13 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from "@angular/core";
-import { TableComponent } from "@shared/components/table/table.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params } from "@angular/router";
 import { takeUntil } from "rxjs";
 import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { finalize } from "rxjs/operators";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { MobileAppConstants } from "@modules/main-terminal/mobile-app/mobile-app.constants";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";

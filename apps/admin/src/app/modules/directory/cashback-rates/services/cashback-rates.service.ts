@@ -3,7 +3,7 @@ import {environment as env} from '@environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {ICashbackRates} from '@modules/directory/cashback-rates/interfaces/cashback-rates.interface';
 import {Params} from '@angular/router';
 

@@ -3,10 +3,10 @@ import { ICompanyLegalForm } from '@modules/directory/company-legal-form/interfa
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyLegalFormService } from '@modules/directory/company-legal-form/services/company-legal-form.service';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, input, output, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
-import { ITab } from '@core/interfaces/header.interface';
-import { TabMenuComponent } from '@shared/components/tab-view/tab-menu.component';
+import { DateTimePipe } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { TabMenuComponent } from '@eskhata/ui';
 import { AnalyticsSettingsDialogComponent } from '@shared/dialogs/analytics-settings-dialog/analytics-settings-dialog.component';
 import { IAnalyticsSettings } from '@modules/analytics/interfaces/qr-pos-analytics.interface';
 
@@ -15,7 +15,7 @@ import { IAnalyticsSettings } from '@modules/analytics/interfaces/qr-pos-analyti
   styleUrls: ['./analytics-tabs-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DateTimePipe],
-  imports: [CommonModule, TabMenuComponent],
+  imports: [TabMenuComponent],
 })
 export class AnalyticsTabsBarComponent {
   private readonly dialog = inject(MatDialog);

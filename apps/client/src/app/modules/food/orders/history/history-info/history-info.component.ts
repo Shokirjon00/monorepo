@@ -1,13 +1,11 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, EskhataBankLoaderComponent, ToastComponent } from '@eskhata/ui';
 import { ActivatedRoute } from "@angular/router";
 import { historyOrdersService } from "@modules/food/orders/history/services/history.service";
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ToastComponent } from '@shared/components/toast/toast.component';
 import { IOrder } from '@modules/food/orders/active-orders/interfaces/order.interface';
 import { ORDER_STATUSES } from '@modules/food/orders/active-orders/order-action-modal/order-detail.constants';
 

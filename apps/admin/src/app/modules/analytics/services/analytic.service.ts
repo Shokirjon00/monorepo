@@ -6,7 +6,7 @@ import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {IAggregate} from '@modules/analytics/interfaces/aggregate.interface';
 import {IPaymentStatistics} from '@modules/analytics/interfaces/payment-statistics.interface';
 import {IAveragePayment, IPaymentCount, IPaymentPosType, IPaymentStatus} from '@modules/analytics/interfaces/analytic.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {Params} from '@angular/router';
 
 @Injectable()

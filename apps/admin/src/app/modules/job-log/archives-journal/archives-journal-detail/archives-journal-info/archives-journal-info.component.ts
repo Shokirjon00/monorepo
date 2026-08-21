@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 import { CommonModule } from "@angular/common";
 import { IJobLogInfo } from "@modules/job-log/interfaces/job-log.interface";
 import { ArchivesJournalService } from "@modules/job-log/archives-journal/service/archives-journal.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 
 @Component({

@@ -4,19 +4,17 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
-import { IParam } from "@core/interfaces/param.interface";
+import { MessageService } from '@eskhata/data-access';
+import { IParam } from '@eskhata/util';
 import { WhiteSpaceValidator, ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { SvgIconComponent } from "angular-svg-icon";
 import { ReactiveFormsModule } from '@angular/forms';
 import { IJobLogTypeDetail } from "@modules/directory/job-log-types/interfaces/job-log-type-detail";
 import { TypeListService } from "@modules/directory/job-log-types/services/job-log-type.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

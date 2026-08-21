@@ -1,23 +1,20 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { TableComponent } from "@shared/components/table/table.component";
-import { ICaption, IRowAction } from "@core/interfaces/table.interface";
-import { ITab } from "@core/interfaces/header.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from "@core/interfaces/filter-params.interface";
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { finalize, takeUntil } from "rxjs";
-import { setDefaultFilterValue } from "@core/utils/route-param-parse";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { parseFilterParams } from "@core/utils/filter-util";
 import { AngularSvgIconModule } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { IJobLogType } from "@modules/directory/job-log-types/interfaces/job-log-type";
 import { TypeListService } from "@modules/directory/job-log-types/services/job-log-type.service";
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 import { JobLogTypesConstants } from "@modules/directory/job-log-types/job-log-types.constants";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

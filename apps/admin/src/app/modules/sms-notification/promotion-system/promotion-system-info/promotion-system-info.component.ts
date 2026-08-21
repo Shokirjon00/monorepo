@@ -1,15 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ActionsComponent, EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { SmsService } from "@modules/sms-notification/promotion-system/service/sms.service";
 import { ISMS } from "@modules/sms-notification/promotion-system/interface/sms.interface";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import {
   PromotionSystemInfoConstants
 } from "@modules/sms-notification/promotion-system/promotion-system-info/promotion-system-info.constants";

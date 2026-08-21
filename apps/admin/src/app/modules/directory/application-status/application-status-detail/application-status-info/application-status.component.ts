@@ -1,18 +1,18 @@
 import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import { ICityDetail } from '@modules/directory/city/interfaces/city-detail.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { CityService } from '@modules/directory/city/services/city.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import {IMerchantApplicationDetail} from "@modules/directory/application-status/interfaces/city-detail.interface";
 import {ApplicationStatusService} from "@modules/directory/application-status/services/application-status.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {DateTimePipe} from "@core/pipe/date-time.pipe";
+import {DateTimePipe} from '@eskhata/util';
 
 @Component({
   standalone: true,

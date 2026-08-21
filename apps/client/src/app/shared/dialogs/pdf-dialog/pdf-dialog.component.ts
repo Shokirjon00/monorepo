@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
+import { EskhataBankLoaderComponent } from '@eskhata/ui';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 

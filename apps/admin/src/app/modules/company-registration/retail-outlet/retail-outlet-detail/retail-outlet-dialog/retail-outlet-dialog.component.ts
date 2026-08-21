@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, Inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MultiSelectListModule } from '@shared/components/multi-select-list/multi-select-list.module';
+import { MultiSelectListComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import { ToastEnum } from '@eskhata/util';
@@ -17,7 +17,6 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './retail-outlet-dialog.component.html',
   styleUrls: ['./retail-outlet-dialog.component.scss'],
   imports: [
-    MultiSelectListModule,
     ReactiveFormsModule,
     SharedModule,
     NgxPermissionsModule,

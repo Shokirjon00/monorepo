@@ -1,14 +1,12 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ICaption } from '@core/interfaces/table.interface';
+import { ICaption } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ITab } from '@core/interfaces/header.interface';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import { JobLogArchivesConstants } from "@modules/job-log/archives-journal/archives-journal.constants";
 import { ArchivesJournalService } from "@modules/job-log/archives-journal/service/archives-journal.service";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 import { isEmptyObject, setDefaultFilterValue } from "@core/utils";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";

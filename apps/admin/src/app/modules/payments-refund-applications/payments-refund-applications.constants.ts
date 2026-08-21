@@ -1,6 +1,6 @@
-import { ICaption, IRowAction } from "@core/interfaces/table.interface";
+import { ICaption, IRowAction } from '@eskhata/util';
 import {MatchMode} from "@core/enums/match-mode.enum";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 
 export class PaymentsRefundApplicationsConstants {
 

@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IWithdrawalAmountSettingDetail } from "@modules/withdrawal-amount/withdrawal-amount-setting/interfaces/withdrawal-amount-setting-detail.interface";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 
 @Injectable()
 export class WithdrawSetService {

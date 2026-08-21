@@ -1,18 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { SettingService } from '@modules/setting-container/setting/services/setting.service';
 import { ISetting } from '@modules/setting-container/setting/interfaces/setting.interface';
 import { CommonModule } from '@angular/common';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { HeaderService } from '@core/services/header.service';
-import { IHeader } from '@core/interfaces/header.interface';
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IHeader } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
+import { IAction } from '@eskhata/util';
 import { SettingInfoConstants } from "@modules/setting-container/setting/setting-info/setting-info.constants";
 
 @Component({

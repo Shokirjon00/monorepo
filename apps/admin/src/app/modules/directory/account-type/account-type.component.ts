@@ -1,25 +1,21 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { DestroyableComponent } from '@eskhata/util';
 import { IAccountType } from '@modules/directory/account-type/interfaces/account-type.interface';
-import { ICaption } from '@core/interfaces/table.interface';
-import { ITab } from '@core/interfaces/header.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { ICaption } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CaptionService } from '@core/services/caption.service';
 import { finalize, takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { AccountTypeService } from '@modules/directory/account-type/services/account-type.service';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { AccountTypeConstants } from "@modules/directory/account-type/account-type.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { DirectoryConstants } from "@modules/directory/directory.constants";
-import { DataSourceService } from "@core/services/data-source.service";
+import { DataSourceService } from '@eskhata/data-access';
 
 @Component({
   standalone: true,

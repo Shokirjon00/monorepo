@@ -19,6 +19,13 @@ import { APP_ROUTES } from "./app.routing";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "@environments/environment";
+import { ENVIRONMENT } from "@eskhata/environment";
+import { FILTER_PARAMS_PARSER, HeaderService as SharedHeaderService } from "@eskhata/data-access";
+import { MAIN_FILTER_DIALOG, UPLOAD_FIELD_DIALOGS, UPLOAD_FIELD_GATEWAY } from '@eskhata/ui';
+import { CompanyService } from '@modules/client/company/services/company.service';
+import { SIEVE_OPERATOR_RESOLVER } from '@eskhata/data-access';
+import { HeaderService } from "@core/services/header.service";
+import { getSieveOperatorValue, parseFilterParams } from '@core/utils/filter-util';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -57,5 +64,21 @@ export const appConfig: ApplicationConfig = {
     },
     AnonymousUserGuard,
     AuthenticatedUserGuard,
+    { provide: ENVIRONMENT, useValue: environment },
+    { provide: FILTER_PARAMS_PARSER, useValue: parseFilterParams },
+    { provide: SIEVE_OPERATOR_RESOLVER, useValue: getSieveOperatorValue },
+    {
+      provide: MAIN_FILTER_DIALOG,
+      useValue: () => import('@shared/dialogs/main-filter/main-filter.component').then(m => m.MainFilterComponent),
+    },
+    { provide: SharedHeaderService, useExisting: HeaderService },
+    { provide: UPLOAD_FIELD_GATEWAY, useExisting: CompanyService },
+    {
+      provide: UPLOAD_FIELD_DIALOGS,
+      useValue: {
+        alert: () => import('@shared/dialogs/alert-dialog/alert-dialog.component').then(m => m.AlertDialogComponent),
+        pdf: () => import('@shared/dialogs/pdf-dialog/pdf-dialog.component').then(m => m.PdfDialogComponent),
+      },
+    },
   ],
 };

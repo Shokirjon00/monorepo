@@ -9,18 +9,16 @@ import { Location } from '@angular/common';
 import {
   AccountCategoryTypeService
 } from '@modules/directory/account-category-type/services/account-category-type.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

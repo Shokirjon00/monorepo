@@ -1,23 +1,20 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from "@angular/core";
-import { TableComponent } from "@shared/components/table/table.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { IHttpResponse } from '@core/interfaces/http-response.interface';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, TableService } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { finalize } from "rxjs/operators";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { ChangePosTerminalConstants } from "@modules/main-terminal/change-terminal-pos/change-pos-terminal.constants";
 import { ChangePosTerminalService } from "@modules/main-terminal/change-terminal-pos/services/change-pos-terminal.service";
 import {
   IChangePosTerminal, IImportExcelResult
 } from "@modules/main-terminal/change-terminal-pos/interfaces/change-pos-terminal.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { TableService } from "@shared/components/table/services/table.service";
 import { MatDialog } from "@angular/material/dialog";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { ImportResultDialogComponent } from "@shared/dialogs/import-result-dialog/import-result-dialog.component";
 import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
@@ -98,7 +95,7 @@ export class ChangePosTerminalComponent implements OnInit, AfterViewInit {
     if (!action.path) return;
 
     this.loading.set(true);
-    this.tableService.importExcel(action.path, file)
+    this.tableService.importExcel<IHttpResponse<IImportExcelResult>>(action.path, file)
         .pipe(
             finalize(() => this.loading.set(false)),
             takeUntilDestroyed(this.destroyRef),

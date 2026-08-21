@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { IUserRole } from "@modules/directory/user-role/interfaces/user-role.interface";
 import { UsersRoleService } from "@modules/directory/user-role/services/users-role.service";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

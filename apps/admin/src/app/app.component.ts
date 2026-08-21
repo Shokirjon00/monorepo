@@ -3,7 +3,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { ErrorService } from '@core/services/error.service';
 import { filter, switchMap } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
 import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { driver } from "driver.js";

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DateRange } from '@core/enums/date-format.enum';
+import { DateRange } from '@eskhata/util';
 import { ApexOptions } from "ng-apexcharts";
 
 @Injectable({providedIn: 'root'})

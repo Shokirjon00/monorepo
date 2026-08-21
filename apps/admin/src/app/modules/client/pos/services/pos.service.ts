@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { IPos } from '@modules/client/pos/interfaces/pos.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { IPosDetail } from '@modules/client/pos/interfaces/pos-detail.interface';
 import { Params } from '@angular/router';
 

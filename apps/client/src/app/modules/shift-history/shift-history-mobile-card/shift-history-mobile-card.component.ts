@@ -1,6 +1,6 @@
 import { Component,Input, output } from '@angular/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   selector: 'em-shift-history-mobile-card',

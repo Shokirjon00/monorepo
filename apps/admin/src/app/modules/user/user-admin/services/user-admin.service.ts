@@ -4,7 +4,7 @@ import { environment as env } from '@environments/environment';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { Observable } from 'rxjs';
 import { IUserAdmin } from '@modules/user/user-admin/interfaces/user-admin.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Params } from '@angular/router';
 
 @Injectable()

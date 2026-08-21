@@ -1,19 +1,17 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { ICaption, IRowAction } from "@core/interfaces/table.interface";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { DestroyableComponent } from '@eskhata/util';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { ITab } from "@core/interfaces/header.interface";
-import { IFilterParams } from "@core/interfaces/filter-params.interface";
+import { ITab } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IGateways } from "@modules/setting-container/gateways/interfaces/gateways";
 import { GatewaysService } from "@modules/setting-container/gateways/services/gateways.service";
 import { finalize, takeUntil } from "rxjs";
-import { setDefaultFilterValue } from "@core/utils/route-param-parse";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { parseFilterParams } from "@core/utils/filter-util";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { GatewaysConstants } from "@modules/setting-container/gateways/gateways.constants";
 
 @Component({

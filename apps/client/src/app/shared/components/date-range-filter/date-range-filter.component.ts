@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, Input, OnDestroy, OnInit, output } from '@angular/core';
-import { DateRange } from '@core/enums/date-format.enum';
+import { DateRange } from '@eskhata/util';
 
 
 @Component({

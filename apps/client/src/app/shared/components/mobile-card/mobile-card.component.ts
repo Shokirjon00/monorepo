@@ -1,12 +1,11 @@
 import { Component, input, output } from '@angular/core';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
+import { EMPaginationComponent, EskhataBankLoaderComponent } from '@eskhata/ui';
 import { IMobileCardField } from '@shared/components/mobile-card/interface/mobile-card';
 import { IAdvancePayments } from '@modules/advance-payments/interface/advance-payments.interface';
 import { ICaption, IPaginate } from '@core/interfaces';
 import { NgClass } from '@angular/common';
-import { TableStatusEnum } from '@core/enums/table-status.enum';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { TableStatusEnum } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 
 @Component({
   selector: 'em-mobile-card',

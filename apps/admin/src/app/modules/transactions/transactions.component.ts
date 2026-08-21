@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

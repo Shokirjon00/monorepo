@@ -1,0 +1,101 @@
+// CSS-only modules are loaded without 'as *' so their rules still reach the component
+// while their members stay namespaced, avoiding cross-module mixin ambiguity.
+@use 'core/scss/form';
+@use 'core/scss/flex';
+@use 'core/scss/styles';
+@use 'core/scss/paddings';
+@use 'core/scss/margins';
+@use 'core/scss/variables' as *;
+@use 'core/scss/mixins/mixin' as m;
+
+.bottom-sheet {
+  max-height: 350px;
+  overflow: hidden;
+
+  &-head {
+    @include m.flex_justify_center();
+    padding-bottom: 0.625rem;
+
+    .line {
+      width: 36px;
+      height: 4px;
+      background-color: $border-color;
+      border-radius: 5px;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+
+    .search {
+      position: relative;
+      padding-bottom: 5px;
+
+      &-input {
+        width: 100%;
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid $color-grey-600;
+        color: $color-grey-900;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        outline: none;
+
+        &::placeholder {
+          color: $color-grey-800;
+        }
+      }
+
+      &-icon {
+        position: absolute;
+        left: 10px;
+        top: 12px;
+      }
+    }
+
+    .content {
+      @include m.flex_column();
+      overflow-y: auto;
+      max-height: 320px;
+      gap: 5px;
+
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      &-item {
+        @include m.flex_align_center();
+        padding: 1rem 0.5rem;
+        border-radius: 0.75rem;
+        gap: 0.625rem;
+
+        &.selected {
+          background-color: $border-color-brand;
+        }
+
+        &:focus {
+          background-color: $border-color-brand;
+        }
+
+        &-icon {
+          @include m.flex_align_center();
+
+          svg-icon {
+            line-height: 0;
+          }
+        }
+
+        &-text {
+          color: $color-grey-800;
+          font-size: 0.875rem;
+          line-height: 1rem;
+          @include m.ellipsis-text($lines: 1);
+          display: block;
+          width: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

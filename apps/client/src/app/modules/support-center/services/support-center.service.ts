@@ -5,13 +5,12 @@ import { Params } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { ENDPOINTS } from '@core/endpoints';
-import { IUploadField } from '@shared/components/upload-field/interface/upload-field.interface';
+import { IMessageCard, IUploadField } from '@eskhata/ui';
 import {
   ISupportCenter,
   ISupportCenterRequest,
 } from '@core/interfaces';
 import { ISupportCenterRating } from '@modules/support-center/interfaces/support-center-rating.interface';
-import { IMessageCard } from '@shared/components/message-card/interfaces/message-card.interface';
 
 @Injectable()
 export class SupportCenterService {

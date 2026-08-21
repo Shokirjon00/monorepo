@@ -1,24 +1,20 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { IMerchant } from '@modules/merchant-container/merchant/interfaces/merchant.interface';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { IPaginate, ToastEnum } from '@eskhata/util';
-import { HeaderService } from '@core/services/header.service';
-import { MessageService } from '@core/services/message.service';
+import { HeaderService } from '@eskhata/data-access';
+import { MessageService } from '@eskhata/data-access';
 import { isPhone } from '@core/helper';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SharedModule } from '@shared/shared.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { AccountService } from '@modules/merchant-container/account/services/account.service';
 import { IntegrationService } from '@modules/merchant-container/merchant/services/integration.service';
 import { provideNgxMask } from 'ngx-mask';
 import { MerchantConstants } from '@modules/merchant-container/merchant/merchant.constants';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { TableRendererBase } from '@core/abstract/table-renderer-base';
 import { WithQueryParams } from '@core/utils/base-query-params';
 

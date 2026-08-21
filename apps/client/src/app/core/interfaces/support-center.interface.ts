@@ -1,4 +1,4 @@
-import { IMessageCard } from '@shared/components/message-card/interfaces/message-card.interface';
+import { IMessageCard } from '@eskhata/ui';
 
 export interface ISupportCenter {
   id?: string;

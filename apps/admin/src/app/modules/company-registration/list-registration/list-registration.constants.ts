@@ -1,6 +1,6 @@
 import { ICaption, IRowAction } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 
 export class ListRegistrationConstants {
 

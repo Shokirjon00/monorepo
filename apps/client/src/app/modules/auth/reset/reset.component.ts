@@ -3,13 +3,12 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { AuthService } from "@modules/auth/service/auth.service";
 import { debounceTime, finalize, Observable, takeWhile, timer } from "rxjs";
 import { Router } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator, KeyboardEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SvgIconComponent } from "angular-svg-icon";
 import { SharedModule } from "@shared/shared.module";
-import { ValidatorModule } from "@shared/components/validator/validator.module";
-import { ToastModule } from "@shared/components/toast/toast.module";
+import { ToastModule, ValidatorModule } from '@eskhata/ui';
 import { RECAPTCHA_SETTINGS, RecaptchaComponent, RecaptchaModule, RecaptchaSettings } from "ng-recaptcha-2";
 import { environment } from "@environments/environment";
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";

@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {environment as env} from 'environments/environment';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {IBranch} from '@modules/directory/branch/interfaces/branch.interface';
 import {IBranchDetail} from '@modules/directory/branch/interfaces/branch-detail.interface';
 import {Params} from '@angular/router';

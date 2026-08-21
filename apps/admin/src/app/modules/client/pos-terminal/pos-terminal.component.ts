@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { TableComponent } from "@shared/components/table/table.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { DestroyableComponent } from '@eskhata/util';
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HeaderService, MessageService } from "@core/services";
@@ -15,9 +15,7 @@ import { NgxPermissionsService } from "ngx-permissions";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";
 import { PosTerminalConstants } from "@modules/main-terminal/pos-terminal/pos-terminal.constants";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { PosTerminalsConstants } from "@modules/client/pos-terminal/pos-terminals.constants";
 
 @Component({

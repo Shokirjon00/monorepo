@@ -6,7 +6,7 @@ import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { IBalanceLimit } from '@modules/balance-limit/Interfaces/balance-limit.interface';
 import { Params } from '@angular/router';
 import { IBalanceLimitIFT } from '@modules/balance-limit/Interfaces/balance-limit-ift.interface';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { IBalanceLimitIftHistory } from '@modules/balance-limit/Interfaces/balance-limit-ift-history';
 
 @Injectable()

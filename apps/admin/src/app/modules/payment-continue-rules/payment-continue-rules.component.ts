@@ -1,22 +1,18 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
-import { IHeader } from '@core/interfaces/header.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { IHeader } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { IPaymentContinueRules } from '@modules/payment-continue-rules/interfaces/payment-continue-rules.interface';
 import { PaymentContinueRulesService } from '@modules/payment-continue-rules/services/payment-continue-rules.service';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { PaymentContinueRulesConstants } from '@modules/payment-continue-rules/payment-continue-rules.constants';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 
 @Component({
   standalone: true,

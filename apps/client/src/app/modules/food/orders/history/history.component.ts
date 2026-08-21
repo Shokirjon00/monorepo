@@ -1,14 +1,11 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { DatePipe, NgClass } from "@angular/common";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
+import { EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent, TableConstants } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
-import { TableComponent } from "@shared/components/table/table.component";
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { isPhone } from "@core/helper";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils/filter-util";
 import { ToastEnum } from '@eskhata/util';
@@ -18,9 +15,8 @@ import { provideNgxMask } from "ngx-mask";
 import { HistoryConstants } from "@modules/food/orders/history/history.constants";
 import { historyOrdersService } from "@modules/food/orders/history/services/history.service";
 import { IHistoryOrders } from "@modules/food/orders/history/interfaces/history.interface";
-import { setDefaultFilterValue } from "@core/utils/route-param-parse";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { finalize } from "rxjs";
-import { TableConstants } from "@shared/components/table/table.constants";
 import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 
 @Component({

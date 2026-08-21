@@ -1,23 +1,19 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ICaption } from '@core/interfaces/table.interface';
+import { ICaption } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { UsersHistoryService } from "@modules/user/users-history/services/users-history.service";
-import { IHeader, ITab } from "@core/interfaces/header.interface";
+import { IHeader, ITab } from '@eskhata/util';
 import { IHistoryUsers } from "@modules/user/users-history/interfaces/users-history.interface";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
+import { IAction } from '@eskhata/util';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { UserHistoryConstants } from "@modules/user/users-history/user-history.constants";
-import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 
 @Component({
   standalone: true,

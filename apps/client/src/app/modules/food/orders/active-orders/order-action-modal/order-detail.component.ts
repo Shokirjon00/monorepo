@@ -4,20 +4,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, EskhataBankLoaderComponent, ToastModule } from '@eskhata/ui';
 import { IOrder, OrderAction, OrderActionButton } from '@modules/food/orders/active-orders/interfaces/order.interface';
 import { OrdersDetailService } from '@modules/food/orders/active-orders/order-action-modal/services/active-orders.service';
 import {
   ORDER_ACTION_BUTTONS,
   ORDER_STATUSES,
 } from '@modules/food/orders/active-orders/order-action-modal/order-detail.constants';
-import { MessageService } from '@core/services/message.service';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { finalize, timer } from 'rxjs';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { MatDialog } from '@angular/material/dialog';
 import {
   CancelOrderModalComponent,

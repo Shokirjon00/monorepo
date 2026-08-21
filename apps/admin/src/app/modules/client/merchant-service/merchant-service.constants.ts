@@ -1,7 +1,7 @@
 import { ICaption, IRowAction } from "@core/interfaces";
-import { TableRowActionEnum } from "@core/enums/table";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { TableRowActionEnum } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class MerchantServiceConstants {
   static readonly MERCHANT_SERVICE_COLUMNS: ICaption[] = [

@@ -4,8 +4,8 @@ import {SvgIconComponent} from "angular-svg-icon";
 import {IComponent} from "@modules/setting-container/setting/interfaces/components";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CronDescriptionPipe} from "@core/pipe/cron-description.pipe";
-import {UploadFieldComponent} from "@shared/components/upload-field/upload-field.component";
-import {CommonModule} from '@angular/common';
+import {UploadFieldComponent} from '@eskhata/ui';
+
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {EmChipsComponent} from "@shared/components/em-chips/em-chips.component";
 
@@ -15,14 +15,13 @@ import {EmChipsComponent} from "@shared/components/em-chips/em-chips.component";
   templateUrl: './dynamic-fields.component.html',
   styleUrl: './dynamic-fields.component.scss',
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     UploadFieldComponent,
     SvgIconComponent,
     CronDescriptionPipe,
     EmChipsComponent
-  ]
+]
 })
 export class DynamicFieldsComponent implements OnInit {
   readonly fields = input<IComponent[]>([]);

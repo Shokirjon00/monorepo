@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { PERIOD_ID, TODAY_ID } from '@core/helper';
 import { SharedModule } from '@shared/shared.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
+import { DestroyableComponent } from '@eskhata/util';
+import { DropdownComponent } from '@eskhata/ui';
 import { DatePipe } from '@angular/common';
 
 @Component({

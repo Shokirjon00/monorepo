@@ -1,23 +1,21 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IGatewaysDetail } from "@modules/setting-container/gateways/interfaces/gateways-detail";
-import { IHeader } from "@core/interfaces/header.interface";
+import { IHeader } from '@eskhata/util';
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { GatewaysService } from "@modules/setting-container/gateways/services/gateways.service";
-import { IParam } from "@core/interfaces/param.interface";
+import { IParam } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

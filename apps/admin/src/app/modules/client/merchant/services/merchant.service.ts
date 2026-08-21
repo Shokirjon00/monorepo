@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {IMerchantDetail} from '../interfaces/merchant-detail.interface';
 import {environment as env} from '@environments/environment';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {IMerchant} from '@modules/client/merchant/interfaces/merchant.interface';
 import {Params} from '@angular/router';
 import {IUserAdmin} from '@modules/user/user-admin/interfaces/user-admin.interface';

@@ -1,6 +1,6 @@
-import {ICaption} from "@core/interfaces/table.interface";
-import {TableFieldTypes} from "@core/enums/table";
-import { ITab } from "@core/interfaces/header.interface";
+import {ICaption} from '@eskhata/util';
+import {TableFieldTypes} from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 import { MatchMode } from "@core/enums/match-mode.enum";
 
 export class SingleQrConstants {

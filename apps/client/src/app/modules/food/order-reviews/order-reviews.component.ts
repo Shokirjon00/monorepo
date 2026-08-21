@@ -1,13 +1,12 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { IReview, IReviewsData } from '@modules/food/order-reviews/interfaces/reviews.interfaces';
 import { DatePipe, NgClass,  } from '@angular/common';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, MultiDropdownComponent } from '@eskhata/ui';
 import { OrderReviewsService } from '@modules/food/order-reviews/services/order-reviews.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { InfiniteScrollDirective } from '@core/directives/infinite-scroll.directive';
+import { InfiniteScrollDirective } from '@eskhata/util';
 import { finalize } from 'rxjs';
 import { IFilterParams, IPaginate } from '@core/interfaces';
-import { MultiDropdownComponent } from '@shared/components/multi-dropdown/multi-dropdown.component';
 import { environment as env } from '@environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderReviewsConstants } from '@modules/food/order-reviews/order-reviews.constants';

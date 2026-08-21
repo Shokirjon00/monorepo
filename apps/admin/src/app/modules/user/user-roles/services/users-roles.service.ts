@@ -4,7 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {Params} from "@angular/router";
-import {ISelect} from "@core/interfaces/select.interface";
+import {ISelect} from '@eskhata/util';
 import {IUsersRoles} from "@modules/user/user-roles/interfaces/users-roles.interface";
 
 @Injectable()

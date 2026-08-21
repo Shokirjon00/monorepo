@@ -1,4 +1,4 @@
-import {ICaption} from "@core/interfaces/table.interface";
+import {ICaption} from '@eskhata/util';
 
 export const RETAIL_OUTLET_HISTORIES_COLUMNS : ICaption[] = [
   {

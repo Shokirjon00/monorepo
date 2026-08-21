@@ -5,6 +5,7 @@
   "prefix": "em",
   "sourceRoot": "apps/admin/src",
   "tags": ["scope:admin", "type:app"],
+  "implicitDependencies": ["styles", "assets"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser-esbuild",

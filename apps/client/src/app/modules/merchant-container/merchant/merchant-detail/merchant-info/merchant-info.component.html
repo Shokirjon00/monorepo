@@ -40,7 +40,7 @@
   @if (merchantDetail) {
     <div class="container">
       <div class="title-h1 mb-3 ">На карте</div>
-      <em-map [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude" [disabled]="true" />
+      <em-map [restrictInput]="true" [flyOnChange]="true" [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude" [disabled]="true" />
     </div>
   }
 </div>

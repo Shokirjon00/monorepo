@@ -1,17 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { finalize, takeUntil } from 'rxjs';
 import { CashbackRatesService } from '@modules/directory/cashback-rates/services/cashback-rates.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ICashbackRates } from '@modules/directory/cashback-rates/interfaces/cashback-rates.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { cashbackRatesInfoColumns } from "@modules/directory/cashback-rates/casback-rates-detail/cashback-rates-info/cashback-rates-info.columns";
 import { CommonModule } from "@angular/common";
 import { SvgIconComponent } from "angular-svg-icon";
-import { TableComponent } from "@shared/components/table/table.component";
+import { EmHeaderComponent, TableComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { HeaderService } from '@core/services/header.service';
+import { HeaderService } from '@eskhata/data-access';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { takeUntil } from 'rxjs';
 import { IMerchantDetail } from '@modules/merchant-container/merchant/interfaces/merchant-detail.interface';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AccountService } from '@modules/merchant-container/account/services/account.service';
 import { IntegrationService } from '@modules/merchant-container/merchant/services/integration.service';
 import { provideNgxMask } from 'ngx-mask';

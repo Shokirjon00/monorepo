@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ICompanySegment } from '@modules/directory/company-segment/interfaces/company-segment.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanySegmentService } from '@modules/directory/company-segment/services/company-segment.service';
 import { takeUntil } from 'rxjs';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

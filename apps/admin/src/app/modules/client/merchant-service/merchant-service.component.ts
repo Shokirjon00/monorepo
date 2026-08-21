@@ -1,25 +1,22 @@
 import { combineLatest, finalize, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IAction } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate, ToastEnum } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { MerchantServiceService } from "@modules/client/merchant-service/services/merchant-service.service";
 import { IMerchantService } from "@modules/client/merchant-service/interfaces/merchant-service.interface";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { NgxPermissionsService } from "ngx-permissions";
 import { MerchantServiceConstants } from "@modules/client/merchant-service/merchant-service.constants";
 import { PosTerminalsConstants } from "@modules/client/pos-terminal/pos-terminals.constants";
-import { ITab } from "@core/interfaces/header.interface";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { ITab } from '@eskhata/util';
 
 
 @Component({

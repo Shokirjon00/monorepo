@@ -1,5 +1,5 @@
 import {Component, input, output} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FormsModule} from '@angular/forms';
 import {SvgIconComponent} from 'angular-svg-icon';
 
@@ -8,7 +8,7 @@ import {SvgIconComponent} from 'angular-svg-icon';
   selector: 'em-chips',
   templateUrl: './em-chips.component.html',
   styleUrls: ['./em-chips.component.scss'],
-  imports: [CommonModule, FormsModule, SvgIconComponent]
+  imports: [FormsModule, SvgIconComponent]
 })
 export class EmChipsComponent {
   readonly items = input<string[]>([]);

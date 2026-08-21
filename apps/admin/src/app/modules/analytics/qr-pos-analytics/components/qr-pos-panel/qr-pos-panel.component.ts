@@ -11,7 +11,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
@@ -20,7 +20,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   templateUrl: './qr-pos-panel.component.html',
   styleUrls: ['./qr-pos-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, AngularSvgIconModule],
+  imports: [AngularSvgIconModule],
 })
 export class QrPosPanelComponent implements OnDestroy {
   readonly title = input<string>('');

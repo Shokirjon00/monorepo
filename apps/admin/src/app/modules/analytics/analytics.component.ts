@@ -9,7 +9,7 @@ import {
   IPaymentStatistics,
   IPaymentStatus
 } from '@modules/analytics/interfaces';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { environment as env } from '@environments/environment';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,17 +18,16 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { isPhone, PERIOD_ID, TODAY_ID } from '@core/helper';
 import { PaymentStatusEnum, TabType } from '@core/enums/payment-status.enum';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { CommonModule, DatePipe } from '@angular/common';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { SharedModule } from "@shared/shared.module";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { AngularSvgIconModule } from "angular-svg-icon";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { ClickOutsideModule } from "@core/directives/click-outside/click-outside.module";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ClickOutsideModule } from '@eskhata/util';
+import { DropdownComponent, ToastComponent } from '@eskhata/ui';
 import { NgxMaskPipe } from "ngx-mask";
-import { DropdownComponent } from "@shared/components/dropdown/dropdown.component";
 import { SplitPipe } from "@modules/analytics/pipes/split.pipe";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { AnalyticsFilterComponent } from "@shared/dialogs/analytics-filter/analytics-filter.component";

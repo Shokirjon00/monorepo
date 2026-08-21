@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IBranchDetail } from '@modules/directory/branch/interfaces/branch-detail.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { BranchService } from '@modules/directory/branch/services/branch.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

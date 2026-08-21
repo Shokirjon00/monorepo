@@ -1,8 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { SvgIconComponent } from "angular-svg-icon";
-import { MultiSelectComponent } from "@shared/components/multi-select/multi-select.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
+import { AutocompleteComponent, EmHeaderComponent, MultiSelectComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IFilterParams, IHeader, IPaginate, IParam, ISelect } from "@core/interfaces";
 import { environment as env } from "@environments/environment";
@@ -17,10 +15,8 @@ import { Observable, of, takeUntil } from "rxjs";
 import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   selector: 'em-pos-terminal-edit',

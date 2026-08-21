@@ -3,12 +3,12 @@ import moment, {Moment} from 'moment';
 import {DateRange, MatDatepickerModule, MatMonthView} from '@angular/material/datepicker';
 import {BehaviorSubject} from 'rxjs';
 import {ToastEnum} from '@eskhata/util';
-import {MessageService} from '@core/services/message.service';
+import {MessageService} from '@eskhata/data-access';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AngularSvgIconModule} from 'angular-svg-icon';
-import {ToastComponent} from '@shared/components/toast/toast.component';
+import {ToastComponent} from '@eskhata/ui';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
-import {DateFormatEnum} from '@core/enums/date-format.enum';
+import {DateFormatEnum} from '@eskhata/util';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import 'moment/locale/ru';
 

@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { ActivatedRoute, Params, RouterOutlet } from "@angular/router";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { IHeader, ITab } from "@core/interfaces/header.interface";
+import { ToastComponent } from "@eskhata/ui";
+import { IHeader, ITab } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { SharedModule } from "@shared/shared.module";
 import {
   ListRegistrationDetailConstants

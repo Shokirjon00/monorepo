@@ -1,0 +1,9 @@
+// CSS-only module without 'as *': rules reach the component, members stay namespaced.
+@use 'core/scss/form';
+.form-group {
+  display: block;
+
+  > li {
+    display: list-item;
+  }
+}

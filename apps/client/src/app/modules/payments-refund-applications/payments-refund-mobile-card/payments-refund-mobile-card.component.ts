@@ -3,7 +3,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { IPaymentRefundApplications } from '@core/interfaces/payments-refund-applications.interface';
 import { EXPAND_DETAIL } from '@eskhata/util';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   selector: 'em-payments-refund-mobile-card',

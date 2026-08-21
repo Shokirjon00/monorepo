@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IRegionDetail } from '@modules/directory/region/interfaces/region-detail.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { RegionService } from '@modules/directory/region/services/region.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

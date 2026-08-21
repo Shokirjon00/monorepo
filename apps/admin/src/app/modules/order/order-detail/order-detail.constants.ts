@@ -1,8 +1,8 @@
 import { ICaption } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { ITab } from "@core/interfaces/header.interface";
-import { ActionEnum } from "@core/enums/action-enum";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { ITab } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 
 export class OrderDetailConstants {
 

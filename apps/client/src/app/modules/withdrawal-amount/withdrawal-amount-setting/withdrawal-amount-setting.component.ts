@@ -1,7 +1,7 @@
-import { DestroyableComponent } from "@core/directives/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { Component, inject, OnInit } from '@angular/core';
 import { delay, finalize, Observable, of, Subject, takeUntil } from "rxjs";
-import { HeaderService } from "@core/services/header.service";
+import { HeaderService } from '@eskhata/data-access';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IMerchants, IWithdrawalAmountSettingDetail } from "@modules/withdrawal-amount/withdrawal-amount-setting/interfaces/withdrawal-amount-setting-detail.interface";
 import { MatDialog } from "@angular/material/dialog";
@@ -9,11 +9,11 @@ import { Params } from "@angular/router";
 import { WithdrawSetService } from "@modules/withdrawal-amount/withdrawal-amount-setting/services/withdrawal-amount-setting.service";
 import { MerchantService } from "@modules/merchant-container/merchant/services/merchant.service";
 import { mergeMap } from "rxjs/operators";
-import { ISelect } from "@core/interfaces/select.interface";
-import { MessageService } from "@core/services/message.service";
+import { ISelect } from '@eskhata/util';
+import { MessageService } from '@eskhata/data-access';
 import { DatePipe, Location } from "@angular/common";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
-import { IHeader } from "@core/interfaces/header.interface";
+import { IHeader } from '@eskhata/util';
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { ToastEnum } from '@eskhata/util';
 import { WithdrawalAmountSettingsDialogComponent } from "@shared/dialogs/withdrawal-amount-settings-dialog/withdrawal-amount-settings-dialog.component";
@@ -22,9 +22,7 @@ import { IssueMoneySettingsValidator } from "@core/validators/settings-validator
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsService } from 'ngx-permissions';
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorModule } from "@shared/components/validator/validator.module";
-import { ToastModule } from "@shared/components/toast/toast.module";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
+import { SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 
 @Component({
   standalone: true,

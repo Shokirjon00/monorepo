@@ -1,16 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MailingService } from '@modules/mailing/services/mailing.service';
 import { IMailing } from '@modules/mailing/interfaces/mailing.interface';
 import { NgxPermissionsModule } from "ngx-permissions";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { MailingInfoConstants } from "@modules/mailing/mailing-detail/mailing-info/mailing-info.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

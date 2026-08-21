@@ -1,7 +1,7 @@
-import { ICaption } from "@core/interfaces/table1.interface";
+import { ICaption } from '@eskhata/util';
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableFieldTypes } from "@core/enums/table";
-import { TableStatusEnum } from "@core/enums/table-status.enum";
+import { TableFieldTypes } from '@eskhata/util';
+import { TableStatusEnum } from '@eskhata/util';
 
 export class  ShiftHistoryInfoConstants {
 

@@ -1,26 +1,21 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, EskhataBankLoaderComponent, MessageCardComponent, ToastModule, UploadFieldComponent, ValidatorModule } from '@eskhata/ui';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { ToastEnum } from '@eskhata/util';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
 import { provideNgxMask } from 'ngx-mask';
-import { UploadFieldComponent } from '@shared/components/upload-field/upload-field.component';
 import { SupportCenterCategoryService } from '@modules/support-center/services/support-center-category.service';
 import { SupportCenterService } from '@modules/support-center';
 import { ISupportCenter } from '@core/interfaces';
-import { MessageCardComponent } from '@shared/components/message-card/message-card.component';
 import { SharedModule } from '@shared/shared.module';
 import { of, switchMap } from 'rxjs';
-import { ToastModule } from '@shared/components/toast/toast.module';
 import { MatDialog } from '@angular/material/dialog';
 import { IRatingDialog } from '@shared/dialogs/rating-dialog/interfaces/rating-dialog.interface';
 import { RatingDialogComponent } from '@shared/dialogs/rating-dialog/rating-dialog.component';
 import { ISupportCenterRating } from '@modules/support-center/interfaces/support-center-rating.interface';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from 'ngx-permissions';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 

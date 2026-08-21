@@ -3,12 +3,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BrandService } from '../../services/brand.service';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, Observable, timer } from 'rxjs';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { CommonModule, Location } from '@angular/common';
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
+import { Location } from '@angular/common';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
 import { ISubcategoryDetail } from "@modules/directory/subcategory/interfaces/subcategory-detail.interface";
 import { IHeader, IParam, ISelect } from "@core/interfaces";
 import { HeaderService, MessageService } from "@core/services";
@@ -26,7 +24,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
   selector: 'em-brand-edit',
   templateUrl: './brand-edit.component.html',
   styleUrls: ['./brand-edit.component.scss'],
-  imports: [ReactiveFormsModule, EmHeaderComponent, CommonModule, NgxPermissionsModule, SvgIconComponent, ToastComponent, ValidatorComponent]
+  imports: [ReactiveFormsModule, EmHeaderComponent, NgxPermissionsModule, SvgIconComponent, ToastComponent, ValidatorComponent]
 })
 export class BrandEditComponent extends EMBaseForm implements OnInit {
   form: FormGroup;

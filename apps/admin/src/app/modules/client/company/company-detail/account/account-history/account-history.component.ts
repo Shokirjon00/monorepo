@@ -1,20 +1,17 @@
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, viewChild } from '@angular/core';
-import { ICaption } from '@core/interfaces/table.interface';
+import { ICaption } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IAccountHistory } from '@modules/client/company/interfaces/account-history.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { AccountService } from '@core/services/account.service';
 import { AccountHistoryConstants } from "@modules/client/company/company-detail/account/account-history/account-history.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { isEmptyObject, setDefaultFilterValue } from "@core/utils";
 
 @Component({

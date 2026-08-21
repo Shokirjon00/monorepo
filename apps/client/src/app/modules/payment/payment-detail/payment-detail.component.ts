@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {IAction} from "@shared/components/actions/action.interface";
-import {ActionEnum} from "@core/enums/action-enum";
+import {IAction} from '@eskhata/util';
+import {ActionEnum} from '@eskhata/util';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {BreadcrumbsComponent} from "@shared/components/breadcrumbs/breadcrumbs.component";
+import {BreadcrumbsComponent} from '@eskhata/ui';
 
 @Component({
   standalone: true,

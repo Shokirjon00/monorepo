@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { IMenu } from "@modules/food/menu/interfaces/menus.interface";
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ActivatedRoute, Params, Router, RouterLink } from "@angular/router";
 import { isPhone } from "@core/helper";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils/filter-util";
@@ -13,14 +13,10 @@ import { ToastEnum } from '@eskhata/util';
 import { ProductApplicationConstants } from "@modules/food/menu/product-applications/product-application.constants";
 import { ProductApplicationsService } from "@modules/food/menu/services/product-application.service";
 import { DatePipe } from "@angular/common";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
 import { distinctUntilChanged } from "rxjs/operators";
 import { combineLatest } from "rxjs";
-import { DataSourceService } from "@core/services/data-source.service";
+import { DataSourceService } from '@eskhata/data-access';
 
 @Component({
   standalone: true,

@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { CommonModule, Location } from '@angular/common';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { SharedModule } from '@shared/shared.module';
 import { IPaymentDetail } from '@modules/transactions/payments/interfaces';
 import { IHeader, IParam, ISelect } from '@core/interfaces';
@@ -14,10 +14,10 @@ import { delay, finalize, mergeMap } from 'rxjs/operators';
 import { of, takeUntil } from 'rxjs';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { PaymentContinueFormService } from "@modules/transactions/payments/payment-detail/payment-continue-form/service/payment-continue-form.service";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { PaymentsInfoConstants } from "@modules/transactions/payments/payment-detail/payment-info/payment-info.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { EmHeaderComponent } from '@eskhata/ui';
+import { DateTimePipe } from '@eskhata/util';
 
 
 @Component({

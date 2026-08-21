@@ -1,6 +1,6 @@
-import { ICaption, IRowAction } from "@core/interfaces/table.interface";
-import { TableRowActionEnum } from "@core/enums/table";
-import { ITab } from "@core/interfaces/header.interface";
+import { ICaption, IRowAction } from '@eskhata/util';
+import { TableRowActionEnum } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 
 export class GatewaysConstants {
 

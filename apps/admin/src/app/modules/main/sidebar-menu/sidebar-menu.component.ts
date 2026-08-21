@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { environment } from '@environments/environment';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AuthService } from '@modules/auth/service/auth.service';
 import { takeUntil } from 'rxjs';
 import { TokenService } from '@core/services/token.service';
@@ -12,17 +12,17 @@ import {
 } from '@shared/dialogs/user-change-password-dialog/user-change-password-dialog.component';
 import { UserService } from '@core/services/user.service';
 import { IUserInfo, IUserProfile } from '@core/interfaces/user.interface';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
-import { HelperService } from '@core/services/helper.service';
+import { HelperService } from '@eskhata/data-access';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
-import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
+import { ClickOutsideModule } from '@eskhata/util';
 import { HttpResponse } from "@angular/common/http";
 import { Platform } from "@angular/cdk/platform";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
-import { BottomSheetComponent } from "@shared/components/bottom-sheet/bottom-sheet.component";
+import { BottomSheetComponent } from "@eskhata/ui";
 
 interface SidebarItem {
   text: string;

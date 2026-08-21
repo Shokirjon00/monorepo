@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { EmNumberPipe } from '@modules/analytics/pipes/em-number.pipe';
 import { IMaColumn } from "@modules/analytics/merchant-activity/interfaces/merchant-activity.interface";
 
@@ -11,7 +11,7 @@ export type MaRow = Record<string, string | number | null | undefined>;
   templateUrl: './ma-table.component.html',
   styleUrls: ['./ma-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, EmNumberPipe],
+  imports: [EmNumberPipe],
 })
 export class MaTableComponent {
   readonly columns = input<IMaColumn[]>([]);

@@ -2,11 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AnalyticsFilterComponent } from './analytics-filter.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
+import { DropdownComponent } from '@eskhata/ui';
 import { SvgIconComponent, SvgIconRegistryService } from 'angular-svg-icon';
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { ENVIRONMENT } from '@eskhata/environment';
+import { FILTER_PARAMS_PARSER } from '@eskhata/data-access';
+import { parseFilterParams } from '@core/utils/filter-util';
+import { environment } from '@environments/environment';
 
 const svgIconRegistryServiceMock = {
   loadSvg: jest.fn(),
@@ -18,11 +22,15 @@ const routerMock = {
   navigate: jest.fn().mockReturnValue(Promise.resolve(true))
 };
 
+const emptyParamMap = convertToParamMap({});
+
 const activatedRouteMock = {
   snapshot: {
-    queryParams: {}
+    queryParams: {},
+    queryParamMap: emptyParamMap
   },
-  queryParams: of({})
+  queryParams: of({}),
+  queryParamMap: of(emptyParamMap)
 };
 
 describe('AnalyticsFilterComponent', () => {
@@ -30,7 +38,6 @@ describe('AnalyticsFilterComponent', () => {
   let fixture: ComponentFixture<AnalyticsFilterComponent>;
   let matDialogRefMock: any;
   let matDialogMock: any;
-
 
   beforeEach(async () => {
     matDialogRefMock = {close: jest.fn()};
@@ -47,6 +54,10 @@ describe('AnalyticsFilterComponent', () => {
       imports: [AnalyticsFilterComponent, DropdownComponent, SvgIconComponent, HttpClientTestingModule],
       providers: [
         DatePipe,
+        // Shared services in @eskhata/data-access read the environment through this
+        // token; app.config provides it at runtime, TestBed has to do so explicitly.
+        {provide: ENVIRONMENT, useValue: environment},
+        {provide: FILTER_PARAMS_PARSER, useValue: parseFilterParams},
         {provide: MatDialogRef, useValue: matDialogRefMock},
         {provide: MatDialog, useValue: matDialogMock},
         {provide: Router, useValue: routerMock},
@@ -99,7 +110,6 @@ describe('AnalyticsFilterComponent', () => {
     expect(component.queryParams.companyId).toBe('');
     expect(component.selectedCompany.name).toBe('Все организации');
   });
-
 
   it('should clear merchant correctly', () => {
     component.clearMerchant();

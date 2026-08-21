@@ -1,25 +1,21 @@
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, viewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AccountService } from '@core/services/account.service';
 import { finalize, takeUntil } from 'rxjs';
 import { AccountEditDialogComponent } from '@modules/client/company/company-detail/account-edit-dialog/account-edit-dialog.component';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IAccount } from '@modules/client/company/interfaces/account.interface';
 import { HeaderService } from '@core/services/header.service';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { AccountConstants } from "@modules/client/company/company-detail/account/account.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ITab } from "@core/interfaces/header.interface";
+import { IAction } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 import { MerchantConstants } from "@modules/client/merchant/merchant.constants";
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import {
@@ -10,8 +10,8 @@ import {
 } from '@modules/directory/payment-refund-reason/interfaces/payment-refund-reason-detail.interface';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { DateTimePipe } from '@eskhata/util';
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

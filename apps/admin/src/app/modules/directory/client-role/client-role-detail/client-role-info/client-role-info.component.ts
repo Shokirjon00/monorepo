@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IClientRole } from '@modules/directory/client-role/interfaces/client-role.interface';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from '@core/services/header.service';
 import { ClientRoleService } from '@modules/directory/client-role/services/client-role.service';
 import { takeUntil } from 'rxjs';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

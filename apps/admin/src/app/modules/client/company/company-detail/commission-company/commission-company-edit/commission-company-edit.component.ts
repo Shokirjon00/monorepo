@@ -1,31 +1,27 @@
 import { Component, DestroyRef, inject, Input, OnInit, signal, WritableSignal } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISelect } from '@core/interfaces/select.interface';
-import { DatePipe, Location, CommonModule } from '@angular/common';
+import { ISelect } from '@eskhata/util';
+import { DatePipe, Location } from '@angular/common';
 import { Observable, of, Subject } from 'rxjs';
 import { CashbackRatesService } from '@modules/directory/cashback-rates/services/cashback-rates.service';
 import { ActivatedRoute } from '@angular/router';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { HeaderService } from '@core/services/header.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { delay, mergeMap } from 'rxjs/operators';
 import { CashbackAccrualTypesServices } from '@modules/bank-promotion/services/cashback-accrual-types.services';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { AutocompleteComponent, EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { CommissionCompanyService } from "@modules/client/company/company-detail/commission-company/services/commission-company.service";
 import { ICommissionCompanyEdit } from "@modules/client/company/company-detail/commission-company/interfaces/commission-company.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
 import { environment as env } from "@environments/environment";
 
 @Component({
@@ -48,9 +44,8 @@ import { environment as env } from "@environments/environment";
     ValidatorComponent,
     ToastComponent,
     EmHeaderComponent,
-    AutocompleteComponent,
-    CommonModule
-  ]
+    AutocompleteComponent
+]
 })
 
 export class CommissionCompanyEditComponent implements OnInit {

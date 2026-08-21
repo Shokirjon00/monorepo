@@ -3,19 +3,17 @@ import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModu
 import { ActivatedRoute } from '@angular/router';
 import { finalize, of } from 'rxjs';
 import { CommonModule, Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
+import { EmHeaderComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { IWorkingDayDetail } from '@modules/merchant-container/merchant/merchant-detail/working-day-edit/interfaces/working-day-detail.interface';
 import { WorkingDayService } from '@core/services/working-day.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
-import { ToastModule } from '@shared/components/toast/toast.module';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 
 class WorkingDaysModel {
   monday: WeekDay = new WeekDay();

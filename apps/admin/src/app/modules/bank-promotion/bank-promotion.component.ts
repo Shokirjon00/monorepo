@@ -1,21 +1,18 @@
 import { finalize, takeUntil } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { IBankPromotion } from '@modules/bank-promotion/interfaces/bank-promotion.interface';
 import { BankPromotionService } from '@modules/bank-promotion/services/bank-promotion.service';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IAction } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { BankPromotionConstants } from "@modules/bank-promotion/bank-promotion.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
 
 @Component({
   standalone: true,

@@ -1,0 +1,45 @@
+@use 'ui/mixins' as *;
+
+.rating {
+  @include em-d-flex-al-center();
+  gap: 5px;
+
+  &-small {
+    .star-icon > svg{
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &-medium {
+    .star-icon > svg{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-large {
+    .star-icon > svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .star {
+    @include flex_ai_center();
+    transition: all 0.2s ease;
+
+    &--clickable {
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .star-icon {
+      color: #e0e0e0;
+      transition: color 0.2s ease;
+    }
+  }
+} 

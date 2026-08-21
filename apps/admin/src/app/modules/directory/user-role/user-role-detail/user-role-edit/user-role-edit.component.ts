@@ -2,22 +2,20 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { UsersRoleService } from "@modules/directory/user-role/services/users-role.service";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { IUserRole } from "@modules/directory/user-role/interfaces/user-role.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

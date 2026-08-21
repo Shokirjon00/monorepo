@@ -1,5 +1,5 @@
 import { ICaption, IRowAction } from "@core/interfaces";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 import { MatchMode } from "@core/enums/match-mode.enum";
 
 export class BalanceLimitListConstants {

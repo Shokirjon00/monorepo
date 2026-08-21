@@ -1,21 +1,18 @@
 import { Component, OnInit, signal, AfterViewInit, viewChild, inject } from '@angular/core';
-import { TableComponent } from "@shared/components/table/table.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
-import { IFilterParams } from "@core/interfaces/filter-params.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { ICaption, IOptionAction } from "@core/interfaces/table.interface";
+import { ICaption, IOptionAction } from '@eskhata/util';
 import { finalize, takeUntil } from "rxjs";
 import { IPaginate, ToastEnum } from '@eskhata/util';
-import { MessageService } from "@core/services/message.service";
-import { ITab } from "@core/interfaces/header.interface";
+import { MessageService } from '@eskhata/data-access';
+import { ITab } from '@eskhata/util';
 import { parseFilterParams } from "@core/utils/filter-util";
 import { ListAddressesService } from "@modules/sms-notification/list-addresses/service/list-addresses.service";
 import { IListAddresses } from "@modules/sms-notification/list-addresses/interface/list-addresses";
 import { ListAddressesConstants } from "@modules/sms-notification/list-addresses/list-addresses.constants";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { isEmptyObject, setDefaultFilterValue } from "@core/utils";
 
 @Component({

@@ -2,7 +2,7 @@ import {environment as env} from '@environments/environment';
 import { inject, Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

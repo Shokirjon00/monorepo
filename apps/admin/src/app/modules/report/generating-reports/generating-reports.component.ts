@@ -1,25 +1,21 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { finalize, of, takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ToastModule, ValidatorComponent } from '@eskhata/ui';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { MessageService } from '@core/services/message.service';
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { MessageService } from '@eskhata/data-access';
+import { DestroyableComponent } from '@eskhata/util';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { GeneratingReportsService } from "@modules/report/generating-reports/service/generating-reports.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { GeneratingReportsConstants } from "@modules/report/generating-reports/generating-reports.constants";
-import { DateFormatEnum } from "@core/enums/date-format.enum";
+import { DateFormatEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 
 @Component({

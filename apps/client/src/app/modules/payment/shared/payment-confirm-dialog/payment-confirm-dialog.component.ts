@@ -4,14 +4,12 @@ import { ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialo
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentService } from '@modules/payment/services/payment.service';
 import { takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
-import { MessageService } from '@core/services/message.service';
+import { ISelect } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
+import { EskhataBankLoaderComponent, SimpleSelectListComponent, ValidatorModule } from '@eskhata/ui';
+import { MessageService } from '@eskhata/data-access';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { finalize } from 'rxjs/operators';
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { ToastEnum } from '@eskhata/util';
 
 

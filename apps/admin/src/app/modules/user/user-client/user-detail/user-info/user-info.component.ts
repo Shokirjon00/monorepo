@@ -3,17 +3,16 @@ import { IUsers } from '@modules/user/user-client/interfaces/users.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientUsersService } from '@modules/user/user-client/services/client-users.service';
 import { finalize, Observable } from 'rxjs';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

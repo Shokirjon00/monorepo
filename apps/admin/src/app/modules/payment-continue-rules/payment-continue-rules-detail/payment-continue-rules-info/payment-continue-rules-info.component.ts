@@ -2,30 +2,26 @@ import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@an
 import { IPaymentContinueRules } from '@modules/payment-continue-rules/interfaces/payment-continue-rules.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PaymentContinueRulesService } from '@modules/payment-continue-rules/services/payment-continue-rules.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
 import {
   IPaymentContinueRuleAccordance
 } from '@modules/payment-continue-rules/interfaces/payment-continue-rule-accordance.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import {
   PaymentContinueRuleAccordancesService
 } from '@modules/payment-continue-rules/services/payment-continue-rule-accordances.service';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { BreadcrumbService } from 'xng-breadcrumb';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
 import { CommonModule } from '@angular/common';
-import { ToastComponent } from '@shared/components/toast/toast.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { IHeader } from '@core/interfaces';
 import {
   PaymentContinueRulesInfoConstants
 } from '@modules/payment-continue-rules/payment-continue-rules-detail/payment-continue-rules-info/payment-continue-rules-info.constants';
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

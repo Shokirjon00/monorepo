@@ -1,8 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ApexOptions, ChartComponent } from 'ng-apexcharts';
 import { NgTemplateOutlet } from '@angular/common';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { MultiDropdownComponent } from '@shared/components/multi-dropdown/multi-dropdown.component';
+import { EmHeaderComponent, MultiDropdownComponent } from '@eskhata/ui';
 import { environment as env } from '@environments/environment';
 import { RatingDashboardService } from '@modules/food/rating-dashboard/services/rating-dashboard.service';
 import { IRatingDashboard } from '@modules/food/rating-dashboard/interfaces/rating-dashboard';

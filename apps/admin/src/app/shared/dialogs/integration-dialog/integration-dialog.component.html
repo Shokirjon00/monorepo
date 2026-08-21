@@ -15,33 +15,41 @@
           <em-validator [fieldControl]="f['integrationTypeId']" />
         </div>
       </div>
-      <div class="form" *ngIf="jsonFormData">
-        <div class="label">Параметры</div>
-        <br>
-        <form [formGroup]="params">
-          <ng-container *ngFor="let control of jsonFormData; let i=index" [ngSwitch]="control.type">
-              <div *ngSwitchCase="'dictionary'">
-                <div class="label">{{ control.label }}</div>
-                <em-autocomplete [formControlName]="control.name"
-                  (changed)="onDictionaryChange(i, $event)"
-                  [searchable]="true"
-                  [placeholder]="control.placeholder"
-                  [selectWithOutSearch]="true"
-                  [path]="orderTypes" />
-              </div>
-              <div *ngSwitchDefault>
-                <div class="label">{{ control.label }}</div>
-                <input class="integrationJson"
-                       [type]="control.type"
-                       [value]="control.value"
-                       [disabled]="control.disable"
-                       [formControlName]="control.name"
-                       [placeholder]="control.placeholder">
-              </div>
+      @if (jsonFormData) {
+        <div class="form">
+          <div class="label">Параметры</div>
+          <br>
+          <form [formGroup]="params">
+            @for (control of jsonFormData; track control.name; let i = $index) {
+              @switch (control.type) {
+                @case ('dictionary') {
+                  <div>
+                    <div class="label">{{ control.label }}</div>
+                    <em-autocomplete [formControlName]="control.name"
+                      (changed)="onDictionaryChange(i, $event)"
+                      [searchable]="true"
+                      [placeholder]="control.placeholder"
+                      [selectWithOutSearch]="true"
+                      [path]="orderTypes" />
+                  </div>
+                }
+                @default {
+                  <div>
+                    <div class="label">{{ control.label }}</div>
+                    <input class="integrationJson"
+                           [type]="control.type"
+                           [value]="control.value"
+                           [disabled]="control.disable"
+                           [formControlName]="control.name"
+                           [placeholder]="control.placeholder">
+                  </div>
+                }
+              }
               <em-validator [fieldControl]="p[control.name]" />
-          </ng-container>
-        </form>
-      </div>
+            }
+          </form>
+        </div>
+      }
     </div>
     <div class="em-d-flex em-jc-fe">
       <button class="btn btn-secondary btn-lg mr-2" [mat-dialog-close]="false">Отмена</button>
@@ -49,5 +57,7 @@
     </div>
   </form>
 </div>
-<em-eb-loader class="form-loader" *ngIf="submitted" />
+@if (submitted) {
+  <em-eb-loader class="form-loader" />
+}
 <em-toast />

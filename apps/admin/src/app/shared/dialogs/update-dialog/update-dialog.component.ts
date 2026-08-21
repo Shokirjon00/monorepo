@@ -4,7 +4,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { IUpdateDialog } from "@shared/dialogs/update-dialog/interface/update-dialog";
 import { UploadDialogService } from "@core/services/upload-dialog.service";
 import { takeUntil } from "rxjs";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 
 @Component({
   standalone: true,

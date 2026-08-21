@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
+import { SimpleSelectListComponent } from '@eskhata/ui';
 import { IIntegrationType } from '@modules/client/company/company-detail/integration-setting/interfaces/integration-type';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 

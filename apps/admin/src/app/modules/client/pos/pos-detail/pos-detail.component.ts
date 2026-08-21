@@ -3,7 +3,7 @@ import { takeUntil } from 'rxjs';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { PosService } from '@modules/client/pos/services/pos.service';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPosDetail } from '@modules/client/pos/interfaces/pos-detail.interface';
 import { HeaderService } from '@core/services/header.service';
 

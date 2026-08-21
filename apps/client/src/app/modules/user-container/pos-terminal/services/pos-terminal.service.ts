@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment as env } from "@environments/environment";
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { Observable } from "rxjs";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 import { IUsers } from "@modules/user-container/user/interfaces/users.interface";
 import { Params } from "@angular/router";
 

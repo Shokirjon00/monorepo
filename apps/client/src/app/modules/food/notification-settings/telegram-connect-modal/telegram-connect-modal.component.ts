@@ -5,7 +5,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
 import { NotificationSettingsService } from '../services/notification-settings.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DestroyRef } from '@angular/core';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { EMPTY } from 'rxjs';
 import { QRCodeComponent } from 'angularx-qrcode';

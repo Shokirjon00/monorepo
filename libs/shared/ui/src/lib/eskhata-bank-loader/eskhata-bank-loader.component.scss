@@ -1,0 +1,20 @@
+@use 'core/scss/mixins/breakpoints' as b;
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+img {
+  width: 104px;
+  height: 104px;
+}
+
+@include b.media-breakpoint-down(sm) {
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { CashbackLimitService } from '@modules/directory/cashback-limit/services/cashback-limit.service';
 import { ICashbackLimit } from '@modules/directory/cashback-limit/interfaces/cashback-limit.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { EmHeaderComponent } from '@eskhata/ui';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

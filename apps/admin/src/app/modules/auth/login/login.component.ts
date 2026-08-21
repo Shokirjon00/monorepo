@@ -3,16 +3,15 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '@modules/auth/service/auth.service';
 import { finalize, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { TokenService } from '@core/services/token.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { LOGIN_PATTERN } from '@core/helper';
 import { SvgIconComponent } from "angular-svg-icon";
 import { PreventSpaceDirective } from "@core/directives/space-false.directive";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   selector: 'em-login',

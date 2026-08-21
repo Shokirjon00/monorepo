@@ -1,5 +1,5 @@
 import { provideClientHydration } from '@angular/platform-browser';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, inject } from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAngularSvgIcon } from 'angular-svg-icon';
@@ -16,6 +16,13 @@ import { AuthService } from '@modules/auth/service/auth.service';
 import { TokenService } from '@core/services/token.service';
 import { CustomHeadersInterceptor } from '@core/interceptors/custom.interceptor';
 import { provideNgxMask } from 'ngx-mask';
+import { environment } from '@environments/environment';
+import { ENVIRONMENT } from '@eskhata/environment';
+import { FILTER_PARAMS_PARSER } from '@eskhata/data-access';
+import { ADVANCE_PAYMENTS_HEADER, MAIN_FILTER_DIALOG, TABLE_CONFIG } from '@eskhata/ui';
+import { bannerAmountSignal } from '@shared/components/banner/banner-signal';
+import { SIEVE_OPERATOR_RESOLVER } from '@eskhata/data-access';
+import { getSieveOperatorValue, parseFilterParams } from '@core/utils/filter-util';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -51,5 +58,20 @@ export const appConfig: ApplicationConfig = {
       useClass: CustomHeadersInterceptor,
       multi: true,
     },
+    { provide: ENVIRONMENT, useValue: environment },
+    { provide: FILTER_PARAMS_PARSER, useValue: parseFilterParams },
+    { provide: SIEVE_OPERATOR_RESOLVER, useValue: getSieveOperatorValue },
+    {
+      provide: MAIN_FILTER_DIALOG,
+      useValue: () => import('@shared/dialogs/main-filter/main-filter.component').then(m => m.MainFilterComponent),
+    },
+    {
+      provide: ADVANCE_PAYMENTS_HEADER,
+      useFactory: () => {
+        const router = inject(Router);
+        return () => router.url.split('?')[0] === '/advance-payments' && bannerAmountSignal().isBannerVisible === true;
+      },
+    },
+    { provide: TABLE_CONFIG, useValue: { loader: 'bank', download: 'save' } },
   ],
 };

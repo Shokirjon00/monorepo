@@ -12,18 +12,16 @@ import { finalize } from "rxjs";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { CompanyService } from "@modules/client/company/services/company.service";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import {
   ListRegistrationDetailConstants
 } from "@modules/company-registration/list-registration/list-registration-detail/list-registration-info.constants";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { ITab } from "@core/interfaces/header.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { ActionsComponent, EmHeaderComponent, ToastComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import {DynamicUploadFieldComponent} from "@shared/components/dynamic-upload-field/dynamic-upload-field.component";
-import {ToastComponent} from "@shared/components/toast/toast.component";
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
-import {DateTimePipe} from "@core/pipe/date-time.pipe";
+import {DateTimePipe} from '@eskhata/util';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({

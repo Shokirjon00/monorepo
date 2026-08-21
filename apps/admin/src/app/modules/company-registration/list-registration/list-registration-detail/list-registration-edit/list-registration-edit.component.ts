@@ -1,7 +1,6 @@
 import {Component, DestroyRef, inject, Input, OnInit, signal} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import { MultiSelectListModule } from "@shared/components/multi-select-list/multi-select-list.module";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
+import { AutocompleteComponent, EmHeaderComponent, MultiSelectComponent } from '@eskhata/ui';
 import { Location } from "@angular/common";
 import { NgxMaskDirective } from "ngx-mask";
 import { NgxPermissionsModule } from "ngx-permissions";
@@ -10,23 +9,21 @@ import { DynamicUploadFieldComponent } from "@shared/components/dynamic-upload-f
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { finalize, Observable, of } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { ICompanyRegistration } from "@modules/company-registration/list-registration/interfaces/company-registration.interfaces";
 import { CompanyRegistrationApplicationsService } from "@modules/company-registration/list-registration/services/company-registration.service";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 import { CompanyService } from "@modules/client/company/services/company.service";
 import { MerchantService } from "@modules/client/merchant/services/merchant.service";
-import { IHeader } from "@core/interfaces/header.interface";
+import { IHeader } from '@eskhata/util';
 import { latinAndSpecialCharsValidator } from '@core/validators/latin-validator';
 import { SharedModule } from "@shared/shared.module";
 import { environment as env } from "@environments/environment";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {MultiSelectComponent} from "@shared/components/multi-select/multi-select.component";
 import {PosTypeService} from "@modules/client/merchant-service/services/posType.service";
 import {UserService} from "@core/services/user.service";
 import {CashbackRatesService} from "@modules/directory/cashback-rates/services/cashback-rates.service";
@@ -34,7 +31,7 @@ import {IMerchantService} from "@modules/client/merchant-service/interfaces/merc
 import {
   IListRegistrationEdit
 } from "@modules/company-registration/list-registration/list-registration-detail/list-registration-edit/list-registration-edit";
-import {DateTimePipe} from "@core/pipe/date-time.pipe";
+import {DateTimePipe} from '@eskhata/util';
 import {
   ICompanyRegistrationDetail
 } from "@modules/company-registration/list-registration/interfaces/company-registration-detail.interfaces";
@@ -48,7 +45,6 @@ const EMAIL_OPTIONAL_CLIENT_ID = '4636b157-ca2f-4f00-8164-1e3ababa2d5b';
   selector: 'em-list-registration-edit',
   templateUrl: './list-registration-edit.component.html',
   imports: [
-    MultiSelectListModule,
     ReactiveFormsModule,
     AutocompleteComponent,
     SharedModule,

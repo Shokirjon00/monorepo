@@ -11,7 +11,7 @@ import {
   IPaymentPosType,
   IPaymentStatus,
 } from '@modules/analytics/interfaces/analytic.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Params } from '@angular/router';
 
 @Injectable()

@@ -3,8 +3,8 @@ import { NgxPermissionsModule } from "ngx-permissions";
 import { ActivatedRoute } from "@angular/router";
 import { finalize } from "rxjs";
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { ITab } from "@core/interfaces/header.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { ITab } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
 import {
   RetailOutletDetailConstants
 } from "@modules/company-registration/retail-outlet/retail-outlet-detail/retail-outlet-info.constants";
@@ -12,18 +12,17 @@ import {RetailOutletService} from "@modules/company-registration/retail-outlet/s
 import {
   IIRetailOutletDetail
 } from "@modules/company-registration/retail-outlet/interfaces/retail-outlet-detail.interfaces";
-import {ActionsComponent} from "@shared/components/actions/actions.component";
 import {
   RetailOutletDialogComponent
 } from "@modules/company-registration/retail-outlet/retail-outlet-detail/retail-outlet-dialog/retail-outlet-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {HeaderService} from "@core/services";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {ActionEnum} from "@core/enums/action-enum";
+import {ActionEnum} from '@eskhata/util';
 import {
   RetailOutletStateService
 } from "@modules/company-registration/retail-outlet/services/retail-outlet-state.service";
-import {DateTimePipe} from "@core/pipe/date-time.pipe";
+import {DateTimePipe} from '@eskhata/util';
 
 @Component({
   standalone: true,

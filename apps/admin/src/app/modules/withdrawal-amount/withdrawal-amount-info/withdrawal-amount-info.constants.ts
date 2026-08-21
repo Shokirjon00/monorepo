@@ -1,8 +1,8 @@
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 import { ICaption, IRowAction } from "@core/interfaces";
-import { TableRowActionEnum } from "@core/enums/table";
-import { ITab } from "@core/interfaces/header.interface";
+import { TableRowActionEnum } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 
 export class WithdrawalAmountInfoConstants {
 

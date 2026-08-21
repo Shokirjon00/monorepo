@@ -5,18 +5,15 @@ import {
   FormGroup,
   ReactiveFormsModule
 } from "@angular/forms";
-import { ValidatorModule } from "@shared/components/validator/validator.module";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, EskhataBankLoaderComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { SvgIconComponent } from "angular-svg-icon";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { DeliveryMethodsService } from "@modules/food/delivery-methods/services/delivery-methods.service";
 import { IDeliveryMethods } from "@modules/food/delivery-methods/interfaces/delivery-methods.interface";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { delay, mergeMap } from "rxjs/operators";
 import { finalize, of } from "rxjs";
-import { ToastModule } from "@shared/components/toast/toast.module";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
 
 @Component({
   selector: 'em-delivery-methods',

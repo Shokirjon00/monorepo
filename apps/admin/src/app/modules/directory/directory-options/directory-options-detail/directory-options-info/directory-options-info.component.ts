@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import {
   IDirectoryOptionsDetail
 } from "@modules/directory/directory-options/interfaces/directory-options-detail.interfaces";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DirectoryOptionsService } from "@modules/directory/directory-options/services/directory-options.service";
 import { finalize, takeUntil } from "rxjs";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

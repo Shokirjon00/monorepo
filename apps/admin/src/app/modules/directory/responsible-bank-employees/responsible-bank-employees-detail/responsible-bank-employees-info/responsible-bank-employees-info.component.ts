@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { IResBankEmp } from '@modules/directory/responsible-bank-employees/interfaces/res-bank-emp.interface';
 import { ResBankEmpService } from '@modules/directory/responsible-bank-employees/services/res-bank-emp.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

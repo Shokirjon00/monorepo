@@ -10,14 +10,14 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { delay, finalize, Observable, of, Subject, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ISelect } from '@core/interfaces/select.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ISelect } from '@eskhata/util';
 import { PosService } from '@modules/merchant-container/pos/services/pos.service';
 import { IPosDetail } from '@modules/merchant-container/pos/interfaces/pos.interface';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
-import { IHeader } from '@core/interfaces/header.interface';
-import { HeaderService } from '@core/services/header.service';
+import { MessageService } from '@eskhata/data-access';
+import { IHeader } from '@eskhata/util';
+import { HeaderService } from '@eskhata/data-access';
 import { Location } from '@angular/common';
 import { mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
@@ -27,12 +27,8 @@ import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-d
 import { MatDialog } from '@angular/material/dialog';
 import { MerchantService } from '@modules/merchant-container/merchant/services/merchant.service';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { ValidatorModule } from '@shared/components/validator/validator.module';
+import { EmHeaderComponent, EskhataBankLoaderComponent, SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { NgxMaskDirective } from 'ngx-mask';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 
 @Component({
   standalone: true,

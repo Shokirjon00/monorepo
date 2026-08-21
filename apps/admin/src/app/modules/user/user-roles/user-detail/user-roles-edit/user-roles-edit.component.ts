@@ -1,32 +1,27 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { Location } from '@angular/common';
 import { delay, mergeMap, takeUntil } from 'rxjs/operators';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import { PosService } from '@modules/client/pos/services/pos.service';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { environment as env } from '@environments/environment';
 import { PhoneValidator } from '@core/validators/phone-validator';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { UsersRolesService } from "@modules/user/user-roles/services/users-roles.service";
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
+import { AutocompleteComponent, EmHeaderComponent, MultiSelectComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from "ngx-mask";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
-import { MultiSelectComponent } from "@shared/components/multi-select/multi-select.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

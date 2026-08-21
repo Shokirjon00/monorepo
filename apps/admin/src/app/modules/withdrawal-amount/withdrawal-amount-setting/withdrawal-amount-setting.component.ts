@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import {
   WithdrawSetService
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/services/withdrawal-amount-setting.service';
@@ -12,14 +12,11 @@ import {
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/interfaces/withdrawal-amount-setting.interface';
 import { IPaginate } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { ITab } from '@core/interfaces/header.interface';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { IFilterParams } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import {
   WithdrawalAmountSettingConstants
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/withdrawal-amount-setting.constants';

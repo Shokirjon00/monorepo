@@ -1,4 +1,4 @@
-import {ICaption} from "@core/interfaces/table.interface";
+import {ICaption} from '@eskhata/util';
 
 export const paymentContinueRulesInfoColumns : ICaption[] = [
   {

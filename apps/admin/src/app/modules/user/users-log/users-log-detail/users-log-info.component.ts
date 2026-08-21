@@ -1,14 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { IHeader } from '@core/interfaces/header.interface';
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { IHeader } from '@eskhata/util';
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { CommonModule } from "@angular/common";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 import { UsersActivitiesService } from "@modules/user/users-log/services/users-activities.service";
 import { IUsersActivities } from "@modules/user/users-log/interfaces/users-log.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

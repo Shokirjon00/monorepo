@@ -1,6 +1,6 @@
 import { ICaption } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { ActionEnum } from "@core/enums/action-enum";
+import { ActionEnum } from '@eskhata/util';
 
 export class InfoDetailConstants {
 

@@ -1,4 +1,4 @@
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ICaption } from '@eskhata/util';
 import { ITab } from '@core/interfaces';
 import { MatchMode } from '@core/enums/match-mode.enum';
 import { environment as env } from '@environments/environment';

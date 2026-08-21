@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
+import { SimpleSelectListComponent } from '@eskhata/ui';
 
 @Component({
   selector: 'em-change-order-status',

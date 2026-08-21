@@ -1,9 +1,9 @@
 import { ICaption, IRowAction } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 import {RETAIL_OUTING} from "@modules/company-registration/retail-outlet/retail-outlet.routing";
-import {IAction} from "@shared/components/actions/actions.interface";
-import {ActionEnum} from "@core/enums/action-enum";
+import {IAction} from '@eskhata/util';
+import {ActionEnum} from '@eskhata/util';
 
 export class RetailOutletConstants {
 

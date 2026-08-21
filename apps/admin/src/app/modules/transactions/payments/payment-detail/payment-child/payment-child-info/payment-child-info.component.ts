@@ -2,14 +2,13 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { finalize, takeUntil } from 'rxjs';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { CommonModule } from '@angular/common';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DateTimePipe } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPaymentDetail } from '@modules/transactions/payments/interfaces';
 import { IHeader } from '@core/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
+import { IAction } from '@eskhata/util';
 import {
   PaymentsInfoConstants
 } from "@modules/transactions/payments/payment-detail/payment-info/payment-info.constants";

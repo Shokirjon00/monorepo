@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { CommonModule, DatePipe, Location } from '@angular/common';
 import { BankPromotionService } from '@modules/bank-promotion/services/bank-promotion.service';
 import { CashbackAccrualTypesServices } from '@modules/bank-promotion/services/cashback-accrual-types.services';
@@ -9,7 +9,7 @@ import { CashbackRatesService } from '@modules/directory/cashback-rates/services
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IBankPromotion } from '@modules/bank-promotion/interfaces/bank-promotion.interface';
 import { CashbackLimitService } from '@modules/directory/cashback-limit/services/cashback-limit.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { DataTimeComponent } from '@shared/components/data-time/data-time.component';
 import { ToastEnum } from '@eskhata/util';
@@ -19,17 +19,13 @@ import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { DeepClone } from '@core/utils/deep-clone';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { IParam } from '@eskhata/util';
+import { DateFormatEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { ValidatorComponent } from '@shared/components/validator/validator.component';
-import { UploadFieldComponent } from '@shared/components/upload-field/upload-field.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, UploadFieldComponent, ValidatorComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
 import { CompanyService } from "@modules/client/company/services/company.service";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

@@ -1,16 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IntegrationService } from '@modules/merchant-container/merchant/services/integration.service';
 import { takeUntil } from 'rxjs';
-import { HeaderService } from '@core/services/header.service';
+import { HeaderService } from '@eskhata/data-access';
 import { finalize } from 'rxjs/operators';
 import { ToastEnum } from '@eskhata/util';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ClipboardService } from 'ngx-clipboard';
 import { SvgIconComponent } from "angular-svg-icon";
-import { EskhataBankLoaderComponent } from "@shared/components/eskhata-bank-loader/eskhata-bank-loader.component";
-import { ToastModule } from "@shared/components/toast/toast.module";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, EskhataBankLoaderComponent, ToastModule } from '@eskhata/ui';
 import { ITab } from "@core/interfaces";
 import { PosConstants } from "@modules/merchant-container/pos/pos.constants";
 

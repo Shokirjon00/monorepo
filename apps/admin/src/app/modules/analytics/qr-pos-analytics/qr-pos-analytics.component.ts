@@ -1,9 +1,9 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { first } from 'rxjs/operators';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ToastComponent } from '@eskhata/ui';
 import { QrPosFiltersComponent } from './components/qr-pos-filters/qr-pos-filters.component';
 import { QrPosCardsComponent } from './components/qr-pos-cards/qr-pos-cards.component';
 import { QrPosChartComponent } from './components/qr-pos-chart/qr-pos-chart.component';
@@ -34,7 +34,6 @@ import { ANALYTICS_TABS } from '../analytics.constants';
   styleUrls: ['./qr-pos-analytics.component.scss'],
   providers: [QrPosFilterService, QrPosAnalyticService, DashboardLoaderService],
   imports: [
-    CommonModule,
     ToastComponent,
     QrPosFiltersComponent,
     QrPosCardsComponent,
@@ -44,8 +43,8 @@ import { ANALYTICS_TABS } from '../analytics.constants';
     QrPosPanelComponent,
     QrPosPlanFactComponent,
     MerchantActivityComponent,
-    AnalyticsTabsBarComponent,
-  ],
+    AnalyticsTabsBarComponent
+],
 })
 export class QrPosAnalyticsComponent implements OnInit {
   private readonly filterService = inject(QrPosFilterService);

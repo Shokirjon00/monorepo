@@ -1,9 +1,9 @@
 import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { ChartWidgetComponent } from '@shared/components/chart-widget/chart-widget.component';
-import { MultiDropdownComponent } from '@shared/components/multi-dropdown/multi-dropdown.component';
+import { MultiDropdownComponent } from '@eskhata/ui';
 import { StatisticsService } from '@modules/food/analytics-food/service/statistics.service';
 import { environment as env } from '@environments/environment';
-import { DateRange } from '@core/enums/date-format.enum';
+import { DateRange } from '@eskhata/util';
 import { IFilterParams } from '@core/interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DateRangeFilterComponent } from '@shared/components/date-range-filter/date-range-filter.component';

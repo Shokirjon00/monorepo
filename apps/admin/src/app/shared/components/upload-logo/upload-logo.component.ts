@@ -1,16 +1,16 @@
 import { Component, TemplateRef, input, Input, inject, viewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { finalize, Observable, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { loadFile } from '@core/utils/load-file';
 import { AlertDialogComponent } from '@shared/dialogs/alert-dialog/alert-dialog.component';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ToastComponent } from '@eskhata/ui';
 import { PreloaderComponent } from '@shared/components/preloader/preloader.component';
-import { HelperService } from "@core/services/helper.service";
+import { HelperService } from '@eskhata/data-access';
 
 interface IUploadField {
   img: any;

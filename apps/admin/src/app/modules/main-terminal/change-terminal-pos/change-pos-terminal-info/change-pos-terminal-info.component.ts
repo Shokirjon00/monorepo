@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { BreadcrumbsComponent } from '@shared/components/breadcrumbs/breadcrumbs.component';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { BreadcrumbsComponent } from '@eskhata/ui';
+import { DateTimePipe } from '@eskhata/util';
 import {
   IChangePosTerminalInfo,
   IInfoRow

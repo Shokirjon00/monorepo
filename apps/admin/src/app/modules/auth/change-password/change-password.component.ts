@@ -1,18 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@modules/auth/service/auth.service';
 import { Router } from '@angular/router';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { finalize, takeUntil } from 'rxjs';
 import { ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { PasswordValidator } from '@core/validators/password-validator';
 import { SvgIconComponent } from "angular-svg-icon";
 import { PreventSpaceDirective } from "@core/directives/space-false.directive";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { PasswordInputRulesComponent } from "@shared/components/password-input-rules/password-input-rules.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { PasswordInputRulesComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   selector: 'em-change-password',

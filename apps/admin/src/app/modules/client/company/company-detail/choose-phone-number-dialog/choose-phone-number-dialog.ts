@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { FormArray, FormBuilder, FormGroup, FormsModule } from '@angular/forms';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { ToastEnum } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';

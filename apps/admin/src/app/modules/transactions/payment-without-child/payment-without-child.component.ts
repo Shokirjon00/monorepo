@@ -1,26 +1,22 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { IPaymentChild } from '@modules/transactions/payments/interfaces';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { IAction } from '@eskhata/util';
 import { ICaption, IFilterParams, IPaginate, IParam } from '@core/interfaces';
 import { takeUntil } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { isEmptyObject } from '@core/utils/is-empty-object';
 import { Params, Router } from '@angular/router';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 import { PaymentsWithoutConstants } from '@modules/transactions/payment-without-child/payment-without-child.constants';
 import { AbstractPaymentComponent } from '@modules/transactions/abstract/payment.abstract';
 import {
   PaymentWithoutChildService
 } from '@modules/transactions/payment-without-child/service/payment-without-child.service';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { DataSourceService } from "@core/services/data-source.service";
+import { DataSourceService } from '@eskhata/data-access';
 
 @Component({
   standalone: true,

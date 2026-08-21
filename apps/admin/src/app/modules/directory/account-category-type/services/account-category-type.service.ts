@@ -4,7 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Params} from '@angular/router';
 import {Observable} from 'rxjs';
 import {IHttpResponse} from '@core/interfaces/http-response.interface';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {
   IAccountCategoryType
 } from '@modules/directory/account-category-type/interfaces/account-category-type.interface';

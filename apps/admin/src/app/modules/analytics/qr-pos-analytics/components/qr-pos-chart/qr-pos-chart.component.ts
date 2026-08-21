@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, HostBinding, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartOptions } from '@modules/analytics/interfaces/chart-options.interface';
 import { IQrPosChartData } from '../../interfaces/qr-pos-analytics.interface';
@@ -10,7 +10,7 @@ import { IQrPosChartData } from '../../interfaces/qr-pos-analytics.interface';
   templateUrl: './qr-pos-chart.component.html',
   styleUrls: ['./qr-pos-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, NgApexchartsModule],
+  imports: [NgApexchartsModule],
 })
 export class QrPosChartComponent {
   readonly data = input.required<IQrPosChartData>();

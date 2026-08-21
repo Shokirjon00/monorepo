@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { ActionsComponent, BottomSheetComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, TopButtonComponent } from '@eskhata/ui';
+import { IAction } from '@eskhata/util';
 import { ICaption, IFilterParams, IOptionAction, IPaginate, IRowAction } from '@core/interfaces';
 import { MessageService } from '@core/services';
 import { PaymentsConstants } from './payments.constants';
 import { SharedModule } from '@shared/shared.module';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { JobLogService } from '@modules/job-log/services/job-log.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { Currencies, IPayment, IPaymentStatusAmount } from '@modules/transactions/payments/interfaces';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -17,21 +17,16 @@ import { parseFilterParams, setDefaultFilterValue } from '@core/utils';
 import { finalize } from 'rxjs/operators';
 import { ToastEnum, EXPAND_DETAIL } from '@eskhata/util';
 import { PaymentConfirmDialogComponent } from './shared/payment-confirm-dialog/payment-confirm-dialog.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
 import { NgxMaskPipe } from 'ngx-mask';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
-import { ITab } from '@core/interfaces/header.interface';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
-import { DataSourceService } from '@core/services/data-source.service';
+import { ITab } from '@eskhata/util';
+import { DataSourceService } from '@eskhata/data-access';
 import { SvgIconComponent } from "angular-svg-icon";
 import { isPhone } from "@core/helper";
 import { ScrollEventDirective } from "@core/directives/scroll-event.directive";
-import { TableStatusEnum } from "@core/enums/table-status.enum";
-import { TopButtonComponent } from "@shared/components/top-button/top-button.component";
-import { BottomSheetComponent } from "@shared/components/bottom-sheet/bottom-sheet.component";
+import { TableStatusEnum } from '@eskhata/util';
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { OrderService } from "@modules/order/services/order.service";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { OrderDetailConstants } from "@modules/order/order-detail/order-detail.constants";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { ToastComponent } from "@eskhata/ui";
 
 
 @Component({

@@ -1,19 +1,15 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, WritableSignal, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IOptionAction, IRowAction } from '@core/interfaces/table.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IOptionAction, IRowAction } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { IPaginate, ToastEnum } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ITab } from "@core/interfaces/header.interface";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { ITab } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { MerchantConstants } from "@modules/client/merchant/merchant.constants";
 import {
   CommissionCompanyConstants

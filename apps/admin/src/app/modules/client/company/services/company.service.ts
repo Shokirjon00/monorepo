@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ICompanyDetail } from '../interfaces/company-detail.interface';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { environment as env } from '@environments/environment';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { ICompany, ISearchClient } from '@modules/client/company/interfaces/company.interface';
 import { Params } from '@angular/router';
 import { IAcquirer } from '@core/interfaces/acquirer.interface';

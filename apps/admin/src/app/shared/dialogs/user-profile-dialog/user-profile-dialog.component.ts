@@ -2,16 +2,16 @@ import {Component, Inject} from '@angular/core';
 import {IUserProfile} from '@core/interfaces/user.interface';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {delay, mergeMap, takeUntil} from 'rxjs/operators';
-import {DestroyableComponent} from '@core/abstract/destroyable.component';
+import {DestroyableComponent} from '@eskhata/util';
 import {UserService} from '@core/services/user.service';
-import {HelperService} from '@core/services/helper.service';
+import {HelperService} from '@eskhata/data-access';
 import {AlertDialogComponent} from '@shared/dialogs/alert-dialog/alert-dialog.component';
-import {MessageService} from '@core/services/message.service';
+import {MessageService} from '@eskhata/data-access';
 import {ToastEnum} from '@eskhata/util';
 import {of} from 'rxjs';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {NgxPermissionsModule} from 'ngx-permissions';
-import {ToastComponent} from '@shared/components/toast/toast.component';
+import {ToastComponent} from '@eskhata/ui';
 import { HttpResponse } from "@angular/common/http";
 
 

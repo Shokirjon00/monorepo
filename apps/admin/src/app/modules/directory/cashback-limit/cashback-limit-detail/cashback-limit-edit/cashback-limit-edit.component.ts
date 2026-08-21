@@ -3,23 +3,20 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { ActivatedRoute } from '@angular/router';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { CashbackLimitService } from '@modules/directory/cashback-limit/services/cashback-limit.service';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Location } from '@angular/common'
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { ICashbackLimitDetail } from '@modules/directory/cashback-limit/interfaces/cashback-limit-detail.interface';
 import { delay, mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from "ngx-mask";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,

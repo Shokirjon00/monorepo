@@ -16,7 +16,7 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import { AnalyticService } from '@modules/analytics/services/analytic.service';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { IAggregate } from '@modules/analytics/interfaces/aggregate.interface';
 import { IPaymentStatistics } from '@modules/analytics/interfaces/payment-statistics.interface';
@@ -26,24 +26,24 @@ import {
   IPaymentPosType,
   IPaymentStatus,
 } from '@modules/analytics/interfaces/analytic.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { environment as env } from '@environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PERIOD_ID, TODAY_ID } from '@core/helper';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { PaymentStatusEnum } from '@core/enums/payment-status.enum';
 import { AnalyticsFilterComponent } from '@shared/dialogs/analytics-filter/analytics-filter.component';
 import { DatePipe, LowerCasePipe, NgClass } from '@angular/common';
 import { first } from 'rxjs/operators';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { SharedModule } from '@shared/shared.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
+import { ClickOutsideModule } from '@eskhata/util';
+import { DropdownComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 
 export type ChartOptions = {

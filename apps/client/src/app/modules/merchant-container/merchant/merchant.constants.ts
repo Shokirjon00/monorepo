@@ -1,8 +1,8 @@
-import { ICaption } from "@core/interfaces/table1.interface";
-import { TableRowActionEnum } from "@core/enums/table";
+import { ICaption } from '@eskhata/util';
+import { TableRowActionEnum } from '@eskhata/util';
 import { IRowAction, ITab } from "@core/interfaces";
-import { ActionEnum } from "@core/enums/action-enum";
-import { IAction } from "@shared/components/actions/action.interface";
+import { ActionEnum } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 
 export class MerchantConstants {
 

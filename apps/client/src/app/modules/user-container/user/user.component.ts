@@ -1,26 +1,22 @@
 import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
-import { IRowAction } from '@core/interfaces/table.interface';
-import { TableComponent } from '@shared/components/table/table.component';
+import { IRowAction } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent } from '@eskhata/ui';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IAction } from '@shared/components/actions/action.interface';
-import { ITab } from '@core/interfaces/header.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IAction } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { isPhone } from '@core/helper';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 import { SharedModule } from '@shared/shared.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 
 import { UsersService } from '@modules/user-container/user/services/users.service';
 import { IUsers } from '@modules/user-container/user/interfaces/users.interface';
 import { UserConstants } from '@modules/user-container/user/user.constants';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ICaption } from '@core/interfaces/table1.interface';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
+import { ICaption } from '@eskhata/util';
 import { restoreQueryParamsIfEmpty } from '@core/utils/restore-query-params';
 
 @Component({

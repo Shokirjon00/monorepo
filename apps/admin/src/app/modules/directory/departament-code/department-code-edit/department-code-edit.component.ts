@@ -11,11 +11,9 @@ import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, Observable, of } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsModule } from "ngx-permissions";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { DepartmentCode } from "@modules/directory/departament-code/services/department-code";
 import { IDepartmentCodeDetail } from "@modules/directory/departament-code/interfaces/department-code-detail";
 

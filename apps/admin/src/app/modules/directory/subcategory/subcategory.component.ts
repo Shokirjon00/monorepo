@@ -1,20 +1,17 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { SubcategoryService } from '@modules/directory/subcategory/services/subcategory.service';
 import { finalize, takeUntil } from 'rxjs';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { ITab } from '@core/interfaces/header.interface';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { ISubcategory } from '@modules/directory/subcategory/interfaces/subcategory.interface';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { setDefaultFilterValue } from '@eskhata/util';
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 import { SubcategoryConstants } from "@modules/directory/subcategory/subcategory.constants";
 

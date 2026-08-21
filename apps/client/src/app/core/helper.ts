@@ -16,16 +16,5 @@ export const RECONCILIATION_REPORT_ID = 'dbc7c9e9-2f8a-4aff-8b31-05c32eefb6cf';
 export const ANALYTICS_PERIOD_DAY = 31;
 export const MAX_PHONE_NUMBER = 4;
 
-export function isPhone(): boolean {
-  if (typeof window.matchMedia === 'function') {
-    return window.matchMedia('(max-width: 767.98px)').matches;
-  }
-  return false;
-}
-
-export function isLandscapeTablet(): boolean {
-  if (typeof window.matchMedia === 'function') {
-    return window.matchMedia('(max-width: 1024px)').matches;
-  }
-  return false;
-}
+// Реализации переехали в @eskhata/util; ре-экспорт сохраняет импорты '@core/helper'.
+export { isPhone, isLandscapeTablet } from '@eskhata/util';

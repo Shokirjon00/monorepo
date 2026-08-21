@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, Input, OnInit, signal, WritableSignal } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { AutocompleteComponent, EmHeaderComponent, IUploadFile, SimpleSelectListComponent, ToastComponent, UploadFieldComponent, ValidatorComponent } from '@eskhata/ui';
 import {
   FormBuilder,
   FormGroup,
@@ -14,18 +14,13 @@ import { finalize, Observable, of, takeUntil } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { IParam, ISelect } from "@core/interfaces";
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 import { MessageService } from "@core/services";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
 import { environment as env } from "@environments/environment";
-import { UploadFieldComponent } from "@shared/components/upload-field/upload-field.component";
 import { CompanyService } from "@modules/client/company/services/company.service";
 import { AllowListService } from "@modules/advance-payments/allow-list/service/allow-list.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
@@ -35,7 +30,6 @@ import {
 } from "@modules/advance-payments/advance-commissions/services/advance.commissions.service";
 import { IAllowListDetail } from "@modules/advance-payments/allow-list/interfaces/allow-list-detail";
 import { IAccount } from "@modules/client/company/interfaces/account.interface";
-import { IUploadFile } from "@shared/components/upload-field/upload-field.interface";
 
 @Component({
   selector: 'em-allow-list-edit',

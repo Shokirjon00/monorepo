@@ -1,4 +1,4 @@
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 
 export class PosTerminalsConstants {
   static getPosHeaderTabs(companyId: string, merchantId: string): ITab[] {

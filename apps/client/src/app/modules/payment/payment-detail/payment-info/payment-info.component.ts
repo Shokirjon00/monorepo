@@ -3,8 +3,8 @@ import { takeUntil } from 'rxjs';
 import { PaymentService } from '@modules/payment/services/payment.service';
 import { ActivatedRoute } from '@angular/router';
 import { IPaymentDetail } from '@modules/payment/interfaces/payment-detail.interface';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
+import { DestroyableComponent } from '@eskhata/util';
+import { ToastModule } from '@eskhata/ui';
 
 @Component({
   standalone: true,

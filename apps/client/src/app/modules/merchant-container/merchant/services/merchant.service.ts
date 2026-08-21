@@ -6,7 +6,7 @@ import { IMerchantDetail } from '../interfaces/merchant-detail.interface';
 import { environment as env } from '@environments/environment';
 import { IMerchant } from '@modules/merchant-container/merchant/interfaces/merchant.interface';
 import { IMerchantForm } from '@modules/merchant-container/merchant/interfaces/merchant-form.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Params } from '@angular/router';
 
 @Injectable()

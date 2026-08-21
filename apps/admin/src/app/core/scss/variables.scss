@@ -110,3 +110,7 @@ $accent-teal: #2BB6A3;
 $accent-orange: #FF8C00;
 $accent-red: #DA1E37;
 $accent-indigo: #4E49CE;
+
+// Used by the shared em-pagination styles. Admin previously hardcoded this exact
+// colour as rgb(182, 182, 182); naming it keeps the rendering identical.
+$active-entry: #B6B6B6FF;

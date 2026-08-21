@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {takeUntil} from 'rxjs';
-import {DestroyableComponent} from '@core/abstract/destroyable.component';
+import {DestroyableComponent} from '@eskhata/util';
 import {ActivatedRoute} from '@angular/router';
 import {IIftLog} from '../interfaces/ift-log.interface';
 import {BreadcrumbService} from 'xng-breadcrumb';
-import {DateTimePipe} from '@core/pipe/date-time.pipe';
+import {DateTimePipe} from '@eskhata/util';
 import {IftLogService} from '@modules/ift-log/services/ift-log.service';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 
 @Component({

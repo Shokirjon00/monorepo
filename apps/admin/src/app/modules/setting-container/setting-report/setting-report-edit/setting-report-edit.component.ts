@@ -3,24 +3,21 @@ import {Component, inject, Input, OnInit, viewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {finalize, of, takeUntil} from 'rxjs';
 import {Location} from '@angular/common';
-import {MessageService} from '@core/services/message.service';
+import {MessageService} from '@eskhata/data-access';
 import {ToastEnum} from '@eskhata/util';
 import {delay, mergeMap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
 import {setValidationErrors} from '@core/validators/set-validation-errors';
 import {EMBaseForm} from '@core/abstract/base-form.abstract';
-import {IParam} from '@core/interfaces/param.interface';
+import {IParam} from '@eskhata/util';
 import {HeaderService} from '@core/services/header.service';
 import {ISetting} from '@modules/setting-container/setting/interfaces/setting.interface';
 import {SettingReportService} from '@modules/setting-container/setting-report/services/setting-report.service';
-import {IHeader} from '@core/interfaces/header.interface';
+import {IHeader} from '@eskhata/util';
 import {SvgIconComponent} from "angular-svg-icon";
-import {ValidatorComponent} from "@shared/components/validator/validator.component";
-import {UploadFieldComponent} from "@shared/components/upload-field/upload-field.component";
+import { EmHeaderComponent, ToastComponent, UploadFieldComponent, ValidatorComponent } from '@eskhata/ui';
 import {EbLoaderComponent} from "@shared/components/eb-loader/eb-loader.component";
-import {ToastComponent} from "@shared/components/toast/toast.component";
 import {CompanyService} from "@modules/client/company/services/company.service";
-import {EmHeaderComponent} from "@shared/components/em-header/em-header.component";
 import {HtmlViewerComponent} from "@shared/components/monaco-editor/html-viewer.component";
 
 @Component({

@@ -1,10 +1,10 @@
 import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {DestroyableComponent} from '@core/abstract/destroyable.component';
+import {DestroyableComponent} from '@eskhata/util';
 import {Observable, takeUntil} from 'rxjs';
 import {SvgIconComponent} from "angular-svg-icon";
-import {ToastComponent} from "@shared/components/toast/toast.component";
+import {ToastComponent} from "@eskhata/ui";
 import {NgxPermissionsModule} from "ngx-permissions";
 import {UploadLogoComponent} from "@shared/components/upload-logo/upload-logo.component";
 import {IHttpResponse} from "@core/interfaces/http-response.interface";

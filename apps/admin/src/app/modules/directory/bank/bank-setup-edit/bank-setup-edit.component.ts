@@ -1,9 +1,8 @@
 import { Component, ElementRef, inject, Input, OnInit, viewChild } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
 import { IHeader, IParam } from "@core/interfaces";
 import { Location, NgOptimizedImage } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
@@ -21,12 +20,10 @@ import { MatIcon } from "@angular/material/icon";
 import { IpOrDomainValidator } from "@core/validators/domain-validator";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { IP_OR_DOMAIN_PATTERN } from "@core/helper";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import {
   BankIntegrationConfigurationsService
 } from "@modules/directory/bank/services/bank-integration-configurations.service";
 import { IBankIntegration } from "@modules/directory/bank/interfaces/bank.interface";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { ToggleVisibilityButtonComponent } from "@shared/components/toggle-visibility-button/toggle-visibility-button.component";
 
 @Component({

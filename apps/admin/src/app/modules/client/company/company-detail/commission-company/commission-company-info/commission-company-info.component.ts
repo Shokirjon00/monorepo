@@ -1,18 +1,17 @@
 import { Component, DestroyRef, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { CommissionCompanyService } from "@modules/client/company/company-detail/commission-company/services/commission-company.service";
 import { ICommissionCompany } from "@modules/client/company/company-detail/commission-company/interfaces/commission-company.interface";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { finalize } from "rxjs";
 import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

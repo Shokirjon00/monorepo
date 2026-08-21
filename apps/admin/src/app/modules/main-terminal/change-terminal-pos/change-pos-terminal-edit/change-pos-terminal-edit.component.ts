@@ -12,14 +12,11 @@ import { NgxMaskDirective } from 'ngx-mask';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
 import { ToastEnum } from '@eskhata/util';
 import { MessageService } from '@core/services';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { environment  as env} from '@environments/environment';
-import { AutocompleteComponent } from '@shared/components/autocomplete/autocomplete.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { ValidatorComponent } from '@shared/components/validator/validator.component';
+import { AutocompleteComponent, EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
 import { ChangePosTerminalService } from '../services/change-pos-terminal.service';
 import {

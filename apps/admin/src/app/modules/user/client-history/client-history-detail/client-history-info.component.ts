@@ -1,15 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { IHeader } from '@core/interfaces/header.interface';
+import { IHeader } from '@eskhata/util';
 import { ClientHistoryService } from "@modules/user/client-history/services/client-history.service";
 import { IHistory } from "@modules/user/client-history/interfaces/client-history.interface";
-import { ToastComponent } from "@shared/components/toast/toast.component";
+import { EmHeaderComponent, ToastComponent } from '@eskhata/ui';
 import { CommonModule } from "@angular/common";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DateTimePipe } from '@eskhata/util';
 import { ReactiveFormsModule } from "@angular/forms";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { NgxPermissionsModule } from "ngx-permissions";
 
 @Component({

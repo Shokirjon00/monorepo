@@ -2,7 +2,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { finalize, tap } from 'rxjs/operators';
 import { takeUntil } from 'rxjs';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { MessageService } from '@core/services';
 import { IPaymentContinue, IPaymentDetail } from '@modules/transactions/payments/interfaces';
 import { ToastEnum } from '@eskhata/util';

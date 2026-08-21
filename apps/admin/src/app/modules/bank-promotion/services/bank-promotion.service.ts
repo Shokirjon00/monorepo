@@ -4,7 +4,7 @@ import { environment as env } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { IBankPromotion } from '@modules/bank-promotion/interfaces/bank-promotion.interface';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Params } from '@angular/router';
 
 @Injectable()

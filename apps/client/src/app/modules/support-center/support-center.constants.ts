@@ -1,8 +1,8 @@
-import { ITab } from '@core/interfaces/header.interface';
-import { ICaption } from '@core/interfaces/table1.interface';
+import { ITab } from '@eskhata/util';
+import { ICaption } from '@eskhata/util';
 import { MatchMode } from '@core/enums/match-mode.enum';
-import { IAction } from '@shared/components/actions/action.interface';
-import { ActionEnum } from '@core/enums/action-enum';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class SupportCenterConstants {
 

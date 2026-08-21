@@ -3,7 +3,7 @@ import {IHttpResponse} from '@core/interfaces/http-response.interface';
 import {Observable} from 'rxjs';
 import { inject, Injectable } from '@angular/core';
 import {environment as env} from 'environments/environment';
-import {ISelect} from '@core/interfaces/select.interface';
+import {ISelect} from '@eskhata/util';
 import {IAreaDetail} from '@modules/directory/area/interfaces/area-detail.interface';
 import {IArea} from '@modules/directory/area/interfaces/area.interface';
 import {Params} from '@angular/router';

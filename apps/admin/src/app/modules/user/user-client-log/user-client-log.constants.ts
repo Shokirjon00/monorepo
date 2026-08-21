@@ -1,5 +1,5 @@
-import { ICaption } from "@core/interfaces/table.interface";
-import { ITab } from "@core/interfaces/header.interface";
+import { ICaption } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
 
 export class UserClientLogConstants {
 

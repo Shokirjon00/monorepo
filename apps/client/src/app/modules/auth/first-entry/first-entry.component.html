@@ -30,7 +30,7 @@
             </div>
           </div>
 
-          <em-password-input-rules [passwordControl]="form.get('password')"
+          <em-password-input-rules [latinOnly]="true" [passwordControl]="form.get('password')"
             [confirmPasswordControl]="form.get('confirmPassword')" />
 
           @if (capsOn) {

@@ -2,7 +2,7 @@ import { Directive, signal, viewChild } from "@angular/core";
 import { finalize, Observable } from "rxjs";
 import { IFilterParams, IPaginate } from "@core/interfaces";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { TableComponent } from "@shared/components/table/table.component";
+import { TableComponent } from '@eskhata/ui';
 import { IJobLog } from "@modules/job-log/interfaces/job-log.interface";
 
 @Directive()

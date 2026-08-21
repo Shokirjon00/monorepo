@@ -2,18 +2,17 @@ import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, finalize } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IHeader } from '@core/interfaces/header.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IHeader } from '@eskhata/util';
+import { IFilterParams } from '@eskhata/util';
 import { IPaginate, ToastEnum } from '@eskhata/util';
-import { HeaderService } from '@core/services/header.service';
+import { HeaderService } from '@eskhata/data-access';
 import { CaptionService } from '@core/services/caption.service';
 import { WithdrawalAmountService } from '@modules/withdrawal-amount/withdrawal-amount-info/services/withdrawal-amount.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { SharedModule } from '@shared/shared.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { EskhataBankLoaderComponent, ToastComponent } from '@eskhata/ui';
 
 interface ISubmissionResult {
   id: string;

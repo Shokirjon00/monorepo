@@ -1,11 +1,11 @@
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { Location } from '@angular/common';
 import { Observable, of, Subject, takeUntil } from 'rxjs';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { compareForm } from '@core/utils/compare-form';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { IParam } from '@core/interfaces/param.interface';
+import { IParam } from '@eskhata/util';
 import { switchMap } from "rxjs/operators";
 
 export abstract class EMBaseForm extends DestroyableComponent {

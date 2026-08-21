@@ -1,0 +1,308 @@
+// Layout mixins shared by the extracted UI components.
+//
+// Each application still owns `core/scss/mixins/_mixin.scss` for its own screens.
+// This file holds the union of the layout primitives that both apps defined
+// identically, so a component living in `libs/shared/ui` compiles the same way
+// in either build. Definitions here must stay byte-identical to the app copies.
+
+@mixin em-d-flex-al-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin em-d-flex-al-start() {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin ellipsis-text($lines: 1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+@mixin flex_row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex_column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex_align_center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex_align_start() {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flex_align_end() {
+  display: flex;
+  align-items: flex-end;
+}
+
+@mixin flex_ai_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_jc_sb() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex_justify_between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex_justify_center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex_justify_end() {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin flex_justify_right() {
+  display: flex;
+  justify-content: right;
+}
+
+@mixin flex_wrap() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex_align_center_justify_between() {
+  @include flex_align_center();
+  justify-content: space-between;
+}
+
+@mixin flex_align_center_justify_end() {
+  @include flex_align_center();
+  justify-content: flex-end;
+}
+
+@mixin flex_center_justify_center() {
+  @include flex_align_center();
+  justify-content: center;
+}
+
+@mixin flex_start() {
+  @include flex_align_center();
+  justify-content: flex-start;
+}
+
+@mixin flex_row_justify_between() {
+  @include flex_row();
+  justify-content: space-between;
+}
+
+@mixin flex_row_align_center() {
+  @include flex_row();
+  align-items: center;
+}
+
+@mixin flex_column_align_start() {
+  @include flex_column();
+  align-items: flex-start;
+}
+
+@mixin flex_column_align_center() {
+  @include flex_column();
+  align-items: center;
+}
+
+@mixin flex_column_justify_between() {
+  @include flex_column();
+  justify-content: space-between;
+}
+
+@mixin flex_column_ai_jc_center() {
+  @include flex_column();
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex_ai_jc() {
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex_nowrap_ai_end() {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $color;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $color;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Breakpoints. Self-contained on purpose: each app's core/scss/mixins/_breakpoints
+// pulls in its variables.scss, so loading it with 'as *' next to 'variables as *'
+// makes every shared variable ambiguous. Bodies are identical to both app copies.
+// ---------------------------------------------------------------------------
+
+// Union of both apps' maps: client defined xlg, admin defined xxxl/xxxxl.
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xlg: 1024px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 2560px,
+  xxxxl: 3840px
+);
+
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl xxl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @if not $n {
+    @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+  }
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width.
+// The maximum value is reduced by 0.02px to work around the limitations of
+// `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Media between the breakpoints minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  $next: breakpoint-next($name, $breakpoints);
+  $max: breakpoint-max($next, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($next, $breakpoints) {
+      @content;
+    }
+  }
+}

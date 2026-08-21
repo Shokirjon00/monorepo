@@ -8,15 +8,12 @@ import { IPayment, IPaymentStatusAmount } from "@modules/transactions/payments/i
 import { ShiftsService } from "@modules/main-terminal/shifts/services/shifts.service";
 import { ShiftInfoConstants } from "@modules/main-terminal/shifts/shifts-detail/shifts-info/shift-info.constants";
 import { ICaption, IFilterParams, IHeader, IPaginate } from "@core/interfaces";
-import { TableComponent } from "@shared/components/table/table.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { NgxMaskPipe } from "ngx-mask";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { parseFilterParams, setDefaultFilterValue } from "@core/utils";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { DataSourceService } from "@core/services/data-source.service";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
+import { DataSourceService } from '@eskhata/data-access';
+import { DateTimePipe } from '@eskhata/util';
 
 @Component({
   standalone: true,

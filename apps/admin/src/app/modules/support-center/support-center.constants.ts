@@ -1,7 +1,7 @@
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { ICaption, IRowAction } from "@core/interfaces";
 import { MatchMode } from "@core/enums/match-mode.enum";
-import { TableRowActionEnum } from "@core/enums/table";
+import { TableRowActionEnum } from '@eskhata/util';
 import { tr } from "cronstrue/dist/i18n/locales/tr";
 
 export class SupportCenterConstants {

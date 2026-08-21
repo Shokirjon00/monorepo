@@ -1,22 +1,18 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { DestroyableComponent } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { IPaginate } from '@eskhata/util';
 import { ICashbackCompany } from '@modules/client/company/company-detail/cashback-company/interfaces/cashback-company.interface';
 import { CashbackCompanyService } from '@modules/client/company/company-detail/cashback-company/services/cashback-company.service';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { CashbackCompanyConstants } from "@modules/client/company/company-detail/cashback-company/cashback-company.constants";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { MerchantConstants } from "@modules/client/merchant/merchant.constants";
 
 @Component({

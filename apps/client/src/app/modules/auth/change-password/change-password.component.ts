@@ -3,17 +3,15 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { AuthService } from "@modules/auth/service/auth.service";
 import { TokenService } from "@core/services/token.service";
 import { Router } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
-import { DestroyableComponent } from "@core/directives/destroyable.component";
+import { MessageService } from '@eskhata/data-access';
+import { DestroyableComponent } from '@eskhata/util';
 import { PasswordValidator } from "@core/validators/password-validator";
 import { finalize, takeUntil } from "rxjs";
 import { RouteEnum, ToastEnum } from '@eskhata/util';
 import { setValidationErrors } from "@core/validators/set-validation-errors";
 import { NgxPermissionsService } from 'ngx-permissions';
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorModule } from "@shared/components/validator/validator.module";
-import { PasswordInputRulesComponent } from "@shared/components/password-input-rules/password-input-rules.component";
-import { ToastModule } from "@shared/components/toast/toast.module";
+import { PasswordInputRulesComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { SharedModule } from "@shared/shared.module";
 
 

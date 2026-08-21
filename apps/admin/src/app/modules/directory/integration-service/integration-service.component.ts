@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { environment } from '@environments/environment';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 
 @Component({

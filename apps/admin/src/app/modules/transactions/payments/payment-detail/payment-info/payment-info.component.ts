@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ITab } from '@core/interfaces/header.interface';
+import { DateTimePipe } from '@eskhata/util';
+import { ActionsComponent, EmHeaderComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import { PaymentsDetailConstants } from '../payment-detail.constants';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { IAction } from '@eskhata/util';
 import { PaymentsInfoConstants } from '../payment-info/payment-info.constants';
 import { AbstractPaymentComponent } from '@modules/transactions/abstract/payment.abstract';
 import { PaymentInfoService } from './service/payment-info.service';
@@ -14,7 +14,6 @@ import { IPaymentDetail } from '@modules/transactions/payments/interfaces';
 import { ToastEnum } from '@eskhata/util';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { finalize, takeUntil } from 'rxjs';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 
 @Component({

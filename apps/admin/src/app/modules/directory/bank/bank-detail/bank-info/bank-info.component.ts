@@ -4,10 +4,10 @@ import { IBankDetail } from '@modules/directory/bank/interfaces/bank-detail.inte
 import { BankService } from '@modules/directory/bank/services/bank.service';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 import { CompanyService } from "@modules/client/company/services/company.service";
 import { loadFile } from "@core/utils/load-file";
-import { HelperService } from "@core/services/helper.service";
+import { HelperService } from '@eskhata/data-access';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { switchMap } from "rxjs/operators";
 import { from } from "rxjs";

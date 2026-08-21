@@ -2,13 +2,13 @@ import { AfterViewInit, Component, DestroyRef, ElementRef, inject, OnInit, viewC
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { PaymentService } from './services/payment.service';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, DropdownComponent, EMPaginationComponent, EskhataBankLoaderComponent, MultiDropdownComponent, QuickFilterComponent, TableComponent, ToastModule } from '@eskhata/ui';
 import { IFilterParams, IHeader, IPaginate, IRowAction } from '@core/interfaces';
-import { ICaption } from '@core/interfaces/table1.interface';
-import { IAction } from '@shared/components/actions/action.interface';
+import { ICaption } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { MatDialog } from '@angular/material/dialog';
 import { Currencies, IPayment, IPaymentStatusAmount } from '@modules/payment/interfaces/payment.interface';
-import { HeaderService } from '@core/services/header.service';
+import { HeaderService } from '@eskhata/data-access';
 import { isEmptyObject } from '@core/utils/is-empty-object';
 import { environment as env } from '@environments/environment';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
@@ -18,25 +18,18 @@ import { EXPAND_DETAIL, ToastEnum } from '@eskhata/util';
 import { PaymentConfirmDialogComponent } from '@modules/payment/shared/payment-confirm-dialog/payment-confirm-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isPhone, PERIOD_ID, TODAY_ID } from '@core/helper';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { HttpResponse } from '@angular/common/http';
 import { printFile } from '@core/utils/print-file';
 import { FileSaverService } from 'ngx-filesaver';
-import { DateFormatEnum } from '@core/enums/date-format.enum';
+import { DateFormatEnum } from '@eskhata/util';
 import { DatePipe, NgClass } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { ToastModule } from '@shared/components/toast/toast.module';
-import { MultiDropdownComponent } from '@shared/components/multi-dropdown/multi-dropdown.component';
 import { provideNgxMask } from 'ngx-mask';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { QuickFilterComponent } from '@shared/components/quick-filter/quick-filter.component';
-import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { PaymentsConstants } from '@modules/payment/payments.constants';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { MatchMode } from '@core/enums/match-mode.enum';
 import { getFromLocalStorage } from '@core/utils';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -59,7 +52,7 @@ const paymentCompletedStatus = '5419a575-1c42-475e-90bc-5e16767ec806';
     NgxPermissionsModule,
     ActionsComponent,
     QuickFilterComponent,
-    PaginationComponent,
+    EMPaginationComponent,
     TableComponent,
     NgClass,
     DateTimePipe,
@@ -123,7 +116,6 @@ export class PaymentComponent  implements OnInit, AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
-    this.changePage();
     this.setDefault();
   }
 
@@ -261,7 +253,6 @@ export class PaymentComponent  implements OnInit, AfterViewInit {
       queryParams: this.queryParams,
     }).catch();
   }
-
 
   clearPeriod(): void {
     if (this.queryParams.startDate && this.queryParams.endDate) {
@@ -523,18 +514,14 @@ export class PaymentComponent  implements OnInit, AfterViewInit {
       });
   }
 
-  private changePage(): void {
-    this.headerService
-      .getPageChange()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(pageChange => {
-        if (pageChange) {
-          this.queryParams.page = pageChange.pageNumber;
-          this.queryParams.pageSize = pageChange.pageSize;
-          this.queryParams.filters = '';
-          this.updateRoute();
-        }
-      });
+  onPageChange(pageChange: IPaginate): void {
+    if (!pageChange) {
+      return;
+    }
+    this.queryParams.page = pageChange.pageNumber;
+    this.queryParams.pageSize = pageChange.pageSize;
+    this.queryParams.filters = '';
+    this.updateRoute();
   }
 
   private makePeriodLabel(queryParams: Params): string {

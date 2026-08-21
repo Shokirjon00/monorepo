@@ -164,7 +164,7 @@
                         optionValue="id"
                         optionLabel="name"
                         [isBottomSheet]="true"
-                        (changed)="selectStatusType($event)"
+                        (changed)="selectStatusType($event.selected)"
                         (dropdownToggle)="dropdownOpened(idx, $event)"
                         action="Выберите статус" />
                     }

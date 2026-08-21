@@ -1,15 +1,13 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, WritableSignal, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption } from '@core/interfaces/table.interface';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption } from '@eskhata/util';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse'
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { setDefaultFilterValue } from '@eskhata/util'
 import { DirectoryConstants } from "@modules/directory/directory.constants";
 import { CommissionTypeConstants } from "@modules/directory/commission-type/commission-type.constants";
 import { CommissionTypeService } from "@modules/directory/commission-type/services/commission-type.service";

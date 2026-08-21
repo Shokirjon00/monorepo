@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { TableComponent } from "@shared/components/table/table.component";
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { IOrderHistory } from "@modules/order/interfaces/order-history";
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { OrderDetailConstants } from "@modules/order/order-detail/order-detail.constants";
@@ -9,13 +7,11 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { OrderService } from "@modules/order/services/order.service";
 import { finalize } from "rxjs";
 import { isEmptyObject, parseFilterParams, setDefaultFilterValue } from "@core/utils";
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 
 @Component({
   selector: 'em-order-detail-list',

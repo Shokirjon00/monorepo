@@ -1,7 +1,7 @@
-import { ICaption } from "@core/interfaces/table.interface";
-import { ITab } from "@core/interfaces/header.interface";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import { ICaption } from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 import { MatchMode } from "@core/enums/match-mode.enum";
 
 export class UserHistoryConstants {

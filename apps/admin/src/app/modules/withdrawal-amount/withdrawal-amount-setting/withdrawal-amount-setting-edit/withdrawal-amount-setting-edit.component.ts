@@ -3,7 +3,7 @@ import { DatePipe, Location, NgOptimizedImage } from '@angular/common';
 import {
   WithdrawSetService
 } from '@modules/withdrawal-amount/withdrawal-amount-setting/services/withdrawal-amount-setting.service';
-import { ISelect } from '@core/interfaces/select.interface';
+import { IFilterParams, IHeader, IParam, ISelect, isGuid, ToastEnum, TooltipDirective } from '@eskhata/util';
 import {
   IMerchants,
   IWithdrawalAmountSettingDetail
@@ -11,7 +11,7 @@ import {
 import { finalize, Observable, of, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { MerchantService } from '@modules/client/merchant/services/merchant.service';
 import {
@@ -25,30 +25,20 @@ import {
   Validators
 } from '@angular/forms';
 import { environment as env } from '@environments/environment';
-import { IHeader } from '@core/interfaces/header.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
 import { delay, mergeMap } from 'rxjs/operators';
-import { ToastEnum } from '@eskhata/util';
 import {
   WithdrawalAmountSettingsDialogComponent
 } from '@shared/dialogs/withdrawal-amount-settings-dialog/withdrawal-amount-settings-dialog.component';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { SettingsValidator } from '@core/validators/settings- validator';
-import { isGuid } from '@core/utils/is-guid';
 import { ErrorService } from '@core/services/error.service';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
-import { IParam } from '@core/interfaces/param.interface';
 import moment from 'moment';
 import { SvgIconComponent } from "angular-svg-icon";
 import { NgxPermissionsAllowStubDirective, NgxPermissionsModule } from "ngx-permissions";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
+import { AutocompleteComponent, EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { TooltipDirective } from "@core/directives/tooltip.directive";
 import {
   IMessage
 } from "@modules/withdrawal-amount/withdrawal-amount-setting/withdrawal-amount-setting-edit/interface/message";

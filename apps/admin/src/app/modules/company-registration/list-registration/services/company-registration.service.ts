@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 import {IHttpResponse} from "@core/interfaces/http-response.interface";
 import {ICompanyRegistration} from "@modules/company-registration/list-registration/interfaces/company-registration.interfaces";
 import {ICompanyRegistrationDetail} from "@modules/company-registration/list-registration/interfaces/company-registration-detail.interfaces";
-import {ISelect} from "@core/interfaces/select.interface";
+import {ISelect} from '@eskhata/util';
 import {ICompanyRegistrationHistory} from "@modules/company-registration/list-registration/interfaces/company-registration-history.interfaces";
 
 @Injectable({

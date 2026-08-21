@@ -3,7 +3,7 @@ import { environment as env } from "@environments/environment";
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
 import { IHttpResponse } from "@core/interfaces/http-response.interface";
-import { ISelect } from "@core/interfaces/select.interface";
+import { ISelect } from '@eskhata/util';
 import { catchError } from 'rxjs/operators';
 import {
   ITelegramStatusResponse

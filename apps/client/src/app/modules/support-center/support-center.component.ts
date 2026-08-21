@@ -1,21 +1,16 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { SupportCenterConstants } from '@modules/support-center/support-center.constants';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, EskhataBankLoaderComponent, TableComponent, ToastModule } from '@eskhata/ui';
 import { ICaption, IFilterParams, IPaginate } from "@core/interfaces";
 import { ISupportCenter } from '@core/interfaces/support-center.interface';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { combineLatest, finalize } from "rxjs";
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { SupportCenterService } from '@modules/support-center/services/support-center.service';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { IAction } from '@shared/components/actions/action.interface';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ToastModule } from '@shared/components/toast/toast.module';
-import { EskhataBankLoaderComponent } from '@shared/components/eskhata-bank-loader/eskhata-bank-loader.component';
+import { IAction } from '@eskhata/util';
 import { SupportCenterMobileCardComponent } from "@modules/support-center/support-center-mobile-card/support-center-mobile-card.component";
 import { isPhone } from "@core/helper";
 

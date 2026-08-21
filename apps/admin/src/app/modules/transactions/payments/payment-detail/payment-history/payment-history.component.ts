@@ -1,15 +1,13 @@
 import { AfterViewInit, Component, inject, viewChild } from '@angular/core';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ToastComponent } from '@shared/components/toast/toast.component';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
 import { IPaymentHistory } from '@modules/transactions/payments/interfaces';
 import { ICaption, IPaginate } from '@core/interfaces';
 import { PAYMENTHISTORY_COLUMNS } from './payment-history.columns';
 import { PaymentsService } from '@modules/transactions/services/payments.service';
 import { finalize } from 'rxjs/operators';
 import { takeUntil } from 'rxjs';
-import { ActionsComponent } from '@shared/components/actions/actions.component';
-import { ITab } from '@core/interfaces/header.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { ITab } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { PaymentsDetailConstants } from '@modules/transactions/payments/payment-detail/payment-detail.constants';
 import {
   PaymentsHistoryConstants
@@ -18,8 +16,6 @@ import { AbstractPaymentComponent } from '@modules/transactions/abstract/payment
 import {
   PaymentHistoryService
 } from '@modules/transactions/payments/payment-detail/payment-history/services/payment-history.service';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { EbLoaderComponent } from "@shared/components/eb-loader/eb-loader.component";
 
 @Component({

@@ -1,10 +1,8 @@
 import { Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MessageService } from "@core/services";

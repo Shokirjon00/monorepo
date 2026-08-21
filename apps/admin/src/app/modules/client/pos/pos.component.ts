@@ -1,26 +1,22 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription, takeUntil } from 'rxjs';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
+import { ActionsComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, ToastComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
 import { PosService } from '@modules/client/pos/services/pos.service';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { IPos } from '@modules/client/pos/interfaces/pos.interface';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { IMerchantDetail } from '@modules/client/merchant/interfaces/merchant-detail.interface';
 import { IPaginate } from '@eskhata/util';
 import { HeaderService } from '@core/services/header.service';
 import { parseFilterParams } from '@core/utils/filter-util';
-import { setDefaultFilterValue } from '@core/utils/route-param-parse';
+import { setDefaultFilterValue } from '@eskhata/util';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
-import { ITab } from "@core/interfaces/header.interface";
+import { ITab } from '@eskhata/util';
 import { PosConstants } from "@modules/client/pos/pos.constants";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { IAction } from '@eskhata/util';
 import { ClientConstants } from "@modules/client/client.constants";
 
 @Component({

@@ -1,24 +1,21 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { finalize, Observable, of } from 'rxjs';
 import { CurrencyService } from '@core/services/currency.service';
 import { BankService } from '@modules/directory/bank/services/bank.service';
 import { IAccountDetail } from '@modules/client/company/interfaces/account-detail.interface';
 import { AccountService } from '@core/services/account.service';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { environment as env, environment } from '@environments/environment';
 import { delay, mergeMap } from 'rxjs/operators';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { AccountTypeID } from "./enums/account-type";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
+import { AutocompleteComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { NgxMaskDirective } from "ngx-mask";
-import { AutocompleteComponent } from "@shared/components/autocomplete/autocomplete.component";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({

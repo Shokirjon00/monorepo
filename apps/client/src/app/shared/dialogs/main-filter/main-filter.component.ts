@@ -1,29 +1,25 @@
 import { Component, DestroyRef, inject, TemplateRef, viewChild } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
-import { DestroyableComponent } from '@core/directives/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { ICaption } from '@core/interfaces/table.interface';
+import { ICaption } from '@eskhata/util';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BottomSheetComponent } from '@shared/components/bottom-sheet/bottom-sheet.component';
+import { BottomSheetComponent, CustomSelectListComponent, DropdownComponent, MultiDropdownComponent, SimpleSelectListComponent } from '@eskhata/ui';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IKeyValue } from '@core/interfaces/key-value.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ClickOutsideModule } from '@core/directives/click-outside/click-outside.module';
+import { ClickOutsideModule } from '@eskhata/util';
 import { DatePipe } from '@angular/common';
-import { DropdownComponent } from '@shared/components/dropdown/dropdown.component';
-import { MultiDropdownComponent } from '@shared/components/multi-dropdown/multi-dropdown.component';
 import { SelectPeriodDialogComponent } from '@shared/dialogs/select-period-dialog/select-period-dialog.component';
 import { environment as env } from '@environments/environment';
 import { PERIOD_ID, TODAY_ID } from "@core/helper";
-import { DateFormatEnum } from "@core/enums/date-format.enum";
+import { DateFormatEnum } from '@eskhata/util';
 import { IFilterParams, IParam } from "@core/interfaces";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { getFromLocalStorage, setToLocalStorage } from "@core/utils";
-import { StatusTypeConstants } from "@core/constants/status-type.constants";
+import { StatusTypeConstants } from '@eskhata/util';
 import moment from "moment";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { CustomSelectListComponent } from '@shared/components/custom-select-list/custom-select-list.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

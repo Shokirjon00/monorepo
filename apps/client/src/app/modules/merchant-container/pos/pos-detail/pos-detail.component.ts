@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbService } from "xng-breadcrumb";
 import { PosService } from "@modules/merchant-container/pos/services/pos.service";
-import { HeaderService } from "@core/services/header.service";
+import { HeaderService } from '@eskhata/data-access';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { IPosDetail } from "@modules/merchant-container/pos/interfaces/pos.interface";
 import { takeUntil } from "rxjs";
-import { DestroyableComponent } from "@core/directives/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 
 @Component({
   standalone: true,

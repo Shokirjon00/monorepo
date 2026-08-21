@@ -1,13 +1,11 @@
 import { AfterViewInit, Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { SupportCenterConstants } from "@modules/support-center/support-center.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { TableComponent } from "@shared/components/table/table.component";
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
 import { ICaption, IFilterParams, IPaginate, IRowAction } from "@core/interfaces";
 import { combineLatest, EMPTY, finalize, Observable } from "rxjs";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { parseFilterParams } from "@core/utils";
-import { EMPaginationComponent } from "@shared/components/em-pagination/pagination.component";
 import { SupportCenterService } from "@modules/support-center/services/support-center.service";
 import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
 import { MatDialog } from "@angular/material/dialog";

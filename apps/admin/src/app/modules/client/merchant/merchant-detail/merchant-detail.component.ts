@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ICaption } from '@core/interfaces/table.interface';
-import { IAction } from '@shared/components/actions/actions.interface';
-import { ActionEnum } from '@core/enums/action-enum';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { ICaption } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { HeaderService } from '@core/services/header.service';
 import { takeUntil } from 'rxjs';

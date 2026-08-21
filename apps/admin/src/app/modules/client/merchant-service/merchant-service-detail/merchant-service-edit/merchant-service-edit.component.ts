@@ -6,10 +6,10 @@ import {
   ReactiveFormsModule, Validators
 } from '@angular/forms';
 import { finalize, Observable, of, takeUntil } from 'rxjs';
-import { ISelect } from '@core/interfaces/select.interface';
+import { ISelect } from '@eskhata/util';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from '@core/services/message.service';
+import { MessageService } from '@eskhata/data-access';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastEnum } from '@eskhata/util';
 import { mergeMap } from 'rxjs/operators';
@@ -17,19 +17,15 @@ import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { EMBaseForm } from '@core/abstract/base-form.abstract';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { SimpleSelectListComponent } from '@shared/components/simple-select-list/simple-select-list.component';
-import { ValidatorComponent } from '@shared/components/validator/validator.component';
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
-import { ToastComponent } from '@shared/components/toast/toast.component';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
-import { MultiSelectListModule } from "@shared/components/multi-select-list/multi-select-list.module";
 import { ParamService } from "@modules/client/merchant-service/services/service.service";
 import { IMerchantService } from "@modules/client/merchant-service/interfaces/merchant-service.interface";
 import { PosTypeService } from "@modules/client/merchant-service/services/posType.service";
 import { MerchantServiceService } from "@modules/client/merchant-service/services/merchant-service.service";
 import { DeepClone } from "@core/utils/deep-clone";
 import { DirectoryOptionsConstants } from "@modules/directory/directory-options/directory-options.constants";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 
 @Component({
   standalone: true,
@@ -43,7 +39,6 @@ import { EmHeaderComponent } from "@shared/components/em-header/em-header.compon
     ValidatorComponent,
     EbLoaderComponent,
     ToastComponent,
-    MultiSelectListModule,
     FormsModule,
     EmHeaderComponent
   ],

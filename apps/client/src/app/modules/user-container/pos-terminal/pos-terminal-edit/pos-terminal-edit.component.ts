@@ -1,21 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MultiSelectComponent } from "@shared/components/multi-select/multi-select.component";
+import { EmHeaderComponent, MultiSelectComponent, SimpleSelectListComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { Location } from "@angular/common";
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ToastModule } from "@shared/components/toast/toast.module";
-import { ValidatorModule } from "@shared/components/validator/validator.module";
 import { MerchantService } from "@modules/merchant-container/merchant/services/merchant.service";
 import { PosService } from "@modules/merchant-container/pos/services/pos.service";
-import { DestroyableComponent } from "@core/directives/destroyable.component";
-import { ISelect } from "@core/interfaces/select.interface";
+import { DestroyableComponent } from '@eskhata/util';
+import { ISelect } from '@eskhata/util';
 import { IFilterParams, IHeader } from "@core/interfaces";
 import { ActivatedRoute, Router } from "@angular/router";
-import { MessageService } from "@core/services/message.service";
-import { HeaderService } from "@core/services/header.service";
+import { MessageService } from '@eskhata/data-access';
+import { HeaderService } from '@eskhata/data-access';
 import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, map, Observable, of, Subject, timer } from "rxjs";
 import { mergeMap, takeUntil } from "rxjs/operators";
@@ -26,7 +23,6 @@ import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IUsers } from "@modules/user-container/user/interfaces/users.interface";
 import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
 import { Platform } from "@angular/cdk/platform";
 
 

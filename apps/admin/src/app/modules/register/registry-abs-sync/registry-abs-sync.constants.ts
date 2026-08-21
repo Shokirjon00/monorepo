@@ -1,8 +1,8 @@
-import {ICaption} from "@core/interfaces/table.interface";
-import {TableFieldTypes} from "@core/enums/table";
-import { ITab } from "@core/interfaces/header.interface";
-import { IAction } from "@shared/components/actions/actions.interface";
-import { ActionEnum } from "@core/enums/action-enum";
+import {ICaption} from '@eskhata/util';
+import {TableFieldTypes} from '@eskhata/util';
+import { ITab } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
+import { ActionEnum } from '@eskhata/util';
 
 export class RegistryAbsSync {
 

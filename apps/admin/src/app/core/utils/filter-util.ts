@@ -1,7 +1,7 @@
-import {IFilterParams} from '@core/interfaces/filter-params.interface';
+import {IFilterParams} from '@eskhata/util';
 import {SieveOperators} from '@core/enums/sieve.enum';
-import {isGuid, isListOfGuids} from '@core/utils/is-guid';
-import {ICaption} from '@core/interfaces/table.interface';
+import {isGuid, isListOfGuids} from '@eskhata/util';
+import {ICaption} from '@eskhata/util';
 import {MatchMode} from '@core/enums/match-mode.enum';
 
 export function parseFilterParams(filters: { [key: string]: any }, param: IFilterParams, captions: ICaption[] = []): IFilterParams {

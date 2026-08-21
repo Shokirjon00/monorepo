@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
-import { ITab } from "@core/interfaces/header.interface";
+import { ActionsComponent, EmHeaderComponent, ToastComponent } from '@eskhata/ui';
+import { ITab } from '@eskhata/util';
 import { ActivatedRoute } from "@angular/router";
 import { OrderDetailConstants } from "@modules/order/order-detail/order-detail.constants";
 import { finalize } from "rxjs";
@@ -8,12 +8,10 @@ import { OrderService } from "@modules/order/services/order.service";
 import { IFilterParams, IPaginate } from "@core/interfaces";
 import { IOrderDetailHistory } from "@modules/order/interfaces/order-detail-history";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { DateTimePipe } from "@core/pipe/date-time.pipe";
-import { ActionsComponent } from "@shared/components/actions/actions.component";
-import { IAction } from "@shared/components/actions/actions.interface";
+import { DateTimePipe } from '@eskhata/util';
+import { IAction } from '@eskhata/util';
 import { ToastEnum } from '@eskhata/util';
 import { MessageService } from "@core/services";
-import { ToastComponent } from "@shared/components/toast/toast.component";
 
 @Component({
   selector: 'em-order-detail-histories',

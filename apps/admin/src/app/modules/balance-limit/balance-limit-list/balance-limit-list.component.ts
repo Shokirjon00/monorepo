@@ -1,19 +1,17 @@
 import { AfterViewInit, Component, inject, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TableComponent } from '@shared/components/table/table.component';
-import { ICaption, IRowAction } from '@core/interfaces/table.interface';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { EmHeaderComponent, EMPaginationComponent, TableComponent } from '@eskhata/ui';
+import { ICaption, IRowAction } from '@eskhata/util';
+import { DestroyableComponent } from '@eskhata/util';
 import { BalanceLimitService } from '@modules/balance-limit/services/balance-limit.service';
 import { finalize, takeUntil } from 'rxjs';
 import { IBalanceLimit } from '@modules/balance-limit/Interfaces/balance-limit.interface';
 import { IPaginate } from '@eskhata/util';
-import { IFilterParams } from '@core/interfaces/filter-params.interface';
+import { IFilterParams } from '@eskhata/util';
 import { parseFilterParams } from '@core/utils/filter-util';
 import { CaptionService } from '@core/services/caption.service';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 import { BalanceLimitListConstants } from '@modules/balance-limit/balance-limit-list/balance-limit-list.constants';
-import { EmHeaderComponent } from '@shared/components/em-header/em-header.component';
-import { EMPaginationComponent } from '@shared/components/em-pagination/pagination.component';
 import { BalanceLimitConstants } from "@modules/balance-limit/balance-limit.constants";
 
 @Component({

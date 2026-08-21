@@ -2,8 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
-import { ToastComponent } from "@shared/components/toast/toast.component";
-import { ValidatorComponent } from "@shared/components/validator/validator.component";
+import { EmHeaderComponent, SimpleSelectListComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 import { EMBaseForm } from "@core/abstract/base-form.abstract";
 import {
   IDirectoryOptionsDetail
@@ -14,13 +13,11 @@ import { ToastEnum, WhiteSpaceValidator } from '@eskhata/util';
 import { finalize, Observable, of, takeUntil } from "rxjs";
 import { delay, mergeMap } from "rxjs/operators";
 import { setValidationErrors } from "@core/validators/set-validation-errors";
-import { MessageService } from "@core/services/message.service";
+import { MessageService } from '@eskhata/data-access';
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material/dialog";
-import { latinPatternValidator } from "@core/utils/custom-validators";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { latinPatternValidator } from '@eskhata/util';
 import { DirectoryOptionsConstants } from "@modules/directory/directory-options/directory-options.constants";
-import { SimpleSelectListComponent } from "@shared/components/simple-select-list/simple-select-list.component";
 
 @Component({
   standalone: true,

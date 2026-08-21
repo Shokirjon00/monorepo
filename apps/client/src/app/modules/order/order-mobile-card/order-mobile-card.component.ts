@@ -1,5 +1,5 @@
 import { Component, Input, output } from '@angular/core';
-import { DateTimePipe } from '@core/pipe/date-time.pipe';
+import { DateTimePipe } from '@eskhata/util';
 import { IOrder } from '@modules/order/interfaces/order';
 
 @Component({

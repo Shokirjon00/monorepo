@@ -3,12 +3,12 @@ import { NgxPermissionsModule } from "ngx-permissions";
 import { SvgIconComponent } from "angular-svg-icon";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { DestroyableComponent } from "@core/abstract/destroyable.component";
+import { DestroyableComponent } from '@eskhata/util';
 import { IHeader } from "@core/interfaces";
 import { HeaderService } from "@core/services";
 import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services/pos-terminal.service";
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";
-import { EmHeaderComponent } from "@shared/components/em-header/em-header.component";
+import { EmHeaderComponent } from '@eskhata/ui';
 
 @Component({
   selector: 'em-pos-terminal-info',

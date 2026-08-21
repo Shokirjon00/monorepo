@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ITab } from '@core/interfaces/header.interface';
+import { ITab } from '@eskhata/util';
 
 import { RouterModule } from '@angular/router';
 

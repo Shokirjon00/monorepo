@@ -16,9 +16,5 @@ export const MAX_PHONE_NUMBER = 4;
 export const ANALYTICS_PERIOD_DAY = 31;
 export const FILTER_LIFETIME_MS = 2 * 60 * 60 * 1000;
 
-export function isPhone(): boolean {
-  if (typeof window.matchMedia === 'function') {
-    return window.matchMedia('(max-width: 767.98px)').matches;
-  }
-  return false;
-}
+// Реализации переехали в @eskhata/util; ре-экспорт сохраняет импорты '@core/helper'.
+export { isPhone, isLandscapeTablet } from '@eskhata/util';

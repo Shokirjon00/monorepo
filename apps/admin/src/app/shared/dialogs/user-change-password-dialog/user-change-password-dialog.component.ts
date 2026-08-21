@@ -2,9 +2,9 @@ import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core'
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {UserService} from '@core/services/user.service';
 import {finalize, of, takeUntil} from 'rxjs';
-import {DestroyableComponent} from '@core/abstract/destroyable.component';
+import {DestroyableComponent} from '@eskhata/util';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {MessageService} from '@core/services/message.service';
+import {MessageService} from '@eskhata/data-access';
 import { ToastEnum, ErrorStatusCodeEnum } from '@eskhata/util';
 import {PasswordValidator} from '@core/validators/password-validator';
 import {delay, mergeMap} from 'rxjs/operators';
@@ -14,9 +14,7 @@ import {AuthService} from '@modules/auth/service/auth.service';
 import {TokenService} from '@core/services/token.service';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {SharedModule} from '@shared/shared.module';
-import {ValidatorComponent} from '@shared/components/validator/validator.component';
-import {ToastComponent} from '@shared/components/toast/toast.component';
-import {PasswordInputRulesComponent} from "@shared/components/password-input-rules/password-input-rules.component";
+import { PasswordInputRulesComponent, ToastComponent, ValidatorComponent } from '@eskhata/ui';
 
 @Component({
   standalone: true,

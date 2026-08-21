@@ -182,7 +182,7 @@
     <div class="footer-container">
       <div class="title-h1 mb-6">На карте</div>
       @if (!invalidCoordinates) {
-        <em-map [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude"
+        <em-map [restrictInput]="true" [flyOnChange]="true" [latitude]="merchantDetail?.latitude" [longitude]="merchantDetail?.longitude"
                 (changed)="changeMap($event)" />
       }
     </div>

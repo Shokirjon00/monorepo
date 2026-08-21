@@ -1,10 +1,10 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { IAction } from '@shared/components/actions/actions.interface';
+import { IAction } from '@eskhata/util';
 import { takeUntil } from 'rxjs';
 import { CompanyService } from '@modules/client/company/services/company.service';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { DestroyableComponent } from '@core/abstract/destroyable.component';
+import { DestroyableComponent } from '@eskhata/util';
 import { ICompanyDetail } from '@modules/client/company/interfaces/company-detail.interface';
 import { HeaderService } from '@core/services/header.service';
 import { CompanyDetailsConstants } from "@modules/client/company/company-detail/company-detail.constants";

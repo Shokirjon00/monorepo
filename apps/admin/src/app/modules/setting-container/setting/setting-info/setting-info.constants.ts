@@ -1,4 +1,4 @@
-import { ActionEnum } from "@core/enums/action-enum";
+import { ActionEnum } from '@eskhata/util';
 
 export class SettingInfoConstants {
 
