@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit, signal, viewChild } from '@angular/core';
+import { AfterViewInit, Component, DOCUMENT, inject, OnInit, signal, viewChild } from '@angular/core';
 import { ActionsComponent, BottomSheetComponent, EmHeaderComponent, EMPaginationComponent, TableComponent, TopButtonComponent } from '@eskhata/ui';
 import { IAction } from '@eskhata/util';
 import { ICaption, IFilterParams, IOptionAction, IPaginate, IRowAction } from '@core/interfaces';
@@ -98,6 +98,8 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
   ];
 
   readonly statusCode = TableStatusEnum;
+  readonly mainBody = signal<HTMLElement | null>(null);
+  private readonly document = inject(DOCUMENT);
   private readonly dialog = inject(MatDialog);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
@@ -125,6 +127,7 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
       isSelected: true
     } as ICaption));
     this.table()?.render(this.columns, this.payments);
+    this.mainBody.set(this.document.querySelector('.main-body'));
   }
 
   statusIndicator(statusId: string): string {
