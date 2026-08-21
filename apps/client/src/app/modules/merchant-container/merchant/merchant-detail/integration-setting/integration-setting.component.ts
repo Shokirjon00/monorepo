@@ -12,7 +12,6 @@ import { EmHeaderComponent, EskhataBankLoaderComponent, ToastModule } from '@esk
 import { ITab } from "@core/interfaces";
 import { PosConstants } from "@modules/merchant-container/pos/pos.constants";
 
-
 @Component({
   standalone: true,
   selector: 'em-integration-setting',

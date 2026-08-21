@@ -67,7 +67,6 @@ export function minLengthValidator(minLength: number): any {
   };
 }
 
-/** Client-only before the merge. */
 export function onlyLatinPattern(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
@@ -80,7 +79,6 @@ export function onlyLatinPattern(): ValidatorFn {
   };
 }
 
-/** Admin-only before the merge. */
 export function latinPatternValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const valid = /^[A-Za-z-_]*$/.test(control.value);
@@ -88,7 +86,6 @@ export function latinPatternValidator(): ValidatorFn {
   };
 }
 
-/** Admin-only before the merge. */
 export function digitsOnlyValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     if (!control.value) {
@@ -104,6 +101,5 @@ function isEmptyInputValue(value: any): boolean {
 }
 
 function hasValidLength(value: any): boolean {
-  // non-strict comparison is intentional, to check for both `null` and `undefined` values
   return value != null && typeof value.length === 'number';
 }

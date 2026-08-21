@@ -11,9 +11,7 @@ import { DestroyableComponent, isPhone } from '@eskhata/util';
 import { QuickFilterComponent } from '../quick-filter/quick-filter.component';
 import { ICaption } from '@eskhata/util';
 
-
 import { NgClass } from '@angular/common';
-
 
 @Component({
   standalone: true,

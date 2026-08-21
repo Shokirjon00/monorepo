@@ -58,7 +58,6 @@ export class GeneratingReportsComponent extends DestroyableComponent implements 
     return this.form.controls;
   }
 
-
   ngOnInit(): void {
     this.creatForm();
     this.getReportDictionary()
@@ -129,7 +128,6 @@ export class GeneratingReportsComponent extends DestroyableComponent implements 
         takeUntil(this.destroyed$))
       .subscribe(res => this.reportDictionary = res.data)
   }
-
 
   private creatForm(): void {
     this.form = this.fb.group({

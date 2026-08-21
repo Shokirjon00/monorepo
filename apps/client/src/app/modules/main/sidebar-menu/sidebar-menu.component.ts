@@ -111,11 +111,6 @@ export class SidebarMenuComponent extends DestroyableComponent implements OnInit
             'FoodVendorStatisticsClientAnalytics',
           ],
         },
-        // {
-        //   text: 'Мой рейтинг',
-        //   route: 'rating',
-        //   permissionName: 'FoodVendorOrderList',
-        // },
         {
           text: 'Оценка и отзывы',
           route: 'order-reviews',

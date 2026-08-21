@@ -17,7 +17,6 @@ import {
   ResponsibeBankEmployeesConstants
 } from "@modules/directory/responsible-bank-employees/responsibe-bank-employees.constants";
 
-
 @Component({
   standalone: true,
   selector: 'em-responsible-bank-employees',
@@ -63,7 +62,6 @@ export class ResponsibleBankEmployeesComponent extends DestroyableComponent impl
           }).catch();
       })
   }
-
 
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({

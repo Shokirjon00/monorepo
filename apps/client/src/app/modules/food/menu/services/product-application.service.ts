@@ -15,7 +15,6 @@ export class ProductApplicationsService {
 
   private http = inject(HttpClient);
 
-
   getProductApplicationList(queryParams: Params): Observable<IHttpResponse<IMenu[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IMenu[]>>(`${this.productApplicationsUrl}`, {params});

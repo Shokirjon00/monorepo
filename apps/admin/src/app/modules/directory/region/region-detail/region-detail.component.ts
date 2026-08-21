@@ -11,5 +11,4 @@ export class RegionDetailComponent {
 
   constructor() { }
 
-
 }

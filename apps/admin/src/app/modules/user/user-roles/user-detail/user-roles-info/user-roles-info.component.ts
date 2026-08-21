@@ -42,7 +42,6 @@ export class UserRolesInfoComponent extends DestroyableComponent implements OnIn
   private readonly messageService = inject(MessageService);
   private clientUserId = this.activatedRoute.snapshot.parent.params['userRolesId'];
 
-
   ngOnInit(): void {
     this.getClientUser();
   }

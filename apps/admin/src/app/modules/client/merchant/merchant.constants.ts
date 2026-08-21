@@ -165,7 +165,6 @@ export class MerchantConstants {
     }
   ]
 
-
   static getHeaderTabs(companyId: string): ITab[] {
     return [
       {

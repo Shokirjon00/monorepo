@@ -103,7 +103,6 @@ export class PaymentContinueRulesEditComponent extends EMBaseForm implements OnI
       });
   }
 
-
   private creatForm(): void {
     this.form = this.fb.group({
       id: [this.rulesId],

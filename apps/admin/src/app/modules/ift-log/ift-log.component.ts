@@ -67,7 +67,6 @@ export class IftLogComponent extends DestroyableComponent implements OnInit, Aft
     this.getIftLogs()
   }
 
-
   private getIftLogs(params = this.filterParams): void {
     this.loading.set(true);
     this.service.getIftLogs(params)

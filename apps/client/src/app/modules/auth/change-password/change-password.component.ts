@@ -14,7 +14,6 @@ import { SvgIconComponent } from "angular-svg-icon";
 import { PasswordInputRulesComponent, ToastModule, ValidatorModule } from '@eskhata/ui';
 import { SharedModule } from "@shared/shared.module";
 
-
 @Component({
   standalone: true,
   selector: 'em-change-password',

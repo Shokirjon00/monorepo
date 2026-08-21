@@ -196,7 +196,6 @@ export class PosTerminalComponent extends DestroyableComponent implements OnInit
       });
   }
 
-
   private getTabItems(): void {
     if (this.companyId) {
       this.tabMenuItems = PosTerminalsConstants.getPosHeaderTabs(this.companyId, this.merchantId)

@@ -41,7 +41,6 @@ export class AllowListInfoComponent extends DestroyableComponent implements OnIn
   private id = this.activatedRoute.snapshot.params['id'];
   actions: IAction[] = AllowListConstants.getActions(this.id)
 
-
   ngOnInit(): void {
     this.form = this.fb.group({contractFileId: ''});
     this.getDetail()

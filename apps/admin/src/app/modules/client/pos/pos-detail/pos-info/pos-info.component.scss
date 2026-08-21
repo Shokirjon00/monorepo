@@ -5,7 +5,6 @@
 @import 'core/scss/form';
 @import 'core/scss/mixins/mixin';
 
-
 .qr {
   position: relative;
   border: 0.0625rem solid rgb(137, 131, 131);
@@ -75,7 +74,6 @@
     display: flex;
     position: relative;
   }
-
 
   .qr-code-title-A5 {
     font-size: 0.875rem;
@@ -182,8 +180,6 @@
     color-adjust: exact;
   }
 }
-
-
 
 @page {
   size: A4 portrait;

@@ -6,7 +6,6 @@ import { MatchMode } from "@core/enums/match-mode.enum";
 
 export class ResponsibeBankEmployeesConstants {
 
-
   static readonly RESPONSIBE_BANK_COLUMNS: ICaption[] = [
     {
       key: 'Статус',

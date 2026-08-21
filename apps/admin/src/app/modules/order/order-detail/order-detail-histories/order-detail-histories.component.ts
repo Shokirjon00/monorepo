@@ -42,7 +42,6 @@ export class OrderDetailHistoriesComponent implements OnInit {
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.orderId =  this.activatedRoute.snapshot.parent.params['id'];
     this.tabMenuItems = OrderDetailConstants.getHeaderTabs(this.orderId);

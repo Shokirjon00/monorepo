@@ -3,7 +3,6 @@
 @import "core/scss/mixins/mixin";
 
 .auth {
-  //width: 100%;
 @include flex_ai_center();
   padding: 2rem;
   background: url("/assets/images/auth-bg.webp") no-repeat center center;

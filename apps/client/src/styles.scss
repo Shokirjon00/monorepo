@@ -1,7 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 @use 'core/scss/variables' as *;
 @use 'core/scss/mixins/breakpoints' as *;
-//@import 'assets/fonts/Roboto/roboto';
 @font-face {
   font-family: 'Roboto';
   src: local('Roboto Thin'), local('Roboto-Thin'), url('/assets/fonts/Roboto/Roboto-Thin.woff') format('woff'), url('/assets/fonts/Roboto/Roboto-Thin.ttf') format('truetype');

@@ -47,7 +47,6 @@ export class AccountHistoryComponent extends DestroyableComponent implements OnI
   };
   private accountId = this.route.snapshot.params['accountId'];
 
-
   ngOnInit(): void {
     this.initRouteParams()
   }

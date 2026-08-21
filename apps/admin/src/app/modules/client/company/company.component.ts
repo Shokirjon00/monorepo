@@ -51,7 +51,6 @@ export class CompanyComponent implements AfterViewInit, OnInit {
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.store.setCompanyId(null);
     this.store.setBankAcquirer(null);

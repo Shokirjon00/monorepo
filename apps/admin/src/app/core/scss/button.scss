@@ -6,8 +6,6 @@
   border-radius: 8px;
   border: 0;
   outline: 0;
-  //max-width: 220px;
-  //width: 100%;
   transition: 200ms;
   white-space: nowrap;
   cursor: pointer;
@@ -26,13 +24,6 @@
     }
   }
 
-  //&__loader {
-  //  width: 50px;
-  //  height: 50px;
-  //  background-image: url("/../../assets/icons/loader.svg");
-  //  display: block;
-  //  background-size: 100%;
-  //}
   &.btn-lg {
     width: 264px;
     min-height: 56px;

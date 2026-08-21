@@ -18,16 +18,8 @@ export class MapComponent extends DestroyableComponent implements OnInit, OnChan
   @Input() latitude: number;
   @Input() disabled: boolean;
 
-  /**
-   * Blocks non-numeric keystrokes in the coordinate inputs. Only the client copy
-   * did this before the merge, so it stays opt-in to leave admin's inputs as they were.
-   */
   @Input() restrictInput = false;
 
-  /**
-   * Re-centres the map when the bound coordinates change, warning via toast when
-   * they are out of range. Client-only behaviour before the merge.
-   */
   @Input() flyOnChange = false;
 
   readonly changed = output<any>();
@@ -45,7 +37,6 @@ export class MapComponent extends DestroyableComponent implements OnInit, OnChan
   private map: L.Map;
 
   ngOnInit(): void {
-    // admin's copy used the auto-unsubscribing helper; client's raw timer leaked.
     this.setTimeout(() => {
       this.loadMap();
       this.getPoint();

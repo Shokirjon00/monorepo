@@ -3,10 +3,6 @@ export interface ITable {
   data?: any;
 }
 
-/**
- *  @TODO: create own interface for filter fields and remove ICaption
- * @Deprecated
- */
 export interface ICaption {
   key?: string;
   index?: number;
@@ -31,7 +27,6 @@ export interface ICaption {
   apiUrl?: string;
 }
 
-// TODO: create IFilterField and ITableColumn
 interface IColumn {
   key: string;
   field: string;

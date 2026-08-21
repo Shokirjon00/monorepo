@@ -1,6 +1,3 @@
-/**
- * get OS name Linux|Windows|IOS
- */
 export function getOSName(): string {
   let name = 'Unknown OS';
   if (navigator.userAgent.indexOf('Win') !== -1) {

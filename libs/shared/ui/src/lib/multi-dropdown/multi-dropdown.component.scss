@@ -35,7 +35,6 @@
 
 .select-field {
   cursor: pointer;
-  //max-width: 216px;
 
   &__container {
     width: 100%;
@@ -128,7 +127,6 @@
   .form-control {
     @include m.flex_jc_sb();
     gap: 1rem;
-    //padding: 17px 8px 17px 16px;
 
     .value {
       color: $secondary-text-color;
@@ -142,7 +140,6 @@
     }
 
     &.focused {
-      //border-color: $primary-color;
     }
   }
 

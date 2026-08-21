@@ -5,10 +5,6 @@ import { Params } from '@angular/router';
 import { ENVIRONMENT } from '@eskhata/environment';
 import { resolveApiUrl } from '../utils/resolve-api-url';
 
-/**
- * Endpoints that only answer to POST. The list is the union of both apps'
- * previous copies — admin knew the first two, client also knew the third.
- */
 const POST_ONLY_ENDPOINTS = ['poses/dictionary', 'merchants/dictionary', 'poses/dictionary_without_pagination'];
 
 @Injectable({

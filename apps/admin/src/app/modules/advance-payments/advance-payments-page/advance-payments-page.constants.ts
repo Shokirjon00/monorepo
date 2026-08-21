@@ -118,7 +118,6 @@ export class AdvancePaymentsPageConstants {
     }
   ];
 
-
   static readonly ADVANCE_ACTIONS: IAction[] = [
     {
       code: ActionEnum.EXPORT,

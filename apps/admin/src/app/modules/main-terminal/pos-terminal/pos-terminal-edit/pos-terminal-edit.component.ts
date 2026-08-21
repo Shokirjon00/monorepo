@@ -20,7 +20,6 @@ import { PosTerminalService } from "@modules/main-terminal/pos-terminal/services
 import { IPosTerminal } from "@modules/main-terminal/pos-terminal/interfaces/pos-terminal.interface";
 import { NgxMaskDirective } from "ngx-mask";
 
-
 @Component({
   standalone: true,
   selector: 'em-pos-terminal-edit',
@@ -115,7 +114,6 @@ export class PosTerminalEditComponent extends EMBaseForm implements OnInit {
       });
   }
 
-
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
@@ -199,7 +197,6 @@ export class PosTerminalEditComponent extends EMBaseForm implements OnInit {
     this.oldCompanyId = companyId;
   }
 
-
   changeMerchant(merchantIds: string[]): void {
     const currentPoses = this.form.get('poses').value || [];
     const updatedPoses = currentPoses.filter((poseId: string) => {
@@ -217,7 +214,6 @@ export class PosTerminalEditComponent extends EMBaseForm implements OnInit {
 
     this.posFilter = 'merchantId==' + merchantIds.join('|');
   }
-
 
   private getMerchantDictionary(params: IFilterParams): void {
     params.addDeactives = true;

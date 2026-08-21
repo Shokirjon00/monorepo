@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { ngxPermissionsGuard } from 'ngx-permissions';
 import { PermissionRedirectGuard } from "@core/guards/permission-redirect.guard";
 
-
 export const PAYMENT_DETAIL_ROUTING: Routes = [
   {
     path: '',

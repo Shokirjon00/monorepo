@@ -34,7 +34,6 @@ export class PaymentConfirmDialogComponent extends DestroyableComponent implemen
   loading: boolean = false;
   paymentRefundReasonId: string;
 
-
   constructor(
     public readonly dialogRef: MatDialogRef<PaymentConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel,

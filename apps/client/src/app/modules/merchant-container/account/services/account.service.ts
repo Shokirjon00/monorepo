@@ -13,16 +13,10 @@ export class AccountService {
   private apiUrl = `${env.apiUrl}/${env.api.accounts}`;
   private http = inject(HttpClient);
 
-
   getRequisites(queryParams: Params): Observable<IHttpResponse<ISelect[]>> {
     const params = new HttpParams({ fromObject: queryParams });
     return this.http.get<IHttpResponse<ISelect[]>>(`${this.apiUrl}/${env.api.requisites}`, { params });
   }
-
-  // getRequisitesCards(queryParams: Params): Observable<IHttpResponse<ISelect[]>> {
-  //   const params = new HttpParams({fromObject: queryParams});
-  //   return this.http.get<IHttpResponse<ISelect[]>>(`${this.apiUrl}/${env.api.requisites}/${env.api.cards}`,{params});
-  // }
 
   getAccounts(queryParams: Params): Observable<IHttpResponse<IAccount[]>> {
     const params = new HttpParams({ fromObject: queryParams });

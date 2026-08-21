@@ -6,7 +6,6 @@
 @import 'core/scss/paddings';
 @import 'core/scss/form';
 
-
 .sms-notification {
 
   .sms-text {
@@ -34,11 +33,9 @@
   }
 }
 
-
 .select-field {
   cursor: pointer;
   width: 100%;
-  //max-width: 216px;
 
   &__container {
     width: 100%;
@@ -102,10 +99,8 @@
 
   .form-control {
     @include flex_jc_sb();
-    //padding: 17px 8px 17px 16px;
 
     &.focused {
-      //border-color: $primary-color;
     }
   }
 
@@ -116,16 +111,16 @@
     font-size: inherit;
     tab-index: 0;
 
-    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    &::placeholder {
       color: $palette;
-      opacity: 1; /* Firefox */
+      opacity: 1;
     }
 
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    &:-ms-input-placeholder {
       color: $palette;
     }
 
-    &::-ms-input-placeholder { /* Microsoft Edge */
+    &::-ms-input-placeholder {
       color: $palette;
     }
   }
@@ -172,19 +167,5 @@
     height: 40px;
     border-radius: 100%;
 
-    //.icon {
-    //  background-image: url("/../../../../assets/icons/search-list.svg");
-    //  background-size: 100%;
-    //  width: 16px;
-    //  height: 18px;
-    //}
-    //
-    //&:hover {
-    //  background-color: #3D40C6;
-    //
-    //  .icon {
-    //    background-image: url("/../../../../assets/icons/search-list-white.svg");
-    //  }
-    //}
   }
 }

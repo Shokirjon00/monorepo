@@ -17,29 +17,16 @@ export class TabMenuComponent implements OnInit {
   readonly enableDropdown = input<boolean>(false);
   readonly dropdownLabel = input<string>('');
 
-  /**
-   * Number of tabs shown inline before the rest collapse into the dropdown.
-   * admin split after 5, client after 6, so each app passes its own value.
-   */
   readonly overflowAfter = input<number>(5);
 
-  /**
-   * Ignores `enableDropdown` and derives it from the viewport instead. Client's
-   * copy did this unconditionally; admin honoured the bound value.
-   */
   readonly dropdownFromViewport = input<boolean>(false);
 
-  /**
-   * Applies `*ngxPermissionsOnly` to the dropdown entries. admin filtered them,
-   * client listed every overflow tab regardless of permission.
-   */
   readonly filterDropdownByPermission = input<boolean>(true);
 
   selectedLabel = signal<string | null>(null);
   showDropdown = signal<boolean>(false);
   isMobile = signal<boolean>(isPhone());
 
-  /** Effective dropdown flag after the viewport override. */
   readonly dropdownEnabled = computed(() =>
     this.dropdownFromViewport() ? !this.isMobile() : this.enableDropdown()
   );
@@ -82,8 +69,6 @@ export class TabMenuComponent implements OnInit {
     const path = this.router.url.split('?')[0];
     const items = this.tabItems();
 
-    // Both apps hard-coded 5 here regardless of their overflow threshold; kept as
-    // is so neither app's dropdown label changes.
     const match = items?.length > 5 ? items.slice(5).find(item => path.endsWith(item.path)) : null;
 
     if (match) {

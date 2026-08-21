@@ -63,7 +63,6 @@ export class CompanySegmentComponent extends DestroyableComponent implements OnI
       })
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,

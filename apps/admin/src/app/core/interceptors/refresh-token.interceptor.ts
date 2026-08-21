@@ -62,7 +62,6 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
               if (res.status) {
                 this.tokenService.setTokens(res.meta);
                 this.tokenSubject$.next(this.tokenService.accessToken);
-                // TODO only this case
               } else if (res.errorCode === ErrorStatusCodeEnum.BAD_REQUEST) {
                 this.endSession();
                 this.destroyQueue$.next(true);

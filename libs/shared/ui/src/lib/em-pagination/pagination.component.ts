@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   standalone: true,
   selector: 'em-pagination',

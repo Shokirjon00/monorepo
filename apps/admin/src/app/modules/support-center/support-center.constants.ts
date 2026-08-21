@@ -106,7 +106,6 @@ export class SupportCenterConstants {
     }
   ];
 
-
   static readonly TABLE_ACTIONS: IRowAction[] = [
     {
       type: TableRowActionEnum.CHANGE_STATUS_MODAL,

@@ -32,7 +32,6 @@ export class IftLogInfoComponent extends DestroyableComponent implements OnInit 
     this.getJobLogInfo();
   }
 
-
   private getJobLogInfo(): void {
     this.breadcrumbService.set('@iftLogDetail', {skip: true});
     this.service.getIftLogDetail(this.iftLogId)

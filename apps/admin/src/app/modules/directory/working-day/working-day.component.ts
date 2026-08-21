@@ -50,7 +50,6 @@ export class WorkingDayComponent extends DestroyableComponent implements OnInit,
   captionKey = 'working-day';
   params: Params = {};
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))

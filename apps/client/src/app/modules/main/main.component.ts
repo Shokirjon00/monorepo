@@ -74,18 +74,12 @@ export class MainComponent extends DestroyableComponent implements OnInit {
       });
   }
 
-  /**
-   * navigate to login page
-   */
   private navigateToLogin(): void {
     this.tokenService.clearTokens();
     this.authService.temporaryToken = null;
     this.router.navigate(['/auth']).catch();
   }
 
-  /**
-   * Инициализация Firebase push-уведомлений
-   */
   private initializeFirebaseNotifications(): void {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/firebase-messaging-sw.js')
@@ -97,9 +91,6 @@ export class MainComponent extends DestroyableComponent implements OnInit {
     }
   }
 
-  /**
-   * Запрос разрешений на push-уведомления
-   */
   private requestNotificationPermission(): void {
     this.permissionsService.hasPermission('FirebaseNotifications')
       .then(hasPermission => {
@@ -118,9 +109,6 @@ export class MainComponent extends DestroyableComponent implements OnInit {
       });
   }
 
-  /**
-   * Слушатель push-сообщений
-   */
   private listenToNotifications(): void {
     const messaging = getMessaging(this.app);
 

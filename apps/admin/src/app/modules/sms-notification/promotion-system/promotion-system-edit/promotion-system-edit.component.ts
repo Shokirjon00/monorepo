@@ -209,8 +209,8 @@ export class PromotionSystemEditComponent extends EMBaseForm implements OnInit {
         takeUntil(this.destroyed$),
         finalize(() => {
           this.submitted = false;
-          this.groupsId.clear(); // Clear chips if needed
-          this.form.reset(); // Reset form
+          this.groupsId.clear();
+          this.form.reset();
         })
       )
       .subscribe((res) => {
@@ -221,7 +221,6 @@ export class PromotionSystemEditComponent extends EMBaseForm implements OnInit {
         }
       });
   }
-
 
   private creatForm(): void {
     this.form = this.fb.group({

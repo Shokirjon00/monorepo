@@ -143,7 +143,5 @@ export class UserChangePasswordDialogComponent extends DestroyableComponent impl
       });
   }
 
-
 }
-
 

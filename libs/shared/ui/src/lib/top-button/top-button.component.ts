@@ -6,14 +6,6 @@ import { Router, Scroll } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { fromEvent } from 'rxjs';
 
-/**
- * Two call styles are supported, matching what each app did before the merge:
- *
- * - `scrollElement` bound (client): the button watches that element and shows
- *   itself once past `scrollThreshold`.
- * - `scrollElement` omitted (admin): the button is always rendered — the parent
- *   decides when to show it — and scrolls the element matched by `selector`.
- */
 @Component({
   standalone: true,
   selector: 'em-top-button',
@@ -25,7 +17,6 @@ export class TopButtonComponent implements AfterViewInit {
   readonly scrollElement = input<HTMLElement | null>(null);
   readonly scrollThreshold = input<number>(700);
 
-  /** Used only when `scrollElement` is not bound. */
   readonly selector = input<string>('.main-body');
   readonly topHeight = input<number>(0);
 

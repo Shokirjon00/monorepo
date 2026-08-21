@@ -171,7 +171,7 @@
 
 .position-sticky {
   background-color: $white-color;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 3;
@@ -262,7 +262,6 @@
 .c-pointer {
   cursor: pointer;
 }
-
 
 .pointer-events-none {
   pointer-events: none;

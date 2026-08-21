@@ -1,7 +1,6 @@
 import { Component, ElementRef, inject, Input, OnDestroy, OnInit, output } from '@angular/core';
 import { DateRange } from '@eskhata/util';
 
-
 @Component({
   selector: 'em-date-range-filter',
   templateUrl: './date-range-filter.component.html',

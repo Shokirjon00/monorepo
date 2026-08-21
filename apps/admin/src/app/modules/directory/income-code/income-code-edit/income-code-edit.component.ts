@@ -45,7 +45,6 @@ export class IncomeCodeEditComponent extends EMBaseForm implements OnInit {
   private updateUrl = this.activatedRoute.snapshot.routeConfig.path;
   private readonly destroyRef = inject(DestroyRef);
 
-
   constructor(
     location: Location,
     dialog: MatDialog,

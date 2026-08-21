@@ -44,7 +44,6 @@ export class ClientHistoryComponent extends DestroyableComponent implements OnIn
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))
@@ -61,7 +60,6 @@ export class ClientHistoryComponent extends DestroyableComponent implements OnIn
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,
@@ -75,7 +73,6 @@ export class ClientHistoryComponent extends DestroyableComponent implements OnIn
     this.router.navigate([`user/history-update/detail/${adminUserId}/info`])
       .catch()
   }
-
 
   sortTable(value: string): void {
     this.queryParams.sorts = value;

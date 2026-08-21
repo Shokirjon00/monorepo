@@ -76,7 +76,6 @@ export class DealConditionsComponent implements OnInit {
       advancePayoutId: this.offerData?.advancePayoutId
     };
 
-
     this.service.send(payload)
         .pipe(
             finalize(() => this.submitted = false),

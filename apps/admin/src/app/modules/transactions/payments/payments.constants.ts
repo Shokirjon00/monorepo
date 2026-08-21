@@ -8,9 +8,6 @@ import { environment as env } from "@environments/environment";
 
 export class PaymentsConstants {
 
-  /**
-   *
-   */
   static readonly PAYMENTS_ACTIONS: IAction[] = [
     {
       code: ActionEnum.STATUS_HIDE,
@@ -28,9 +25,6 @@ export class PaymentsConstants {
     }
   ];
 
-  /**
-   * Действия по транзакции(Редактировать и возврать)
-   */
   static readonly TABLE_ACTIONS: IRowAction[] = [
     {
       type: TableRowActionEnum.EDIT,
@@ -46,9 +40,6 @@ export class PaymentsConstants {
     }
   ]
 
-  /**
-   * Допольнителные действие через 3 точки
-   */
   static readonly TABLE_SETTING_OPTIONS: IOptionAction[] = [
     {
       type: TableRowActionEnum.CHECK_STATUS,
@@ -64,9 +55,6 @@ export class PaymentsConstants {
     }
   ];
 
-  /**
-   *
-   */
   static readonly HEADER_TABS: ITab[] = [
     {
       label: 'Платежи',
@@ -79,9 +67,6 @@ export class PaymentsConstants {
       permissionName: 'PaymentAll'
     },
   ]
-  /**
-   *
-   */
 
   static readonly PAYMENTS_COLUMNS: ICaption[] = [
     {

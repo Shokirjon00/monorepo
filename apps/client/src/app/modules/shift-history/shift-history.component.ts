@@ -130,7 +130,6 @@ export class ShiftHistoryComponent implements OnInit, AfterViewInit {
       });
   }
 
-
   confirmChangeShiftStatus(shiftHistories: IShiftHistory): void {
     if (!shiftHistories.isActive) {
       this.messageService.add({

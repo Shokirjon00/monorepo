@@ -495,7 +495,6 @@ export class CommissionCompanyEditComponent implements OnInit {
     }
   }
 
-
   private hasChanges(): boolean {
     if (!this.form) {
       return false;

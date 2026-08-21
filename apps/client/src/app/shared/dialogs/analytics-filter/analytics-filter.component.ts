@@ -58,10 +58,6 @@ export class AnalyticsFilterComponent extends DestroyableComponent {
       this.posTypeFilter.merchantId = this.queryParams.merchantId;
     }
 
-    // if (this.queryParams.posId) {
-    //   this.posFilter.id = this.queryParams.posId;
-    // }
-
     if (this.queryParams.dateFilterTypeId === PERIOD_ID) {
       this.dateFlag = true;
       this.dateType = {

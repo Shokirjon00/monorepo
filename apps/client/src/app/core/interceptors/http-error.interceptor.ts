@@ -38,7 +38,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   private errorHandler(response: HttpResponse<IHttpResponse<any>>): void {
-    // TODO Refactoring
     switch (response?.body?.errorCode) {
       case ErrorStatusCodeEnum.ERROR_AUTH:
         this.logout();

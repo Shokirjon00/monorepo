@@ -55,7 +55,6 @@ export class ListRegistrationComponent extends DestroyableComponent implements A
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))

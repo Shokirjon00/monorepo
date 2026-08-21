@@ -61,7 +61,6 @@ export class CashbackComponent implements OnInit, AfterViewInit {
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))

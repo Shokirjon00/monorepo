@@ -27,7 +27,6 @@ export class ChangeStatusModalComponent {
     );
   }
 
-
   constructor(
     private dialogRef: MatDialogRef<ChangeStatusModalComponent>,
     @Inject(MAT_DIALOG_DATA)

@@ -30,8 +30,6 @@ export class PaymentStatusInfoComponent extends DestroyableComponent implements 
 
   private categoryId = this.activatedRoute.snapshot.params['id'];
 
-
-
   ngOnInit(): void {
     this.service.getPaymentStatusDetailById(this.categoryId)
       .pipe(takeUntilDestroyed(this.destroyRef))

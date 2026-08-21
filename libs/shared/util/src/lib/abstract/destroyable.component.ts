@@ -2,7 +2,6 @@ import { Directive, OnDestroy } from '@angular/core';
 import { Subject, Subscription, takeUntil, timer } from 'rxjs';
 
 @Directive()
-// eslint:disable-next-line:directive-class-suffix
 export abstract class DestroyableComponent implements OnDestroy {
   protected readonly destroyed$ = new Subject<boolean>();
   protected readonly completable: Subject<any>[] = [];

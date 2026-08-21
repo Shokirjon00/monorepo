@@ -13,7 +13,6 @@ export class UsersRolesService {
   private apiUrl = `${env.apiUrl}/${env.api.posTerminalUsers}`;
   private http = inject(HttpClient);
 
-
   getUsersRoles(queryParams: Params): Observable<IHttpResponse<IUsersRoles[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IUsersRoles[]>>(this.apiUrl, {params});

@@ -5,7 +5,6 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { OrderDetailConstants } from "@modules/order/order-detail/order-detail.constants";
 import { ToastComponent } from "@eskhata/ui";
 
-
 @Component({
   standalone: true,
   selector: 'em-order-detail',

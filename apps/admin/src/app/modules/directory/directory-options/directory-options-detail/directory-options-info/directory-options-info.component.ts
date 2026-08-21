@@ -31,7 +31,6 @@ export class DirectoryOptionsInfoComponent extends DestroyableComponent implemen
   private readonly activatedRoute = inject(ActivatedRoute);
   private directoryOptionsId = this.activatedRoute.snapshot.params['id'];
 
-
   ngOnInit(): void {
     this.loading = true
     this.service.getDirectoryOptionsById(this.directoryOptionsId)

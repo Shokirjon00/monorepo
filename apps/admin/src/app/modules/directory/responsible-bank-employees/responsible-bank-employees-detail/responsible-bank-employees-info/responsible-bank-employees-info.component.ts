@@ -28,7 +28,6 @@ export class ResponsibleBankEmployeesInfoComponent extends DestroyableComponent 
 
   private resBankEmployeeId = this.activatedRoute.snapshot.params['id'];
 
-
   ngOnInit(): void {
     this.service.getResBankEmpById(this.resBankEmployeeId)
       .pipe(takeUntil(this.destroyed$))

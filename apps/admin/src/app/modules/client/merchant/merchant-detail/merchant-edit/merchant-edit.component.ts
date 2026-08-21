@@ -287,7 +287,6 @@ export class MerchantEditComponent extends EMBaseForm implements OnInit {
     });
   }
 
-
   changeMap(event: any): void {
     this.form.get('latitude').setValue(String(event.latitude));
     this.form.get('longitude').setValue(String(event.longitude));

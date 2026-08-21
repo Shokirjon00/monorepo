@@ -59,7 +59,6 @@ export class UserAdminLogComponent extends DestroyableComponent implements OnIni
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,
@@ -73,7 +72,6 @@ export class UserAdminLogComponent extends DestroyableComponent implements OnIni
     this.queryParams.sorts = value;
     this.getAdminUsersLog()
   }
-
 
   private getAdminUsersLog(params = this.queryParams): void {
     this.loading.set(true);

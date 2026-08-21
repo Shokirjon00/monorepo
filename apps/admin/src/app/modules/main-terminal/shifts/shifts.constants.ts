@@ -55,7 +55,6 @@ export class ShiftsConstants {
     },
   ]
 
-
   static readonly SHIFT_HISTORY_COLUMNS : ICaption[] = [
     {
       key: 'Статус',
@@ -143,5 +142,4 @@ export class ShiftsConstants {
     },
   ];
 }
-
 

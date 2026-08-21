@@ -3,9 +3,6 @@ import {MatchMode} from "@core/enums/match-mode.enum";
 import {ITab} from '@eskhata/util';
 
 export class JobLogArchivesConstants {
-  /**
-   *
-   */
   static readonly ARCHIVES_JOURNAL_COLUMNS : ICaption[] = [
     {
       key: 'ID',
@@ -74,9 +71,6 @@ export class JobLogArchivesConstants {
       isSelected: true,
     }
   ];
-  /**
-   *
-   */
   static readonly HEADER_TABS: ITab[] = [
     {
       label: 'Основной журнал',

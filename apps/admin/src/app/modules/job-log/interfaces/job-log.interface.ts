@@ -1,6 +1,5 @@
 import {ICompanyDetail} from '@modules/client/company/interfaces/company-detail.interface';
 
-
 export interface IJobLog {
   id: string;
   finishedDateTime: string;

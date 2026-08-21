@@ -5,7 +5,6 @@ export function isPhone(): boolean {
   return false;
 }
 
-/** Client-only before the merge. */
 export function isLandscapeTablet(): boolean {
   if (typeof window.matchMedia === 'function') {
     return window.matchMedia('(max-width: 1024px)').matches;

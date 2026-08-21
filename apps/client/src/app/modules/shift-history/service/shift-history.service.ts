@@ -12,7 +12,6 @@ export class ShiftHistoryService {
   private readonly http = inject(HttpClient);
   private apiUrl = `${env.apiUrl}/${env.api.shift}`;
 
-
   getShift(queryParams: Params): Observable<IHttpResponse<IShiftHistory[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IShiftHistory[]>>(this.apiUrl, {params});

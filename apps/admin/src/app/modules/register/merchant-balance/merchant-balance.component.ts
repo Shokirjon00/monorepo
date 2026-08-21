@@ -42,7 +42,6 @@ export class MerchantBalanceComponent extends DestroyableComponent implements Af
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.initRouteParams();
   }

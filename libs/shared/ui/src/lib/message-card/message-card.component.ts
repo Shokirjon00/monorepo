@@ -69,7 +69,6 @@ export class MessageCardComponent implements OnInit {
     }
   }
 
-
   onFileClick(fileId: string, index: number): void {
     if (!this.fileStorageUrl || !this.fileStorageToken) return;
 

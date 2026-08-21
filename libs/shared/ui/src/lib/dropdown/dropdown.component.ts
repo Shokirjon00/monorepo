@@ -83,9 +83,7 @@ export class DropdownComponent extends DestroyableComponent implements OnInit, A
   readonly flag = input<boolean>(false);
   readonly maxHeight = input<string>('340px');
   readonly isBottomSheet = input<boolean>(false);
-  /** Prefix for the generated element ids (client used these as test hooks). */
   readonly uniqueId = input<string>('');
-  /** admin debounced the search at 150ms, client at 500ms — configurable so both keep their feel. */
   readonly searchDebounce = input<number>(150);
 
   readonly changed = output<any>();
@@ -317,7 +315,6 @@ export class DropdownComponent extends DestroyableComponent implements OnInit, A
       });
   }
 
-  /** client narrowed the pos/merchant lists from the route; harmless in admin where those params are absent. */
   private setQueryParams(params: ParamMap): void {
     let selectedList = null;
     const path = this.path();

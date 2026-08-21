@@ -18,7 +18,6 @@ import { MerchantServiceConstants } from "@modules/client/merchant-service/merch
 import { PosTerminalsConstants } from "@modules/client/pos-terminal/pos-terminals.constants";
 import { ITab } from '@eskhata/util';
 
-
 @Component({
   standalone: true,
   selector: 'em-merchant-services',
@@ -148,7 +147,6 @@ export class MerchantServiceComponent extends DestroyableComponent implements On
       });
   }
 
-
   private changePage(): void {
     this.headerService.getPageChange()
       .pipe(takeUntil(this.destroyed$))
@@ -173,7 +171,6 @@ export class MerchantServiceComponent extends DestroyableComponent implements On
         this.getTabItems();
       });
   }
-
 
   private getTabItems(): void {
     if (this.companyId) {

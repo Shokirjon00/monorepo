@@ -3,7 +3,6 @@
 @import 'core/scss/mixins/mixin';
 @import 'core/scss/mixins/breakpoints';
 
-
 .p-16 {
   padding: 1rem;
 }
@@ -54,7 +53,6 @@
 .fs-24 {
   font-size: 1.5rem;
 }
-
 
 .em-primary-color {
   color: $primary-color;
@@ -151,7 +149,7 @@
 
 .position-sticky {
   background-color: #FFFFFF;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -268,7 +266,6 @@
   opacity: 0.5;
 }
 
-/* custom scrollbar */
 ::-webkit-scrollbar {
   width: 20px;
   height: 20px;
@@ -371,7 +368,6 @@
   opacity: 0;
   transform: scale(0.7);
 }
-
 
 .button-tooltip {
   position: relative;
@@ -507,7 +503,6 @@
     }
   }
 }
-
 
 @include media-breakpoint-down(md) {
   .container {

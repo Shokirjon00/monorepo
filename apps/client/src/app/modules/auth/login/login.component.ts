@@ -14,7 +14,6 @@ import { SvgIconComponent } from "angular-svg-icon";
 import { SharedModule } from "@shared/shared.module";
 import { ToastModule, ValidatorModule } from '@eskhata/ui';
 
-
 @Component({
   standalone: true,
   selector: 'em-login',

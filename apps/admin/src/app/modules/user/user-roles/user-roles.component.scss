@@ -2,7 +2,6 @@
 @import "core/scss/flex";
 @import "core/scss/mixins/breakpoints";
 
-
 @include media-breakpoint-down(sm) {
   .d-flex-sb {
     display: block;

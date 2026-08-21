@@ -9,7 +9,6 @@
 @use 'core/scss/mixins/breakpoints' as *;
 @use 'modules/merchant-container/pos/pos.component.scss' as *;
 
-
 .images img {
   border: 1px solid $border-line;
   border-radius: 0.75rem;

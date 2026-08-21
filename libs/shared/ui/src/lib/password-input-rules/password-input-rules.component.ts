@@ -19,11 +19,6 @@ export class PasswordInputRulesComponent implements OnInit {
   readonly passwordControl = input<AbstractControl>();
   readonly confirmPasswordControl = input<AbstractControl>();
 
-  /**
-   * Adds the `onlyLatinPattern` validator and the matching rule row. Only the
-   * client app applied it before the components were merged, so it stays opt-in
-   * to keep admin's password fields validating exactly as they did.
-   */
   readonly latinOnly = input<boolean>(false);
 
   ngOnInit(): void {

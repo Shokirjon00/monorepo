@@ -44,7 +44,6 @@ export class UsersLogComponent extends DestroyableComponent implements OnInit, A
     pageSize: 15
   };
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))
@@ -61,7 +60,6 @@ export class UsersLogComponent extends DestroyableComponent implements OnInit, A
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,
@@ -75,7 +73,6 @@ export class UsersLogComponent extends DestroyableComponent implements OnInit, A
     this.router.navigate([`user/users-log/detail/${adminUserId}/info`])
       .catch()
   }
-
 
   sortTable(value: string): void {
     this.queryParams.sorts = value;

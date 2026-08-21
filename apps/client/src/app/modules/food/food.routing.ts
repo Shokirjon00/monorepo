@@ -23,19 +23,6 @@ export const FOOD: Routes = [
           },
         },
       },
-      // {
-      //   path: 'rating',
-      //   loadComponent: () =>
-      //     import('./rating-dashboard/rating-dashboard.component').then(c => c.RatingDashboardComponent),
-      //   canActivate: [ngxPermissionsGuard],
-      //   data: {
-      //     breadcrumb: { skip: true },
-      //     permissions: {
-      //       only: [],
-      //       redirectTo: '/food/orders',
-      //     },
-      //   },
-      // },
       {
         path: 'order-reviews',
         loadComponent: () =>

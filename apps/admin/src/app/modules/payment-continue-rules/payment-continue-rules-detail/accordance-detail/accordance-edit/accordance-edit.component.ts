@@ -61,7 +61,6 @@ export class AccordanceEditComponent extends DestroyableComponent implements OnI
   private accordanceId = this.activatedRoute.snapshot.params['accordanceId'];
   private canDeactivate$ = new Subject<boolean>();
 
-
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }

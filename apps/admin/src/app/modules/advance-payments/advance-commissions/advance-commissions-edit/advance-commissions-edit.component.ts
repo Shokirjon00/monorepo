@@ -116,7 +116,6 @@ export class AdvanceCommissionsEditComponent extends EMBaseForm implements OnIni
       .subscribe(res => this.handleSubmitResult(res));
   }
 
-
   deleteCashBack(index: number): void {
     this.commissionArray.removeAt(index);
   }

@@ -17,7 +17,6 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { AccountMobileCardComponent } from "@modules/merchant-container/account/account-mobile-card/account-mobile-card.component";
 import { restoreQueryParamsIfEmpty } from "@core/utils/restore-query-params";
 
-
 @Component({
   standalone: true,
   selector: 'em-account',

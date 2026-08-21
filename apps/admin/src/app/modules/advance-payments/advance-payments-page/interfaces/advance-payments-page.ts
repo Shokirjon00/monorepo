@@ -1,4 +1,3 @@
-
 export interface IAdvancePaymentsPage {
   id: string;
   statusName: string;

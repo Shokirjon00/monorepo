@@ -596,7 +596,6 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
     };
   }
 
-
   private chartPaymentAmount(): void {
     this.chartOptionsPaymentAmount = {
       series: [

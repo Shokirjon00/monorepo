@@ -117,7 +117,6 @@ export class ResetComponent implements OnInit {
     this.handleRequest(request$);
   }
 
-
   resendButtonText = computed(() =>
     this.canResend() ? 'Получить новый код' : `Получить новый код можно через (${this.resendIntervalSeconds()} сек)`
   );

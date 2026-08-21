@@ -51,7 +51,7 @@ export class PromotionSystemInfoComponent extends DestroyableComponent implement
 
   private padZero(num: string): string {
     const parsed = parseInt(num, 10);
-    if (isNaN(parsed)) return num; // Если значение не является числом, возвращаем исходное значение
+    if (isNaN(parsed)) return num;
     return parsed < 10 ? `0${parsed}` : num;
   }
 

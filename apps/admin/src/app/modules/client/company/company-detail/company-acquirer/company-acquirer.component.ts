@@ -174,7 +174,6 @@ export class CompanyAcquirerComponent extends DestroyableComponent implements On
       });
   }
 
-
   private changePage(): void {
     this.store.getPageChange()
       .pipe(takeUntil(this.destroyed$))

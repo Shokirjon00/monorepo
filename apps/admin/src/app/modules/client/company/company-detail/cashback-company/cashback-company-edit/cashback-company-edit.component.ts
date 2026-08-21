@@ -374,7 +374,6 @@ export class CashbackCompanyEditComponent extends DestroyableComponent implement
         })
         this.weekDays = selectionWeeks.toString().replace(/,/g, ', ')
 
-
         this.cashbackDetail.merchants.forEach(item => {
           const data = this.fb.control('');
           data.setValue(item);

@@ -1,9 +1,7 @@
-// CSS-only modules without 'as *': their rules reach the component, members stay namespaced.
 @use 'core/scss/styles';
 @use 'core/scss/flex';
 @use 'core/scss/variables' as *;
 @use 'ui/mixins' as *;
-
 
 :host {
   .tab {
@@ -184,7 +182,6 @@
     gap: 8px;
     width: auto;
     padding: 1rem 0;
-
 
     &-item {
       padding: 8px 24px;

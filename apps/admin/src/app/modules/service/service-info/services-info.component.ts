@@ -57,7 +57,6 @@ export class ServicesInfoComponent extends DestroyableComponent implements OnIni
       });
   }
 
-
   navigateToUpdate(): void {
     this.router.navigate(['services/edit', this.serviceId])
       .catch()

@@ -140,7 +140,6 @@ export class SelectFieldSearchComponent extends DestroyableComponent implements 
     this.getDataSource();
   }
 
-
   onSelect(option: any): void {
     this.selected = option;
     this.changed.emit(option);
@@ -246,7 +245,6 @@ export class SelectFieldSearchComponent extends DestroyableComponent implements 
       }
     }
   }
-
 
   private getDataSource(scrolled: boolean = false): void {
     const apiUrl = this.apiUrl();

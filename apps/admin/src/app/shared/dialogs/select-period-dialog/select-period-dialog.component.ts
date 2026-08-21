@@ -12,7 +12,6 @@ import {DateFormatEnum} from '@eskhata/util';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import 'moment/locale/ru';
 
-
 @Component({
   standalone: true,
   selector: 'em-select-period-dialog',

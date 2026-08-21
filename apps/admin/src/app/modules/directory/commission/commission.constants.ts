@@ -6,7 +6,6 @@ import { MatchMode } from '@core/enums/match-mode.enum';
 
 export class CommissionConstants {
 
-
   static readonly COMMISSION_COLUMNS : ICaption[] = [
     {
       key: 'Статус',

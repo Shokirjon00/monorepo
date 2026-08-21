@@ -2,9 +2,6 @@ import {ICaption} from '@eskhata/util';
 import {ITab} from '@eskhata/util';
 
 export class MainJournalConstants {
-  /**
-   *
-   */
   static readonly JOB_LOG_COLUMNS: ICaption[] = [
     {
       key: 'ID',
@@ -72,9 +69,6 @@ export class MainJournalConstants {
       isSelected: true,
     }
   ];
-  /**
-   *
-   */
   static readonly HEADER_TABS: ITab[] = [
     {
       label: 'Основной журнал',
@@ -88,5 +82,4 @@ export class MainJournalConstants {
     }
   ]
 }
-
 

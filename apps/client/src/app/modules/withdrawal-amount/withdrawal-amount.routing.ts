@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { ngxPermissionsGuard } from "ngx-permissions";
 
-
 export const WITHDRAWAL_AMOUNT_ROUTING: Routes = [
   {
     path: '',

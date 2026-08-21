@@ -5,12 +5,6 @@ import { HeaderService as SharedHeaderService } from '@eskhata/data-access';
 import { IHttpResponse } from '@core/interfaces/http-response.interface';
 import { IPaymentStatusAmount, ITransaction } from '@modules/transactions/payments/interfaces';
 
-/**
- * The members shared with the client app live in `@eskhata/data-access`; this
- * subclass keeps the admin-only state whose types come from admin feature
- * modules. `app.config` aliases the shared token onto this class with
- * `useExisting`, so shared components and admin code share one instance.
- */
 @Injectable({
   providedIn: 'root',
 })

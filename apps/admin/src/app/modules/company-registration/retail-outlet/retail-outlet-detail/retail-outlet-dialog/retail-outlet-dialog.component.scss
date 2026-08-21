@@ -29,7 +29,6 @@
   font-weight: bold;
 }
 
-
 @include media-breakpoint-down(sm) {
   ::ng-deep .cdk-overlay-pane.mat-mdc-dialog-panel {
     max-width: var(--mat-dialog-container-small-max-width, 80vw) !important;

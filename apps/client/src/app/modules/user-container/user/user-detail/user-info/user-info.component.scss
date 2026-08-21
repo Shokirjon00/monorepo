@@ -25,13 +25,11 @@
   }
 }
 
-
 @include media-breakpoint-down(sm) {
   .position-sticky {
     position: absolute;
     top: 57px;
     width: 100%;
-
 
     .container {
       padding: 1.25rem 1rem;

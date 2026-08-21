@@ -64,7 +64,6 @@ export class ProductApplicationsComponent implements OnInit, AfterViewInit {
   captions = ProductApplicationConstants.PRODUCT_COLUMNS;
   options = ProductApplicationConstants.OPTION_ACTIONS;
 
-
   ngOnInit(): void {
 
     combineLatest([

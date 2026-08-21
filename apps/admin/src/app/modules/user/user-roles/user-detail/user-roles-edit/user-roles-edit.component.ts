@@ -133,7 +133,6 @@ export class UserRolesEditComponent extends EMBaseForm implements OnInit {
       });
   }
 
-
   private makeReqBody(): any {
     const merchantsArray = this.form.get('merchants').value;
     const allMerchantsSelected = merchantsArray.length === this.merchantsDictionary.length;
@@ -159,7 +158,6 @@ export class UserRolesEditComponent extends EMBaseForm implements OnInit {
 
     return body;
   }
-
 
   getUserClientById(): void {
     this.service.getClientUserDetail(this.clientUserId)
@@ -196,7 +194,6 @@ export class UserRolesEditComponent extends EMBaseForm implements OnInit {
     this.merchantFilter = 'companyId==' + companyId;
     this.oldCompanyId = companyId;
   }
-
 
   changeMerchant(merchantIds: string[]): void {
     const currentPoses = this.form.get('poses').value || [];

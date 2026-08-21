@@ -24,15 +24,12 @@
   }
 }
 
-
 @include media-breakpoint-down(sm) {
   .position-sticky {
     position: absolute;
     top: 57px;
     width: 100%;
     z-index: 2;
-
-
 
       .back {
         display: block;

@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IAction, IHeader, IHeaderBack, IPaginate } from '@eskhata/util';
 
-/**
- * Members shared by both applications. App-specific state (admin's payment
- * statistics, for instance) stays in the app-level subclass, which is aliased
- * onto this token with `useExisting` so shared components and app code observe
- * the same instance.
- */
 @Injectable({
   providedIn: 'root',
 })

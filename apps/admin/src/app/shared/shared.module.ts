@@ -11,7 +11,6 @@ import {
 } from './dialogs/error-order-status-dialog/error-order-status-dialog.component';
 import { EbLoaderComponent } from '@shared/components/eb-loader/eb-loader.component';
 
-
 @NgModule({
     exports: [
         CommonModule,

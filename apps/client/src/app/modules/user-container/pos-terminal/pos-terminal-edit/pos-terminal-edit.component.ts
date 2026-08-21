@@ -25,7 +25,6 @@ import { ConfirmDialogComponent } from "@shared/dialogs/confirm-dialog/confirm-d
 import { MatDialog } from "@angular/material/dialog";
 import { Platform } from "@angular/cdk/platform";
 
-
 @Component({
   selector: 'em-pos-terminal-edit',
   standalone: true,
@@ -271,20 +270,17 @@ export class PosTerminalEditComponent extends DestroyableComponent implements On
     this.changeMerchant(this.form.get('merchants').value);
   }
 
-
   allMerchantsSelected(): boolean {
     const merchantsArray = this.form.get('merchants').value || [];
     const allMerchants = this.merchantsDictionary || [];
     return allMerchants.length > 0 && allMerchants.every(merchant => merchantsArray.includes(merchant.id));
   }
 
-
   allPosesSelected(): boolean {
     const posesArray = this.form.get('poses').value || [];
     const posesDictionary = this.posesDictionary || [];
     return posesDictionary.length > 0 && posesDictionary.every(pose => posesArray.includes(pose.id));
   }
-
 
   toggleAllPoses(event: Event): void {
     const checked = (event.target as HTMLInputElement).checked;

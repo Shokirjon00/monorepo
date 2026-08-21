@@ -6,7 +6,6 @@
 @import 'core/scss/button';
 @import "core/scss/mixins/breakpoints";
 
-
 .login {
   width: 100%;
   padding: 2.5rem;
@@ -38,11 +37,11 @@
         transition: background-color 600000s 0s, color 600000s 0s;
       }
 
-      &:-moz-placeholder { /* Firefox 18- */
+      &:-moz-placeholder {
         color: $white-color;
       }
 
-      &::-moz-placeholder { /* Firefox 19+ */
+      &::-moz-placeholder {
         color: $white-color;
       }
 

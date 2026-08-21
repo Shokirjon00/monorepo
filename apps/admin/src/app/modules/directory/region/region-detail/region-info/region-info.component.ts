@@ -35,7 +35,6 @@ export class RegionInfoComponent extends DestroyableComponent implements OnInit 
       });
   }
 
-
   navigateToUpdate(): void {
     this.router.navigate(['directory/region/edit', this.regionId])
       .catch()

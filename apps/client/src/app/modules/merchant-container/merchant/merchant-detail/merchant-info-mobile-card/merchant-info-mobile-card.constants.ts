@@ -19,7 +19,6 @@ export class MerchantInfoMobileCardConstants {
         { label: 'Расчетный счет карты', key: 'paymentCardAccountName' },
       ]
     },
-    // Правая колонка
     {
       side: 'right',
       fields: [

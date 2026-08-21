@@ -23,7 +23,6 @@
   animation-duration: 1s;
 }
 
-
 .preloaderContainer {
   position: absolute;
   left: 0;
@@ -44,7 +43,6 @@
   width: 64px;
   height: 64px;
 }
-
 
 @for $i from 1 through 12 {
   .lds-spinner div:nth-child(#{$i}) {

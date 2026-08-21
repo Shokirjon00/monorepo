@@ -80,7 +80,6 @@ export class ClientRoleComponent extends DestroyableComponent implements OnInit,
       .catch()
   }
 
-
   sortTable(value: string): void {
     this.filterParams.sorts = value;
     this.getClientRoles()

@@ -7,7 +7,6 @@ import {IHttpResponse} from "@core/interfaces/http-response.interface";
 import {ICurrency} from "@modules/directory/currency/interfaces/currency.interfaces";
 import {ICurrencyDetail} from "@modules/directory/currency/interfaces/currency-detail.interfaces";
 
-
 @Injectable({
   providedIn: 'root'
 })

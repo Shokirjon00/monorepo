@@ -7,7 +7,6 @@ import { IHttpResponse } from "@core/interfaces/http-response.interface";
 import { IAppealCategoryDetail } from "@modules/directory/appeal-category/interfaces/appeal-category-detail.interface";
 import { IAppealCategory } from "@modules/directory/appeal-category/interfaces/appeal-category.interface";
 
-
 @Injectable()
 export class AppealCategoryService {
 

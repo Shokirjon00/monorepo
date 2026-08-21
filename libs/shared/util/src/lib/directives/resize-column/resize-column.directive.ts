@@ -62,16 +62,13 @@ export class ResizeColumnDirective implements AfterViewInit, OnDestroy {
     if (this.pressed && event.buttons) {
       this.renderer.addClass(this.table, 'resizing');
 
-      // Calculate width of column
       const width = this.startWidth + (event.pageX - this.startX - this.offset());
       const tableCells: HTMLElement[] = Array.from(this.table.querySelector('tbody').children)
         .map((row: any) => row.children[this.index()]);
 
-      // Set table header width
       this.renderer.setStyle(this.column, 'width', `${width}px`);
       this.renderer.setStyle(this.column, 'max-width', `${width}px`);
 
-      // Set table cells width
       for (const cell of tableCells) {
         this.renderer.setStyle(cell, 'width', `${width}px`);
         this.renderer.setStyle(cell, 'max-width', `${width}px`);

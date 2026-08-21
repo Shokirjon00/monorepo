@@ -170,8 +170,6 @@ export class CommissionCompanyComponent extends DestroyableComponent implements 
       });
   }
 
-
-
   private handleQueryParams(): void {
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))

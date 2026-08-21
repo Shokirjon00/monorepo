@@ -1,6 +1,3 @@
-// CSS-only modules are loaded without 'as *' so their rules still reach the
-// component, while their members stay namespaced. core/scss/styles re-imports
-// variables, so loading both with 'as *' would make every shared variable ambiguous.
 @use 'core/scss/flex';
 @use 'core/scss/styles';
 @use 'core/scss/margins';
@@ -8,7 +5,6 @@
 @use 'core/scss/form';
 @use 'core/scss/variables' as *;
 @use 'ui/mixins' as *;
-
 
 $height: 1.875;
 
@@ -158,5 +154,4 @@ select {
     transform: rotate(180deg);
   }
 }
-
 

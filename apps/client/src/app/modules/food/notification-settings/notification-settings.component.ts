@@ -57,7 +57,6 @@ export class NotificationSettingsComponent implements OnInit {
     this.checkSubscriptionStatus();
   }
 
-
   openConnectModal(): void {
     this.openTelegramModal();
   }

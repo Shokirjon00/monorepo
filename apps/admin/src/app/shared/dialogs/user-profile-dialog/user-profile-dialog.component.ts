@@ -14,7 +14,6 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import {ToastComponent} from '@eskhata/ui';
 import { HttpResponse } from "@angular/common/http";
 
-
 interface IUploadField {
   img: any;
   status: 'success' | 'error' | 'progress';
@@ -39,7 +38,6 @@ export class UserProfileDialogComponent extends DestroyableComponent {
   previews: IUploadField[] = [];
   selectedFiles?: File;
   avatarImg: any;
-
 
   constructor(
     private _dialog: MatDialog,

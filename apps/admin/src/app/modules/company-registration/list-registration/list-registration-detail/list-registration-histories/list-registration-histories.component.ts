@@ -11,7 +11,6 @@ import { ICompanyRegistrationHistory } from "@modules/company-registration/list-
 import { ITab } from '@eskhata/util';
 import { ListRegistrationDetailConstants } from "@modules/company-registration/list-registration/list-registration-detail/list-registration-info.constants";
 
-
 @Component({
   standalone: true,
   selector: 'em-list-registration-histories',

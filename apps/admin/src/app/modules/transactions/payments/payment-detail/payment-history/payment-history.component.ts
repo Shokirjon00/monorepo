@@ -58,7 +58,6 @@ export class PaymentHistoryComponent extends AbstractPaymentComponent<any> imple
     this.table().render(this.captions, this.paymentHistory);
   }
 
-
   private getPaymentHistory(paymentId: string): void {
     this.loading.set(true);
     this.paymentHistoryService.getPaymentHistories(paymentId)

@@ -258,7 +258,6 @@ export class AutocompleteComponent extends DestroyableComponent implements OnIni
     this.clear();
   }
 
-/** client's sources label rows by `number`; falling back keeps those readable without touching rows that already carry a name. */
   private normalize(item: AutocompleteItem): AutocompleteItem {
     return { name: item['number'] ?? item['name'] ?? '', ...item };
   }

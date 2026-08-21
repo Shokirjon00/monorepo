@@ -119,7 +119,7 @@ export class DynamicFieldsComponent implements OnInit {
         return parsed.map(v => String(v));
       }
     } catch {
-      // ignore
+      void 0;
     }
 
     if (trimmed.includes(',')) {

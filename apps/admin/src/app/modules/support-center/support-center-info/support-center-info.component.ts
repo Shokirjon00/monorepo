@@ -49,7 +49,6 @@ export class SupportCenterInfoComponent implements OnInit {
   private readonly supportCenterService = inject(SupportCenterService);
   supportId = this.activatedRoute.snapshot.params['id'];
 
-
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }

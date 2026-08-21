@@ -40,7 +40,6 @@ export class UsersService {
     return this.http.get<IHttpResponse<IUsers>>(`${this.apiUrl}/${env.api.update}/${id}`);
   }
 
-
   updateUser(data: IUsers): Observable<IHttpResponse<IUsers>> {
     return this.http.post<IHttpResponse<IUsers>>(`${this.apiUrl}/${env.api.update}`, data);
   }

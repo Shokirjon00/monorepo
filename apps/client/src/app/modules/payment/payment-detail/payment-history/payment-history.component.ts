@@ -8,7 +8,6 @@ import { PaymentService } from "@modules/payment/services/payment.service";
 import { finalize, takeUntil } from "rxjs";
 import { PaymentHistoryConstants } from '@modules/payment/payment-detail/payment-history/payment-history.constants';
 
-
 @Component({
   standalone: true,
   selector: 'em-payment-history',

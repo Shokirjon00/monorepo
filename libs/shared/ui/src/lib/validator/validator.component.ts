@@ -13,7 +13,6 @@ export class ValidatorComponent implements OnDestroy {
 
   private _control: AbstractControl;
 
-
   @Input() set fieldControl(value: AbstractControl) {
     this._control = value;
   }

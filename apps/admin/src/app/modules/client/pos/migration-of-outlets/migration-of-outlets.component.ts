@@ -12,12 +12,10 @@ import { AngularSvgIconModule } from "angular-svg-icon";
   ]
 })
 export class MigrationOfOutletsComponent {
-  // TODO create interface
   data = inject<any[]>(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef<MigrationOfOutletsComponent>);
 
   migrationData = this.data;
-
 
   onClose(evt: MouseEvent): void {
     evt.preventDefault();

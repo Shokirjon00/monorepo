@@ -1,8 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'core/scss/variables';
 @import 'core/scss/mixins/breakpoints';
 
-/* Затемнённый фон полноэкранной панели «QR/POS Аналитика» (рендерится в body). */
 .qr-pos-fs-backdrop {
   position: fixed;
   inset: 0;
@@ -135,11 +133,9 @@ body {
   z-index: 9999;
 }
 
-
 .mobile-filter {
   display: none;
 }
-
 
 @include media-breakpoint-down(sm) {
   * {

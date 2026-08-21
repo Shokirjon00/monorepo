@@ -12,7 +12,6 @@ import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { finalize } from 'rxjs/operators';
 import { ToastEnum } from '@eskhata/util';
 
-
 @Component({
   standalone: true,
   selector: 'em-payment-confirm-dialog',

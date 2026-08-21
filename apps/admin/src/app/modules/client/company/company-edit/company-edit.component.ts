@@ -126,7 +126,6 @@ export class CompanyEditComponent extends EMBaseForm implements OnInit {
     }
   }
 
-
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
@@ -235,7 +234,6 @@ export class CompanyEditComponent extends EMBaseForm implements OnInit {
           } else if (res.data.status === 1) {
             this.companies = res.data.response.companies;
             if (res.data.response.companies.length == 1) {
-              // this.form.reset()
               this.companies.forEach(item => this.form.patchValue(item));
               this.form.patchValue(res.data.response.companies);
               this.formEdit = true;

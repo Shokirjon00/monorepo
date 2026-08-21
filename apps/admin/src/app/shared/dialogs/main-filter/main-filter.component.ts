@@ -66,7 +66,6 @@ export class MainFilterComponent extends BaseFilterComponent implements OnInit {
       this.filterItems.length !== this._filterFields?.length;
   }
 
-
   ngOnInit(): void {
     this.initializeFilters();
   }

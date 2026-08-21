@@ -68,7 +68,6 @@ export class UsersComponent extends DestroyableComponent implements OnInit {
       })
   }
 
-
   clearValue(): void {
     this.selectedPriority = '';
     if (this.smsDetail.messageSendingPriorities) {

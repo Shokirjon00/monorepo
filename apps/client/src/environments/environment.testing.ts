@@ -3,7 +3,6 @@ import {ENDPOINTS} from '@core/endpoints';
 import { version } from '../../../../package.json';
 
 const DOMAIN = 'http://10.10.202.226:1441/';
-// const DOMAIN = 'https://cab.eskhata.tj/';
 const FILESERVER = 'http://10.10.202.220:1440/';
 export const environment: Environment = {
   isTest: true,

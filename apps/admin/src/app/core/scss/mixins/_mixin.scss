@@ -1,16 +1,5 @@
 @import 'core/scss/variables';
 
-/*
-X-Small	None	<576px
-Small	sm	≥576px
-Medium	md	≥768px
-Large	lg	≥992px
-Extra large	xl	≥1200px
-Extra extra large	xxl	≥1400px
-QHD	xxxl	≥2560px
-UHD / 4K	xxxxl	≥3840px
-*/
-
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -67,7 +56,6 @@ $grid-breakpoints: (
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
 }
-
 
 @mixin indicator-block($color){
   content: '';
@@ -140,16 +128,16 @@ $grid-breakpoints: (
 }
 
 @mixin placeholder($color) {
-  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  &::placeholder {
     color: $color;
     opacity: 1;
   }
 
-  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  &:-ms-input-placeholder {
     color: $color;
   }
 
-  &::-ms-input-placeholder { /* Microsoft Edge */
+  &::-ms-input-placeholder {
     color: $color;
   }
 }

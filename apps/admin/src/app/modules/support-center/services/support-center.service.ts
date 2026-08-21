@@ -27,7 +27,6 @@ export class SupportCenterService {
     return this.http.get<IHttpResponse<ISelect[]>>(`${env.apiUrl}/${env.api.supportApplicationsStatuses}/${env.api.dictionary}`, {});
   }
 
-
   changeOrderStatus(body: ChangeOrderStatusRequest): Observable<IHttpResponse<ChangeOrderStatusRequest>> {
     return this.http.post<IHttpResponse<ChangeOrderStatusRequest>>(`${this.apiUrl}/${env.api.changeStatus}`, body);
   }

@@ -54,8 +54,6 @@ describe('AnalyticsFilterComponent', () => {
       imports: [AnalyticsFilterComponent, DropdownComponent, SvgIconComponent, HttpClientTestingModule],
       providers: [
         DatePipe,
-        // Shared services in @eskhata/data-access read the environment through this
-        // token; app.config provides it at runtime, TestBed has to do so explicitly.
         {provide: ENVIRONMENT, useValue: environment},
         {provide: FILTER_PARAMS_PARSER, useValue: parseFilterParams},
         {provide: MatDialogRef, useValue: matDialogRefMock},

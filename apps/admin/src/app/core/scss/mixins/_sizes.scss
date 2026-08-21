@@ -4,7 +4,6 @@ $base-font-size: 16;
   @return ($px / $base-font-size) * 1rem;
 }
 
-// Размеры шрифта
 $font-size-xs: rem(12);
 $font-size-sm: rem(14);
 $font-size-md: rem(16);
@@ -14,7 +13,6 @@ $font-size-2xl: rem(24);
 $font-size-3xl: rem(30);
 $font-size-4xl: rem(36);
 
-// Отступы
 $space-0: 0;
 $space-1: rem(4);
 $space-2: rem(8);
@@ -30,7 +28,6 @@ $space-12: rem(48);
 $space-14: rem(56);
 $space-16: rem(64);
 
-// Радиус скругления
 $radius-none: 0;
 $radius-xs: rem(2);
 $radius-sm: rem(4);
@@ -41,7 +38,6 @@ $radius-2xl: rem(24);
 $radius-3xl: rem(32);
 $radius-full: 9999px;
 
-// Жирность шрифта
 $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;

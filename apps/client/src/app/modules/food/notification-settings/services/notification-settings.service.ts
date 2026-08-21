@@ -14,7 +14,6 @@ export class NotificationSettingsService {
   private apiUrl = `${env.apiFoodUrl}/${env.api.telegramBotSubscribers}`;
   private http = inject(HttpClient)
 
-
   getTelegramSubscriptionStatus(): Observable<IHttpResponse<ITelegramStatusResponse>> {
     return this.http.get<IHttpResponse<ITelegramStatusResponse>>(`${this.apiUrl}/status`);
   }

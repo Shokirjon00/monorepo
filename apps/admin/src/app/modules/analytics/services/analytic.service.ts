@@ -56,7 +56,6 @@ export class AnalyticService {
     return this.http.get<IHttpResponse<IPaymentCount>>(url, { params });
   }
 
-
   getPaymentStatus(queryParams: Params): Observable<IHttpResponse<IPaymentStatus[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IPaymentStatus[]>>(`${this.apiUrl}/${env.api.paymentsByStatus}`, {params});

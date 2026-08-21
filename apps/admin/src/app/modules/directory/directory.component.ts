@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { fader } from '@core/animations/route-transition-animations';
 
-
 @Component({
   standalone: true,
   selector: 'em-directory',

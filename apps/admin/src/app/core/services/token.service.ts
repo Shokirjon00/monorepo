@@ -29,9 +29,6 @@ export class TokenService {
     return this._accessToken;
   }
 
-  /**
-   * set tokens
-   */
   setTokens(meta: IHttpResponseMeta): void {
     this._accessToken = meta.accessToken;
     this._refreshToken = meta.refreshToken;
@@ -40,9 +37,6 @@ export class TokenService {
     this.refreshedToken$.next(true);
   }
 
-  /**
-   * get tokens
-   */
   getTokens(): IToken {
     return {
       accessToken: this.storage.get(ACCESS_TOKEN_KEY),
@@ -50,9 +44,6 @@ export class TokenService {
     };
   }
 
-  /**
-   * clear tokens
-   */
   clearTokens(): void {
     this.storage.remove(ACCESS_TOKEN_KEY);
     this.storage.remove(REFRESH_TOKEN_KEY);

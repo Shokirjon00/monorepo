@@ -2,7 +2,6 @@ import {Routes} from '@angular/router';
 import {PaymentComponent} from './payment.component';
 import {NgxPermissionsGuard} from "ngx-permissions";
 
-
 export const PAYMENTS: Routes = [
   {
     path: '',

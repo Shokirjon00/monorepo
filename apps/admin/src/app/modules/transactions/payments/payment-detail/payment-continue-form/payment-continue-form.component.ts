@@ -19,7 +19,6 @@ import { PaymentsInfoConstants } from "@modules/transactions/payments/payment-de
 import { EmHeaderComponent } from '@eskhata/ui';
 import { DateTimePipe } from '@eskhata/util';
 
-
 @Component({
   standalone: true,
   selector: 'em-payment-continue-form',
@@ -58,7 +57,6 @@ export class PaymentContinueFormComponent extends DestroyableComponent implement
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly messageService = inject(MessageService);
   private readonly headerService = inject(HeaderService);
-  // TODO: use params || queryParams
   private readonly paymentId = this.activatedRoute.snapshot.params['id'];
   private readonly paymentRoute = this.activatedRoute.snapshot.queryParams['paymentMode']
   actions: IAction[] = PaymentsInfoConstants.getActions(this.paymentId);

@@ -4,7 +4,6 @@ import { ComponentGuard } from '@eskhata/util';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { BankPromotionInfoComponent } from '@modules/bank-promotion/bank-promotion-detail/bank-promotion-info/bank-promotion-info.component';
 
-
 export const ROUTING: Routes = [
   {
     path: '',

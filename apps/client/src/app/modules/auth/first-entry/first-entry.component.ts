@@ -13,7 +13,6 @@ import { SvgIconComponent } from "angular-svg-icon";
 import { SharedModule } from "@shared/shared.module";
 import { PasswordInputRulesComponent, ToastModule } from '@eskhata/ui';
 
-
 @Component({
   standalone: true,
   selector: 'em-first-entry',

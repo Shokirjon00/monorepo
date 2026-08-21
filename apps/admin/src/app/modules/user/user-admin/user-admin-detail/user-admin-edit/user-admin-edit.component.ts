@@ -195,7 +195,6 @@ export class UserAdminEditComponent extends EMBaseForm implements OnInit {
     );
   }
 
-
   private showValidationError(): void {
     this.messageService.add({
       severity: ToastEnum.ERROR,

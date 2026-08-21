@@ -45,7 +45,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   private _errorHandler(response: HttpResponse<IHttpResponse<any>>): void {
-    // TODO Refactoring
     switch (response?.body?.errorCode) {
       case ErrorStatusCodeEnum.ERROR_AUTH:
         this._logout();
@@ -57,10 +56,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         break;
       case ErrorStatusCodeEnum.UNKNOWN_EXCEPTION:
         break;
-      // default:
-      //   if (!this._errorService.hasDialog) {
-      //     this._errorService.show$.next({body: response?.body?.message || ErrorTextConstants.UNKNOWN_SERVER_ERROR});
-      //   }
     }
   }
 

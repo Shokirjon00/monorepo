@@ -11,7 +11,6 @@ export class CashbackService {
   private readonly apiUrl = `${env.apiUrl}/${env.api.cashbackCompanies}`;
   private http = inject(HttpClient);
 
-
   getCashbackCompanies(queryParams: Params): Observable<IHttpResponse<ICashback[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<ICashback[]>>(this.apiUrl, {params});

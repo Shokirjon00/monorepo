@@ -45,7 +45,6 @@ export class CategoryComponent extends DestroyableComponent implements OnInit, A
   };
   params: Params = {};
 
-
   ngOnInit(): void {
     this.route.queryParams
       .pipe(takeUntil(this.destroyed$))

@@ -107,8 +107,6 @@ describe('MainFilterComponent', () => {
     });
   }
 
-  // === ТЕСТЫ ===
-
   it('должен добавить фильтр', () => {
     component.filtersFormArray.clear();
     component.filterItems = [];
@@ -124,7 +122,7 @@ describe('MainFilterComponent', () => {
     component.filtersFormArray.push(createFilterGroup());
     component.filterItems.push({key: 'name', value: 'abc', type: 'text'});
 
-    expect(component.filtersFormArray.length).toBe(1); // Проверяем что фильтр добавился
+    expect(component.filtersFormArray.length).toBe(1);
     expect(component.filterItems.length).toBe(1);
 
     component.removeFilter(0);
@@ -225,7 +223,6 @@ describe('MainFilterComponent', () => {
     expect(closeSpy).toHaveBeenCalledWith(true);
     expect(reloadSpy).toHaveBeenCalled();
   });
-
 
   it('должен возвращать filtersFormArray', () => {
     expect(component.filtersFormArray).toBeTruthy();

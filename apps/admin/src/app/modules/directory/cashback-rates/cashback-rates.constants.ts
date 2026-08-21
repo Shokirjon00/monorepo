@@ -6,7 +6,6 @@ import { MatchMode } from "@core/enums/match-mode.enum";
 
 export class CashbackRatesConstants {
 
-
   static readonly CASHBACKRATES_COLUMNS: ICaption[] = [
     {
       key: 'Статус',

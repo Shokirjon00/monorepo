@@ -62,7 +62,6 @@ export class UserAdminComponent extends DestroyableComponent implements OnInit, 
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,

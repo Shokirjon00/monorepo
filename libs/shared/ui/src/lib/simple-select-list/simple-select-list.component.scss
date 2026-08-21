@@ -35,7 +35,6 @@
 .select-field {
   cursor: pointer;
   width: 100%;
-  //max-width: 216px;
 
   &__container {
     width: 100%;
@@ -99,10 +98,8 @@
 
   .form-control {
     @include m.flex_jc_sb();
-    //padding: 17px 8px 17px 16px;
 
     &.focused {
-      //border-color: $primary-color;
     }
   }
 

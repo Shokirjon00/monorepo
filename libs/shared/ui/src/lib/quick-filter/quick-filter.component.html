@@ -194,7 +194,7 @@
                  [ngClass]="{'disabled': filterItem.filterType === 'date' && _key === 'payments-filters'}"
                  (click)="removeField(idx, filterItem.field)">
               <svg-icon class="em-d-flex-center ml-2"
-                        src="assets/icons/delete.svg" 
+                        src="assets/icons/delete.svg"
                         [ngClass]="{ 'white-icon': isAdvancePayments() }" />
               <span class="tooltiptext">Удалить</span>
             </div>
@@ -211,7 +211,7 @@
           <button class="ml-3 action-item tooltip"
                   (click)="addFilterLabel()">
             <svg-icon class="em-d-flex-center"
-                      src="./assets/icons/plus.svg" 
+                      src="./assets/icons/plus.svg"
                       [ngClass]="{ 'white-icon': isAdvancePayments() }" />
             <span class="tooltiptext">Добавить фильтр</span>
           </button>

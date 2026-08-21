@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { NgxPermissionsGuard } from "ngx-permissions";
 
-
 export const ADVANCE_PAYMENTS: Routes = [
   {
     path: '',

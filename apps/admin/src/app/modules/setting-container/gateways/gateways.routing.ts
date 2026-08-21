@@ -1,6 +1,5 @@
 import { Routes } from "@angular/router";
 
-
 export const GATEWAYS_ROUTING: Routes = [
   {
     path: '',

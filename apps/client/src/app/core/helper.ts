@@ -16,5 +16,4 @@ export const RECONCILIATION_REPORT_ID = 'dbc7c9e9-2f8a-4aff-8b31-05c32eefb6cf';
 export const ANALYTICS_PERIOD_DAY = 31;
 export const MAX_PHONE_NUMBER = 4;
 
-// Реализации переехали в @eskhata/util; ре-экспорт сохраняет импорты '@core/helper'.
 export { isPhone, isLandscapeTablet } from '@eskhata/util';

@@ -78,7 +78,6 @@ export class IncomeCodeConstants {
     }
   ]
 
-
   static readonly INCOME_CODE_ACTIONS: IAction[] = [
     {
       code: ActionEnum.ADD,

@@ -135,7 +135,6 @@ export class MerchantInfoComponent extends DestroyableComponent implements OnIni
       })
   }
 
-
   private getUploadLoginMain(fileStorageUrl: string, imageID: string, fileStorageToken: string): void {
     this.helperService.getFile(fileStorageUrl, imageID, fileStorageToken)
       .pipe(takeUntil(this.destroyed$))

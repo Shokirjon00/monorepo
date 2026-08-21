@@ -1,5 +1,3 @@
-// Only `variables` is needed here. Admin's `core/scss/styles` re-exposes the same
-// variables, so keeping both `as *` made `$text-color` ambiguous in the admin build.
 @use "core/scss/variables" as *;
 
 :host{

@@ -13,7 +13,6 @@ export class DepartmentCode {
   private apiUrl = `${env.apiUrl}/${env.api.merchantGovernmentDepartments}`;
   private http = inject(HttpClient)
 
-
   getDepartmentCode(queryParams: Params): Observable<IHttpResponse<IDepartmentCode[]>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IDepartmentCode[]>>(this.apiUrl, {params});

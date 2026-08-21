@@ -177,5 +177,4 @@ export class PaymentsRefundApplicationsConstants {
     [TableStatusEnum.APPLICATION_IN_PROCESS]: 'in-process',
   };
 
-
 }

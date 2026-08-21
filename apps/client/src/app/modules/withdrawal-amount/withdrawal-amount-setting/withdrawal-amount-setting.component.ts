@@ -117,7 +117,7 @@ export class WithdrawalAmountSettingComponent extends DestroyableComponent imple
     }
     this.submitted = true;
 
-    let clonedArray = [...this.form.controls['merchants'].value]; // will clone the array
+    let clonedArray = [...this.form.controls['merchants'].value];
     let merchants = clonedArray.filter(item => item.isActive);
 
     const body = {

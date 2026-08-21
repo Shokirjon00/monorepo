@@ -60,7 +60,6 @@ export class CashbackRatesComponent extends DestroyableComponent implements OnIn
       })
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,

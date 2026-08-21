@@ -167,7 +167,6 @@
       position: relative;
       overflow: hidden;
 
-
       &::before {
         content: '';
         position: absolute;
@@ -226,5 +225,4 @@
     border-top: 1px solid $soft-silver;
   }
 }
-
 

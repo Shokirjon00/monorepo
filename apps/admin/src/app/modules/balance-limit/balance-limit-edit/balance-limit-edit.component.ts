@@ -44,7 +44,6 @@ export class BalanceLimitEditComponent extends EMBaseForm implements OnInit {
     tabShow: false
   };
 
-
   private readonly service = inject(BalanceLimitService);
   private readonly fb = inject(FormBuilder);
   private readonly activatedRoute = inject(ActivatedRoute);

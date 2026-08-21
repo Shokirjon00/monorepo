@@ -59,7 +59,6 @@ export class UserClientLogComponent extends DestroyableComponent implements OnIn
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,
@@ -73,7 +72,6 @@ export class UserClientLogComponent extends DestroyableComponent implements OnIn
     this.queryParams.sorts = value;
     this.getClientUsersLog()
   }
-
 
   private getClientUsersLog(params = this.queryParams): void {
     this.loading.set(true);

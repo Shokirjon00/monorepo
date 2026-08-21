@@ -67,7 +67,6 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-
     this.route.queryParams
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {

@@ -34,7 +34,6 @@ export class AdvanceCommissionsInfoComponent implements OnInit {
   private readonly service = inject(AdvanceCommissionsService);
   private commissionId = this.activatedRoute.snapshot.params['id'];
 
-
   ngOnInit(): void {
     this.getCommissionDetail();
   }

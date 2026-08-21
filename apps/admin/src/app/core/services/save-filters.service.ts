@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-/**
- * @Deprecated use saveToLocalStorage & getFromLocalStorage
- */
 @Injectable({
   providedIn: 'root'
 })

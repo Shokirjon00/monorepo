@@ -34,7 +34,7 @@ export class RatingDashboardComponent implements OnInit {
     };
   });
   ratings = computed(() => {
-    const reviews = this.dashboardData()?.orderReviews?.chartData; // Обязательно ?.
+    const reviews = this.dashboardData()?.orderReviews?.chartData;
     if (!reviews) return [];
 
     return reviews.map(item => ({

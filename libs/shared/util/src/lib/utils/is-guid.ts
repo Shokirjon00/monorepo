@@ -1,5 +1,3 @@
-// Version nibble accepts 0-8: the admin copy was the permissive one, so the merged
-// regex stays a superset of both apps' previous behaviour (client used 0-5).
 export function isGuid(value: string): boolean {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-8][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 }

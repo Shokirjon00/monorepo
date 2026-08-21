@@ -38,7 +38,6 @@ export class ClientHistoryInfoComponent extends DestroyableComponent implements 
     this.getAdminUser();
   }
 
-
   private getAdminUser(): void {
     this.loading = true;
     this.adminService.getHistoryDetail(this.adminUserId)

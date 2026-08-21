@@ -4,9 +4,6 @@ import { IAction } from '@eskhata/util';
 import { ActionEnum } from '@eskhata/util';
 
 export class ExportQueueConstants {
-  /**
-   *
-   */
   static readonly EXPORT_QUEUE_COLUMNS: ICaption[] = [
     {
       key: 'Название файла',

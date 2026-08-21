@@ -15,11 +15,4 @@ export class PrimeTemplateDirective {
   }
 }
 
-/**
- * @deprecated Legacy empty class carried over from both apps. Admin's toast still
- * queries it via `contentChildren(PrimeTemplate)`, which can never match because
- * this is not a directive — that query has always returned an empty list. It is
- * re-exported here only to keep the extraction behaviour-neutral; switching those
- * call sites to {@link PrimeTemplateDirective} is a separate, behaviour-changing fix.
- */
 export class PrimeTemplate {}

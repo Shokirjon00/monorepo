@@ -1,5 +1,3 @@
-// CSS-only modules are loaded without 'as *' so their rules still reach the component
-// while their members stay namespaced, avoiding cross-module variable ambiguity.
 @use 'core/scss/styles';
 @use 'core/scss/flex';
 @use 'core/scss/button';
@@ -7,7 +5,6 @@
 @use 'core/scss/margins';
 @use 'core/scss/paddings';
 @use 'core/scss/mixins/breakpoints' as *;
-
 
 .map {
   display: flex;

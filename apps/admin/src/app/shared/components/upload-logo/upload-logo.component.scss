@@ -88,7 +88,6 @@
     }
   }
 
-
   &__file {
     display: none;
   }
@@ -158,7 +157,6 @@
   }
 }
 
-
 .upload-confirm-dialog {
   padding: 1.5rem 2rem 2rem;
 
@@ -180,7 +178,6 @@
     margin-top: 1.625rem;
     @include flex_jc_sb();
 
-
     .btn {
       width: 100%;
       height: 40px;
@@ -196,5 +193,4 @@
     }
   }
 }
-
 

@@ -16,7 +16,6 @@ export class PaymentService {
   private apiUrl = `${env.apiUrl}/${env.api.payments}`;
   private http = inject(HttpClient);
 
-
   getPayments(queryParams: Params): Observable<IHttpResponse<IPayments>> {
     const params = new HttpParams({fromObject: queryParams});
     return this.http.get<IHttpResponse<IPayments>>(this.apiUrl, {params});

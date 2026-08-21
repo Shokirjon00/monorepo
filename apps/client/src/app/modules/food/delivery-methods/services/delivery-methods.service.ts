@@ -10,7 +10,6 @@ export class DeliveryMethodsService {
   private apiUrl = `${env.apiFoodUrl}/${env.api.restaurants}/${env.api.delivery_types}`
   private http = inject(HttpClient);
 
-
   getDelivery(): Observable<IHttpResponse<IDeliveryMethods[]>> {
     return this.http.get<IHttpResponse<IDeliveryMethods[]>>(`${this.apiUrl}`);
   }
@@ -20,6 +19,5 @@ export class DeliveryMethodsService {
   ): Observable<IHttpResponse<any>> {
     return this.http.post<IHttpResponse<any>>(`${this.apiUrl}/set`, data);
   }
-
 
 }

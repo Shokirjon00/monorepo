@@ -190,8 +190,6 @@
     }
   }
 
-
-
   .link {
     font-weight: bold;
     cursor: pointer;
@@ -235,16 +233,16 @@
       border: none;
       font-size: 18px;
 
-      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      &::placeholder {
         color: $inactive-icons;
-        opacity: 1; /* Firefox */
+        opacity: 1;
       }
 
-      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      &:-ms-input-placeholder {
         color: $inactive-icons;
       }
 
-      &::-ms-input-placeholder { /* Microsoft Edge */
+      &::-ms-input-placeholder {
         color: $inactive-icons;
       }
     }
@@ -347,7 +345,6 @@
   border-bottom: 1px solid $border-color;
   outline: none;
   transition: 200ms;
-  //max-width: 200px;
   width: 100%;
   height: 40px;
   font-style: normal;
@@ -385,11 +382,11 @@
       color: $inactive-icons;
     }
 
-    &:-moz-placeholder { /* Firefox 18- */
+    &:-moz-placeholder {
       color: $inactive-icons;
     }
 
-    &::-moz-placeholder { /* Firefox 19+ */
+    &::-moz-placeholder {
       color: $inactive-icons;
     }
 
@@ -402,22 +399,18 @@
     }
   }
 
-  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  &::placeholder {
     color: $inactive-icons;
-    opacity: 1; /* Firefox */
+    opacity: 1;
   }
 
-  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $inactive-icons;
-  }
-
-  &::-ms-input-placeholder { /* Microsoft Edge */
+  &:-ms-input-placeholder {
     color: $inactive-icons;
   }
 
-  /*&:focus {
-    border-color: $primary-color !important;
-  }*/
+  &::-ms-input-placeholder {
+    color: $inactive-icons;
+  }
 
   &.form-control-sm {
     font-size: 16px;
@@ -425,13 +418,12 @@
 
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
   }
 
   input[type=number] {
-    -moz-appearance: textfield; /* Firefox */
+    -moz-appearance: textfield;
   }
 }
 
@@ -512,20 +504,16 @@
     background: $label-color;
     border-radius: 8px;
     visibility: hidden;
-    //width: 120px;
     color: $white-color;
     text-align: center;
     padding: 0.25rem 1rem;
     position: absolute;
     z-index: 1;
     top: 100%;
-    //left: 0;
-    //margin-left: -60px;
     font-size: 14px;
     line-height: 24px;
     text-wrap: balance;
   }
-
 
 }
 
@@ -608,7 +596,6 @@
     &:hover {
       background-color: $li-grey-hover;
       color: $main-black;
-
 
       .dropdown-icon, svg {
         display: block;
@@ -863,7 +850,6 @@
   transition: background .2s ease;
   -webkit-tap-highlight-color: transparent;
 
-
   input {
     vertical-align: middle;
     width: 24px;
@@ -933,7 +919,6 @@
     border: none;
   }
 }
-
 
 @include media-breakpoint-down(sm) {
   .tab {

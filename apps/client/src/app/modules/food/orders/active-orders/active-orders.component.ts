@@ -103,7 +103,6 @@ export class ActiveOrdersComponent implements OnInit, AfterViewInit {
         })
   }
 
-
   private initRouteParams(): void {
     this.route.queryParams
         .pipe(takeUntilDestroyed(this.destroyRef))

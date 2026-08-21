@@ -42,7 +42,6 @@ import { MerchantConstants } from "@modules/client/merchant/merchant.constants";
 import { IntegrationSettingsConstants } from "@modules/client/company/company-detail/integration-setting/integration-setting.constants";
 import { environment as env } from "@environments/environment";
 
-
 @Component({
   standalone: true,
   selector: 'em-integration-setting',
@@ -247,7 +246,6 @@ export class IntegrationSettingComponent extends DestroyableComponent implements
       input.value = '';
     }
   }
-
 
   addIntegration(event: Event, integration: IIntegrationSetting): void {
     this.dialog.open(IntegrationDialogComponent, {

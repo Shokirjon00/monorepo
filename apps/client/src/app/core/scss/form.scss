@@ -175,7 +175,6 @@
     }
   }
 
-
   .checkbox {
     input[type="checkbox"] {
       border: 2px solid $border-color;
@@ -353,7 +352,6 @@
   border-bottom: 1px solid $border-color;
   outline: none;
   transition: 200ms;
-  //max-width: 200px;
   width: 100%;
   height: 40px;
   font-style: normal;
@@ -524,7 +522,6 @@
     &:hover {
       background-color: $li-grey-hover;
       color: $main-black;
-
 
       .dropdown-icon, .svg {
         display: block;
@@ -771,7 +768,6 @@
   transition: background .2s ease;
   -webkit-tap-highlight-color: transparent;
 
-
   input {
     vertical-align: middle;
     width: 24px;
@@ -812,7 +808,6 @@
   text-align: left;
 }
 
-/* custom scrollbar */
 ::-webkit-scrollbar {
   width: 20px;
 }

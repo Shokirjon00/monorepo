@@ -127,7 +127,6 @@ export class BankPromotionEditComponent extends EMBaseForm implements OnInit {
       return null;
     }
 
-
     this.form.markAllAsTouched();
     if (this.form.invalid) {
       this.messageService.add({severity: ToastEnum.ERROR, summary: 'Неправильно заполнены данные!'});
@@ -163,7 +162,6 @@ export class BankPromotionEditComponent extends EMBaseForm implements OnInit {
         }
       );
   }
-
 
   onChangedAccrualType(event: ISelect): void {
     const allPaymentId: string = 'e9105749-8c8f-4d20-8402-2fb75b065986';
@@ -290,7 +288,6 @@ export class BankPromotionEditComponent extends EMBaseForm implements OnInit {
         this.form.patchValue(res.data);
       });
   }
-
 
   private setWeekDays(): void {
     this.weekDays = '';

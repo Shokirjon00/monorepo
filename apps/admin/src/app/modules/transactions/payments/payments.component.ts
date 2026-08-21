@@ -158,9 +158,6 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
     }
   }
 
-  /**
-   * reload table
-   */
   reloadTable(): void {
     this.getPayments();
   }
@@ -180,7 +177,6 @@ export class PaymentsComponent extends DestroyableComponent implements OnInit, A
         }
       })
   }
-
 
   openPaymentRefundDialog(id: string): void {
     const payment = this.payments.find(i => i.id === id);

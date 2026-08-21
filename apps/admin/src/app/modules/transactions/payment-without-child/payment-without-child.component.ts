@@ -44,7 +44,6 @@ export class PaymentWithoutChildComponent extends AbstractPaymentComponent<any> 
   tabMenuItems: ITab[] = PaymentsWithoutConstants.HEADER_TABS;
   private readonly router = inject(Router);
 
-
   protected readonly columns: any = PaymentsWithoutConstants.PAYMENT_WITHOUT_CHILD_COLUMNS;
   private queryParams: IFilterParams = {
     filters: '',

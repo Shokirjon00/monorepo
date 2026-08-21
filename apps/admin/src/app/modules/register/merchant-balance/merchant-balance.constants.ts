@@ -3,9 +3,6 @@ import { ITab } from '@eskhata/util';
 
 export class MerchantBalanceConstants {
 
-  /**
-   *
-   */
   static readonly MERCHANT_BALANCE_COLUMNS : ICaption[] = [
     {
       key: 'Название файла',

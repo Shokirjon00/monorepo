@@ -110,7 +110,6 @@ export class AccountEditDialogComponent implements OnInit {
       || type === AccountTypeID.TRANSIT_ACCOUNT;
   }
 
-
   private creatForm(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required,

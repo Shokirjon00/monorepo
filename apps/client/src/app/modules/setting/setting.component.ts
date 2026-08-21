@@ -11,7 +11,6 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { setValidationErrors } from '@core/validators/set-validation-errors';
 import { ClipboardService } from 'ngx-clipboard';
 
-
 @Component({
   standalone: true,
   selector: 'em-setting',

@@ -39,6 +39,4 @@ export class ListRegistrationDetailComponent extends DestroyableComponent {
    this.tabMenuItems = ListRegistrationDetailConstants.getHeaderTabs(this.listId)
   }
 
-
-
 }

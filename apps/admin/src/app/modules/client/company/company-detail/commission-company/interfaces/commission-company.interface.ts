@@ -26,7 +26,6 @@ interface IMerchants {
   name: string
 }
 
-
 export interface ICommissionCompanyEdit {
   bankCommissions: any[];
   id: string,

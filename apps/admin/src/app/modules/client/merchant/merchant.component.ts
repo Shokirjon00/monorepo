@@ -122,7 +122,6 @@ export class MerchantComponent extends DestroyableComponent implements AfterView
     }
   }
 
-
   edit(merchantId: string): void {
     if (this.companyId) {
       this.router.navigate(['clients/company', this.companyId, 'merchant', merchantId, 'edit'])
@@ -181,7 +180,6 @@ export class MerchantComponent extends DestroyableComponent implements AfterView
         }
       })
   }
-
 
   private getMerchants(params = this.queryParams): void {
     this.loading.set(true);

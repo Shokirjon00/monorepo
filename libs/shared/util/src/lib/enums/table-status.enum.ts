@@ -28,7 +28,5 @@ export enum TableStatusEnum {
   ISU_REJECTED = 'ad236cbc-99c8-4171-c905-ac23fe02cf6e',
 
   ACTIVE = 'true',
-  // The client copy spelled this `NO_ACTIVE`; neither name had call sites, so the
-  // merged enum keeps only the admin spelling.
   INACTIVE = 'false',
 }

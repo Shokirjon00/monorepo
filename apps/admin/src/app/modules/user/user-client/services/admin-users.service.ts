@@ -11,7 +11,6 @@ export class AdminUsersService {
   private apiUrl = `${env.apiUrl}/${env.api.adminUsers}`;
   private http = inject(HttpClient);
 
-
   getAdminUserById(id: string): Observable<IHttpResponse<IUsers>> {
     return this.http.get<IHttpResponse<IUsers>>(`${this.apiUrl}/${id}`);
   }

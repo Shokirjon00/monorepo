@@ -199,7 +199,6 @@ describe('QuickFilterComponent', () => {
       const oldItem = {field: 'name', filterType: 'text', value: 'test', key: 'Имя'};
       const newItem = {field: 'date', filterType: 'date', key: 'Дата'};
 
-      // Инициализируем через публичный setter
       component.filterFields = [
         {field: 'name', key: 'Имя', filterType: 'text', isFiltered: false},
         {field: 'date', key: 'Дата', filterType: 'date', isFiltered: false},

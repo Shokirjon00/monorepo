@@ -64,7 +64,6 @@ export class UsersHistoryComponent extends DestroyableComponent implements OnIni
       });
   }
 
-
   ngAfterViewInit(): void {
     this.columns.map((x: any, i: any,) => ({
       key: x,
@@ -78,7 +77,6 @@ export class UsersHistoryComponent extends DestroyableComponent implements OnIni
     this.router.navigate([`user/users-history-update/detail/${adminUserId}/info`])
       .catch()
   }
-
 
   sortTable(value: string): void {
     this.queryParams.sorts = value;

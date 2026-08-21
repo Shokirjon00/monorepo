@@ -58,9 +58,6 @@ export class MainComponent extends DestroyableComponent implements OnInit {
       });
   }
 
-  /**
-   * navigate to login page
-   */
   private navigateToLogin(): void {
     this.tokenService.clearTokens();
     this.authService.temporaryToken = null;
